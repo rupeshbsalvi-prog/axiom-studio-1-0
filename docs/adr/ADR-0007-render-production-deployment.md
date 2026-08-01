@@ -1,6 +1,6 @@
 # ADR-0007: Render Preview Deployment
 
-- Status: Accepted; implementation prepared, live verification pending
+- Status: Accepted; free preview live-verified
 - Date: 2026-08-01
 
 ## Context
@@ -31,6 +31,10 @@ The target supports a zero-subscription live HTTPS/auth checkpoint without addin
 - `LOCKED_BASELINE.md`
 - `docs/components/auth-user-system.md`
 
+## Verification
+
+The free service at `https://axiom-studio-58k2.onrender.com` passed HTTPS health, Google login, explicit workspace selection, policy disclosure, logout, and denied post-logout policy-read checks. Live auth headers include `Secure`, `HttpOnly`, and `SameSite`; the Render workspace has no payment method, paid instance, or disk.
+
 ## Follow-Up
 
-Connect the controlled Git repository to a Render Free service, enter environment values without sharing them, deploy, and run the acceptance gates. No paid instance or disk is authorized.
+Keep this target preview-only. Define durable external persistence before selecting a production target.

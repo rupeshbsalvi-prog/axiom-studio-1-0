@@ -59,7 +59,7 @@ No workspace is selected automatically, even when the session has one membership
 
 Auth A1 and Auth UI A2 complete the approved identity, opaque-session, explicit workspace-entry, switching, and logout scope. Signup/onboarding, invitations, MFA, profile or account administration, membership mutation, organization administration, silent reauthentication, and remembered/default workspace behavior require a separate explicit roadmap decision. Production HTTPS and `Secure` cookie verification remain a deployment gate, not an A3 feature milestone.
 
-[ADR-0007](../adr/ADR-0007-render-production-deployment.md) selects a single same-origin Render Free preview service with managed TLS and ephemeral runtime data. The live acceptance gate verifies HTTPS and secure-cookie behavior only; it does not certify production persistence.
+[ADR-0007](../adr/ADR-0007-render-production-deployment.md) selects a single same-origin Render Free preview service with managed TLS and ephemeral runtime data. HTTPS, secure-cookie login, explicit workspace selection, policy read, logout, and denied post-logout access are live-verified; production persistence is not certified.
 
 ## Acceptance Criteria
 
