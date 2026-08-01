@@ -1,4 +1,4 @@
-# ADR-0007: Render Production Deployment
+# ADR-0007: Render Preview Deployment
 
 - Status: Accepted; implementation prepared, live verification pending
 - Date: 2026-08-01
@@ -9,13 +9,13 @@ Axiom Studio needs one HTTPS origin for the React application and FastAPI auth r
 
 ## Decision
 
-Deploy one Docker-based Render web service in Singapore on the Starter plan with one instance and a 1 GB persistent disk mounted at `/var/data`. FastAPI serves the built React application after all `/api` routes, keeping authentication same-origin. Render manages TLS and HTTP-to-HTTPS redirection. Production sets `AXIOM_SECURE_COOKIES=true`, keeps provider execution disabled, and supplies Supabase and origin settings only through Render environment configuration.
+Deploy one Docker-based Render Free web service in Singapore with one instance and ephemeral runtime data under `/tmp/axiom-runtime`. FastAPI serves the built React application after all `/api` routes, keeping authentication same-origin. Render manages TLS and HTTP-to-HTTPS redirection. The preview sets `AXIOM_SECURE_COOKIES=true`, keeps provider execution disabled, and supplies Supabase and origin settings only through Render environment configuration.
 
 Deployments remain manual. Secrets and local `.env` files never enter the image or Blueprint.
 
 ## Consequences
 
-The target fits the current persistence model without adding a database migration or reverse proxy. The attached disk requires paid Render capacity, restricts the service to one instance, and disables zero-downtime deploys. Horizontal scaling requires a future explicit migration away from local SQLite/file persistence.
+The target supports a zero-subscription live HTTPS/auth checkpoint without adding a database migration or reverse proxy. Runtime sessions, SQLite data, and generated files can disappear on idle spin-down, restart, or redeploy; this target is not approved for production or durable user data. A durable deployment requires an explicit migration to external persistence.
 
 ## Acceptance Gates
 
@@ -33,4 +33,4 @@ The target fits the current persistence model without adding a database migratio
 
 ## Follow-Up
 
-Connect a controlled Git repository to Render, approve the paid Starter service and persistent disk, enter the production environment values without sharing them, deploy, and run the acceptance gates.
+Connect the controlled Git repository to a Render Free service, enter environment values without sharing them, deploy, and run the acceptance gates. No paid instance or disk is authorized.
