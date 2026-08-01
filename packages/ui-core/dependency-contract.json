@@ -1,0 +1,20 @@
+{
+  "package": "@axiom/ui-core",
+  "version": 1,
+  "layer": "presentation",
+  "imports": [
+    "@axiom/tokens",
+    "@axiom/ui-foundation"
+  ],
+  "forbidden": [
+    "@axiom/runtime",
+    "@axiom/workbench",
+    "@axiom/cognition",
+    "apps",
+    "playground",
+    "../apps"
+  ],
+  "peerDependencies": ["react", "react-dom"],
+  "noCycles": true,
+  "maxDirectDeps": 3
+}

@@ -1,0 +1,48 @@
+{
+  "name": "axiom-studio-1",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "node --experimental-strip-types scripts/generate-manifest.ts",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "api": "npm run api --workspace=packages/tokens && npm run api --workspace=packages/ui-foundation && npm run api --workspace=packages/ui-core",
+    "budget": "node --experimental-strip-types scripts/bundle-budget.ts",
+    "asset:axiom-core": "node --experimental-strip-types scripts/axiom-core-export.ts",
+    "doctor": "node --experimental-strip-types scripts/doctor.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "^0.184.0",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.58.9",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/three": "^0.184.1",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
+    "@vitest/coverage-v8": "latest",
+    "eslint": "^10.6.0",
+    "eslint-plugin-security": "^4.0.1",
+    "jsdom": "latest",
+    "vitest": "latest"
+  }
+}

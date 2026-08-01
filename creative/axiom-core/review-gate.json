@@ -1,0 +1,106 @@
+{
+  "assetId": "AX-CORE-001",
+  "version": "1.0.0",
+  "reviewedAt": "2026-07-26",
+  "approvedAt": "2026-07-26",
+  "stage": "frozen",
+  "freezeStatus": "frozen",
+  "summary": "AX-CORE-001 v1.0.0 is approved and frozen for the GLB/USDZ Foundation Release 1 scope.",
+  "reviews": [
+    {
+      "name": "Creative Review",
+      "status": "passed",
+      "reason": "The user approved the current identity, emotional tone, and ADLS direction for v1.0."
+    },
+    {
+      "name": "Technical Review",
+      "status": "passed",
+      "reason": "All tiers pass loader, hierarchy, animation, triangle, draw-call, texture-memory, file-size, test, build, and audit gates."
+    },
+    {
+      "name": "Platform Review",
+      "status": "passed",
+      "reason": "The user accepted local Chromium plus Three.js GLB/USDZ loader validation as the FR1 certification boundary."
+    },
+    {
+      "name": "Experience Review",
+      "status": "passed",
+      "reason": "The user approved the current experience; pause-safe motion and monochrome behavior are implemented and tested."
+    }
+  ],
+  "dimensions": [
+    {
+      "name": "Identity",
+      "status": "passed",
+      "evidence": "docs/design/core-visual-specification.md"
+    },
+    {
+      "name": "Function",
+      "status": "passed",
+      "evidence": "The live interactive 3D centerpiece is implemented for FR1; static icon and favicon applications remain in the FR2 Identity System scope."
+    },
+    {
+      "name": "Reusability",
+      "status": "passed",
+      "evidence": "src/app/studios/axiomCoreGeometry.ts"
+    },
+    {
+      "name": "Technical",
+      "status": "passed",
+      "evidence": "creative/axiom-core/exports/manifest.json"
+    },
+    {
+      "name": "Performance",
+      "status": "passed",
+      "evidence": "creative/axiom-core/runtime-validation.json"
+    },
+    {
+      "name": "Accessibility",
+      "status": "passed",
+      "evidence": "Pause-safe interaction and monochrome output are implemented, tested, and accepted for FR1."
+    },
+    {
+      "name": "Cross-platform",
+      "status": "passed",
+      "evidence": "Local Chromium and loader evidence were accepted as the FR1 boundary; broader device certification is not claimed."
+    },
+    {
+      "name": "Motion",
+      "status": "passed",
+      "evidence": "The idle animation, lifecycle states, pointer response, and pause behavior are implemented and tested."
+    },
+    {
+      "name": "Emotion",
+      "status": "passed",
+      "evidence": "The user approved the current approachable-intelligence direction."
+    },
+    {
+      "name": "Future-proofing",
+      "status": "passed",
+      "evidence": "Single-source tiered geometry is reusable; unsupported formats are explicitly deferred until a consumer requires them."
+    }
+  ],
+  "supportedReleaseFormats": [
+    "glb",
+    "usdz"
+  ],
+  "resolvedDecisions": [
+    {
+      "id": "creative-approval",
+      "decision": "approved"
+    },
+    {
+      "id": "format-scope",
+      "decision": "GLB and USDZ only for v1.0; FBX, SVG, Lottie, and WebM deferred until required."
+    },
+    {
+      "id": "platform-certification",
+      "decision": "Local Chromium and loader compatibility accepted for FR1; universal device certification is not claimed."
+    }
+  ],
+  "scopeLimitations": [
+    "Static icon and favicon applications remain part of Foundation Release 2.0.",
+    "FBX, SVG, Lottie, and WebM are not v1.0 deliverables.",
+    "High-DPR High quality and representative multi-device certification remain follow-ups if later release criteria require them."
+  ]
+}

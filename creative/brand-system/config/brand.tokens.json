@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "name": "Axiom Studio Brand Tokens",
+    "version": "1.0.0-draft.1",
+    "status": "draft"
+  },
+  "color": {
+    "background": {
+      "obsidian": "#090B12",
+      "graphite": "#171B26",
+      "paper": "#F7F6F2",
+      "white": "#FFFFFF"
+    },
+    "brand": {
+      "violet": "#7357FF",
+      "blue": "#2E8BFF",
+      "cyan": "#36D6E7",
+      "emerald": "#2FD69B",
+      "amber": "#FFB34D",
+      "magenta": "#F55DAA"
+    },
+    "text": {
+      "onDark": "#F7F6F2",
+      "onLight": "#0A0D16",
+      "mutedOnDark": "#A5ABBD",
+      "mutedOnLight": "#657085"
+    },
+    "semantic": {
+      "success": "#2FD69B",
+      "info": "#2E8BFF",
+      "warning": "#FFB34D",
+      "danger": "#D95763"
+    },
+    "rules": [
+      "Use Obsidian/Paper as dominant fields; accents signal hierarchy or state.",
+      "Violet requires contrast verification for normal text.",
+      "Cyan, Emerald and Amber are strong on Obsidian but unsuitable for small text on Paper.",
+      "Never encode status by colour alone."
+    ]
+  },
+  "typography": {
+    "display": {
+      "family": "Arial",
+      "weight": 700,
+      "trackingEm": -0.035,
+      "lineHeight": 0.94
+    },
+    "heading": {
+      "family": "Arial",
+      "weight": 700,
+      "trackingEm": -0.018,
+      "lineHeight": 1.06
+    },
+    "body": {
+      "family": "Arial",
+      "weight": 400,
+      "lineHeight": 1.5
+    },
+    "scalePx": {
+      "xs": 12,
+      "sm": 14,
+      "md": 16,
+      "lg": 20,
+      "xl": 28,
+      "2xl": 40,
+      "3xl": 64,
+      "4xl": 96
+    }
+  },
+  "spacePx": {
+    "0": 0,
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4": 16,
+    "5": 24,
+    "6": 32,
+    "7": 48,
+    "8": 64,
+    "9": 96,
+    "10": 128
+  },
+  "radiusPx": {
+    "sm": 8,
+    "md": 14,
+    "lg": 22,
+    "xl": 32,
+    "pill": 999
+  },
+  "motion": {
+    "durationMs": {
+      "instant": 80,
+      "fast": 160,
+      "standard": 280,
+      "expressive": 520,
+      "cinematic": 900
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.2,0,0,1)",
+      "enter": "cubic-bezier(0.16,1,0.3,1)",
+      "exit": "cubic-bezier(0.7,0,0.84,0)"
+    },
+    "rules": [
+      "Motion communicates hierarchy, causality, continuity or state.",
+      "Honor prefers-reduced-motion.",
+      "Avoid looping decorative motion near reading content."
+    ]
+  },
+  "imagery": {
+    "principles": [
+      "Cinematic but controlled",
+      "Abstract systems with material clarity",
+      "Human direction visibly present",
+      "No generic stock-AI imagery",
+      "No unearned sci-fi complexity"
+    ],
+    "materials": [
+      "crystal glass",
+      "smoked glass",
+      "precision metal",
+      "soft emissive data",
+      "matte black architecture"
+    ],
+    "composition": [
+      "editorial negative space",
+      "single dominant focal system",
+      "layered depth",
+      "asymmetrical balance",
+      "clean cropping"
+    ]
+  }
+}

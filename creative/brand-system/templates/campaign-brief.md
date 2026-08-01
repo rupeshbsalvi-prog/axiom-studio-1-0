@@ -1,0 +1,16 @@
+# Campaign Brief
+- Campaign / launch:
+- Business objective:
+- Priority audience:
+- Audience trigger and barrier:
+- Desired action:
+- Single-minded proposition:
+- Supporting proof:
+- Message pillar:
+- Offer / CTA:
+- Channel roles:
+- Mandatory brand assets:
+- Claims requiring review:
+- Accessibility requirements:
+- Measurement plan:
+- Approval gates:

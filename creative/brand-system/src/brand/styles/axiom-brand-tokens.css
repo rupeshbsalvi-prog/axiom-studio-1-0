@@ -1,0 +1,26 @@
+:root {
+  --axiom-color-obsidian: #090b12;
+  --axiom-color-graphite: #171b26;
+  --axiom-color-paper: #f7f6f2;
+  --axiom-color-violet: #7357ff;
+  --axiom-color-blue: #2e8bff;
+  --axiom-color-cyan: #36d6e7;
+  --axiom-color-emerald: #2fd69b;
+  --axiom-color-amber: #ffb34d;
+  --axiom-color-magenta: #f55daa;
+  --axiom-color-danger: #d95763;
+  --axiom-text-on-dark: #f7f6f2;
+  --axiom-text-on-light: #0a0d16;
+  --axiom-font-display: Arial, Helvetica, sans-serif;
+  --axiom-font-body: Arial, Helvetica, sans-serif;
+  --axiom-space-1: .25rem; --axiom-space-2: .5rem; --axiom-space-3: .75rem;
+  --axiom-space-4: 1rem; --axiom-space-5: 1.5rem; --axiom-space-6: 2rem;
+  --axiom-space-7: 3rem; --axiom-space-8: 4rem;
+  --axiom-radius-sm: .5rem; --axiom-radius-md: .875rem; --axiom-radius-lg: 1.375rem;
+  --axiom-motion-fast: 160ms; --axiom-motion-standard: 280ms;
+  --axiom-ease-standard: cubic-bezier(.2,0,0,1);
+}
+.axiom-focusable:focus-visible { outline: 2px solid var(--axiom-color-cyan); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important; }
+}

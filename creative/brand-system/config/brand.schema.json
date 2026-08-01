@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axiom.studio/schemas/brand.schema.json",
+  "title": "Axiom Studio Brand Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "version",
+    "status",
+    "tagline",
+    "category",
+    "authority",
+    "security",
+    "assets"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "const": "axiom-studio-brand-system"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "in-review",
+        "approved",
+        "published",
+        "deprecated"
+      ]
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "sourceOfTruth",
+        "approverRole",
+        "changePolicy",
+        "runtimeEditingAllowed"
+      ]
+    },
+    "security": {
+      "type": "object",
+      "required": [
+        "containsSecrets",
+        "externalRuntimeCode",
+        "networkDependencies",
+        "userSuppliedEndpoints"
+      ]
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

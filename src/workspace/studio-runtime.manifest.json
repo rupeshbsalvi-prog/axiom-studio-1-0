@@ -1,0 +1,82 @@
+[
+  {
+    "id": "axiom-ai",
+    "runtimeKey": "axiom-ai",
+    "source": "first-party",
+    "status": "implemented",
+    "phase": "01D",
+    "capabilities": ["studio-panel", "lifecycle", "imagine-x"],
+    "authority": {
+      "canReadProject": true,
+      "canWriteCanvas": false,
+      "canExport": true,
+      "canUseProviders": true,
+      "requiresApproval": true
+    },
+    "notes": "Axiom Imagine X command center runtime for plans, traces, memory, evals, and routing."
+  },
+  {
+    "id": "brain-x",
+    "runtimeKey": "brain-x",
+    "source": "first-party",
+    "status": "implemented",
+    "phase": "01D",
+    "capabilities": ["studio-panel", "lifecycle", "orchestration"],
+    "authority": {
+      "canReadProject": true,
+      "canWriteCanvas": false,
+      "canExport": true,
+      "canUseProviders": true,
+      "requiresApproval": true
+    },
+    "notes": "Reasoning and orchestration runtime for multi-step workflows and cross-studio intelligence."
+  },
+  {
+    "id": "photo",
+    "runtimeKey": "photo",
+    "source": "first-party",
+    "status": "implemented",
+    "phase": "20",
+    "capabilities": ["studio-panel", "lifecycle", "generation-canvas"],
+    "authority": {
+      "canReadProject": true,
+      "canWriteCanvas": true,
+      "canExport": true,
+      "canUseProviders": true,
+      "requiresApproval": true
+    },
+    "notes": "Layered image and poster runtime. Phase 20: generation approval routes through dispatchDryRunAction into CanvasPreviewIntakeService. Blueprint planning (Analyze Intent) remains offline-safe. No provider execution in Phase 20 despite canUseProviders: true metadata."
+  },
+  {
+    "id": "vector",
+    "runtimeKey": "vector",
+    "source": "first-party",
+    "status": "implemented",
+    "phase": "01D",
+    "capabilities": ["studio-panel", "lifecycle", "svg-canvas"],
+    "authority": {
+      "canReadProject": true,
+      "canWriteCanvas": true,
+      "canExport": true,
+      "canUseProviders": false,
+      "requiresApproval": true
+    },
+    "notes": "Parametric SVG workspace runtime with local API fallback templates."
+  },
+  {
+    "id": "motion",
+    "runtimeKey": "motion",
+    "source": "first-party",
+    "status": "implemented",
+    "phase": "18",
+    "capabilities": ["studio-panel", "lifecycle", "timeline"],
+    "authority": {
+      "canReadProject": true,
+      "canWriteCanvas": true,
+      "canExport": true,
+      "canUseProviders": false,
+      "requiresApproval": true
+    },
+    "notes": "Timeline-based Motion Studio MVP using first-party UI state and promoted-runtime dry-run preview contracts. No provider execution in Phase 18."
+  }
+]

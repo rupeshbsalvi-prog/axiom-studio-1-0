@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.git
+.venv
+.axiom-runtime
+apps/api/tests/.runtime-test
+creative
+docs
+dist
+node_modules
+coverage
+**/__pycache__

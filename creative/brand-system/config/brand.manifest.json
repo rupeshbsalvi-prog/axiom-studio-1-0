@@ -1,0 +1,30 @@
+{
+  "$schema": "./brand.schema.json",
+  "id": "axiom-studio-brand-system",
+  "name": "AXIOM STUDIO",
+  "version": "1.0.0-draft.1",
+  "status": "draft",
+  "tagline": "Imagine the Next",
+  "category": "AI-native Creative Operating System",
+  "authority": {
+    "sourceOfTruth": "config/brand.manifest.json",
+    "approverRole": "Brand Council",
+    "changePolicy": "proposal-review-approve-publish-deprecate",
+    "runtimeEditingAllowed": false
+  },
+  "security": {
+    "containsSecrets": false,
+    "externalRuntimeCode": false,
+    "networkDependencies": false,
+    "userSuppliedEndpoints": false,
+    "notes": "Static brand configuration and documentation only."
+  },
+  "assets": {
+    "tokens": "./brand.tokens.json",
+    "messaging": "./brand.messaging.json",
+    "audiences": "./brand.audiences.json",
+    "channels": "./brand.channels.json",
+    "governance": "./brand.governance.json",
+    "measurement": "./brand.measurement.json"
+  }
+}

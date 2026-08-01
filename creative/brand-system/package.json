@@ -1,0 +1,7 @@
+{
+  "name":"axiom-studio-brand-system",
+  "version":"1.0.0-draft.1",
+  "private":true,
+  "type":"module",
+  "scripts":{"validate":"node scripts/validate-brand.mjs"}
+}

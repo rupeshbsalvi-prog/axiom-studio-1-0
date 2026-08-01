@@ -1,0 +1,24 @@
+{
+  "manifestVersion": "1.0",
+  "id": "mock-motion-studio",
+  "name": "Mock Motion Studio",
+  "version": "0.1.0",
+  "publisher": "Axiom Studio",
+  "description": "Local development manifest used to test runtime registration, audit, and authority gates.",
+  "runtimeType": "studio",
+  "entry": {
+    "moduleUrl": "/runtime-modules/mock-motion-studio.js",
+    "signatureMode": "development"
+  },
+  "capabilities": ["readProject", "writeProject", "export"],
+  "compatibility": {
+    "axiomVersion": "1.0",
+    "apiVersion": "1"
+  },
+  "metadata": {
+    "icon": "motion",
+    "category": "creative-studio",
+    "displayName": "Motion Studio",
+    "experimental": true
+  }
+}

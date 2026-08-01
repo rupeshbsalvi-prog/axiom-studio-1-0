@@ -1,0 +1,76 @@
+{
+  "assetId": "ax-core-001",
+  "source": "src/app/studios/axiomCoreGeometry.ts",
+  "animation": "idle-breathe",
+  "formats": [
+    "glb",
+    "usdz"
+  ],
+  "runtimeValidation": {
+    "passed": true,
+    "scope": "loader-and-budget",
+    "fpsMeasured": false,
+    "loaders": [
+      "GLTFLoader",
+      "USDLoader"
+    ],
+    "tiers": [
+      {
+        "tier": "hero",
+        "glbMeshes": 3,
+        "usdzMeshes": 3,
+        "animations": 1
+      },
+      {
+        "tier": "runtime",
+        "glbMeshes": 3,
+        "usdzMeshes": 3,
+        "animations": 1
+      },
+      {
+        "tier": "mobile",
+        "glbMeshes": 3,
+        "usdzMeshes": 3,
+        "animations": 1
+      }
+    ]
+  },
+  "assets": [
+    {
+      "tier": "hero",
+      "file": "ax-core-hero.glb",
+      "bytes": 109304,
+      "usdzFile": "ax-core-hero.usdz",
+      "usdzBytes": 326815,
+      "metrics": {
+        "drawCalls": 3,
+        "triangles": 3408,
+        "textureBytes": 0
+      }
+    },
+    {
+      "tier": "runtime",
+      "file": "ax-core-runtime.glb",
+      "bytes": 46844,
+      "usdzFile": "ax-core-runtime.usdz",
+      "usdzBytes": 133076,
+      "metrics": {
+        "drawCalls": 3,
+        "triangles": 1140,
+        "textureBytes": 0
+      }
+    },
+    {
+      "tier": "mobile",
+      "file": "ax-core-mobile.glb",
+      "bytes": 19352,
+      "usdzFile": "ax-core-mobile.usdz",
+      "usdzBytes": 48026,
+      "metrics": {
+        "drawCalls": 3,
+        "triangles": 304,
+        "textureBytes": 0
+      }
+    }
+  ]
+}

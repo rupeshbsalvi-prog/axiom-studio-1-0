@@ -1,0 +1,33 @@
+flowchart TB
+  S[Strategic control plane]:::root
+  W0[B01 Brand Governance & Control]:::c0
+  W1[B02 Research & Brand Intelligence]:::c1
+  W2[B03 Strategic Foundation]:::c2
+  W3[B04 Audience & Ecosystem]:::c3
+  W4[B05 Category, Positioning & Differentiation]:::c4
+  W5[B06 Brand Architecture & Naming]:::c5
+  W6[B07 Brand Story & Narrative]:::c0
+  W7[B08 Verbal Identity & Messaging]:::c1
+  W8[B09 Visual Identity System]:::c2
+  W9[B10 Motion, Sound & Spatial Expression]:::c3
+  W10[B11 Product & Service Experience]:::c4
+  W11[B12 Digital Presence & Channel System]:::c5
+  W12[B13 Content & Editorial Engine]:::c0
+  W13[B14 Marketing, Growth & Demand]:::c1
+  W14[B15 Community, Partnerships, PR & Advocacy]:::c2
+  W15[B16 Collateral, Sales Enablement & Environment]:::c3
+  W16[B17 Trust, Legal, Accessibility & Ethics]:::c4
+  W17[B18 Brand Operations, Assets & Enablement]:::c5
+  W18[B19 Measurement, Learning & Evolution]:::c0
+  S --> W0 --> W1 --> W2 --> W3 --> W4 --> W5
+  W5 --> W6 --> W7 --> W8 --> W9 --> W10
+  W10 --> W11 --> W12 --> W13 --> W14 --> W15
+  W15 --> W16 --> W17 --> W18
+  W18 -. learning loop .-> W1
+  classDef root fill:#090B12,color:#F7F6F2,stroke:#7357FF,stroke-width:3px;
+  classDef c0 fill:#ede9ff,stroke:#7357FF,color:#0A0D16;
+  classDef c1 fill:#e5f1ff,stroke:#2E8BFF,color:#0A0D16;
+  classDef c2 fill:#e4fbff,stroke:#36D6E7,color:#0A0D16;
+  classDef c3 fill:#e8fff5,stroke:#2FD69B,color:#0A0D16;
+  classDef c4 fill:#fff4de,stroke:#FFB34D,color:#0A0D16;
+  classDef c5 fill:#ffe8f4,stroke:#F55DAA,color:#0A0D16;

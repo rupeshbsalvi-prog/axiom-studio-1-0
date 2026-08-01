@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "version": "1.0.0-draft.1"
+  },
+  "personas": [
+    {
+      "name": "Creative Systems Lead",
+      "priority": "Primary user/champion",
+      "job": "Coordinate brand, design, content, motion and AI production without losing consistency or control.",
+      "pain": "Fragmented tools, duplicated briefs, generic outputs, manual QA and weak traceability.",
+      "desired": "One governed workflow from intent to approved artifact.",
+      "proof": "Reusable systems, preview/apply controls, auditability, high-quality outputs and interoperability.",
+      "cta": "Build a governed creative workflow."
+    },
+    {
+      "name": "Product & Design Leader",
+      "priority": "Primary buyer/approver",
+      "job": "Increase design throughput and quality while protecting product coherence and trust.",
+      "pain": "AI experimentation creates inconsistency, risk and unclear ownership.",
+      "desired": "Scalable creative operations with measurable quality and clear governance.",
+      "proof": "Design tokens, role-based authority, reversible changes, testable outputs and adoption metrics.",
+      "cta": "See the operating model."
+    },
+    {
+      "name": "Independent Creator / Builder",
+      "priority": "Secondary user",
+      "job": "Turn ambitious ideas into polished multi-format output without assembling a complex toolchain.",
+      "pain": "Context switching, prompt trial-and-error, inconsistent branding and technical barriers.",
+      "desired": "A guided but flexible studio that preserves personal direction.",
+      "proof": "Templates, intelligent briefs, modular workflows, export portability and clear controls.",
+      "cta": "Create your first system."
+    },
+    {
+      "name": "Enterprise Innovation & Governance",
+      "priority": "Influencer/blocker",
+      "job": "Enable responsible AI adoption while managing data, security, audit and vendor risk.",
+      "pain": "Opaque automation, uncontrolled data flows, unapproved models and untraceable changes.",
+      "desired": "Bounded, inspectable and policy-aligned creative AI operations.",
+      "proof": "No secret leakage, authority gates, audit logs, signed/static assets and controlled integrations.",
+      "cta": "Review the trust architecture."
+    },
+    {
+      "name": "Agency / Studio Operations Lead",
+      "priority": "Partner/buyer",
+      "job": "Deliver more client work without diluting strategy, craft or margins.",
+      "pain": "Non-repeatable process, version chaos and inconsistent external output.",
+      "desired": "Reusable client systems, faster production and quality control.",
+      "proof": "Brand kits, workflow templates, review gates, reusable components and client-safe exports.",
+      "cta": "Standardize delivery."
+    }
+  ]
+}

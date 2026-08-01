@@ -1,0 +1,48 @@
+{
+  "platform": {
+    "name": "Axiom Studio",
+    "codename": "Mission Control",
+    "release": "AF-1.0",
+    "status": "Frozen",
+    "owner": "Axiom Studio Core Team"
+  },
+  "architecture": {
+    "freezeVersion": "AF-1.0",
+    "runtimeVersion": "PR-5.0",
+    "cognitiveModelVersion": "CM-1.0",
+    "explainabilityVersion": "EX-1.0",
+    "telemetryVersion": "TM-1.0"
+  },
+  "designSystem": {
+    "roadmapVersion": "DS-1.0",
+    "status": "Draft",
+    "foundationPackage": "@axiom/tokens",
+    "componentPackage": "@axiom/ui-core"
+  },
+  "assetEngineering": {
+    "standardVersion": "AES-1.0",
+    "rootDirectory": "creative/",
+    "lifecycleStatus": "Active"
+  },
+  "products": [
+    "Mission Control Panel",
+    "Studio Workspace",
+    "Workspace Hub"
+  ],
+  "packages": [
+    "@axiom/tokens",
+    "@axiom/ui-foundation",
+    "@axiom/ui-core",
+    "@axiom/workbench"
+  ],
+  "featureFlags": {
+    "enableNeuralGlow": true,
+    "enableTelemetryCalibration": false,
+    "enableAutonomyOverride": false
+  },
+  "build": {
+    "target": "es2022",
+    "moduleResolution": "node",
+    "viteDevPort": 5173
+  }
+}

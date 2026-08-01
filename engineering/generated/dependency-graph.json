@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-08-01T16:32:08.329Z",
+  "gitCommit": "unknown",
+  "nodes": [
+    {
+      "id": "@axiom/tokens",
+      "type": "package"
+    },
+    {
+      "id": "@axiom/ui-core",
+      "type": "package"
+    },
+    {
+      "id": "@axiom/ui-foundation",
+      "type": "package"
+    },
+    {
+      "id": "Badge",
+      "type": "component",
+      "package": "@axiom/ui-core"
+    },
+    {
+      "id": "Button",
+      "type": "component",
+      "package": "@axiom/ui-core"
+    },
+    {
+      "id": "Dialog",
+      "type": "component",
+      "package": "@axiom/ui-core"
+    },
+    {
+      "id": "Divider",
+      "type": "component",
+      "package": "@axiom/ui-core"
+    },
+    {
+      "id": "Icon",
+      "type": "component",
+      "package": "@axiom/ui-core"
+    },
+    {
+      "id": "FocusScope",
+      "type": "component",
+      "package": "@axiom/ui-foundation"
+    },
+    {
+      "id": "FocusTrap",
+      "type": "component",
+      "package": "@axiom/ui-foundation"
+    },
+    {
+      "id": "RestoreFocus",
+      "type": "component",
+      "package": "@axiom/ui-foundation"
+    },
+    {
+      "id": "DismissableLayer",
+      "type": "component",
+      "package": "@axiom/ui-foundation"
+    },
+    {
+      "id": "Portal",
+      "type": "component",
+      "package": "@axiom/ui-foundation"
+    }
+  ],
+  "edges": [
+    {
+      "source": "@axiom/ui-core",
+      "target": "@axiom/tokens"
+    },
+    {
+      "source": "@axiom/ui-core",
+      "target": "@axiom/ui-foundation"
+    },
+    {
+      "source": "Badge",
+      "target": "Icon"
+    },
+    {
+      "source": "Button",
+      "target": "Icon"
+    },
+    {
+      "source": "Dialog",
+      "target": "Portal"
+    },
+    {
+      "source": "Dialog",
+      "target": "FocusScope"
+    },
+    {
+      "source": "Dialog",
+      "target": "FocusTrap"
+    },
+    {
+      "source": "Dialog",
+      "target": "RestoreFocus"
+    },
+    {
+      "source": "Dialog",
+      "target": "DismissableLayer"
+    },
+    {
+      "source": "FocusScope",
+      "target": "FocusManager"
+    },
+    {
+      "source": "FocusTrap",
+      "target": "FocusScope"
+    },
+    {
+      "source": "FocusTrap",
+      "target": "FocusManager"
+    },
+    {
+      "source": "DismissableLayer",
+      "target": "OverlayManager"
+    }
+  ]
+}

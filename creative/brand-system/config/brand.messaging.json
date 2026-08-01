@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "version": "1.0.0-draft.1",
+    "status": "draft"
+  },
+  "foundation": {
+    "name": "AXIOM STUDIO",
+    "tagline": "Imagine the Next",
+    "category": "AI-native Creative Operating System",
+    "essence": "Structured imagination, converted into production-ready creative systems.",
+    "purpose": "Reduce the distance between an idea and a production-ready experience.",
+    "vision": "Become the trusted creative operating layer where human direction and AI execution work as one disciplined system.",
+    "mission": "Give creators and product teams a unified environment to imagine, design, orchestrate, validate and ship high-quality digital experiences.",
+    "promise": "Axiom Studio turns intent into coherent, governable and scalable creative output without sacrificing craft.",
+    "enemy": "Fragmented tools, generic AI output, hidden decision-making, inconsistent brand execution and irreversible creative workflows.",
+    "archetype": "Creator supported by Sage",
+    "personality": [
+      "Visionary, not vague",
+      "Premium, not ornamental",
+      "Intelligent, not academic",
+      "Confident, not loud",
+      "Experimental, not reckless",
+      "Human-directed, not autonomous-by-default"
+    ],
+    "values": [
+      [
+        "Intent before output",
+        "Every artifact starts with explicit purpose, audience and constraints."
+      ],
+      [
+        "Craft with systems",
+        "Aesthetic quality is reinforced by reusable structures, tokens, validation and governance."
+      ],
+      [
+        "Control is a feature",
+        "Users can preview, approve, apply, reverse and audit consequential changes."
+      ],
+      [
+        "Interoperability over lock-in",
+        "The brand and product should remain portable across providers, formats and workflows."
+      ],
+      [
+        "Clarity earns trust",
+        "Explain what happened, why it happened and what can be changed."
+      ],
+      [
+        "Evolution without erosion",
+        "The system can grow without weakening identity, security or usability."
+      ]
+    ]
+  },
+  "positioning": {
+    "statement": "For creators, product teams and creative organisations that need to turn ambitious intent into consistent production output, Axiom Studio is an AI-native Creative Operating System that unifies strategy, design, content, motion, automation and implementation within a governed workflow. Unlike disconnected creative tools or opaque AI generators, Axiom preserves human direction through structured intent, reusable systems, validation, explicit approval, auditability and reversible change.",
+    "categoryLine": "The creative operating system for controlled imagination at scale.",
+    "oneLiner": "Axiom Studio turns creative intent into governed, production-ready experiences.",
+    "shortPitch": "Plan, create, validate and ship across brand, product, web, motion and automation in one controlled creative system.",
+    "longPitch": "Axiom Studio captures intent, coordinates specialised creative workflows, applies reusable systems, validates output, and keeps consequential changes reviewable and reversible."
+  },
+  "pillars": [
+    {
+      "name": "Intent Intelligence",
+      "promise": "Axiom captures purpose, audience, constraints and creative direction before generation begins.",
+      "proof": "Intent specifications, structured briefs and decision logs.",
+      "message": "Your idea becomes a usable operating brief, not another disposable prompt."
+    },
+    {
+      "name": "Governed Creation",
+      "promise": "AI output enters a controlled path where it can be previewed, validated, approved, applied and reversed.",
+      "proof": "Candidate/preview/apply model, authority gates and audit/replay.",
+      "message": "Move fast without surrendering control."
+    },
+    {
+      "name": "Multi-Disciplinary Studio",
+      "promise": "Brand, UI, web, motion, content and automation work as connected parts of one creative system.",
+      "proof": "Shared representations, tokens, modular studios and consistent context.",
+      "message": "One creative system instead of a stack of disconnected tools."
+    },
+    {
+      "name": "Production-Ready Craft",
+      "promise": "The system optimizes for coherent, accessible and implementation-ready output rather than novelty alone.",
+      "proof": "Design systems, QA gates, code/export validation and accessibility checks.",
+      "message": "From concept quality to production quality."
+    },
+    {
+      "name": "Portable Intelligence",
+      "promise": "Creative intent and systems remain portable across providers, formats and execution environments.",
+      "proof": "Provider-neutral orchestration, structured assets and export/import architecture.",
+      "message": "Keep your system; change your tools."
+    }
+  ],
+  "voice": [
+    {
+      "principle": "Be specific",
+      "rule": "Name the action, system state, evidence or constraint.",
+      "do": "Review the generated candidate before applying it.",
+      "avoid": "Unlock limitless possibilities."
+    },
+    {
+      "principle": "Lead with user agency",
+      "rule": "Frame AI as directed capability, not an autonomous hero.",
+      "do": "You define the intent; Axiom coordinates the execution.",
+      "avoid": "Axiom thinks for you."
+    },
+    {
+      "principle": "Translate complexity",
+      "rule": "Use precise language, then explain specialist terms at first use.",
+      "do": "The authority gate checks whether this action is permitted.",
+      "avoid": "Our polymorphic agentic substrate handles it."
+    },
+    {
+      "principle": "Make confidence evidence-based",
+      "rule": "Use proof, boundaries and measurable outcomes.",
+      "do": "Validated against the approved token set.",
+      "avoid": "Always perfect, instantly."
+    },
+    {
+      "principle": "Keep premium restraint",
+      "rule": "Use editorial clarity, purposeful rhythm and minimal hype.",
+      "do": "A creative operating system built for controlled scale.",
+      "avoid": "The most revolutionary creative tool ever."
+    },
+    {
+      "principle": "Treat failure as recoverable",
+      "rule": "Explain what happened, impact and next safe action.",
+      "do": "Import failed validation. Your project was not changed.",
+      "avoid": "Something went wrong."
+    }
+  ],
+  "taglines": {
+    "master": "Imagine the Next",
+    "descriptors": [
+      "AI-native Creative Operating System",
+      "Governed creativity at scale",
+      "From intent to production"
+    ],
+    "campaignLines": [
+      "Direct the intelligence.",
+      "Build the system behind the idea.",
+      "Create beyond the prompt.",
+      "One intent. Every medium.",
+      "Craft, governed."
+    ]
+  },
+  "forbiddenClaims": [
+    "fully autonomous creativity",
+    "guaranteed perfect output",
+    "replaces creative professionals",
+    "zero-risk AI",
+    "unlimited without qualification",
+    "industry-leading without evidence"
+  ],
+  "preferredVocabulary": [
+    "intent",
+    "system",
+    "studio",
+    "governed",
+    "preview",
+    "candidate",
+    "apply",
+    "reversible",
+    "production-ready",
+    "craft",
+    "orchestrate",
+    "validate",
+    "portable"
+  ],
+  "avoidVocabulary": [
+    "magic",
+    "effortless everything",
+    "AI does it all",
+    "revolutionary",
+    "game-changing",
+    "one-click perfection",
+    "limitless"
+  ]
+}

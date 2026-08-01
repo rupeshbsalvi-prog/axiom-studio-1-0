@@ -1,0 +1,3 @@
+# API Report directory
+# This file keeps the directory tracked by git before the first api-extractor run.
+# The actual *.api.md snapshot will be generated here by: npm run api

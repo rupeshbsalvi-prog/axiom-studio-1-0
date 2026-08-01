@@ -1,0 +1,19 @@
+.brand-roadmap-panel {
+  min-height: 100%;
+  padding: clamp(1.5rem,4vw,4rem);
+  color: var(--axiom-text-on-dark,#f7f6f2);
+  background: radial-gradient(circle at 15% 0%,rgba(115,87,255,.22),transparent 30rem),
+              radial-gradient(circle at 90% 30%,rgba(54,214,231,.14),transparent 34rem),#090b12;
+  font-family: var(--axiom-font-body,Arial,sans-serif);
+}
+.brand-roadmap-panel__header{max-width:60rem;margin-bottom:2rem}
+.brand-roadmap-panel__eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;color:#36d6e7}
+.brand-roadmap-panel h1{margin:.4rem 0 .8rem;font-size:clamp(2.4rem,7vw,6rem);line-height:.94;letter-spacing:-.04em}
+.brand-roadmap-panel__header>p:last-child{max-width:48rem;color:#a5abbd;font-size:1.05rem;line-height:1.55}
+.brand-roadmap-panel__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(18rem,100%),1fr));gap:1rem}
+.brand-roadmap-panel__card{position:relative;min-height:15rem;padding:1.25rem;border:1px solid rgba(255,255,255,.12);border-radius:1.25rem;background:rgba(23,27,38,.76)}
+.brand-roadmap-panel__card::before{content:'';position:absolute;inset:0 auto 0 0;width:.25rem;border-radius:1.25rem 0 0 1.25rem;background:var(--brand-accent)}
+.brand-roadmap-panel__id{color:var(--brand-accent);font-weight:700;letter-spacing:.08em}
+.brand-roadmap-panel__card h2{margin:1.4rem 0 .75rem;font-size:1.25rem}
+.brand-roadmap-panel__card p{color:#c8cdd8;line-height:1.5}
+.brand-roadmap-panel__gate{display:inline-block;margin-top:1rem;color:#a5abbd;font-size:.78rem}

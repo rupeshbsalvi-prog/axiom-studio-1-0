@@ -1,0 +1,35 @@
+{
+  "measuredAt": "2026-07-17",
+  "scope": "local-browser-device",
+  "browser": "Codex in-app Chromium",
+  "gpu": "ANGLE / AMD Radeon Graphics / Direct3D 11",
+  "consoleErrors": 0,
+  "profiles": [
+    {
+      "name": "desktop-high",
+      "viewport": "1280x720",
+      "devicePixelRatio": 1,
+      "sampleSeconds": 5,
+      "averageFps": 65,
+      "averageFrameMs": 15.38,
+      "p95FrameMs": 20.9,
+      "targetFps": 60,
+      "passed": true
+    },
+    {
+      "name": "mobile-low",
+      "viewport": "390x844",
+      "devicePixelRatio": 1,
+      "sampleSeconds": 5,
+      "averageFps": 97.07,
+      "averageFrameMs": 10.3,
+      "p95FrameMs": 14,
+      "targetFps": 30,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "These results describe one local browser/GPU combination, not universal device certification.",
+    "Uncontrolled high-DPR browser-window samples were 38-41 FPS while visibility and window size changed; DPR-specific optimization remains a follow-up if high-DPR High quality must sustain 60 FPS."
+  ]
+}

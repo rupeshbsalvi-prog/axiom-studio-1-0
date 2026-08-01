@@ -1,0 +1,17 @@
+# Brand Change Request
+- Request ID:
+- Requester / owner:
+- Date:
+- Problem to solve:
+- Evidence:
+- Current rule/asset:
+- Proposed change:
+- Affected audiences/channels/components:
+- Risks:
+- Legal/accessibility implications:
+- Migration plan:
+- Rollback plan:
+- Proposed effective date:
+- Required approvers:
+- Decision / rationale:
+- Review date:

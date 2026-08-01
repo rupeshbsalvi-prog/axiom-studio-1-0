@@ -1,0 +1,16 @@
+{
+  "package": "@axiom/tokens",
+  "version": 1,
+  "layer": "foundation",
+  "imports": [],
+  "forbidden": [
+    "@axiom/ui-foundation",
+    "@axiom/ui-core",
+    "@axiom/runtime",
+    "@axiom/workbench",
+    "@axiom/cognition"
+  ],
+  "peerDependencies": [],
+  "noCycles": true,
+  "maxDirectDeps": 0
+}

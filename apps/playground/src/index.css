@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  background-color: #080807;
+  color: #f7f2e8;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #080807;
+}
+
+/* Custom interactive classes for validation */
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #f7f2e8;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.btn-base:hover:not([data-disabled="true"]) {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-base[data-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-base[data-focus-visible="true"] {
+  box-shadow: 0 0 0 2px #00d2ff;
+}
+
+.btn-primary {
+  background-color: #00d2ff;
+  color: #080807;
+  border-color: transparent;
+}
+
+.btn-primary:hover:not([data-disabled="true"]) {
+  background-color: #33dbff;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+/* Custom Slot Target Panel styling */
+.slot-panel {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.slot-panel.custom-override {
+  border-color: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
+}
+
+.tab-btn {
+  opacity: 0.7;
+}
+.tab-btn:hover {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+}
+.tab-btn.active {
+  opacity: 1;
+}
+
+select, input {
+  font-family: inherit;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus, input:focus {
+  border-color: #00d2ff !important;
+  box-shadow: 0 0 0 2px rgba(0, 210, 255, 0.2);
+}
+

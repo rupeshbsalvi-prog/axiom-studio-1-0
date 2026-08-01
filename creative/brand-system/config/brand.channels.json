@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "version": "1.0.0-draft.1"
+  },
+  "channels": [
+    {
+      "name": "Website",
+      "role": "Category education, credibility and conversion",
+      "content": "Brand narrative, product proof, use cases, trust architecture and demos",
+      "kpi": "Qualified demo/start intent, engaged sessions and proof consumption",
+      "owner": "Web/Growth"
+    },
+    {
+      "name": "Product UI",
+      "role": "Deliver the brand promise through behaviour",
+      "content": "Onboarding, guidance, transparent AI states and reversible actions",
+      "kpi": "Activation, successful workflows, recovery rate and trust score",
+      "owner": "Product"
+    },
+    {
+      "name": "Documentation",
+      "role": "Reduce friction and support expert adoption",
+      "content": "Concepts, workflows, architecture, examples and release notes",
+      "kpi": "Task success, search exits and support deflection",
+      "owner": "Developer Experience"
+    },
+    {
+      "name": "LinkedIn",
+      "role": "Enterprise credibility and founder/category thinking",
+      "content": "Operating models, case studies, product progress and governance insights",
+      "kpi": "Qualified engagement, follower quality and inbound conversations",
+      "owner": "Founder/Content"
+    },
+    {
+      "name": "YouTube / Video",
+      "role": "Demonstrate workflows and craft",
+      "content": "Build films, feature walkthroughs, design breakdowns and launch stories",
+      "kpi": "Watch quality, completion and assisted conversions",
+      "owner": "Content/Motion"
+    },
+    {
+      "name": "Community",
+      "role": "Peer learning, feedback and advocacy",
+      "content": "Workflows, critiques, templates, office hours and showcases",
+      "kpi": "Active contributors, resolved questions and referrals",
+      "owner": "Community"
+    },
+    {
+      "name": "Email",
+      "role": "Lifecycle education and relationship continuity",
+      "content": "Onboarding, product education, release notes and use-case sequences",
+      "kpi": "Activation lift, retained readership and conversion",
+      "owner": "Lifecycle"
+    },
+    {
+      "name": "Press / Analyst",
+      "role": "Third-party validation and category framing",
+      "content": "Company narrative, differentiated architecture, proof and milestones",
+      "kpi": "Quality coverage, message pull-through and analyst recognition",
+      "owner": "Communications"
+    },
+    {
+      "name": "Events / Workshops",
+      "role": "High-trust experiential education",
+      "content": "Live systems, governance workshops, build sessions and showcases",
+      "kpi": "Qualified participation and post-event activation",
+      "owner": "Partnerships/Field"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Axiom Core</title>
+  <metadata>AX-LOGO-001 v1.0 approved</metadata>
+  <defs>
+    <radialGradient id="core" cx="50%" cy="44%" r="58%">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".32" stop-color="#edd095"/>
+      <stop offset="1" stop-color="#69d4e8"/>
+    </radialGradient>
+    <linearGradient id="shell" x1="12" y1="8" x2="52" y2="56">
+      <stop stop-color="#fff" stop-opacity=".9"/>
+      <stop offset=".45" stop-color="#69d4e8"/>
+      <stop offset="1" stop-color="#8a2be2" stop-opacity=".8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="27" fill="#070809" stroke="url(#shell)" stroke-width="2"/>
+  <path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#69d4e8" stroke-opacity=".55" stroke-width="1.5"/>
+  <path d="M14 21 50 43M50 21 14 43M32 11v42" fill="none" stroke="#edd095" stroke-opacity=".65" stroke-width="1.25"/>
+  <path d="m32 18 13 7-5 17-16 4-7-15Z" fill="#69d4e8" fill-opacity=".16" stroke="url(#shell)" stroke-width="2"/>
+  <circle cx="32" cy="32" r="7" fill="url(#core)"/>
+  <circle cx="32" cy="32" r="2.5" fill="#fff"/>
+</svg>

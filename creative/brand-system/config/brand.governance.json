@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "version": "1.0.0-draft.1"
+  },
+  "statuses": [
+    "draft",
+    "in-review",
+    "approved",
+    "published",
+    "deprecated"
+  ],
+  "roles": {
+    "Brand Council": "Final authority for strategy, identity and exceptions.",
+    "Brand Operations": "Maintains source of truth, versions, templates and training.",
+    "Design Systems": "Translates approved identity into tokens and components.",
+    "Product Marketing": "Owns audience, positioning, value propositions and launch messaging.",
+    "Legal/Trust": "Reviews claims, rights, privacy, accessibility and AI disclosures.",
+    "Contributors": "Use approved assets and propose changes through the workflow."
+  },
+  "workflow": [
+    "propose",
+    "evidence-check",
+    "cross-functional-review",
+    "approve",
+    "publish",
+    "adopt",
+    "measure",
+    "deprecate"
+  ],
+  "changeRequestRequiredFields": [
+    "problem",
+    "evidence",
+    "affected assets",
+    "risk",
+    "proposed change",
+    "migration plan",
+    "approvers",
+    "effective date",
+    "rollback plan"
+  ],
+  "exceptionPolicy": {
+    "requiresApprover": true,
+    "requiresExpiry": true,
+    "requiresScope": true,
+    "requiresReason": true
+  },
+  "reviewCadence": {
+    "operational": "monthly",
+    "performance": "quarterly",
+    "fullAudit": "annual"
+  }
+}

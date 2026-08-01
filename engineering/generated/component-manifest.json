@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-08-01T16:32:08.254Z",
+  "gitCommit": "unknown",
+  "release": "EB-1.0",
+  "components": {
+    "Badge": {
+      "name": "Badge",
+      "package": "@axiom/ui-core",
+      "since": "0.1.0",
+      "maturity": "L4",
+      "accessibility": "AA",
+      "category": "outputs",
+      "tokens": [
+        "colors",
+        "radius",
+        "typography"
+      ],
+      "dependencies": [
+        "Icon"
+      ],
+      "status": "stable"
+    },
+    "Button": {
+      "name": "Button",
+      "package": "@axiom/ui-core",
+      "since": "0.1.0",
+      "maturity": "L4",
+      "accessibility": "AA",
+      "category": "inputs",
+      "tokens": [
+        "colors",
+        "radius",
+        "typography",
+        "elevation"
+      ],
+      "dependencies": [
+        "Icon"
+      ],
+      "status": "stable"
+    },
+    "Dialog": {
+      "name": "Dialog",
+      "package": "@axiom/ui-core",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "feedback",
+      "tokens": [
+        "elevation"
+      ],
+      "dependencies": [
+        "Portal",
+        "FocusScope",
+        "FocusTrap",
+        "RestoreFocus",
+        "DismissableLayer"
+      ],
+      "status": "stable"
+    },
+    "Divider": {
+      "name": "Divider",
+      "package": "@axiom/ui-core",
+      "since": "0.1.0",
+      "maturity": "L4",
+      "accessibility": "AA",
+      "category": "layout",
+      "tokens": [
+        "colors",
+        "spacing"
+      ],
+      "dependencies": [],
+      "status": "stable"
+    },
+    "Icon": {
+      "name": "Icon",
+      "package": "@axiom/ui-core",
+      "since": "0.1.0",
+      "maturity": "L4",
+      "accessibility": "AA",
+      "category": "outputs",
+      "tokens": [
+        "colors"
+      ],
+      "dependencies": [],
+      "status": "stable"
+    },
+    "FocusScope": {
+      "name": "FocusScope",
+      "package": "@axiom/ui-foundation",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "infrastructure",
+      "tokens": [],
+      "dependencies": [
+        "FocusManager"
+      ],
+      "status": "stable"
+    },
+    "FocusTrap": {
+      "name": "FocusTrap",
+      "package": "@axiom/ui-foundation",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "infrastructure",
+      "tokens": [],
+      "dependencies": [
+        "FocusScope",
+        "FocusManager"
+      ],
+      "status": "stable"
+    },
+    "RestoreFocus": {
+      "name": "RestoreFocus",
+      "package": "@axiom/ui-foundation",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "infrastructure",
+      "tokens": [],
+      "dependencies": [],
+      "status": "stable"
+    },
+    "DismissableLayer": {
+      "name": "DismissableLayer",
+      "package": "@axiom/ui-foundation",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "infrastructure",
+      "tokens": [],
+      "dependencies": [
+        "OverlayManager"
+      ],
+      "status": "stable"
+    },
+    "Portal": {
+      "name": "Portal",
+      "package": "@axiom/ui-foundation",
+      "since": "0.4.0",
+      "maturity": "L3",
+      "accessibility": "AA",
+      "category": "infrastructure",
+      "tokens": [],
+      "dependencies": [],
+      "status": "stable"
+    }
+  }
+}

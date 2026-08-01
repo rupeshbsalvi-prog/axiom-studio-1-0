@@ -1,0 +1,128 @@
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+import App from "./App";
+
+async function enterLocalWorkspace(user: ReturnType<typeof userEvent.setup>) {
+  await user.click(screen.getByRole("button", { name: /Start Creating/i }));
+  await user.click(await screen.findByRole("button", { name: /Continue locally/i }));
+}
+
+describe("Axiom Studio 1.0 shell", () => {
+  it("opens first-time public visitors into the Axiom Landing Experience", () => {
+    render(<App />);
+
+    expect(screen.getByRole("img", { name: "Axiom Core" })).toHaveAttribute(
+      "src",
+      "/assets/branding/ax-logo-core-symbol.svg",
+    );
+    expect(screen.getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+    expect(screen.getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/User Intent First/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/30-Day Free Trial/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Axiom Brain X/i).length).toBeGreaterThan(0);
+  });
+
+  it("presents the cinematic chapter timeline and persistent experience engine", () => {
+    render(<App />);
+
+    const engine = screen.getByLabelText(/Persistent cinematic experience engine/i);
+    expect(engine).toBeInTheDocument();
+    expect(engine).toHaveAttribute("data-chapter", "arrival");
+    expect(engine).toHaveStyle("--fallback-accent: #f0d59a");
+    expect(screen.getByLabelText(/Cinematic engine readiness/i)).toBeInTheDocument();
+    expect(screen.getByText(/WEOS initializing|WEOS accessible scene/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Arrival/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Studio Universe/i)).toBeInTheDocument();
+    expect(screen.getByText(/Workspace Portal/i)).toBeInTheDocument();
+    expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
+  });
+
+  it("lets keyboard and button users request WEOS chapter navigation", async () => {
+    const user = userEvent.setup();
+    const scrollTo = vi.fn();
+    Object.defineProperty(window, "scrollTo", {
+      configurable: true,
+      value: scrollTo,
+    });
+
+    render(<App />);
+
+    const arrival = screen.getByRole("button", { name: /Go to Arrival chapter/i });
+    const awakening = screen.getByRole("button", { name: /Go to Awakening chapter/i });
+    const workspacePortal = screen.getByRole("button", { name: /Go to Workspace Portal chapter/i });
+
+    expect(arrival).toHaveAttribute("aria-current", "step");
+
+    await user.click(awakening);
+    expect(scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: expect.any(String) }));
+
+    arrival.focus();
+    await user.keyboard("{End}");
+    expect(scrollTo).toHaveBeenLastCalledWith(expect.objectContaining({ top: expect.any(Number) }));
+    expect(workspacePortal).toBeInTheDocument();
+  });
+
+  it("enters the Workspace Hub and can switch to UI/UX Studio", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await enterLocalWorkspace(user);
+
+    expect(screen.getByRole("img", { name: "Axiom Core" })).toHaveAttribute(
+      "src",
+      "/assets/branding/ax-logo-core-symbol.svg",
+    );
+    expect(screen.getByRole("heading", { name: /Mission Control/i })).toBeInTheDocument();
+    expect(screen.getAllByTestId("studio-nav-item")).toHaveLength(13);
+
+    await user.click(screen.getByRole("button", { name: /UI\/UX Studio/i }));
+
+    expect(screen.getByRole("heading", { name: /UI\/UX Studio/i })).toBeInTheDocument();
+    expect(screen.getByText(/editable frames, components, tokens/i)).toBeInTheDocument();
+    expect(within(screen.getByLabelText(/Inspector/i)).getByText(/foundation fallback/i)).toBeInTheDocument();
+    expect(within(screen.getByLabelText(/Inspector/i)).getByText(/fallback canvas/i)).toBeInTheDocument();
+    expect(within(screen.getByLabelText(/Inspector/i)).getByText(/no runtime authority/i)).toBeInTheDocument();
+    expect(within(screen.getByLabelText(/Inspector/i)).getByText(/read project: blocked/i)).toBeInTheDocument();
+  });
+
+  it("routes real studio panels through the workspace panel router", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await enterLocalWorkspace(user);
+    await user.click(screen.getByRole("button", { name: /Photo Studio/i }));
+
+    expect(screen.getByRole("heading", { name: /Photo Studio/i })).toBeInTheDocument();
+    expect(await screen.findByText(/Active Composition Canvas/i, undefined, { timeout: 5000 })).toBeInTheDocument();
+    const inspector = screen.getByLabelText(/Inspector/i);
+    expect(await within(inspector).findByText(/lazy runtime registered/i)).toBeInTheDocument();
+    expect(await within(inspector).findByText(/first-party/i)).toBeInTheDocument();
+    expect(await within(inspector).findByText(/studio-panel, lifecycle, generation-canvas/i)).toBeInTheDocument();
+    expect(await within(inspector).findByText(/read project, write canvas, export, providers, approval required/i)).toBeInTheDocument();
+    expect(
+      await within(inspector).findByText(/read project: allowed, write canvas: allowed, export: allowed, use providers: allowed/i),
+    ).toBeInTheDocument();
+    expect(await within(inspector).findAllByText(/^photo$/i)).toHaveLength(2);
+
+    await user.click(screen.getByRole("button", { name: /Vector Studio/i }));
+
+    expect(screen.getByRole("heading", { name: /Vector Studio/i })).toBeInTheDocument();
+    expect(await screen.findByText(/SVG Workspace Viewport/i, undefined, { timeout: 5000 })).toBeInTheDocument();
+    expect(await within(inspector).findByText(/photo, vector/i)).toBeInTheDocument();
+  }, 10000);
+
+  it("creates a local project draft from Mission Control", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await enterLocalWorkspace(user);
+    await user.clear(screen.getByLabelText(/Project name/i));
+    await user.type(screen.getByLabelText(/Project name/i), "Founder Launch");
+    await user.type(screen.getByLabelText(/Creative intent/i), "Create a launch poster with motion-ready brand assets");
+    await user.click(screen.getByRole("button", { name: /Create local draft/i }));
+
+    expect(screen.getByText(/Founder Launch/i)).toBeInTheDocument();
+    expect(screen.getByText(/AXPKG draft ready/i)).toBeInTheDocument();
+  }, 10000);
+});

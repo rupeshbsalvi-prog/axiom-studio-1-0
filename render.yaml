@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: axiom-studio
+    runtime: docker
+    plan: starter
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeployTrigger: off
+    numInstances: 1
+    disk:
+      name: axiom-runtime
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: AXIOM_RUNTIME_DATA_DIR
+        value: /var/data
+      - key: AXIOM_SECURE_COOKIES
+        value: "true"
+      - key: AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER
+        value: "false"
+      - key: AXIOM_PHOTO_GATEWAY_ACCESS_TOKEN
+        generateValue: true
+      - key: AXIOM_ASSET_SIGNING_SECRET
+        generateValue: true
+      - key: AXIOM_SUPABASE_URL
+        sync: false
+      - key: AXIOM_SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: AXIOM_ALLOWED_ORIGINS
+        sync: false
+      - key: AXIOM_AUTH_CALLBACK_URL
+        sync: false
+      - key: AXIOM_AUTH_POST_LOGIN_REDIRECT
+        sync: false

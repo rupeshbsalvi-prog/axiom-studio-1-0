@@ -1,0 +1,13 @@
+# Brand Asset QA Checklist
+- Current approved logo and token version.
+- Correct hierarchy, spacing and safe area.
+- Text contrast, focus and keyboard behaviour verified.
+- Colour is not the only state indicator.
+- Copy follows voice and terminology rules.
+- Claims are supported and approved.
+- Images, fonts, music and footage have documented rights.
+- AI-generated content has accountable human review.
+- File naming, metadata, owner, version and expiry are complete.
+- Responsive and real-content behaviour is tested.
+- Reduced-motion and no-audio alternatives exist.
+- Export format and compression match the channel.

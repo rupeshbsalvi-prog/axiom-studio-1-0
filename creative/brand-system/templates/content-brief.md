@@ -1,0 +1,15 @@
+# Content Brief
+- Working title:
+- Audience / journey stage:
+- Search or user intent:
+- Content objective:
+- Core question answered:
+- Point of view:
+- Evidence / sources:
+- Message pillar:
+- Required examples:
+- Channel-native format:
+- CTA:
+- Repurposing plan:
+- Review owner:
+- Expiry / refresh date:

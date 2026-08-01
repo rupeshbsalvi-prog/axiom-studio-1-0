@@ -1,0 +1,16 @@
+{
+  "package": "@axiom/ui-foundation",
+  "version": 1,
+  "layer": "infrastructure",
+  "imports": [],
+  "forbidden": [
+    "@axiom/tokens",
+    "@axiom/ui-core",
+    "@axiom/runtime",
+    "@axiom/workbench",
+    "@axiom/cognition"
+  ],
+  "peerDependencies": ["react", "react-dom", "@floating-ui/dom"],
+  "noCycles": true,
+  "maxDirectDeps": 0
+}

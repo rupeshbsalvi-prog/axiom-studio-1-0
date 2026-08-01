@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "version": "1.0.0-draft.1"
+  },
+  "kpis": [
+    {
+      "layer": "Awareness",
+      "metrics": "Share of search, direct traffic, aided/unaided awareness and quality reach",
+      "cadence": "Quarterly",
+      "decisionQuestion": "Do target users recognise Axiom and its category?"
+    },
+    {
+      "layer": "Distinctiveness",
+      "metrics": "Correct asset attribution, visual/verbal recognition and message recall",
+      "cadence": "Biannual",
+      "decisionQuestion": "Can people identify Axiom without the logo?"
+    },
+    {
+      "layer": "Consideration",
+      "metrics": "Qualified visits, comparison inclusion, demo/start intent and buyer engagement",
+      "cadence": "Monthly",
+      "decisionQuestion": "Does the brand enter serious evaluation?"
+    },
+    {
+      "layer": "Trust",
+      "metrics": "Governance proof consumption, objection resolution and trust survey",
+      "cadence": "Monthly/Quarterly",
+      "decisionQuestion": "Do users believe Axiom is controllable and credible?"
+    },
+    {
+      "layer": "Experience",
+      "metrics": "Activation, task success, time-to-value, recovery success and NPS/CSAT",
+      "cadence": "Weekly/Monthly",
+      "decisionQuestion": "Does product behaviour deliver the promise?"
+    },
+    {
+      "layer": "Content authority",
+      "metrics": "Qualified organic traffic, saves, citations, completion and assisted pipeline",
+      "cadence": "Monthly",
+      "decisionQuestion": "Is Axiom becoming a trusted source?"
+    },
+    {
+      "layer": "Advocacy",
+      "metrics": "Referrals, community contribution, reviews and case-study participation",
+      "cadence": "Quarterly",
+      "decisionQuestion": "Will users publicly recommend and teach others?"
+    },
+    {
+      "layer": "Operational consistency",
+      "metrics": "Template adoption, token compliance, exception volume and asset freshness",
+      "cadence": "Monthly",
+      "decisionQuestion": "Can the organisation execute the brand reliably?"
+    },
+    {
+      "layer": "Commercial impact",
+      "metrics": "Brand-assisted pipeline, conversion quality, retention and expansion",
+      "cadence": "Quarterly",
+      "decisionQuestion": "Is brand strength improving business outcomes?"
+    }
+  ]
+}

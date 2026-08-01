@@ -1,0 +1,5 @@
+{
+  "manifests": [
+    "/runtime-manifests/mock-motion-studio.json"
+  ]
+}
