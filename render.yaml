@@ -27,9 +27,3 @@ services:
         sync: false
       - key: AXIOM_SUPABASE_PUBLISHABLE_KEY
         sync: false
-      - key: AXIOM_ALLOWED_ORIGINS
-        sync: false
-      - key: AXIOM_AUTH_CALLBACK_URL
-        sync: false
-      - key: AXIOM_AUTH_POST_LOGIN_REDIRECT
-        sync: false

@@ -15,4 +15,4 @@ COPY apps/api/requirements.txt apps/api/requirements.txt
 RUN pip install --no-cache-dir -r apps/api/requirements.txt
 COPY apps/api apps/api
 COPY --from=frontend /app/dist dist
-CMD ["sh", "-c", "uvicorn apps.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "set -eu; : \"${RENDER_EXTERNAL_URL:?RENDER_EXTERNAL_URL is required}\"; export AXIOM_AUTH_CALLBACK_URL=\"${AXIOM_AUTH_CALLBACK_URL:-${RENDER_EXTERNAL_URL}/api/auth/callback}\" AXIOM_AUTH_POST_LOGIN_REDIRECT=\"${AXIOM_AUTH_POST_LOGIN_REDIRECT:-${RENDER_EXTERNAL_URL}/}\"; exec uvicorn apps.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
