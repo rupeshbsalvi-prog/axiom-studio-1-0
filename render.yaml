@@ -2,19 +2,15 @@ services:
   - type: web
     name: axiom-studio
     runtime: docker
-    plan: starter
+    plan: free
     region: singapore
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     autoDeployTrigger: off
     numInstances: 1
-    disk:
-      name: axiom-runtime
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: AXIOM_RUNTIME_DATA_DIR
-        value: /var/data
+        value: /tmp/axiom-runtime
       - key: AXIOM_SECURE_COOKIES
         value: "true"
       - key: AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER

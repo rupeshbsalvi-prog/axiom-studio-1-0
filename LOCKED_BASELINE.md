@@ -12,7 +12,7 @@ The first documentation set is the baseline contract for Axiom Studio 1.0. It pr
 
 > **Baseline Update (ADR-0006, 2026-08-01):** Auth UI A2 is implemented and live-verified as an app-level, server-session-backed entry gate with explicit local entry, explicit login/logout, and explicit membership selection. It cannot infer or remember a workspace. The approved Auth A1/A2 roadmap is complete; no A3 is defined.
 
-> **Baseline Update (ADR-0007, 2026-08-01):** Render is the selected production deployment target: one same-origin Docker web service in Singapore with managed TLS and a persistent disk for the existing SQLite/file runtime. Local deployment checks pass; paid service creation and live HTTPS/`Secure` cookie verification remain pending explicit approval.
+> **Baseline Update (ADR-0007, amended 2026-08-01):** Render Free is the selected preview deployment target: one same-origin Docker web service with managed TLS and ephemeral runtime data. It is approved only for the live auth smoke checkpoint; durable production deployment remains unselected.
 
 ## Locked Documents
 
