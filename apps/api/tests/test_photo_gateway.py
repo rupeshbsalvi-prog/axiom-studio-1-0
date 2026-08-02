@@ -80,8 +80,10 @@ def test_gateway_rejects_missing_or_invalid_bearer_token(monkeypatch):
     assert response.headers["www-authenticate"] == "Bearer"
 
 
-def test_gateway_fails_closed_when_server_credentials_are_missing(monkeypatch):
+def test_openai_gateway_fails_closed_when_provider_key_is_missing(monkeypatch):
     configure_gateway(monkeypatch)
+    monkeypatch.setattr(settings, "AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER", True)
+    monkeypatch.setattr(settings, "AXIOM_ENABLE_STUB_REAL_PROVIDER", False)
     monkeypatch.setattr(settings, "AXIOM_PHOTO_PROVIDER_API_KEY", "")
 
     # Now returns 503 at enqueue time because of fail-closed configuration gate
