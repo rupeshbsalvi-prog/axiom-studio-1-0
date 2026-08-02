@@ -237,42 +237,74 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             </button>
           ))}
         </div>
-        <div className="hero-copy">
-          <p className="eyebrow">AI-native creative operating system</p>
-          <h1>Create Without Limits</h1>
-          <p className="hero-subtitle">Powered by Axiom Imagine X</p>
-          <p className="hero-description">
-            Turn intent, sketches, and future voice input into director-level plans, editable assets,
-            and professional multi-studio output with human approval at every important step.
-          </p>
-          <div className="hero-actions">
-            <button type="button" className="primary-button" onClick={onStartCreating}>
-              Start Creating
-              <ChevronRight size={16} />
-            </button>
-            <a className="ghost-link" href="#intelligence">
-              Explore Axiom
-            </a>
+        <div className="hero-composition" role="region" aria-label="Creative operating surface">
+          <div className="hero-copy">
+            <p className="eyebrow">AI-native creative operating system</p>
+            <h1>Create Without Limits</h1>
+            <p className="hero-subtitle">Powered by Axiom Imagine X</p>
+            <p className="hero-description">
+              Turn intent, sketches, and future voice input into director-level plans, editable assets,
+              and professional multi-studio output with human approval at every important step.
+            </p>
+            <div className="hero-actions">
+              <button type="button" className="primary-button" onClick={onStartCreating}>
+                Start Creating
+                <ChevronRight size={16} />
+              </button>
+              <a className="ghost-link" href="#intelligence">
+                Explore Axiom
+              </a>
+            </div>
+            <div className="hero-proof-list" aria-label="Axiom operating principles">
+              <span>Intent becomes direction</span>
+              <span>Human approval remains visible</span>
+              <span>Every output stays editable</span>
+            </div>
           </div>
-          <aside className="director-status-panel" aria-label="Experience Director status">
-            <div>
-              <span>Active chapter</span>
-              <strong>
-                {String(directorState.chapterIndex + 1).padStart(2, "0")} · {directorState.chapter.title}
-              </strong>
+
+          <aside className="hero-prism-console" aria-label="Live studio orchestration">
+            <div className="prism-console-header">
+              <div>
+                <span className="live-indicator" />
+                <strong>Live studio orchestration</strong>
+              </div>
+              <span>AX / 01</span>
             </div>
-            <div>
-              <span>Director cue</span>
-              <strong>{directorCue.camera.mode}</strong>
+            <div className="prism-stage" aria-hidden="true">
+              <div className="prism-halo" />
+              <div className="prism-core-mark">
+                <img src="/assets/branding/ax-logo-core-symbol.svg" alt="" />
+              </div>
+              <span className="orbit-label orbit-photo">Photo</span>
+              <span className="orbit-label orbit-motion">Motion</span>
+              <span className="orbit-label orbit-brand">Brand</span>
+              <span className="orbit-label orbit-vector">Vector</span>
             </div>
-            <div>
-              <span>Quality profile</span>
-              <strong>{directorCue.quality.profile}</strong>
+            <div className="direction-trace">
+              <div><span>01</span><strong>Intent</strong><small>Structured brief</small></div>
+              <div><span>02</span><strong>Imagine X</strong><small>Director plan</small></div>
+              <div><span>03</span><strong>Studios</strong><small>Editable output</small></div>
             </div>
-            <div>
-              <span>Handoff</span>
-              <strong>{directorState.completionLabel}</strong>
-            </div>
+            <aside className="director-status-panel" aria-label="Experience Director status">
+              <div>
+                <span>Active chapter</span>
+                <strong>
+                  {String(directorState.chapterIndex + 1).padStart(2, "0")} · {directorState.chapter.title}
+                </strong>
+              </div>
+              <div>
+                <span>Director cue</span>
+                <strong>{directorCue.camera.mode}</strong>
+              </div>
+              <div>
+                <span>Quality profile</span>
+                <strong>{directorCue.quality.profile}</strong>
+              </div>
+              <div>
+                <span>Handoff</span>
+                <strong>{directorState.completionLabel}</strong>
+              </div>
+            </aside>
           </aside>
         </div>
         <div className="hero-stat-strip" aria-label="Platform summary">
@@ -381,14 +413,20 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           ))}
         </div>
         <div className="studio-explorer-grid">
-          {STUDIO_REGISTRY.filter((studio) => studio.id !== "mission-control").map((studio) => {
+          {STUDIO_REGISTRY.filter((studio) => studio.id !== "mission-control").map((studio, index) => {
             const Icon = studio.icon;
             return (
               <article className="studio-explorer-card" key={studio.id}>
-                <Icon size={22} />
+                <div className="studio-card-topline">
+                  <Icon size={22} />
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </div>
                 <h3>{studio.displayName}</h3>
                 <p>{studio.summary}</p>
-                <span>{studio.exportFormats.join(" / ")}</span>
+                <div className="studio-card-footer">
+                  <span>{studio.exportFormats.join(" / ")}</span>
+                  <ChevronRight size={16} />
+                </div>
               </article>
             );
           })}
