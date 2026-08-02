@@ -593,8 +593,8 @@ export function WorkspaceShell({
           </div>
         )}
 
-        <section className="mission-grid" style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-          <article className="stage-surface" aria-label={`${activeStudio.displayName} workspace`} style={{ flex: 1, minWidth: 0 }}>
+        <section className="mission-grid" aria-label="Studio production surface">
+          <article className="stage-surface workspace-stage" aria-label={`${activeStudio.displayName} workspace`}>
             <div className="studio-title-row">
               <div className="studio-emblem">
                 <ActiveIcon size={30} />
@@ -618,13 +618,13 @@ export function WorkspaceShell({
           </article>
 
           {showRightSidebar === "replay" && (
-            <aside style={{ width: "320px", borderLeft: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column", height: "100%", flexShrink: 0 }}>
+            <aside className="workspace-drawer">
               <WorkspaceReplayPanel />
             </aside>
           )}
 
           {showRightSidebar === "registry" && (
-            <aside style={{ width: "320px", borderLeft: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column", height: "100%", flexShrink: 0 }}>
+            <aside className="workspace-drawer">
               <RuntimeRegistryPanel
                 onSaveRuntimeState={handleSaveRuntimeState}
                 onRestoreRuntimeState={handleRestoreRuntimeState}
@@ -633,7 +633,7 @@ export function WorkspaceShell({
           )}
 
           {showRightSidebar === "projections" && (
-            <aside style={{ width: "320px", borderLeft: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column", height: "100%", flexShrink: 0 }}>
+            <aside className="workspace-drawer">
               <WorkspaceProjectionsPanel
                 project={activeProject}
                 onUpdateProject={(updatedProject) => {
