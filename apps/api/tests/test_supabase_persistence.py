@@ -45,6 +45,23 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
     assert requests[-1].url.path == "/storage/v1/object/authenticated/axiom-photo-assets/asset-1.png"
 
 
+def test_asset_read_tries_svg_after_supabase_reports_missing_png() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith(".png"):
+            return httpx.Response(400, json={"statusCode": "404", "code": "NoSuchKey"})
+        return httpx.Response(200, content=b"<svg/>")
+
+    persistence = SupabasePersistence(
+        "https://project.supabase.co",
+        "server-secret",
+        transport=httpx.MockTransport(handler),
+    )
+
+    asset = persistence.get_asset("asset-1")
+
+    assert asset and asset.data == b"<svg/>" and asset.extension == "svg"
+
+
 def test_supabase_migration_locks_runtime_state_to_service_role() -> None:
     migration = (
         Path(__file__).resolve().parents[1]
