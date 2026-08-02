@@ -18,7 +18,7 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
             return httpx.Response(200, json="verifier")
         if path.endswith("/axiom_sessions") and request.method == "GET":
             return httpx.Response(200, json=[{"payload": {"user_id": "user-1"}, "expires_at": 2_000_000_000}])
-        if path.endswith("/object/axiom-photo-assets/asset-1.png") and request.method == "GET":
+        if path.endswith("/object/authenticated/axiom-photo-assets/asset-1.png") and request.method == "GET":
             return httpx.Response(200, content=b"png", headers={"content-type": "image/png"})
         return httpx.Response(204)
 
@@ -42,7 +42,7 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
     assert all(request.headers["apikey"] == "server-secret" for request in requests)
     assert all("authorization" not in request.headers for request in requests)
     assert requests[0].url.path == "/rest/v1/axiom_sessions"
-    assert requests[-1].url.path == "/storage/v1/object/axiom-photo-assets/asset-1.png"
+    assert requests[-1].url.path == "/storage/v1/object/authenticated/axiom-photo-assets/asset-1.png"
 
 
 def test_supabase_migration_locks_runtime_state_to_service_role() -> None:
