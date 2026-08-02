@@ -128,6 +128,29 @@ def test_tampered_or_expired_asset_reference_is_denied(monkeypatch, runtime_dir,
     assert client.get(f"{path}?expires=1&signature={'0' * 64}").status_code == 403
 
 
+def test_asset_delete_requires_owning_gateway_session(monkeypatch, runtime_dir, running_application):
+    configure(monkeypatch, runtime_dir)
+    client = running_application
+    client.post("/api/photo/provider-session", headers={"Authorization": "Bearer bootstrap-token"})
+    owner_token = client.cookies.get("axiom_photo_gateway_session")
+    gateway = client.post("/api/photo/provider-gateway", json=request_body())
+    poll = wait_for_job(client, gateway.json()["jobId"])
+    source = poll.json()["assetRef"]
+    asset_path = source.split("?", 1)[0]
+
+    client.cookies.clear()
+    assert client.delete(asset_path).status_code == 401
+    client.post("/api/photo/provider-session", headers={"Authorization": "Bearer bootstrap-token"})
+    assert client.delete(asset_path).status_code == 404
+
+    client.cookies.clear()
+    client.cookies.set(
+        "axiom_photo_gateway_session", owner_token, path="/api/photo"
+    )
+    assert client.delete(asset_path).status_code == 204
+    assert client.get(source).status_code == 404
+
+
 def test_logout_revokes_the_gateway_session(monkeypatch, runtime_dir, running_application):
     configure(monkeypatch, runtime_dir)
     client = running_application
