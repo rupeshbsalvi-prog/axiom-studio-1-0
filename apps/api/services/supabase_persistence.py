@@ -131,7 +131,7 @@ class SupabasePersistence:
         for extension, default_mime in (("png", "image/png"), ("svg", "image/svg+xml")):
             try:
                 response = self._client.get(
-                    f"/storage/v1/object/{ASSET_BUCKET}/{asset_id}.{extension}"
+                    f"/storage/v1/object/authenticated/{ASSET_BUCKET}/{asset_id}.{extension}"
                 )
             except httpx.HTTPError as error:
                 raise SupabasePersistenceError("Supabase persistence request failed.") from error
