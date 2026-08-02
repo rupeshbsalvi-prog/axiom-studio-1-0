@@ -559,7 +559,10 @@ def enqueue_photo_gateway_job(request: PhotoGatewayRequest, session_hash: str) -
     SECURITY: session_hash is already hashed by authorize_photo_gateway.
     No prompt text, endpoint, API key, or raw provider data stored in the row.
     """
-    if not settings.AXIOM_ASSET_SIGNING_SECRET or not settings.AXIOM_PHOTO_PROVIDER_API_KEY:
+    if not settings.AXIOM_ASSET_SIGNING_SECRET or (
+        settings.AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER
+        and not settings.AXIOM_PHOTO_PROVIDER_API_KEY
+    ):
         raise HTTPException(status_code=503, detail="Photo gateway is not configured.")
 
     store = _get_store()
