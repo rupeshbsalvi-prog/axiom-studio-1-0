@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import App from "./App";
 
 async function enterLocalWorkspace(user: ReturnType<typeof userEvent.setup>) {
-  await user.click(screen.getByRole("button", { name: /Start Creating/i }));
+  await user.click(screen.getByRole("button", { name: /Start Crafting/i }));
   await user.click(await screen.findByRole("button", { name: /Continue locally/i }));
 }
 
@@ -38,13 +38,31 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
   });
 
-  it("presents a premium creative operating surface with live studio orchestration", () => {
+  it("presents a cinematic signature hero and a separate Imagine X creative act", () => {
     render(<App />);
 
-    const surface = screen.getByRole("region", { name: /Creative operating surface/i });
-    expect(within(surface).getByText(/Live studio orchestration/i)).toBeInTheDocument();
-    expect(within(surface).getByText(/Intent becomes direction/i)).toBeInTheDocument();
-    expect(within(surface).getByText(/Human approval remains visible/i)).toBeInTheDocument();
+    const signature = screen.getByRole("region", { name: /Axiom signature hero/i });
+    expect(within(signature).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
+    expect(within(signature).getByRole("img", { name: /Animated Axiom mind/i })).toBeInTheDocument();
+    expect(within(signature).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+
+    const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
+    expect(within(creativeAct).getByText(/AI-native creative operating system/i)).toBeInTheDocument();
+    expect(within(creativeAct).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(within(creativeAct).getByRole("button", { name: /Start Crafting/i })).toBeInTheDocument();
+    expect(within(creativeAct).getByRole("link", { name: /Explore Axiom/i })).toBeInTheDocument();
+    expect(within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i })).toBeInTheDocument();
+  });
+
+  it("renders the chapter timeline as a numberless single-line navigation", () => {
+    render(<App />);
+
+    const timeline = screen.getByLabelText(/Cinematic chapter timeline/i);
+    expect(within(timeline).getByRole("button", { name: /Go to Arrival chapter/i })).toHaveAttribute(
+      "aria-current",
+      "step",
+    );
+    expect(within(timeline).queryByText("01")).not.toBeInTheDocument();
   });
 
   it("lets keyboard and button users request WEOS chapter navigation", async () => {
