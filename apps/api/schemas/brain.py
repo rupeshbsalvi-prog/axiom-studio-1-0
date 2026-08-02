@@ -11,9 +11,9 @@ class RecommendationInfluenceSource(BaseModel):
     appliedAtUtc: str = Field(..., min_length=1, max_length=100)
 
 class BrainPlanRequest(BaseModel):
-    intent: str = Field(..., min_length=3)
-    sessionId: Optional[str] = None
-    creativeMode: Optional[str] = None
+    intent: str = Field(..., min_length=3, max_length=4000)
+    sessionId: Optional[str] = Field(default=None, max_length=128)
+    creativeMode: Optional[str] = Field(default=None, max_length=64)
     recommendationInfluences: List[RecommendationInfluence] = Field(default_factory=list, max_length=10)
     recommendationInfluenceSource: Optional[RecommendationInfluenceSource] = None
 

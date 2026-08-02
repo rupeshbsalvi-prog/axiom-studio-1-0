@@ -181,9 +181,10 @@ def test_gateway_schema_is_installed_by_an_immutable_migration(monkeypatch, runt
     with sqlite3.connect(database) as connection:
         migrations = connection.execute("SELECT migration_name FROM schema_migrations").fetchall()
 
-    # In Phase 30, 0001, 0002, and 0003 migrations are run
+    # Asset ownership and retention extend the immutable gateway ledger.
     assert set(migrations) == {
         ("0001_photo_gateway.sql",),
         ("0002_photo_provider_jobs.sql",),
         ("0003_photo_asset_metadata.sql",),
+        ("0004_asset_retention.sql",),
     }

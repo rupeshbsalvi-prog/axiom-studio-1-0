@@ -113,12 +113,27 @@ class SupabasePersistence:
             params={"session_kind": f"eq.{kind}", "token_hash": f"eq.{token_hash}"},
         )
 
+    def check_ready(self) -> bool:
+        for table, column in (
+            ("axiom_sessions", "token_hash"),
+            ("axiom_assets", "asset_id"),
+        ):
+            self._request(
+                "GET",
+                f"/rest/v1/{table}",
+                params={"select": column, "limit": "0"},
+            )
+        return True
+
     def put_asset(
         self,
         asset_id: str,
         extension: Literal["png", "svg"],
         data: bytes,
         mime_type: str,
+        *,
+        owner_hash: str | None = None,
+        expires_at: int | None = None,
     ) -> None:
         self._request(
             "POST",
@@ -126,6 +141,73 @@ class SupabasePersistence:
             headers={"Content-Type": mime_type, "x-upsert": "false"},
             content=data,
         )
+        if owner_hash is not None and expires_at is not None:
+            try:
+                self._request(
+                    "POST",
+                    "/rest/v1/axiom_assets",
+                    json={
+                        "asset_id": asset_id,
+                        "extension": extension,
+                        "mime_type": mime_type,
+                        "owner_hash": owner_hash,
+                        "expires_at": expires_at,
+                    },
+                )
+            except Exception:
+                self._delete_storage_object(f"{asset_id}.{extension}")
+                raise
+
+    def _delete_storage_object(self, file_name: str) -> None:
+        self._request(
+            "DELETE",
+            f"/storage/v1/object/{ASSET_BUCKET}",
+            json={"prefixes": [file_name]},
+        )
+
+    def delete_asset(self, asset_id: str, owner_hash: str) -> bool:
+        response = self._request(
+            "GET",
+            "/rest/v1/axiom_assets",
+            params={
+                "select": "extension",
+                "asset_id": f"eq.{asset_id}",
+                "owner_hash": f"eq.{owner_hash}",
+                "limit": "1",
+            },
+        )
+        rows = response.json()
+        if not isinstance(rows, list) or not rows:
+            return False
+        self._delete_storage_object(f"{asset_id}.{rows[0]['extension']}")
+        self._request(
+            "DELETE",
+            "/rest/v1/axiom_assets",
+            params={"asset_id": f"eq.{asset_id}", "owner_hash": f"eq.{owner_hash}"},
+        )
+        return True
+
+    def purge_expired_assets(self, now: int) -> int:
+        response = self._request(
+            "GET",
+            "/rest/v1/axiom_assets",
+            params={
+                "select": "asset_id,extension",
+                "expires_at": f"lte.{now}",
+                "limit": "100",
+            },
+        )
+        rows = response.json()
+        if not isinstance(rows, list):
+            return 0
+        for row in rows:
+            self._delete_storage_object(f"{row['asset_id']}.{row['extension']}")
+            self._request(
+                "DELETE",
+                "/rest/v1/axiom_assets",
+                params={"asset_id": f"eq.{row['asset_id']}"},
+            )
+        return len(rows)
 
     def get_asset(self, asset_id: str) -> StoredAsset | None:
         for extension, default_mime in (("png", "image/png"), ("svg", "image/svg+xml")):

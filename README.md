@@ -14,16 +14,17 @@ AXPKG owns portable project durability. Axiom Imagine X proposes intelligence. U
 - Photo Studio is the flagship vertical with editable layers, governed provider-job boundaries, durable asset metadata, crash recovery, and a bounded FastAPI adapter. Live OpenAI image execution remains paused.
 - Axiom Imagine X includes local planning, Guardian preflight, Photo proposal bridging, consent-gated preference candidates, reversible influence, read-only evaluation, the completed B8 decision gate, and the completed B9 effective workspace learning-authority enforcement and secure session bootstrap.
 - Auth A1 provides server-side Supabase PKCE exchange, an independent opaque FastAPI session, logout/revocation, and RLS-scoped read-only workspace membership resolution. Auth UI A2 implements explicit public/local/login/session/workspace-selection/switch/logout entry without browser token storage or inferred workspace choice; its controlled live UI smoke passes. The approved Auth roadmap is closed at A2; no A3 is defined.
-- Render Free is the live-verified preview target at `https://axiom-studio-58k2.onrender.com`: managed HTTPS, secure server-session cookies, explicit workspace policy read, logout, and denied post-logout access pass. Runtime data remains ephemeral, so this is not a production persistence target.
+- Render Free is the live-verified preview target at `https://axiom-studio-58k2.onrender.com`: managed HTTPS, secure server-session cookies, explicit workspace policy read, logout, and denied post-logout access pass. Auth/photo sessions and asset binaries use Supabase persistence; provider-job coordination remains ephemeral, so the service stays preview-only.
+- Production Security & Observability S1 is implemented locally: planner APIs require the configured workspace session, login starts are rate-limited per client, inputs are bounded, errors are correlated and sanitized, production docs are disabled, security headers and structured request logs are native, readiness checks Supabase, and generated assets have durable owner/expiry metadata plus authorized deletion. The Supabase migration and live Render smoke remain pending.
 - The Ultimate Brand System is preserved under `creative/brand-system/` as a validated draft candidate; current production tokens, typography, logo, and runtime components remain authoritative until an explicit promotion checkpoint.
 - `AX-CORE-001 v1.0.0` is frozen for the approved GLB/USDZ scope. Foundation Release 2 identity work is paused after the approved logomark integration.
 
-## Verified Baseline — 2026-08-01
+## Verified Baseline — 2026-08-02
 
 - Production build passes.
 - TypeScript check passes with zero errors.
-- Vitest: 91 suites / 813 tests pass.
-- FastAPI pytest: 114 tests pass.
+- Vitest: 95 suites / 825 tests pass.
+- FastAPI pytest: 131 tests pass with 91% coverage.
 - Production dependency audit reports zero vulnerabilities.
 - PostCSS is patched to 8.5.25 through the existing Vite dependency graph.
 

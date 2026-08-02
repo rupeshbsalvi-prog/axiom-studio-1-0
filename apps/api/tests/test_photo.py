@@ -4,6 +4,8 @@ import pytest
 from fastapi.testclient import TestClient
 from apps.api.core.config import settings
 from apps.api.main import app
+from apps.api.services import auth_session
+from apps.api.tests.conftest import authenticate_workspace_client
 from apps.api.services.photo_gateway import (
     reset_photo_gateway_state_for_test,
     reset_photo_gateway_rate_limits_for_test,
@@ -20,7 +22,13 @@ def isolated_photo_runtime(monkeypatch):
     monkeypatch.setattr(settings, "AXIOM_ASSET_SIGNING_SECRET", "asset-signing-secret")
     reset_photo_gateway_state_for_test()
     reset_photo_gateway_rate_limits_for_test()
+    auth_session._store = None
+    auth_session._store_root = None
+    authenticate_workspace_client(client)
     yield
+    client.cookies.clear()
+    auth_session._store = None
+    auth_session._store_root = None
     reset_photo_gateway_state_for_test()
     shutil.rmtree(runtime, ignore_errors=True)
 
@@ -156,5 +164,4 @@ def test_asset_route_mime_and_security(monkeypatch):
     # 6. Invalid / expired signature (403)
     resp = client.get(f"{path}?expires={expires-1000}&signature={signature}")
     assert resp.status_code == 403
-
 

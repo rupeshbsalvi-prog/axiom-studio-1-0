@@ -3,11 +3,11 @@ from pydantic import BaseModel, Field, field_validator
 import re
 
 class VectorPlanRequest(BaseModel):
-  intent: str = Field(..., min_length=3)
-  category: Optional[str] = None
-  aspectRatio: Optional[str] = None
-  palette: Optional[str] = None
-  style: Optional[str] = None
+  intent: str = Field(..., min_length=3, max_length=4000)
+  category: Optional[str] = Field(default=None, max_length=100)
+  aspectRatio: Optional[str] = Field(default=None, max_length=32)
+  palette: Optional[str] = Field(default=None, max_length=256)
+  style: Optional[str] = Field(default=None, max_length=100)
 
 class ShapeBreakdownItem(BaseModel):
   name: str
@@ -40,11 +40,11 @@ class VectorPlanResponse(BaseModel):
   canvas: Dict[str, Any] # width, height, viewBox
   aesthetic: str
   palette: str
-  colorPalette: List[str]
-  shapeBreakdown: List[ShapeBreakdownItem]
+  colorPalette: List[str] = Field(..., max_length=32)
+  shapeBreakdown: List[ShapeBreakdownItem] = Field(..., max_length=128)
   compositionStrategy: str
   negativePrompt: str
-  audit: List[AuditEvent]
+  audit: List[AuditEvent] = Field(..., max_length=128)
   provider: ProviderInfo
 
 class VectorGenerateRequest(BaseModel):
@@ -80,7 +80,7 @@ class VectorShapeModel(BaseModel):
   r: Optional[float] = None
   
   # Path data
-  d: Optional[str] = None
+  d: Optional[str] = Field(default=None, max_length=10000)
   
   # Text data
   text: Optional[str] = None
@@ -113,7 +113,7 @@ class VectorCanvasState(BaseModel):
 class VectorGenerateResponse(BaseModel):
   projectId: str
   canvas: VectorCanvasState
-  shapes: Dict[str, VectorShapeModel]
-  shapeOrder: List[str]
-  audit: List[AuditEvent]
+  shapes: Dict[str, VectorShapeModel] = Field(..., max_length=256)
+  shapeOrder: List[str] = Field(..., max_length=256)
+  audit: List[AuditEvent] = Field(..., max_length=128)
   provider: ProviderInfo

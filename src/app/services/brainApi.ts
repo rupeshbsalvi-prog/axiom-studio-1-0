@@ -245,7 +245,7 @@ export async function generateBrainPlan(request: BrainPlanRequest): Promise<Brai
     ? import.meta.env.VITE_API_BASE_URL
     : undefined;
   
-  const baseUrl = envBaseUrl || "http://localhost:8000";
+  const baseUrl = envBaseUrl || "";
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
@@ -256,6 +256,7 @@ export async function generateBrainPlan(request: BrainPlanRequest): Promise<Brai
         "Content-Type": "application/json",
       },
       body: JSON.stringify(normalizedRequest),
+      credentials: "include",
       signal: controller.signal,
     });
 

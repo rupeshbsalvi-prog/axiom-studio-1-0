@@ -1,8 +1,9 @@
 from typing import List, Literal, Union
-from pydantic import SecretStr, field_validator
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
+    AXIOM_ENVIRONMENT: Literal["development", "test", "production"] = "development"
     AXIOM_ALLOWED_ORIGINS: Union[str, List[str]] = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
     AXIOM_ALLOWED_METHODS: Union[str, List[str]] = "GET,POST,OPTIONS"
     AXIOM_ALLOWED_HEADERS: Union[str, List[str]] = "Content-Type,Authorization"
@@ -35,6 +36,9 @@ class Settings(BaseSettings):
     AXIOM_AUTH_POST_LOGIN_REDIRECT: str = "http://localhost:5173/"
     AXIOM_AUTH_FLOW_TTL_SECONDS: int = 300
     AXIOM_AUTH_SESSION_TTL_SECONDS: int = 900
+    AXIOM_AUTH_LOGIN_RATE_LIMIT: int = Field(default=10, ge=1, le=100)
+    AXIOM_AUTH_LOGIN_RATE_WINDOW_SECONDS: int = Field(default=60, ge=1, le=3600)
+    AXIOM_ASSET_RETENTION_SECONDS: int = Field(default=604800, ge=300, le=31536000)
 
     @field_validator("AXIOM_ALLOWED_ORIGINS", mode="before")
     @classmethod
