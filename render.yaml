@@ -11,6 +11,8 @@ services:
     envVars:
       - key: AXIOM_RUNTIME_DATA_DIR
         value: /tmp/axiom-runtime
+      - key: AXIOM_PERSISTENCE_BACKEND
+        value: supabase
       - key: AXIOM_SECURE_COOKIES
         value: "true"
       - key: AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER
@@ -22,4 +24,6 @@ services:
       - key: AXIOM_SUPABASE_URL
         sync: false
       - key: AXIOM_SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: AXIOM_SUPABASE_SECRET_KEY
         sync: false

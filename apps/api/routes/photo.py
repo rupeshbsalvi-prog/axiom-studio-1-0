@@ -24,6 +24,7 @@ from apps.api.services.photo_gateway import (
   revoke_photo_gateway_session,
   _get_store,
 )
+from apps.api.services.supabase_persistence import StoredAsset
 
 router = APIRouter(prefix="/api/photo", tags=["photo"])
 
@@ -81,6 +82,13 @@ def get_provider_asset(asset_id: str, expires: int, signature: str):
   
   # Perform signature and expiry check, resolves path
   path = resolve_signed_asset(asset_id, expires, signature)
+
+  if isinstance(path, StoredAsset):
+    return Response(
+      content=path.data,
+      media_type=path.mime_type,
+      headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
+    )
   
   store = _get_store()
   with store._connect() as conn:

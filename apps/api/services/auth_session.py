@@ -14,6 +14,7 @@ import httpx
 from pydantic import BaseModel
 
 from apps.api.core.config import settings
+from apps.api.services.supabase_persistence import SupabasePersistence
 
 
 AUTH_FLOW_COOKIE_NAME = "axiom_auth_flow"
@@ -176,12 +177,86 @@ class AuthSessionStore:
             )
 
 
-def get_auth_store() -> AuthSessionStore:
+class SupabaseAuthSessionStore:
+    def __init__(self, persistence: SupabasePersistence):
+        self.persistence = persistence
+
+    def create_flow(self) -> tuple[str, str, str]:
+        flow_token = secrets.token_urlsafe(32)
+        state = secrets.token_urlsafe(32)
+        verifier = secrets.token_urlsafe(48)
+        created = self.persistence.create_auth_flow(
+            _token_hash(flow_token),
+            _token_hash(state),
+            verifier,
+            int(time.time()) + settings.AXIOM_AUTH_FLOW_TTL_SECONDS,
+            MAX_PENDING_AUTH_FLOWS,
+        )
+        if not created:
+            raise AuthFlowCapacityError
+        challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip("=")
+        return flow_token, state, challenge
+
+    def consume_flow(self, flow_token: str, state: str) -> str | None:
+        return self.persistence.consume_auth_flow(_token_hash(flow_token), _token_hash(state))
+
+    def create_session(
+        self,
+        user_id: str,
+        email: str | None,
+        memberships: list[AuthWorkspaceMembership],
+    ) -> str:
+        token = secrets.token_urlsafe(32)
+        self.persistence.put_session(
+            "auth",
+            _token_hash(token),
+            {
+                "user_id": user_id,
+                "email": email,
+                "memberships": [membership.model_dump() for membership in memberships],
+            },
+            int(time.time()) + settings.AXIOM_AUTH_SESSION_TTL_SECONDS,
+        )
+        return token
+
+    def read_session(self, token: str) -> StoredAuthSession | None:
+        row = self.persistence.get_session("auth", _token_hash(token))
+        if not row or row.get("expires_at", 0) <= int(time.time()):
+            if row:
+                self.revoke_session(token)
+            return None
+        try:
+            payload = row["payload"]
+            return StoredAuthSession(
+                user_id=payload["user_id"],
+                email=payload.get("email"),
+                memberships=[
+                    AuthWorkspaceMembership.model_validate(item)
+                    for item in payload.get("memberships", [])
+                ],
+            )
+        except (AttributeError, KeyError, TypeError, ValueError):
+            self.revoke_session(token)
+            return None
+
+    def revoke_session(self, token: str) -> None:
+        self.persistence.delete_session("auth", _token_hash(token))
+
+
+def get_auth_store() -> AuthSessionStore | SupabaseAuthSessionStore:
     global _store, _store_root
     root = str(Path(settings.AXIOM_RUNTIME_DATA_DIR).resolve())
-    if _store is None or _store_root != root:
-        _store = AuthSessionStore(root)
-        _store_root = root
+    store_key = f"{settings.AXIOM_PERSISTENCE_BACKEND}:{root}:{settings.AXIOM_SUPABASE_URL}"
+    if _store is None or _store_root != store_key:
+        if settings.AXIOM_PERSISTENCE_BACKEND == "supabase":
+            base_url = settings.AXIOM_SUPABASE_URL.rstrip("/")
+            secret_key = settings.AXIOM_SUPABASE_SECRET_KEY.get_secret_value()
+            if not base_url or not secret_key:
+                raise AuthConfigurationError
+            _store = SupabaseAuthSessionStore(SupabasePersistence(base_url, secret_key))
+        else:
+            _store = AuthSessionStore(root)
+        _store_root = store_key
     return _store
 
 

@@ -41,6 +41,7 @@ from apps.api.schemas.photo import (
     PhotoProviderJobStatusResponse,
     PhotoProviderJobDiagnostic,
 )
+from apps.api.services.supabase_persistence import StoredAsset, SupabasePersistence
 
 
 SESSION_COOKIE_NAME = "axiom_photo_gateway_session"
@@ -58,8 +59,9 @@ _MAX_RETRIES = 2
 
 
 class PhotoGatewayStore:
-    def __init__(self, root: str):
+    def __init__(self, root: str, persistence: SupabasePersistence | None = None):
         self.root = Path(root).resolve()
+        self.persistence = persistence
         self.assets = self.root / "photo-assets"
         self.assets.mkdir(parents=True, exist_ok=True)
         self.database = self.root / "photo-gateway.sqlite3"
@@ -108,6 +110,9 @@ class PhotoGatewayStore:
     def create_session(self) -> str:
         token = secrets.token_urlsafe(32)
         expires_at = int(time.time()) + settings.AXIOM_PHOTO_GATEWAY_SESSION_TTL_SECONDS
+        if self.persistence:
+            self.persistence.put_session("photo", _token_hash(token), {}, expires_at)
+            return token
         with self._connect() as connection:
             connection.execute(
                 "INSERT INTO sessions(token_hash, expires_at) VALUES (?, ?)",
@@ -116,6 +121,13 @@ class PhotoGatewayStore:
         return token
 
     def session_valid(self, token: str) -> bool:
+        if self.persistence:
+            row = self.persistence.get_session("photo", _token_hash(token))
+            if row and row.get("expires_at", 0) > int(time.time()):
+                return True
+            if row:
+                self.revoke_session(token)
+            return False
         with self._connect() as connection:
             row = connection.execute(
                 "SELECT expires_at FROM sessions WHERE token_hash = ?",
@@ -124,6 +136,9 @@ class PhotoGatewayStore:
         return bool(row and row[0] > int(time.time()))
 
     def revoke_session(self, token: str) -> None:
+        if self.persistence:
+            self.persistence.delete_session("photo", _token_hash(token))
+            return
         with self._connect() as connection:
             connection.execute("DELETE FROM sessions WHERE token_hash = ?", (_token_hash(token),))
 
@@ -160,6 +175,7 @@ class PhotoGatewayStore:
         )
         temporary.write_text(svg, encoding="utf-8")
         temporary.replace(target)
+        self.persist_asset(asset_id, "svg", target.read_bytes(), "image/svg+xml")
         with self._connect() as connection:
             connection.execute(
                 "INSERT INTO assets(asset_id, file_name, created_at) VALUES (?, ?, ?)",
@@ -176,6 +192,13 @@ class PhotoGatewayStore:
             return None
         path = (self.assets / row[0]).resolve()
         return path if path.parent == self.assets and path.is_file() else None
+
+    def persist_asset(self, asset_id: str, extension: str, data: bytes, mime_type: str) -> None:
+        if self.persistence:
+            self.persistence.put_asset(asset_id, extension, data, mime_type)
+
+    def remote_asset(self, asset_id: str) -> StoredAsset | None:
+        return self.persistence.get_asset(asset_id) if self.persistence else None
 
     def clear_rate_limits(self) -> None:
         with self._connect() as connection:
@@ -342,9 +365,17 @@ def _token_hash(token: str) -> str:
 def _get_store() -> PhotoGatewayStore:
     global _store, _store_root
     root = str(Path(settings.AXIOM_RUNTIME_DATA_DIR).resolve())
-    if _store is None or _store_root != root:
-        _store = PhotoGatewayStore(root)
-        _store_root = root
+    store_key = f"{settings.AXIOM_PERSISTENCE_BACKEND}:{root}:{settings.AXIOM_SUPABASE_URL}"
+    if _store is None or _store_root != store_key:
+        persistence = None
+        if settings.AXIOM_PERSISTENCE_BACKEND == "supabase":
+            base_url = settings.AXIOM_SUPABASE_URL.rstrip("/")
+            secret_key = settings.AXIOM_SUPABASE_SECRET_KEY.get_secret_value()
+            if not base_url or not secret_key:
+                raise RuntimeError("Supabase persistence is not configured.")
+            persistence = SupabasePersistence(base_url, secret_key)
+        _store = PhotoGatewayStore(root, persistence)
+        _store_root = store_key
     return _store
 
 
@@ -436,11 +467,12 @@ def execute_photo_gateway(request: PhotoGatewayRequest) -> PhotoGatewayResponse:
     )
 
 
-def resolve_signed_asset(asset_id: str, expires: int, signature: str) -> Path:
+def resolve_signed_asset(asset_id: str, expires: int, signature: str) -> Path | StoredAsset:
     path = f"/api/photo/assets/{asset_id}"
     if expires <= int(time.time()) or not hmac.compare_digest(signature, _asset_signature(path, expires)):
         raise HTTPException(status_code=403, detail="Asset reference is invalid or expired.")
-    asset = _get_store().asset_path(asset_id)
+    store = _get_store()
+    asset = store.remote_asset(asset_id) if store.persistence else store.asset_path(asset_id)
     if not asset:
         raise HTTPException(status_code=404, detail="Asset not found.")
     return asset
@@ -669,6 +701,7 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
                         temp_file.write_bytes(result.validated_bytes)
                         sha256_hash = hashlib.sha256(result.validated_bytes).hexdigest()
                         byte_size = len(result.validated_bytes)
+                        store.persist_asset(asset_id, "png", result.validated_bytes, "image/png")
                     except Exception:
                         if temp_file.exists():
                             try:
@@ -738,6 +771,7 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
                             b_size = svg_path.stat().st_size if svg_path.exists() else 0
                             b_bytes = svg_path.read_bytes() if svg_path.exists() else b""
                             sha = hashlib.sha256(b_bytes).hexdigest() if b_bytes else ""
+                            store.persist_asset(result.asset_id, "svg", b_bytes, "image/svg+xml")
                             
                             conn.execute(
                                 "INSERT INTO assets(asset_id, file_name, created_at, mime_type, byte_size, width, height, sha256, availability_status) "

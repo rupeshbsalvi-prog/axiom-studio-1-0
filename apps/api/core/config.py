@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List, Literal, Union
 from pydantic import SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     AXIOM_PHOTO_GATEWAY_RATE_LIMIT: int = 5
     AXIOM_PHOTO_GATEWAY_SESSION_TTL_SECONDS: int = 900
     AXIOM_RUNTIME_DATA_DIR: str = ".axiom-runtime"
+    AXIOM_PERSISTENCE_BACKEND: Literal["local", "supabase"] = "local"
     AXIOM_SECURE_COOKIES: bool = False
     # Phase 29 — Async Provider Job Lifecycle
     # Backend-only. AXIOM_PHOTO_PROVIDER_ENDPOINT and AXIOM_PHOTO_PROVIDER_API_KEY
@@ -28,6 +29,7 @@ class Settings(BaseSettings):
     # Auth A1 — all Supabase credentials and tokens remain server-side.
     AXIOM_SUPABASE_URL: str = ""
     AXIOM_SUPABASE_PUBLISHABLE_KEY: SecretStr = SecretStr("")
+    AXIOM_SUPABASE_SECRET_KEY: SecretStr = SecretStr("")
     AXIOM_AUTH_OAUTH_PROVIDER: str = "google"
     AXIOM_AUTH_CALLBACK_URL: str = "http://localhost:8000/api/auth/callback"
     AXIOM_AUTH_POST_LOGIN_REDIRECT: str = "http://localhost:5173/"
