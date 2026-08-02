@@ -1,6 +1,8 @@
+import threading
+import time
 from typing import Literal
 
-from fastapi import APIRouter, Cookie, HTTPException, Response, status
+from fastapi import APIRouter, Cookie, HTTPException, Request, Response, status
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
@@ -9,6 +11,8 @@ from apps.api.services import auth_session
 
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
+_login_windows: dict[str, tuple[float, int]] = {}
+_login_windows_lock = threading.Lock()
 
 
 class AuthUserResponse(BaseModel):
@@ -30,8 +34,34 @@ def _unauthorized() -> HTTPException:
     )
 
 
+def _consume_login_rate_limit(client_key: str) -> None:
+    now = time.monotonic()
+    window = settings.AXIOM_AUTH_LOGIN_RATE_WINDOW_SECONDS
+    with _login_windows_lock:
+        started, count = _login_windows.get(client_key, (now, 0))
+        if now - started >= window:
+            started, count = now, 0
+        if count >= settings.AXIOM_AUTH_LOGIN_RATE_LIMIT:
+            retry_after = max(1, int(window - (now - started)))
+            raise HTTPException(
+                status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                detail="Too many login attempts.",
+                headers={"Retry-After": str(retry_after)},
+            )
+        # ponytail: one-process limiter; move to Supabase if Render scales past one instance.
+        if client_key not in _login_windows and len(_login_windows) >= 10_000:
+            _login_windows.pop(next(iter(_login_windows)))
+        _login_windows[client_key] = (started, count + 1)
+
+
+def reset_login_rate_limits_for_test() -> None:
+    with _login_windows_lock:
+        _login_windows.clear()
+
+
 @router.get("/login")
-def start_login() -> RedirectResponse:
+def start_login(request: Request) -> RedirectResponse:
+    _consume_login_rate_limit(request.client.host if request.client else "unknown")
     try:
         flow_token, authorization_url = auth_session.create_login_flow()
     except auth_session.AuthConfigurationError:

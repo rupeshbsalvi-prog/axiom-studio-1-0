@@ -2,11 +2,11 @@ from typing import List, Optional, Dict, Any, Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 class PhotoPlanRequest(BaseModel):
-  intent: str = Field(..., min_length=3)
-  category: Optional[str] = None
-  aspectRatio: Optional[str] = None
-  lighting: Optional[str] = None
-  style: Optional[str] = None
+  intent: str = Field(..., min_length=3, max_length=4000)
+  category: Optional[str] = Field(default=None, max_length=100)
+  aspectRatio: Optional[str] = Field(default=None, max_length=32)
+  lighting: Optional[str] = Field(default=None, max_length=100)
+  style: Optional[str] = Field(default=None, max_length=100)
 
 class LayerBreakdownItem(BaseModel):
   name: str
@@ -42,12 +42,12 @@ class PhotoPlanResponse(BaseModel):
   canvasSize: Dict[str, int]
   aesthetic: str
   lighting: str
-  colorPalette: List[str]
+  colorPalette: List[str] = Field(..., max_length=32)
   backgroundStrategy: str
   negativePrompt: str
-  layerBreakdown: List[LayerBreakdownItem]
+  layerBreakdown: List[LayerBreakdownItem] = Field(..., max_length=64)
   recommendedAdjustments: RecommendedAdjustments
-  audit: List[AuditEvent]
+  audit: List[AuditEvent] = Field(..., max_length=128)
   provider: ProviderInfo
 
 class PhotoGenerateRequest(BaseModel):
@@ -175,4 +175,3 @@ class PhotoProviderJobStatusResponse(BaseModel):
   diagnostics: List[PhotoProviderJobDiagnostic] = Field(default_factory=list)
   createdAt: str
   updatedAt: str
-

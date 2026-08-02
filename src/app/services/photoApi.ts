@@ -132,7 +132,7 @@ export async function getPhotoTemplates(): Promise<PhotoTemplate> {
     ? import.meta.env.VITE_API_BASE_URL
     : undefined;
   
-  const baseUrl = envBaseUrl || "http://localhost:8000";
+  const baseUrl = envBaseUrl || "";
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
@@ -153,7 +153,7 @@ export async function planPhotoComposition(request: PhotoPlanRequest): Promise<P
     ? import.meta.env.VITE_API_BASE_URL
     : undefined;
   
-  const baseUrl = envBaseUrl || "http://localhost:8000";
+  const baseUrl = envBaseUrl || "";
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
@@ -162,6 +162,7 @@ export async function planPhotoComposition(request: PhotoPlanRequest): Promise<P
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(request),
+      credentials: "include",
       signal: controller.signal
     });
     clearTimeout(timeoutId);
@@ -179,7 +180,7 @@ export async function generatePhotoComposition(request: PhotoGenerateRequest): P
     ? import.meta.env.VITE_API_BASE_URL
     : undefined;
   
-  const baseUrl = envBaseUrl || "http://localhost:8000";
+  const baseUrl = envBaseUrl || "";
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
@@ -188,6 +189,7 @@ export async function generatePhotoComposition(request: PhotoGenerateRequest): P
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(request),
+      credentials: "include",
       signal: controller.signal
     });
     clearTimeout(timeoutId);

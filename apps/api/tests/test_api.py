@@ -1,7 +1,21 @@
 from fastapi.testclient import TestClient
+import pytest
 from apps.api.main import app
+from apps.api.services import auth_session
+from apps.api.tests.conftest import authenticate_workspace_client
 
 client = TestClient(app)
+
+
+@pytest.fixture(autouse=True)
+def authenticated_planner_client():
+    auth_session._store = None
+    auth_session._store_root = None
+    authenticate_workspace_client(client)
+    yield
+    client.cookies.clear()
+    auth_session._store = None
+    auth_session._store_root = None
 
 def test_production_app_serves_built_frontend():
     response = client.get("/")

@@ -11,6 +11,7 @@ from pydantic import SecretStr
 
 from apps.api.core.config import settings
 from apps.api.main import app
+from apps.api.routes import auth
 from apps.api.services import auth_session
 
 
@@ -36,10 +37,12 @@ def auth_client(monkeypatch):
     monkeypatch.setattr(settings, "AXIOM_SECURE_COOKIES", True)
     monkeypatch.setattr(auth_session, "_store", None)
     monkeypatch.setattr(auth_session, "_store_root", None)
+    auth.reset_login_rate_limits_for_test()
     with TestClient(app, base_url="https://testserver") as client:
         yield client
     auth_session._store = None
     auth_session._store_root = None
+    auth.reset_login_rate_limits_for_test()
     shutil.rmtree(runtime_root, ignore_errors=True)
 
 

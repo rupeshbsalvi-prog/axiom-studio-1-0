@@ -2286,3 +2286,8 @@ Verification:
 Next: apply the migration and server settings to a controlled Supabase project, then run a live login/session/logout smoke checkpoint before defining B9.2.
 
 ## Future Entries
+# 2026-08-02 - Production Security & Observability S1
+
+Implemented the six approved launch-audit remediations with RED/GREEN checkpoints and no paid monitoring dependency. Planner APIs now require an opaque application session with active membership in the configured workspace; browser planner calls are same-origin and credentialed. Login starts use a bounded, per-client, single-instance limiter. Planner inputs and collections are bounded, unexpected client errors are generic and correlated, production API docs are disabled, security headers and structured request logs are native, and `/api/ready` verifies Supabase before Render accepts traffic.
+
+Generated Photo assets now receive durable service-only Supabase owner and expiry metadata, seven-day default retention, startup/creation cleanup, and owner-session deletion. The controlled `0003_asset_retention` Supabase migration and live Render security/persistence smoke remain the next explicit checkpoint. Verification: 131 API tests at 91% coverage, 825 frontend tests, production build, npm audit, and pip-audit pass.

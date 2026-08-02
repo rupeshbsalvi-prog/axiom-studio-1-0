@@ -15,11 +15,11 @@ Deployments remain manual. Secrets and local `.env` files never enter the image 
 
 ## Consequences
 
-The target supports a zero-subscription live HTTPS/auth checkpoint without adding a database migration or reverse proxy. Runtime sessions, SQLite data, and generated files can disappear on idle spin-down, restart, or redeploy; this target is not approved for production or durable user data. A durable deployment requires an explicit migration to external persistence.
+The target supports a zero-subscription live HTTPS/auth checkpoint without a reverse proxy. Opaque auth/photo sessions and generated asset binaries now use Supabase Free persistence; the local provider-job queue can still disappear on idle spin-down, restart, or redeploy, so the target remains preview-only.
 
 ## Acceptance Gates
 
-- Production image builds and `/api/health` passes.
+- Production image builds and dependency-aware `/api/ready` passes.
 - The application loads from the service HTTPS origin and HTTP redirects to HTTPS.
 - Google login returns an opaque application cookie with `Secure`, `HttpOnly`, and `SameSite=Lax`.
 - Session read, exact-workspace policy read, logout, and denied post-logout reads pass on the deployed origin.
@@ -37,4 +37,4 @@ The free service at `https://axiom-studio-58k2.onrender.com` passed HTTPS health
 
 ## Follow-Up
 
-Keep this target preview-only. Define durable external persistence before selecting a production target.
+Apply the S1 asset-retention migration, deploy the security controls, and run the controlled HTTPS/auth/readiness/asset-deletion smoke. Keep the target preview-only until provider-job coordination is durable.

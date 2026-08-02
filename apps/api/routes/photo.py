@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Cookie, Header, HTTPException, Request, Response
+from fastapi import APIRouter, Cookie, Depends, Header, HTTPException, Request, Response
 from fastapi.responses import FileResponse
 from apps.api.schemas.photo import (
   PhotoPlanRequest,
@@ -25,6 +25,7 @@ from apps.api.services.photo_gateway import (
   _get_store,
 )
 from apps.api.services.supabase_persistence import StoredAsset
+from apps.api.routes.dependencies import require_workspace_authority
 
 router = APIRouter(prefix="/api/photo", tags=["photo"])
 
@@ -33,18 +34,12 @@ def get_photo_templates():
   return PhotoPlannerService.get_templates()
 
 @router.post("/plan", response_model=PhotoPlanResponse)
-def plan_photo_composition(request: PhotoPlanRequest):
-  try:
-    return PhotoPlannerService.generate_composition_plan(request)
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+def plan_photo_composition(request: PhotoPlanRequest, _membership=Depends(require_workspace_authority)):
+  return PhotoPlannerService.generate_composition_plan(request)
 
 @router.post("/generate", response_model=PhotoGenerateResponse)
-def generate_photo_composition(request: PhotoGenerateRequest):
-  try:
-    return PhotoPlannerService.generate_placeholder_composition(request)
-  except Exception as e:
-    raise HTTPException(status_code=500, detail=str(e))
+def generate_photo_composition(request: PhotoGenerateRequest, _membership=Depends(require_workspace_authority)):
+  return PhotoPlannerService.generate_placeholder_composition(request)
 
 
 # ---------------------------------------------------------------------------
@@ -130,6 +125,24 @@ def get_provider_asset(asset_id: str, expires: int, signature: str):
       "X-Content-Type-Options": "nosniff"
     }
   )
+
+
+@router.delete("/assets/{asset_id}", status_code=204)
+def delete_provider_asset(
+  asset_id: str,
+  request: Request,
+  authorization: str | None = Header(default=None),
+  axiom_photo_gateway_session: str | None = Cookie(default=None),
+):
+  if len(asset_id) != 32 or any(character not in "0123456789abcdef" for character in asset_id):
+    raise HTTPException(status_code=404, detail="Asset not found.")
+  owner_hash = authorize_photo_gateway(
+    authorization,
+    request.client.host if request.client else "unknown",
+    axiom_photo_gateway_session,
+  )
+  if not _get_store().delete_asset(asset_id, owner_hash):
+    raise HTTPException(status_code=404, detail="Asset not found.")
 
 
 

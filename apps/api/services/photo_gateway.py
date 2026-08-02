@@ -163,7 +163,9 @@ class PhotoGatewayStore:
                 (client_key, window_start, count + 1),
             )
 
-    def save_svg(self, asset_id: str, width: int, height: int) -> None:
+    def save_svg(
+        self, asset_id: str, width: int, height: int, owner_hash: str = "legacy"
+    ) -> None:
         file_name = f"{asset_id}.svg"
         target = self.assets / file_name
         temporary = self.assets / f".{file_name}.tmp"
@@ -175,11 +177,15 @@ class PhotoGatewayStore:
         )
         temporary.write_text(svg, encoding="utf-8")
         temporary.replace(target)
-        self.persist_asset(asset_id, "svg", target.read_bytes(), "image/svg+xml")
+        expires_at = int(time.time()) + settings.AXIOM_ASSET_RETENTION_SECONDS
+        self.persist_asset(
+            asset_id, "svg", target.read_bytes(), "image/svg+xml", owner_hash, expires_at
+        )
         with self._connect() as connection:
             connection.execute(
-                "INSERT INTO assets(asset_id, file_name, created_at) VALUES (?, ?, ?)",
-                (asset_id, file_name, int(time.time())),
+                "INSERT INTO assets(asset_id, file_name, created_at, owner_hash, expires_at) "
+                "VALUES (?, ?, ?, ?, ?)",
+                (asset_id, file_name, int(time.time()), owner_hash, expires_at),
             )
 
     def asset_path(self, asset_id: str) -> Path | None:
@@ -193,12 +199,66 @@ class PhotoGatewayStore:
         path = (self.assets / row[0]).resolve()
         return path if path.parent == self.assets and path.is_file() else None
 
-    def persist_asset(self, asset_id: str, extension: str, data: bytes, mime_type: str) -> None:
+    def persist_asset(
+        self,
+        asset_id: str,
+        extension: str,
+        data: bytes,
+        mime_type: str,
+        owner_hash: str = "legacy",
+        expires_at: int | None = None,
+    ) -> None:
+        try:
+            self.purge_expired_assets()
+        except Exception:
+            pass
         if self.persistence:
-            self.persistence.put_asset(asset_id, extension, data, mime_type)
+            self.persistence.put_asset(
+                asset_id,
+                extension,
+                data,
+                mime_type,
+                owner_hash=owner_hash,
+                expires_at=expires_at
+                or int(time.time()) + settings.AXIOM_ASSET_RETENTION_SECONDS,
+            )
 
     def remote_asset(self, asset_id: str) -> StoredAsset | None:
         return self.persistence.get_asset(asset_id) if self.persistence else None
+
+    def delete_asset(self, asset_id: str, owner_hash: str) -> bool:
+        if self.persistence and not self.persistence.delete_asset(asset_id, owner_hash):
+            return False
+        with self._connect() as connection:
+            row = connection.execute(
+                "SELECT file_name FROM assets WHERE asset_id = ? AND owner_hash = ?",
+                (asset_id, owner_hash),
+            ).fetchone()
+            if not row and not self.persistence:
+                return False
+            connection.execute("DELETE FROM assets WHERE asset_id = ?", (asset_id,))
+        if row:
+            path = (self.assets / row[0]).resolve()
+            if path.parent == self.assets and path.is_file():
+                path.unlink()
+        return True
+
+    def purge_expired_assets(self) -> int:
+        now = int(time.time())
+        removed = self.persistence.purge_expired_assets(now) if self.persistence else 0
+        with self._connect() as connection:
+            rows = connection.execute(
+                "SELECT asset_id, file_name FROM assets WHERE expires_at IS NOT NULL AND expires_at <= ?",
+                (now,),
+            ).fetchall()
+            connection.execute(
+                "DELETE FROM assets WHERE expires_at IS NOT NULL AND expires_at <= ?", (now,)
+            )
+        for _, file_name in rows:
+            path = (self.assets / file_name).resolve()
+            if path.parent == self.assets and path.is_file():
+                path.unlink()
+        return max(removed, len(rows))
 
     def clear_rate_limits(self) -> None:
         with self._connect() as connection:
@@ -572,8 +632,13 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
             (worker_id, now, job_id)
         )
         claim_ok = (cursor.rowcount == 1)
+        owner = conn.execute(
+            "SELECT session_hash FROM provider_jobs WHERE job_id = ? AND worker_id = ?",
+            (job_id, worker_id),
+        ).fetchone()
+        session_hash = owner[0] if owner else ""
         
-    if not claim_ok:
+    if not claim_ok or not session_hash:
         # worker_claim_conflict
         return
         
@@ -701,7 +766,15 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
                         temp_file.write_bytes(result.validated_bytes)
                         sha256_hash = hashlib.sha256(result.validated_bytes).hexdigest()
                         byte_size = len(result.validated_bytes)
-                        store.persist_asset(asset_id, "png", result.validated_bytes, "image/png")
+                        expires_at = int(time.time()) + settings.AXIOM_ASSET_RETENTION_SECONDS
+                        store.persist_asset(
+                            asset_id,
+                            "png",
+                            result.validated_bytes,
+                            "image/png",
+                            session_hash,
+                            expires_at,
+                        )
                     except Exception:
                         if temp_file.exists():
                             try:
@@ -721,9 +794,9 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
                                 raise RuntimeError("worker_ownership_lost")
                             
                             conn.execute(
-                                "INSERT INTO assets(asset_id, file_name, created_at, mime_type, byte_size, width, height, sha256, availability_status) "
-                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                                (asset_id, f"{asset_id}.png", int(time.time()), "image/png", byte_size, result.width, result.height, sha256_hash, "available")
+                                "INSERT INTO assets(asset_id, file_name, created_at, mime_type, byte_size, width, height, sha256, availability_status, owner_hash, expires_at) "
+                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                                (asset_id, f"{asset_id}.png", int(time.time()), "image/png", byte_size, result.width, result.height, sha256_hash, "available", session_hash, expires_at)
                             )
                             
                             os.replace(str(temp_file), str(final_file))
@@ -771,12 +844,20 @@ async def _run_job_worker(job_id: str, request: PhotoGatewayRequest) -> None:
                             b_size = svg_path.stat().st_size if svg_path.exists() else 0
                             b_bytes = svg_path.read_bytes() if svg_path.exists() else b""
                             sha = hashlib.sha256(b_bytes).hexdigest() if b_bytes else ""
-                            store.persist_asset(result.asset_id, "svg", b_bytes, "image/svg+xml")
+                            expires_at = int(time.time()) + settings.AXIOM_ASSET_RETENTION_SECONDS
+                            store.persist_asset(
+                                result.asset_id,
+                                "svg",
+                                b_bytes,
+                                "image/svg+xml",
+                                session_hash,
+                                expires_at,
+                            )
                             
                             conn.execute(
-                                "INSERT INTO assets(asset_id, file_name, created_at, mime_type, byte_size, width, height, sha256, availability_status) "
-                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                                (result.asset_id, f"{result.asset_id}.svg", int(time.time()), "image/svg+xml", b_size, result.width, result.height, sha, "available")
+                                "INSERT INTO assets(asset_id, file_name, created_at, mime_type, byte_size, width, height, sha256, availability_status, owner_hash, expires_at) "
+                                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                                (result.asset_id, f"{result.asset_id}.svg", int(time.time()), "image/svg+xml", b_size, result.width, result.height, sha, "available", session_hash, expires_at)
                             )
                             
                             expires = int(time.time()) + 300
