@@ -100,6 +100,21 @@ def test_authenticated_enqueue_returns_202_with_queued_job(monkeypatch):
     assert len(data["jobId"]) == 32  # uuid4 hex
 
 
+def test_mock_provider_enqueue_does_not_require_external_provider_key(monkeypatch):
+    configure_jobs(monkeypatch)
+    monkeypatch.setattr(settings, "AXIOM_ENABLE_OPENAI_IMAGE_PROVIDER", False)
+    monkeypatch.setattr(settings, "AXIOM_ENABLE_STUB_REAL_PROVIDER", False)
+    monkeypatch.setattr(settings, "AXIOM_PHOTO_PROVIDER_API_KEY", "")
+
+    response = client.post(
+        "/api/photo/provider-gateway",
+        headers=auth_headers(),
+        json=job_request_body(),
+    )
+
+    assert response.status_code == 202
+
+
 # ---------------------------------------------------------------------------
 # Test 3 — Owning session can poll job status
 # ---------------------------------------------------------------------------
@@ -645,5 +660,4 @@ def test_execution_flag_transitions(monkeypatch):
     assert adapter.providerExecuted is True
     assert adapter.networkAccessed is True
     assert adapter.providerApiCalled is True
-
 
