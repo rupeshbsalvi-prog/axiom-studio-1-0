@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-02T17:51:21.558Z",
-  "gitCommit": "37baffa7a600889065c383c5308750e1a417922a",
+  "generatedAt": "2026-08-02T18:03:49.389Z",
+  "gitCommit": "e1e61d3b420f0345f78452459cc0b4f277fe7bb3",
   "packages": {
     "@axiom/tokens": {
       "version": "0.1.0",
