@@ -35,6 +35,7 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
     }
     persistence.delete_session("auth", "token-hash")
     assert persistence.consume_auth_flow("flow-hash", "state-hash") == "verifier"
+    assert persistence.check_ready() is True
     persistence.put_asset("asset-1", "png", b"png", "image/png")
     asset = persistence.get_asset("asset-1")
     assert asset and asset.data == b"png" and asset.mime_type == "image/png"
@@ -42,6 +43,14 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
     assert all(request.headers["apikey"] == "server-secret" for request in requests)
     assert all("authorization" not in request.headers for request in requests)
     assert requests[0].url.path == "/rest/v1/axiom_sessions"
+    readiness_paths = {
+        request.url.path for request in requests
+        if request.method == "GET" and request.url.params.get("limit") == "0"
+    }
+    assert readiness_paths == {
+        "/rest/v1/axiom_sessions",
+        "/rest/v1/axiom_assets",
+    }
     assert requests[-1].url.path == "/storage/v1/object/authenticated/axiom-photo-assets/asset-1.png"
 
 
