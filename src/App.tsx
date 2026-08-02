@@ -196,7 +196,7 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   return (
     <main className="landing-experience">
       <CinematicExperienceEngine directorState={directorState} />
-      <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true">
+      <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true" role="banner">
         <nav className="landing-nav" aria-label="Public navigation">
           <div className="brand-mark">
             <img

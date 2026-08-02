@@ -3538,7 +3538,14 @@ body {
   background: rgba(9, 11, 18, 0.34);
 }
 
-.landing-header .chapter-chip { min-height: 29px; }
+.landing-header .chapter-chip {
+  display: block;
+  flex: 0 0 auto;
+  grid-template-columns: none;
+  width: max-content;
+  min-width: max-content;
+  min-height: 29px;
+}
 
 .landing-header .chapter-chip strong {
   overflow: visible;
