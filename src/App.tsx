@@ -232,81 +232,94 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
               onClick={() => scrollToChapter(index)}
               type="button"
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{chapter.title}</strong>
             </button>
           ))}
         </div>
-        <div className="hero-composition" role="region" aria-label="Creative operating surface">
-          <div className="hero-copy">
-            <p className="eyebrow">AI-native creative operating system</p>
-            <h1>Create Without Limits</h1>
-            <p className="hero-subtitle">Powered by Axiom Imagine X</p>
-            <p className="hero-description">
-              Turn intent, sketches, and future voice input into director-level plans, editable assets,
-              and professional multi-studio output with human approval at every important step.
-            </p>
-            <div className="hero-actions">
-              <button type="button" className="primary-button" onClick={onStartCreating}>
-                Start Creating
-                <ChevronRight size={16} />
-              </button>
-              <a className="ghost-link" href="#intelligence">
-                Explore Axiom
-              </a>
-            </div>
-            <div className="hero-proof-list" aria-label="Axiom operating principles">
-              <span>Intent becomes direction</span>
-              <span>Human approval remains visible</span>
-              <span>Every output stays editable</span>
-            </div>
+        <div className="signature-hero" role="region" aria-label="Axiom signature hero">
+          <div className="signature-name">
+            <p>Creative intelligence platform</p>
+            <h1>Axiom Studio</h1>
+            <span>One operating system for every creative discipline.</span>
           </div>
 
-          <aside className="hero-prism-console" aria-label="Live studio orchestration">
-            <div className="prism-console-header">
-              <div>
-                <span className="live-indicator" />
-                <strong>Live studio orchestration</strong>
-              </div>
-              <span>AX / 01</span>
+          <div className="mind-field" role="img" aria-label="Animated Axiom mind">
+            <div className="mind-aura" aria-hidden="true" />
+            <div className="mind-profile" aria-hidden="true">
+              <img src="/assets/branding/ax-logo-core-symbol.svg" alt="" />
+              <span className="neural-node node-one" />
+              <span className="neural-node node-two" />
+              <span className="neural-node node-three" />
+              <span className="neural-node node-four" />
+              <span className="neural-path path-one" />
+              <span className="neural-path path-two" />
+              <span className="neural-path path-three" />
             </div>
-            <div className="prism-stage" aria-hidden="true">
-              <div className="prism-halo" />
-              <div className="prism-core-mark">
-                <img src="/assets/branding/ax-logo-core-symbol.svg" alt="" />
-              </div>
-              <span className="orbit-label orbit-photo">Photo</span>
-              <span className="orbit-label orbit-motion">Motion</span>
-              <span className="orbit-label orbit-brand">Brand</span>
-              <span className="orbit-label orbit-vector">Vector</span>
-            </div>
-            <div className="direction-trace">
-              <div><span>01</span><strong>Intent</strong><small>Structured brief</small></div>
-              <div><span>02</span><strong>Imagine X</strong><small>Director plan</small></div>
-              <div><span>03</span><strong>Studios</strong><small>Editable output</small></div>
-            </div>
-            <aside className="director-status-panel" aria-label="Experience Director status">
-              <div>
-                <span>Active chapter</span>
-                <strong>
-                  {String(directorState.chapterIndex + 1).padStart(2, "0")} · {directorState.chapter.title}
-                </strong>
-              </div>
-              <div>
-                <span>Director cue</span>
-                <strong>{directorCue.camera.mode}</strong>
-              </div>
-              <div>
-                <span>Quality profile</span>
-                <strong>{directorCue.quality.profile}</strong>
-              </div>
-              <div>
-                <span>Handoff</span>
-                <strong>{directorState.completionLabel}</strong>
-              </div>
-            </aside>
-          </aside>
+            <div className="mind-orbit orbit-one" aria-hidden="true" />
+            <div className="mind-orbit orbit-two" aria-hidden="true" />
+            <span className="mind-signal signal-one" aria-hidden="true">Intent</span>
+            <span className="mind-signal signal-two" aria-hidden="true">Reason</span>
+            <span className="mind-signal signal-three" aria-hidden="true">Create</span>
+          </div>
+
+          <div className="signature-promise">
+            <p>Human-directed intelligence</p>
+            <h2>Create Without Limits</h2>
+            <span>From first thought to editable, professional output.</span>
+          </div>
         </div>
+
+        <div className="hero-scroll-cue" aria-hidden="true"><span />Scroll to awaken Imagine X</div>
+      </section>
+
+      <section className="creative-operating-act" role="region" aria-label="Imagine X creative operating system">
+        <div className="creative-act-copy">
+          <p className="eyebrow">AI-native creative operating system</p>
+          <h2>Direction, intelligence, and craft—inside one living system.</h2>
+          <strong>Powered by Axiom Imagine X</strong>
+          <p>
+            Turn intent, sketches, and future voice input into director-level plans, editable assets,
+            and professional multi-studio output with human approval at every important step.
+          </p>
+          <div className="hero-actions">
+            <button type="button" className="primary-button" onClick={onStartCreating}>
+              Start Crafting
+              <ChevronRight size={16} />
+            </button>
+            <a className="ghost-link" href="#intelligence">Explore Axiom</a>
+          </div>
+          <div className="hero-proof-list" aria-label="Axiom operating principles">
+            <span>Intent becomes direction</span>
+            <span>Human approval remains visible</span>
+            <span>Every output stays editable</span>
+          </div>
+        </div>
+
+        <aside className="orchestration-field" aria-label="Studio intelligence in motion">
+          <header>
+            <div><span className="live-indicator" /><strong>Studio intelligence in motion</strong></div>
+            <span>LIVE / {directorState.chapter.title}</span>
+          </header>
+          <div className="signal-stage" aria-hidden="true">
+            <div className="signal-ring ring-intent" />
+            <div className="signal-ring ring-imagine" />
+            <div className="signal-core"><img src="/assets/branding/ax-logo-core-symbol.svg" alt="" /></div>
+            <span className="signal-label label-intent">Intent</span>
+            <span className="signal-label label-plan">Imagine X</span>
+            <span className="signal-label label-output">Editable Studios</span>
+            <i className="signal-pulse pulse-one" />
+            <i className="signal-pulse pulse-two" />
+            <i className="signal-pulse pulse-three" />
+          </div>
+          <div className="studio-signal-list">
+            <span>Photo</span><span>Motion</span><span>Brand</span><span>Vector</span>
+          </div>
+          <footer>
+            <span>Director cue</span><strong>{directorCue.camera.mode}</strong>
+            <span>Next</span><strong>{directorState.completionLabel}</strong>
+          </footer>
+        </aside>
+
         <div className="hero-stat-strip" aria-label="Platform summary">
           {landingStats.map((stat) => (
             <div key={stat.label}>
