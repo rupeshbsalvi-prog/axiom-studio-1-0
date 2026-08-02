@@ -1,7 +1,10 @@
 from pathlib import Path
 
 import httpx
+from pydantic import SecretStr
 
+from apps.api.core.config import settings
+from apps.api.services import auth_session, photo_gateway
 from apps.api.services.supabase_persistence import SupabasePersistence
 
 
@@ -64,3 +67,17 @@ def test_supabase_migration_locks_runtime_state_to_service_role() -> None:
     assert "to service_role" in migration
     assert "axiom-photo-assets" in migration
     assert "drop table if exists public.axiom_sessions" in rollback
+
+
+def test_supabase_backend_is_selected_for_auth_and_photo_runtime(monkeypatch) -> None:
+    runtime = Path("apps/api/tests/.runtime-test/supabase-selection")
+    monkeypatch.setattr(settings, "AXIOM_PERSISTENCE_BACKEND", "supabase")
+    monkeypatch.setattr(settings, "AXIOM_SUPABASE_URL", "https://project.supabase.co")
+    monkeypatch.setattr(settings, "AXIOM_SUPABASE_SECRET_KEY", SecretStr("server-secret"))
+    monkeypatch.setattr(settings, "AXIOM_RUNTIME_DATA_DIR", str(runtime))
+    monkeypatch.setattr(auth_session, "_store", None)
+    monkeypatch.setattr(auth_session, "_store_root", None)
+    photo_gateway.reset_photo_gateway_state_for_test()
+
+    assert auth_session.get_auth_store().__class__.__name__ == "SupabaseAuthSessionStore"
+    assert photo_gateway._get_store().persistence is not None
