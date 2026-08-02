@@ -40,7 +40,7 @@ def test_server_sessions_and_assets_use_supabase_rest_and_private_storage() -> N
     assert asset and asset.data == b"png" and asset.mime_type == "image/png"
 
     assert all(request.headers["apikey"] == "server-secret" for request in requests)
-    assert all(request.headers["authorization"] == "Bearer server-secret" for request in requests)
+    assert all("authorization" not in request.headers for request in requests)
     assert requests[0].url.path == "/rest/v1/axiom_sessions"
     assert requests[-1].url.path == "/storage/v1/object/axiom-photo-assets/asset-1.png"
 
