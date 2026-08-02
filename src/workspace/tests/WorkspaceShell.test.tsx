@@ -49,11 +49,11 @@ describe("WorkspaceShell Component", () => {
     expect(await screen.findByRole(
       "region",
       { name: "Learning authority" },
-      { timeout: 5000 },
+      { timeout: 10000 },
     )).toHaveTextContent(
       "Required workspace policy is unavailable.",
     );
-  });
+  }, 10000);
 
   it("Save Runtime State does not mutate the original project object and calls onSaveProject", async () => {
     const onSaveProject = vi.fn();

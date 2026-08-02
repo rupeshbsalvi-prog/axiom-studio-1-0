@@ -3499,3 +3499,160 @@ body {
   .signal-core,
   .signal-pulse { animation: none; }
 }
+
+/* Fixed cinematic masthead and immersive corner-type hero. */
+:root { --landing-header-height: 126px; }
+
+.landing-header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(9, 11, 18, 0.96), rgba(9, 11, 18, 0.82));
+  border-bottom: 1px solid rgba(247, 246, 242, 0.1);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(24px) saturate(135%);
+}
+
+.landing-header .landing-nav {
+  position: relative;
+  min-height: 76px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
+}
+
+.landing-header .landing-nav::after { bottom: 0; opacity: 0.5; }
+
+.landing-header .chapter-rail {
+  justify-content: space-between;
+  gap: clamp(6px, 0.9vw, 16px);
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 4px clamp(22px, 5vw, 80px) 11px;
+  overflow-x: auto;
+  background: rgba(9, 11, 18, 0.34);
+}
+
+.landing-header .chapter-chip { min-height: 29px; }
+
+.landing-header .chapter-chip strong {
+  overflow: visible;
+  font-size: clamp(8px, 0.72vw, 10px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.landing-hero {
+  min-height: 100svh;
+  padding-top: calc(var(--landing-header-height) + 18px);
+  padding-bottom: clamp(22px, 4vh, 42px);
+}
+
+.signature-hero {
+  position: relative;
+  display: block;
+  min-height: calc(100svh - var(--landing-header-height) - 70px);
+  overflow: visible;
+}
+
+.signature-name,
+.signature-promise {
+  position: absolute;
+  z-index: 5;
+  bottom: clamp(28px, 7vh, 84px);
+  width: min(31vw, 430px);
+}
+
+.signature-name { left: 0; }
+.signature-promise { right: 0; }
+
+.signature-name h1,
+.signature-promise h2 {
+  max-width: 100%;
+  font-size: clamp(44px, 5.1vw, 82px);
+  line-height: 0.91;
+}
+
+.mind-field {
+  position: absolute;
+  z-index: 3;
+  inset: 50% auto auto 50%;
+  width: min(46vw, 650px);
+  min-height: min(66vh, 690px);
+  transform: translate(-50%, -50%);
+}
+
+.mind-aura { width: min(44vw, 580px); }
+
+.mind-profile {
+  width: clamp(270px, 27vw, 410px);
+  border-color: rgba(247, 246, 242, 0.25);
+  box-shadow:
+    0 54px 150px rgba(0, 0, 0, 0.58),
+    0 0 96px rgba(54, 214, 231, 0.12),
+    inset -38px -24px 70px rgba(115, 87, 255, 0.16);
+}
+
+.hero-scroll-cue {
+  position: absolute;
+  z-index: 6;
+  right: 50%;
+  bottom: 20px;
+  transform: translateX(50%);
+}
+
+#studios,
+#intelligence,
+#pricing,
+#community { scroll-margin-top: calc(var(--landing-header-height) + 16px); }
+
+@supports (animation-timeline: scroll()) {
+  .mind-profile {
+    animation: mind-scroll-turn linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 135vh;
+  }
+}
+
+@keyframes mind-scroll-turn {
+  from { transform: rotateY(-12deg) rotateX(4deg) scale(1); }
+  to { transform: rotateY(34deg) rotateX(-6deg) scale(0.9); }
+}
+
+@media (max-width: 980px) {
+  :root { --landing-header-height: 118px; }
+  .landing-header .landing-nav { min-height: 70px; }
+  .landing-header .chapter-rail { justify-content: flex-start; height: 48px; }
+  .landing-header .chapter-chip strong { font-size: 9px; }
+  .signature-hero { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 18px; padding-top: 410px; }
+  .signature-name,
+  .signature-promise { position: relative; right: auto; bottom: auto; left: auto; width: auto; }
+  .mind-field { top: 34%; width: min(76vw, 620px); min-height: 430px; }
+}
+
+@media (max-width: 640px) {
+  :root { --landing-header-height: 108px; }
+  .landing-header .landing-nav { min-height: 64px; padding: 8px 16px; }
+  .landing-header .brand-icon { width: 34px; height: 34px; }
+  .landing-header .brand-mark span { display: none; }
+  .landing-header .chapter-rail { height: 44px; padding: 2px 16px 9px; }
+  .landing-hero { padding-top: calc(var(--landing-header-height) + 16px); }
+  .signature-hero { grid-template-columns: 1fr; min-height: 900px; padding-top: 440px; }
+  .signature-name,
+  .signature-promise { justify-items: center; text-align: center; }
+  .signature-name h1,
+  .signature-promise h2 { font-size: clamp(46px, 14vw, 66px); }
+  .mind-field { top: 23%; width: 100%; min-height: 400px; }
+  .mind-profile { width: min(70vw, 300px); }
+  .mind-aura { width: 100vw; }
+  .hero-scroll-cue { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mind-profile { animation: none; }
+}
