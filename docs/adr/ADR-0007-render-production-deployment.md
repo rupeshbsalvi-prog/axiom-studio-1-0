@@ -37,4 +37,4 @@ The free service at `https://axiom-studio-58k2.onrender.com` passed HTTPS health
 
 ## Follow-Up
 
-Apply the S1 asset-retention migration, deploy the security controls, and run the controlled HTTPS/auth/readiness/asset-deletion smoke. Keep the target preview-only until provider-job coordination is durable.
+S1 deployment, retention migration, and controlled HTTPS/auth/readiness/asset-deletion smoke are complete. Keep the target preview-only until provider-job coordination is durable.
