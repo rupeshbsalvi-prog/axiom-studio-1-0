@@ -54,13 +54,21 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i })).toBeInTheDocument();
   });
 
-  it("renders the chapter timeline as a numberless single-line navigation", () => {
+  it("keeps complete chapter names inside a persistent numberless landing header", () => {
     render(<App />);
 
-    const timeline = screen.getByLabelText(/Cinematic chapter timeline/i);
+    const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
+    expect(header).toHaveAttribute("data-persistent", "true");
+    const timeline = within(header).getByLabelText(/Cinematic chapter timeline/i);
     expect(within(timeline).getByRole("button", { name: /Go to Arrival chapter/i })).toHaveAttribute(
       "aria-current",
       "step",
+    );
+    expect(within(timeline).getByRole("button", { name: /Go to Living Observatory chapter/i })).toHaveTextContent(
+      "Living Observatory",
+    );
+    expect(within(timeline).getByRole("button", { name: /Go to Workspace Portal chapter/i })).toHaveTextContent(
+      "Workspace Portal",
     );
     expect(within(timeline).queryByText("01")).not.toBeInTheDocument();
   });
