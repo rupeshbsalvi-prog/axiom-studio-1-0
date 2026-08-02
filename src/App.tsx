@@ -196,32 +196,31 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   return (
     <main className="landing-experience">
       <CinematicExperienceEngine directorState={directorState} />
-      <nav className="landing-nav" aria-label="Public navigation">
-        <div className="brand-mark">
-          <img
-            className="brand-icon"
-            src="/assets/branding/ax-logo-core-symbol.svg"
-            alt="Axiom Core"
-            width="42"
-            height="42"
-          />
-          <div>
-            <strong>Axiom</strong>
-            <span>Studio 1.0</span>
+      <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true">
+        <nav className="landing-nav" aria-label="Public navigation">
+          <div className="brand-mark">
+            <img
+              className="brand-icon"
+              src="/assets/branding/ax-logo-core-symbol.svg"
+              alt="Axiom Core"
+              width="42"
+              height="42"
+            />
+            <div>
+              <strong>Axiom</strong>
+              <span>Studio 1.0</span>
+            </div>
           </div>
-        </div>
-        <div className="landing-nav-links">
-          <a href="#studios">Studios</a>
-          <a href="#intelligence">Intelligence</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#community">Community</a>
-        </div>
-        <button type="button" className="ghost-button" onClick={onStartCreating}>
-          Sign In
-        </button>
-      </nav>
-
-      <section className="landing-hero" aria-label="Axiom Studio landing hero">
+          <div className="landing-nav-links">
+            <a href="#studios">Studios</a>
+            <a href="#intelligence">Intelligence</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#community">Community</a>
+          </div>
+          <button type="button" className="ghost-button" onClick={onStartCreating}>
+            Sign In
+          </button>
+        </nav>
         <div className="chapter-rail" aria-label="Cinematic chapter timeline" onKeyDown={handleChapterRailKeyDown}>
           {cinematicChapters.map((chapter, index) => (
             <button
@@ -236,6 +235,9 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             </button>
           ))}
         </div>
+      </header>
+
+      <section className="landing-hero" aria-label="Axiom Studio landing hero">
         <div className="signature-hero" role="region" aria-label="Axiom signature hero">
           <div className="signature-name">
             <p>Creative intelligence platform</p>
