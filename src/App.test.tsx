@@ -38,6 +38,15 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
   });
 
+  it("presents a premium creative operating surface with live studio orchestration", () => {
+    render(<App />);
+
+    const surface = screen.getByRole("region", { name: /Creative operating surface/i });
+    expect(within(surface).getByText(/Live studio orchestration/i)).toBeInTheDocument();
+    expect(within(surface).getByText(/Intent becomes direction/i)).toBeInTheDocument();
+    expect(within(surface).getByText(/Human approval remains visible/i)).toBeInTheDocument();
+  });
+
   it("lets keyboard and button users request WEOS chapter navigation", async () => {
     const user = userEvent.setup();
     const scrollTo = vi.fn();
@@ -75,6 +84,7 @@ describe("Axiom Studio 1.0 shell", () => {
     );
     expect(screen.getByRole("heading", { name: /Mission Control/i })).toBeInTheDocument();
     expect(screen.getAllByTestId("studio-nav-item")).toHaveLength(13);
+    expect(screen.getByRole("region", { name: /Studio production surface/i })).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /UI\/UX Studio/i }));
 
