@@ -137,6 +137,12 @@ class SupabasePersistence:
                 raise SupabasePersistenceError("Supabase persistence request failed.") from error
             if response.status_code == 404:
                 continue
+            if response.status_code == 400:
+                try:
+                    if response.json().get("code") == "NoSuchKey":
+                        continue
+                except (AttributeError, ValueError):
+                    pass
             try:
                 response.raise_for_status()
             except httpx.HTTPError as error:
