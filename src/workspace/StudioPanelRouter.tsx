@@ -7,6 +7,7 @@ import type { ImagineXWorkspaceLearningPolicyState } from "../app/services/Imagi
 import { TypographyPanel } from "../app/studios/typography/TypographyPanel";
 import { PresentationPanel } from "../app/studios/presentation/PresentationPanel";
 import { BrandPanel } from "../app/studios/brand/BrandPanel";
+import { UiUxPanel } from "../app/studios/ui-ux/UiUxPanel";
 
 export const studioHighlights: Record<StudioId, string[]> = {
   "mission-control": [
@@ -49,6 +50,10 @@ export function StudioPanelRouter({
 
   if (activeStudio.id === "brand") {
     return <BrandPanel />;
+  }
+
+  if (activeStudio.id === "ui-ux") {
+    return <UiUxPanel />;
   }
 
   const runtimeEntry = getStudioRuntimeEntry(activeStudio.id);
