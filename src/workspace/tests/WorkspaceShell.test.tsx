@@ -90,6 +90,17 @@ describe("WorkspaceShell Component", () => {
     );
   });
 
+  it("routes Asset Hub through its professional production panel", async () => {
+    render(<WorkspaceShell />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Asset Hub" }));
+
+    expect(await screen.findByRole("region", { name: "Asset Hub production workspace" })).toHaveAttribute(
+      "data-design-language",
+      "axiom-pro-panel-v1",
+    );
+  });
+
   it("starts each selected Studio at the top of its canvas and inspector", () => {
     render(<WorkspaceShell />);
 
