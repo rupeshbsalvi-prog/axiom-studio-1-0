@@ -237,6 +237,22 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </div>
       </header>
 
+      <nav className="world-route" aria-label="Axiom scroll world route">
+        {cinematicChapters.map((chapter, index) => (
+          <button
+            aria-current={index === directorState.chapterIndex ? "step" : undefined}
+            aria-label={`Fly to ${chapter.title}`}
+            className={index === directorState.chapterIndex ? "active" : undefined}
+            key={chapter.id}
+            onClick={() => scrollToChapter(index)}
+            type="button"
+          >
+            <span>{chapter.title}</span>
+            <i aria-hidden="true" />
+          </button>
+        ))}
+      </nav>
+
       <section className="landing-hero" aria-label="Axiom Studio landing hero">
         <div className="signature-hero" role="region" aria-label="Axiom signature hero">
           <div className="signature-name">
