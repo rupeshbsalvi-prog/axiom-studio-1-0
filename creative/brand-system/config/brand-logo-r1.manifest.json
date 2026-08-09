@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0-candidate.1",
+  "status": "candidate",
+  "source": "ChatGPT Image Aug 9, 2026, 06_07_04 PM.png",
+  "background": "graphite-source-preserved",
+  "replacesCandidate": "logo-l1c",
+  "crop": {
+    "sourcePixels": [150, 100, 874, 824],
+    "method": "source-preserved-lanczos-resize"
+  },
+  "rasterAssets": [
+    {
+      "id": "master",
+      "path": "../assets/logos/r1/axiom-logo-master-4096.png",
+      "width": 4096,
+      "height": 4096,
+      "format": "png"
+    },
+    {
+      "id": "hero",
+      "path": "../assets/logos/r1/axiom-logo-hero-2048.webp",
+      "width": 2048,
+      "height": 2048,
+      "format": "webp"
+    },
+    {
+      "id": "display",
+      "path": "../assets/logos/r1/axiom-logo-display-1024.webp",
+      "width": 1024,
+      "height": 1024,
+      "format": "webp"
+    },
+    {
+      "id": "ui",
+      "path": "../assets/logos/r1/axiom-logo-ui-512.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp"
+    },
+    {
+      "id": "app-icon",
+      "path": "../assets/logos/r1/axiom-logo-app-icon-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png"
+    }
+  ],
+  "microMark": "../assets/logos/l1c/axiom-micro.svg"
+}
