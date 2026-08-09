@@ -130,9 +130,9 @@ describe("Axiom Studio 1.0 shell", () => {
 
     await enterLocalWorkspace(user);
 
-    expect(screen.getByRole("img", { name: "Axiom Core" })).toHaveAttribute(
+    expect(screen.getByRole("img", { name: "Axiom Studio brand logo" })).toHaveAttribute(
       "src",
-      "/assets/branding/ax-logo-core-symbol.svg",
+      expect.stringMatching(/axiom-logo-ui-512\.webp$/),
     );
     expect(screen.getByRole("heading", { name: /Mission Control/i })).toBeInTheDocument();
     expect(screen.getAllByTestId("studio-nav-item")).toHaveLength(13);

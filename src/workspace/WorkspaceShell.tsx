@@ -45,6 +45,7 @@ import {
   type AxpkgTrustLevel,
   DEFAULT_AXPKG_TRUST_POLICY,
 } from "../app/projects/axpkg";
+import brandLogoUi from "../../creative/brand-system/assets/logos/r1/axiom-logo-ui-512.webp";
 
 function formatSliceNames(draft: AxiomProjectDraft): string {
   return Object.keys(draft.canvas).join(", ");
@@ -110,6 +111,8 @@ export function WorkspaceShell({
   } | null>(null);
   const [pendingImportProject, setPendingImportProject] = useState<AxiomProjectDraft | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const workspaceStageRef = useRef<HTMLElement>(null);
+  const inspectorRef = useRef<HTMLElement>(null);
 
   const activeProject = project ?? localProject;
 
@@ -321,6 +324,11 @@ export function WorkspaceShell({
   const activeStudio = getStudioById(activeStudioId) ?? getDefaultStudio();
   const ActiveIcon = activeStudio.icon;
 
+  useEffect(() => {
+    if (workspaceStageRef.current) workspaceStageRef.current.scrollTop = 0;
+    if (inspectorRef.current) inspectorRef.current.scrollTop = 0;
+  }, [activeStudioId]);
+
   const phaseMetrics = useMemo(
     () => [
       { label: "Studios", value: String(STUDIO_REGISTRY.length), icon: Layers3 },
@@ -341,13 +349,13 @@ export function WorkspaceShell({
   };
 
   return (
-    <div className="app-shell">
+    <div className="app-shell" data-testid="studio-shell" data-layout="studio-shell-v2">
       <aside className="navigation-spine" aria-label="Studio navigation">
         <div className="brand-mark">
           <img
             className="brand-icon"
-            src="/assets/branding/ax-logo-core-symbol.svg"
-            alt="Axiom Core"
+            src={brandLogoUi}
+            alt="Axiom Studio brand logo"
             width="42"
             height="42"
           />
@@ -378,12 +386,12 @@ export function WorkspaceShell({
       </aside>
 
       <main className="workspace">
-        <header className="studio-header">
+        <header className="studio-header" aria-label="Studio command bar">
           <div>
             <p className="eyebrow">Phase 01 Product Shell</p>
             <h1>{activeStudio.displayName}</h1>
           </div>
-          <div className="header-actions">
+          <div className="header-actions" role="toolbar" aria-label="Workspace commands">
             {workspaceEntry && (
               <div className="workspace-session-summary" aria-label="Workspace session">
                 <span>
@@ -593,8 +601,12 @@ export function WorkspaceShell({
           </div>
         )}
 
-        <section className="mission-grid" aria-label="Studio production surface">
-          <article className="stage-surface workspace-stage" aria-label={`${activeStudio.displayName} workspace`}>
+        <section className="mission-grid" aria-label="Studio production surface" data-layout="canvas-inspector">
+          <article
+            className="stage-surface workspace-stage"
+            aria-label={`${activeStudio.displayName} workspace`}
+            ref={workspaceStageRef}
+          >
             <div className="studio-title-row">
               <div className="studio-emblem">
                 <ActiveIcon size={30} />
@@ -644,7 +656,7 @@ export function WorkspaceShell({
             </aside>
           )}
 
-          <aside className="inspector-rail" aria-label="Inspector" style={{ flexShrink: 0 }}>
+          <aside className="inspector-rail" aria-label="Inspector" ref={inspectorRef}>
             <div className="panel-title">
               <PanelRight size={18} />
               <span>Inspector Rail</span>
@@ -698,8 +710,11 @@ export function WorkspaceShell({
           </aside>
         </section>
 
-        <section className="lower-grid">
-          <form
+        <section
+          className={activeStudioId === "mission-control" ? "lower-grid" : "lower-grid studio-utility-dock"}
+          aria-label={activeStudioId === "mission-control" ? "Mission Control dock" : "Studio utility dock"}
+        >
+          {activeStudioId === "mission-control" && <form
             className="mission-control-panel"
             onSubmit={(event) => {
               event.preventDefault();
@@ -738,7 +753,7 @@ export function WorkspaceShell({
                 </div>
               </div>
             ) : null}
-          </form>
+          </form>}
 
           <div className="creative-dock">
             {phaseMetrics.map((metric) => {
