@@ -57,6 +57,20 @@ describe("WorkspaceShell Component", () => {
     expect(screen.getByLabelText("Studio utility dock")).toBeInTheDocument();
   });
 
+  it("starts each selected Studio at the top of its canvas and inspector", () => {
+    render(<WorkspaceShell />);
+
+    const canvas = screen.getByRole("article", { name: "Mission Control workspace" });
+    const inspector = screen.getByRole("complementary", { name: "Inspector" });
+    canvas.scrollTop = 180;
+    inspector.scrollTop = 120;
+
+    fireEvent.click(screen.getByRole("button", { name: "Photo Studio" }));
+
+    expect(canvas.scrollTop).toBe(0);
+    expect(inspector.scrollTop).toBe(0);
+  });
+
   it("passes trusted workspace learning policy to the Brain X runtime", async () => {
     const project = createProjectDraft({
       name: "Workspace policy",
