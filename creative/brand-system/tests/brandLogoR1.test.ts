@@ -17,6 +17,7 @@ const manifestPath = resolve(
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as {
   status: string;
   source: string;
+  background: string;
   replacesCandidate: string;
   rasterAssets: RasterAsset[];
   microMark: string;
@@ -28,6 +29,7 @@ describe("Brand Logo R1", () => {
   it("keeps the PNG-derived direction gated as a candidate", () => {
     expect(manifest.status).toBe("candidate");
     expect(manifest.source).toBe("ChatGPT Image Aug 9, 2026, 06_07_04 PM.png");
+    expect(manifest.background).toBe("graphite-source-preserved");
     expect(manifest.replacesCandidate).toBe("logo-l1c");
   });
 
@@ -52,7 +54,7 @@ describe("Brand Logo R1", () => {
         expect(bytes.subarray(1, 4).toString("ascii")).toBe("PNG");
         expect(bytes.readUInt32BE(16)).toBe(asset.width);
         expect(bytes.readUInt32BE(20)).toBe(asset.height);
-        expect([4, 6]).toContain(bytes[25]);
+        expect([2, 6]).toContain(bytes[25]);
       } else {
         expect(bytes.subarray(0, 4).toString("ascii")).toBe("RIFF");
         expect(bytes.subarray(8, 12).toString("ascii")).toBe("WEBP");
