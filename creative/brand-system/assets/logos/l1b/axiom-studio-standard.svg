@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" data-family="axiom-a" data-tier="standard">
+  <title>Axiom Studio standard emblem</title><metadata>AX-L1B-002 candidate; manually authored vector</metadata>
+  <defs>
+    <linearGradient id="as-c" x1="38" y1="210" x2="125" y2="43" gradientUnits="userSpaceOnUse"><stop stop-color="#087DFF"/><stop offset="1" stop-color="#00D9E8"/></linearGradient>
+    <linearGradient id="as-m" x1="104" y1="30" x2="204" y2="211" gradientUnits="userSpaceOnUse"><stop stop-color="#FF4B8B"/><stop offset="1" stop-color="#7B24D6"/></linearGradient>
+    <linearGradient id="as-g" x1="45" y1="180" x2="233" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD52F"/><stop offset=".55" stop-color="#FF7B16"/><stop offset="1" stop-color="#F23272"/></linearGradient>
+    <radialGradient id="as-l"><stop stop-color="#DFFFFF"/><stop offset=".25" stop-color="#178DFF"/><stop offset=".65" stop-color="#D70A8C"/><stop offset="1" stop-color="#101522"/></radialGradient>
+  </defs>
+  <g stroke="#111526" stroke-width="3" stroke-linejoin="round">
+    <path d="M101 30c15-7 38-7 52 0l64 181-47-19-20-55h-42l-32 54-41 19L91 55Z" fill="url(#as-m)"/>
+    <path d="m91 55 33 38-56 94-33 23Z" fill="url(#as-c)"/>
+    <path d="M47 180c34-39 76-55 118-44 32 8 59 30 77 59l-34-15c-23-22-48-31-77-27-29 3-53 17-76 44Z" fill="url(#as-g)"/>
+    <circle cx="154" cy="86" r="35" fill="#111526"/><circle cx="154" cy="86" r="27" fill="#F7F6F2"/><circle cx="154" cy="86" r="21" fill="url(#as-l)"/>
+    <path d="m71 84 16 37-14 20-17-18Z" fill="#F7F6F2"/><path d="M71 84v35" fill="none" stroke="#657085" stroke-width="2"/>
+  </g>
+</svg>

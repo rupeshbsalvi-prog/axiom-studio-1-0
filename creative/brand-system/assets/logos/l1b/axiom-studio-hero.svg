@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" data-family="axiom-a" data-tier="hero">
+  <title>Axiom Studio expressive hero emblem</title><metadata>AX-L1B-001 candidate; manually authored vector</metadata>
+  <defs>
+    <linearGradient id="ax-cyan" x1="36" y1="205" x2="132" y2="45" gradientUnits="userSpaceOnUse"><stop stop-color="#087DFF"/><stop offset=".55" stop-color="#00D9E8"/><stop offset="1" stop-color="#A8F7FF"/></linearGradient>
+    <linearGradient id="ax-magenta" x1="103" y1="31" x2="202" y2="205" gradientUnits="userSpaceOnUse"><stop stop-color="#FF5A83"/><stop offset=".42" stop-color="#F00086"/><stop offset="1" stop-color="#6E22D5"/></linearGradient>
+    <linearGradient id="ax-gold" x1="52" y1="175" x2="225" y2="172" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF06A"/><stop offset=".38" stop-color="#FFB21C"/><stop offset=".72" stop-color="#FF6A12"/><stop offset="1" stop-color="#F03263"/></linearGradient>
+    <radialGradient id="ax-lens" cx="38%" cy="30%" r="72%"><stop stop-color="#E8FFFF"/><stop offset=".18" stop-color="#178DFF"/><stop offset=".47" stop-color="#3922B7"/><stop offset=".72" stop-color="#E40082"/><stop offset="1" stop-color="#090B12"/></radialGradient>
+    <linearGradient id="ax-steel" x1="61" y1="82" x2="91" y2="142" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset=".5" stop-color="#C9D5E2"/><stop offset="1" stop-color="#657085"/></linearGradient>
+    <filter id="ax-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g stroke="#111526" stroke-linejoin="round">
+    <path d="M101 29c15-8 39-7 52 1l64 181-47-19-19-53h-43l-31 51-42 20L91 54Z" fill="url(#ax-magenta)" stroke-width="2.5"/>
+    <path d="m91 54 34 39-56 91-34 26Z" fill="url(#ax-cyan)" stroke-width="2.5"/>
+    <path d="M151 139h-43l17-46Z" fill="#1D163D" fill-opacity=".72" stroke-width="2"/>
+    <path d="M47 178c35-39 76-55 119-44 31 8 57 29 76 60l-34-15c-23-23-48-32-77-28-29 3-52 17-76 44Z" fill="url(#ax-gold)" stroke-width="2.5"/>
+    <path d="M48 178c33-26 70-38 111-33" fill="none" stroke="#FFF7B0" stroke-opacity=".72" stroke-width="3"/>
+    <path d="M171 105c27 5 45 19 50 43l-2 38-31-10-12-39Z" fill="#EC0A89" stroke-width="2.5"/>
+    <path d="M180 121c13 3 24 9 31 17" fill="none" stroke="#FF70BB" stroke-width="2"/>
+    <path d="m188 126 5 1m8 3 5 2m-18 35 6 2m8 2 6 2" stroke="#111526" stroke-width="5" stroke-linecap="round"/>
+    <path d="M52 177 30 199l42-9 17-18Z" fill="#2B3445" stroke-width="2.5"/>
+    <path d="m38 192 30-7m-24-1 30-7m-23-1 28-7" stroke="#F7F6F2" stroke-width="5" stroke-linecap="square"/>
+    <path d="m71 83 17 38-13 21-18-18Z" fill="url(#ax-steel)" stroke-width="2"/>
+    <path d="M71 83v35" stroke="#657085" stroke-width="2"/><circle cx="71" cy="118" r="5" fill="#D9E2EB" stroke-width="1.5"/>
+  </g>
+  <g filter="url(#ax-glow)">
+    <path d="M37 86 62 76 48 99" fill="none" stroke="#FFD52F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="64" cy="75" r="7" fill="#FFD52F" stroke="#111526" stroke-width="1.5"/><rect x="28" y="83" width="12" height="12" rx="4" fill="#12DDF2" stroke="#111526"/><rect x="34" y="106" width="12" height="12" rx="3" fill="#FF6A38" stroke="#111526"/>
+  </g>
+  <g transform="translate(153 85)" stroke="#111526">
+    <circle r="38" fill="#111526" stroke-width="2"/><circle r="32" fill="#9BA7BC" stroke-width="2"/><circle r="27" fill="#F7F6F2" stroke-width="2"/><circle r="23" fill="#151A2A" stroke-width="2"/><circle r="18" fill="url(#ax-lens)" stroke-width="2"/><circle cx="-6" cy="-7" r="6" fill="#DFFFFF" fill-opacity=".82" stroke="none"/>
+  </g>
+  <path d="m113 50 20-12-12 17 20-8-29 25" fill="#FFB2D2" fill-opacity=".7"/>
+</svg>

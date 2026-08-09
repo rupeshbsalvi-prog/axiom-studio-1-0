@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0-candidate.1",
+  "direction": "expressive-a-emblem",
+  "status": "candidate",
+  "reference": "user-supplied creative A emblem",
+  "supersedes": null,
+  "identities": [
+    {
+      "id": "axiom-studio",
+      "name": "Axiom Studio",
+      "variants": {
+        "hero": "../assets/logos/l1b/axiom-studio-hero.svg",
+        "standard": "../assets/logos/l1b/axiom-studio-standard.svg",
+        "micro": "../assets/logos/l1b/axiom-studio-micro.svg"
+      }
+    },
+    {
+      "id": "brain-x",
+      "name": "Brain X",
+      "variants": {
+        "hero": "../assets/logos/l1b/brain-x-hero.svg",
+        "standard": "../assets/logos/l1b/brain-x-standard.svg",
+        "micro": "../assets/logos/l1b/brain-x-micro.svg"
+      }
+    },
+    {
+      "id": "imagine-x",
+      "name": "Imagine X",
+      "variants": {
+        "hero": "../assets/logos/l1b/imagine-x-hero.svg",
+        "standard": "../assets/logos/l1b/imagine-x-standard.svg",
+        "micro": "../assets/logos/l1b/imagine-x-micro.svg"
+      }
+    }
+  ]
+}

@@ -20,6 +20,7 @@
     "notes": "Static brand configuration and documentation only."
   },
   "assets": {
+    "logosL1B": "./logo-l1b.manifest.json",
     "logos": "./logo.manifest.json",
     "tokens": "./brand.tokens.json",
     "messaging": "./brand.messaging.json",

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" data-family="axiom-a" data-tier="standard">
+  <title>Imagine X standard emblem</title><metadata>AX-L1B-022 candidate; manually authored vector</metadata>
+  <defs>
+    <linearGradient id="is-body" x1="55" y1="212" x2="174" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#087DFF"/><stop offset=".42" stop-color="#36D6E7"/><stop offset=".72" stop-color="#F55DAA"/><stop offset="1" stop-color="#FFB34D"/></linearGradient>
+    <linearGradient id="is-ribbon" x1="44" y1="182" x2="238" y2="181" gradientUnits="userSpaceOnUse"><stop stop-color="#36D6E7"/><stop offset=".4" stop-color="#FFEA55"/><stop offset=".72" stop-color="#FF8A1C"/><stop offset="1" stop-color="#F55DAA"/></linearGradient>
+    <radialGradient id="is-prism"><stop stop-color="#FFFFFF"/><stop offset=".25" stop-color="#FFEA55"/><stop offset=".6" stop-color="#F55DAA"/><stop offset="1" stop-color="#7357FF"/></radialGradient>
+  </defs>
+  <g stroke="#111526" stroke-width="3" stroke-linejoin="round">
+    <path d="M101 28c16-7 39-6 53 2l63 181-47-19-20-54h-42l-32 53-41 20L91 54Z" fill="url(#is-body)"/>
+    <path d="M45 181c39-42 82-55 124-43 30 9 55 29 73 58l-34-14c-23-23-48-32-78-28-29 4-52 17-76 44Z" fill="url(#is-ribbon)"/>
+    <circle cx="151" cy="87" r="36" fill="#111526"/><circle cx="151" cy="87" r="28" fill="none" stroke="#FFDF58"/>
+    <path d="m151 62 7 17 17 8-17 7-7 18-7-18-18-7 18-8Z" fill="url(#is-prism)" stroke="#F7F6F2" stroke-width="2"/>
+  </g>
+</svg>

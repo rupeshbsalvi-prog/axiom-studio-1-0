@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Axiom Studio — Logo System L1B</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, sans-serif; background: #090b12; color: #f7f6f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(circle at 50% 0%, #24283a, #090b12 45%); }
+    main { width: min(1240px, calc(100% - 40px)); margin: auto; padding: 56px 0 80px; }
+    header { display: flex; justify-content: space-between; gap: 32px; align-items: end; padding-bottom: 32px; border-bottom: 1px solid #ffffff20; }
+    h1 { margin: 0; font-size: clamp(42px, 7vw, 84px); line-height: .92; letter-spacing: -.055em; }
+    header p { max-width: 360px; margin: 0; color: #a5abbd; line-height: 1.55; }
+    .labels, .row { display: grid; grid-template-columns: 170px 1.5fr 1fr .65fr; gap: 12px; }
+    .labels { margin: 48px 0 12px; color: #a5abbd; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .row { margin-bottom: 12px; }
+    .name, .cell { min-height: 230px; border: 1px solid #ffffff18; border-radius: 20px; background: #ffffff08; }
+    .name { display: grid; align-content: end; padding: 24px; }
+    .name strong { font-size: 24px; letter-spacing: -.035em; }
+    .name small { margin-top: 8px; color: #a5abbd; }
+    .cell { display: grid; place-items: center; overflow: hidden; }
+    .hero img { width: min(88%, 270px); height: min(88%, 270px); }
+    .standard img { width: 180px; height: 180px; }
+    .micro img { width: 76px; height: 76px; }
+    .light { margin-top: 44px; padding: 30px; border-radius: 24px; background: #f7f6f2; color: #090b12; }
+    .light h2 { margin: 0 0 22px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+    .micro-strip { display: flex; gap: 28px; align-items: center; }
+    .micro-strip figure { margin: 0; display: flex; align-items: center; gap: 10px; }
+    .micro-strip img { width: 40px; height: 40px; }
+    .micro-strip figcaption { font-size: 13px; font-weight: 700; }
+    @media (max-width: 800px) { header { display: grid; } .labels { display: none; } .row { grid-template-columns: 1fr 1fr; } .name { grid-column: 1 / -1; min-height: 110px; } .hero { grid-column: 1 / -1; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>Expressive A.<br>One visual system.</h1><p>L1B manually reconstructs the supplied creative emblem as scalable vectors, then reduces it deliberately for product and micro UI use.</p></header>
+    <div class="labels"><span>Identity</span><span>Hero emblem</span><span>Standard</span><span>Micro</span></div>
+    <section class="row"><div class="name"><strong>Axiom Studio</strong><small>Creative operating system</small></div><div class="cell hero"><img src="../assets/logos/l1b/axiom-studio-hero.svg" alt="Axiom Studio hero emblem"></div><div class="cell standard"><img src="../assets/logos/l1b/axiom-studio-standard.svg" alt="Axiom Studio standard emblem"></div><div class="cell micro"><img src="../assets/logos/l1b/axiom-studio-micro.svg" alt="Axiom Studio micro mark"></div></section>
+    <section class="row"><div class="name"><strong>Brain X</strong><small>Reasoning and orchestration</small></div><div class="cell hero"><img src="../assets/logos/l1b/brain-x-hero.svg" alt="Brain X hero emblem"></div><div class="cell standard"><img src="../assets/logos/l1b/brain-x-standard.svg" alt="Brain X standard emblem"></div><div class="cell micro"><img src="../assets/logos/l1b/brain-x-micro.svg" alt="Brain X micro mark"></div></section>
+    <section class="row"><div class="name"><strong>Imagine X</strong><small>Creative intelligence</small></div><div class="cell hero"><img src="../assets/logos/l1b/imagine-x-hero.svg" alt="Imagine X hero emblem"></div><div class="cell standard"><img src="../assets/logos/l1b/imagine-x-standard.svg" alt="Imagine X standard emblem"></div><div class="cell micro"><img src="../assets/logos/l1b/imagine-x-micro.svg" alt="Imagine X micro mark"></div></section>
+    <section class="light"><h2>40 px light-field check</h2><div class="micro-strip"><figure><img src="../assets/logos/l1b/axiom-studio-micro.svg" alt=""><figcaption>Axiom Studio</figcaption></figure><figure><img src="../assets/logos/l1b/brain-x-micro.svg" alt=""><figcaption>Brain X</figcaption></figure><figure><img src="../assets/logos/l1b/imagine-x-micro.svg" alt=""><figcaption>Imagine X</figcaption></figure></div></section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" data-family="axiom-a" data-tier="hero">
+  <title>Imagine X expressive hero emblem</title><metadata>AX-L1B-021 candidate; manually authored vector</metadata>
+  <defs>
+    <linearGradient id="ix-body" x1="55" y1="212" x2="174" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#087DFF"/><stop offset=".36" stop-color="#36D6E7"/><stop offset=".68" stop-color="#F55DAA"/><stop offset="1" stop-color="#FFB34D"/></linearGradient>
+    <linearGradient id="ix-ribbon" x1="44" y1="182" x2="238" y2="181" gradientUnits="userSpaceOnUse"><stop stop-color="#36D6E7"/><stop offset=".34" stop-color="#FFEA55"/><stop offset=".66" stop-color="#FF8A1C"/><stop offset="1" stop-color="#F55DAA"/></linearGradient>
+    <radialGradient id="ix-prism"><stop stop-color="#FFFFFF"/><stop offset=".2" stop-color="#FFEA55"/><stop offset=".48" stop-color="#FFB34D"/><stop offset=".72" stop-color="#F55DAA"/><stop offset="1" stop-color="#7357FF"/></radialGradient>
+    <filter id="ix-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <g stroke="#111526" stroke-linejoin="round">
+    <path d="M101 28c16-7 39-6 53 2l63 181-47-19-20-54h-42l-32 53-41 20L91 54Z" fill="url(#ix-body)" stroke-width="3"/>
+    <path d="m91 54 34 39-56 94-34 24Z" fill="#06BDD5" stroke-width="3"/>
+    <path d="M45 181c39-42 82-55 124-43 30 9 55 29 73 58l-34-14c-23-23-48-32-78-28-29 4-52 17-76 44Z" fill="url(#ix-ribbon)" stroke-width="3"/>
+    <path d="m48 126 29-23 17 14-25 36Z" fill="#FFB34D" stroke-width="2.5"/><path d="m178 113 37-23 2 41-25 18Z" fill="#F55DAA" stroke-width="2.5"/>
+  </g>
+  <g transform="translate(151 87)" filter="url(#ix-glow)">
+    <circle r="38" fill="#111526" stroke="#111526" stroke-width="3"/><circle r="31" fill="none" stroke="#FFDF58" stroke-width="3"/>
+    <path d="M0-25 7-8 24 0 7 8 0 25-7 8-24 0-7-8Z" fill="url(#ix-prism)" stroke="#F7F6F2" stroke-width="2" stroke-linejoin="round"/>
+    <circle r="5" fill="#FFFFFF"/>
+  </g>
+  <g fill="none" stroke-linecap="round" filter="url(#ix-glow)"><path d="M55 89c17-20 34-26 51-18" stroke="#36D6E7" stroke-width="4"/><path d="M184 57c17 5 28 15 34 31" stroke="#FFB34D" stroke-width="4"/><circle cx="53" cy="91" r="5" fill="#36D6E7" stroke="#111526"/><circle cx="220" cy="91" r="5" fill="#FFB34D" stroke="#111526"/></g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" data-family="axiom-a" data-tier="standard">
+  <title>Brain X standard emblem</title><metadata>AX-L1B-012 candidate; manually authored vector</metadata>
+  <defs>
+    <linearGradient id="bs-body" x1="55" y1="210" x2="172" y2="26" gradientUnits="userSpaceOnUse"><stop stop-color="#162A8C"/><stop offset=".55" stop-color="#7357FF"/><stop offset="1" stop-color="#F55DAA"/></linearGradient>
+    <linearGradient id="bs-route" x1="45" y1="185" x2="230" y2="185" gradientUnits="userSpaceOnUse"><stop stop-color="#36D6E7"/><stop offset=".58" stop-color="#7357FF"/><stop offset="1" stop-color="#F55DAA"/></linearGradient>
+  </defs>
+  <g stroke="#0B1020" stroke-width="3" stroke-linejoin="round">
+    <path d="M101 28c16-7 39-6 53 2l63 181-47-19-20-54h-42l-32 53-41 20L91 54Z" fill="url(#bs-body)"/>
+    <path d="M45 181c39-42 82-55 124-43 30 9 55 29 73 58l-34-14c-23-23-48-32-78-28-29 4-52 17-76 44Z" fill="url(#bs-route)"/>
+    <circle cx="151" cy="88" r="36" fill="#090B12"/><circle cx="151" cy="88" r="27" fill="#7357FF"/>
+  </g>
+  <g fill="none" stroke="#F7F6F2" stroke-width="3" stroke-linecap="round"><path d="m136 91 10-13 12 9 10-12m-22 3 1 25m11-16 5 17"/><circle cx="136" cy="91" r="4" fill="#36D6E7"/><circle cx="146" cy="78" r="4" fill="#F7F6F2"/><circle cx="158" cy="87" r="4" fill="#F55DAA"/><circle cx="168" cy="75" r="4" fill="#36D6E7"/><circle cx="147" cy="103" r="4" fill="#36D6E7"/><circle cx="163" cy="104" r="4" fill="#F7F6F2"/></g>
+</svg>
