@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Imagine X</title><metadata>AX-L1-003 candidate</metadata>
+  <circle cx="32" cy="32" r="27" fill="#090B12" stroke="#FFB34D" stroke-width="2"/>
+  <path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#FFB34D" stroke-opacity=".45" stroke-width="1.5"/>
+  <path d="M32 18v28M18 32h28M22 22l20 20M42 22 22 42" stroke="#FFB34D" stroke-opacity=".6" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="m32 23 3.2 5.8 5.8 3.2-5.8 3.2L32 41l-3.2-5.8L23 32l5.8-3.2Z" fill="#F7F6F2" stroke="#FFB34D" stroke-width="1.5"/>
+</svg>

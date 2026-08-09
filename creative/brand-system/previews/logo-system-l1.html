@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Axiom Studio — Logo System L1</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, sans-serif; background: #090b12; color: #f7f6f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0%, #171b26, #090b12 48%); }
+    main { width: min(1180px, calc(100% - 40px)); margin: auto; padding: 64px 0 80px; }
+    header { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; padding-bottom: 32px; border-bottom: 1px solid #ffffff1f; }
+    h1 { margin: 0; max-width: 780px; font-size: clamp(40px, 7vw, 88px); line-height: .9; letter-spacing: -.055em; }
+    header p { margin: 0; max-width: 300px; color: #a5abbd; line-height: 1.5; }
+    h2 { margin: 56px 0 20px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: #a5abbd; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .card { min-height: 210px; display: grid; place-items: center; align-content: center; gap: 20px; border: 1px solid #ffffff17; border-radius: 20px; background: #ffffff08; }
+    .card.system { min-height: 280px; }
+    img { width: 96px; height: 96px; }
+    .system img { width: 128px; height: 128px; }
+    strong { font-size: 16px; letter-spacing: -.02em; }
+    small { color: #a5abbd; text-transform: uppercase; letter-spacing: .12em; }
+    .note { margin-top: 32px; padding: 20px 24px; border-left: 2px solid #36d6e7; color: #a5abbd; line-height: 1.5; }
+    @media (max-width: 800px) { header { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { main { width: min(100% - 24px, 1180px); padding-top: 40px; } .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>One core.<br>Many capabilities.</h1><p>Candidate L1 identity family derived from the approved Axiom Core. Symbols are under visual review.</p></header>
+    <h2>Masterbrand and intelligence systems</h2>
+    <section class="grid">
+      <article class="card system"><img src="../assets/logos/axiom-studio.svg" alt="Axiom Studio candidate symbol"><strong>Axiom Studio</strong><small>Masterbrand</small></article>
+      <article class="card system"><img src="../assets/logos/brain-x.svg" alt="Brain X candidate symbol"><strong>Brain X</strong><small>Reasoning</small></article>
+      <article class="card system"><img src="../assets/logos/imagine-x.svg" alt="Imagine X candidate symbol"><strong>Imagine X</strong><small>Creative intelligence</small></article>
+    </section>
+    <h2>Studio family</h2>
+    <section class="grid">
+      <article class="card"><img src="../assets/logos/photo-studio.svg" alt="Photo Studio candidate symbol"><strong>Photo Studio</strong></article>
+      <article class="card"><img src="../assets/logos/vector-studio.svg" alt="Vector Studio candidate symbol"><strong>Vector Studio</strong></article>
+      <article class="card"><img src="../assets/logos/brand-studio.svg" alt="Brand Studio candidate symbol"><strong>Brand Studio</strong></article>
+      <article class="card"><img src="../assets/logos/asset-hub.svg" alt="Asset Hub candidate symbol"><strong>Asset Hub</strong></article>
+      <article class="card"><img src="../assets/logos/ui-ux-studio.svg" alt="UI UX Studio candidate symbol"><strong>UI/UX Studio</strong></article>
+      <article class="card"><img src="../assets/logos/typography-studio.svg" alt="Typography Studio candidate symbol"><strong>Typography Studio</strong></article>
+      <article class="card"><img src="../assets/logos/presentation-studio.svg" alt="Presentation Studio candidate symbol"><strong>Presentation Studio</strong></article>
+      <article class="card"><img src="../assets/logos/motion-studio.svg" alt="Motion Studio candidate symbol"><strong>Motion Studio</strong></article>
+      <article class="card"><img src="../assets/logos/video-studio.svg" alt="Video Studio candidate symbol"><strong>Video Studio</strong></article>
+      <article class="card"><img src="../assets/logos/whiteboard-studio.svg" alt="Whiteboard Studio candidate symbol"><strong>Whiteboard Studio</strong></article>
+    </section>
+    <p class="note">Colour is a secondary cue. L2 will add small-size, monochrome, reversed and horizontal wordmark variants after this architecture is accepted.</p>
+  </main>
+</body>
+</html>

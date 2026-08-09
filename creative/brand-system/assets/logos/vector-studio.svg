@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Vector Studio</title><metadata>AX-L1-102 candidate</metadata>
+  <circle cx="32" cy="32" r="27" fill="#090B12" stroke="#2E8BFF" stroke-width="2"/><path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#2E8BFF" stroke-opacity=".4" stroke-width="1.5"/>
+  <path d="M21 43c2-13 7-21 11-21s9 8 11 21M21 43h22" fill="none" stroke="#F7F6F2" stroke-width="2" stroke-linecap="round"/>
+  <rect x="18" y="40" width="6" height="6" rx="1" fill="#2E8BFF"/><rect x="29" y="19" width="6" height="6" rx="1" fill="#2E8BFF"/><rect x="40" y="40" width="6" height="6" rx="1" fill="#2E8BFF"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>UI/UX Studio</title><metadata>AX-L1-105 candidate</metadata>
+  <circle cx="32" cy="32" r="27" fill="#090B12" stroke="#7357FF" stroke-width="2"/><path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#7357FF" stroke-opacity=".4" stroke-width="1.5"/>
+  <rect x="19" y="21" width="26" height="22" rx="3" fill="none" stroke="#F7F6F2" stroke-width="2"/><path d="M19 28h26M27 28v15" stroke="#7357FF" stroke-width="2"/><circle cx="23" cy="25" r="1.5" fill="#7357FF"/>
+</svg>

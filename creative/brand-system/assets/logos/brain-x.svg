@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Brain X</title><metadata>AX-L1-002 candidate</metadata>
+  <circle cx="32" cy="32" r="27" fill="#090B12" stroke="#7357FF" stroke-width="2"/>
+  <path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#7357FF" stroke-opacity=".45" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="5" fill="#7357FF"/>
+  <circle cx="22" cy="23" r="3" fill="none" stroke="#F7F6F2" stroke-width="2"/><circle cx="43" cy="22" r="3" fill="none" stroke="#F7F6F2" stroke-width="2"/><circle cx="22" cy="43" r="3" fill="none" stroke="#F7F6F2" stroke-width="2"/><circle cx="43" cy="42" r="3" fill="none" stroke="#F7F6F2" stroke-width="2"/>
+  <path d="m24 25 5 5m6-1 6-5m-12 11-5 6m11-6 6 5" stroke="#F7F6F2" stroke-width="2" stroke-linecap="round"/>
+</svg>

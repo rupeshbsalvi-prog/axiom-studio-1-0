@@ -58,7 +58,7 @@ describe("Logo System L1", () => {
       expect(svg).toContain("<title>");
       expect(svg).toContain("<metadata>");
       expect(svg).not.toContain("<text");
-      expect(svg).not.toMatch(/https?:\/\//);
+      expect(svg).not.toMatch(/(?:href|src)="https?:\/\//);
     }
   });
 

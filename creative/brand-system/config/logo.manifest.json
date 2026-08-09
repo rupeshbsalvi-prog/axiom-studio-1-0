@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-candidate.1",
+  "status": "candidate",
+  "basis": "AX-LOGO-001 Axiom Core geometry",
+  "rules": {
+    "architecture": "branded-house",
+    "wordmarks": "typeset outside symbol assets",
+    "monochromeRequired": true,
+    "colorIsSecondary": true
+  },
+  "identities": [
+    { "id": "axiom-studio", "name": "Axiom Studio", "role": "masterbrand", "accent": "paper", "symbol": "../assets/logos/axiom-studio.svg" },
+    { "id": "brain-x", "name": "Brain X", "role": "intelligence-system", "accent": "violet", "symbol": "../assets/logos/brain-x.svg" },
+    { "id": "imagine-x", "name": "Imagine X", "role": "creative-system", "accent": "amber", "symbol": "../assets/logos/imagine-x.svg" },
+    { "id": "photo-studio", "name": "Photo Studio", "role": "studio", "accent": "cyan", "symbol": "../assets/logos/photo-studio.svg" },
+    { "id": "vector-studio", "name": "Vector Studio", "role": "studio", "accent": "blue", "symbol": "../assets/logos/vector-studio.svg" },
+    { "id": "brand-studio", "name": "Brand Studio", "role": "studio", "accent": "magenta", "symbol": "../assets/logos/brand-studio.svg" },
+    { "id": "asset-hub", "name": "Asset Hub", "role": "studio", "accent": "blue", "symbol": "../assets/logos/asset-hub.svg" },
+    { "id": "ui-ux-studio", "name": "UI/UX Studio", "role": "studio", "accent": "violet", "symbol": "../assets/logos/ui-ux-studio.svg" },
+    { "id": "typography-studio", "name": "Typography Studio", "role": "studio", "accent": "paper", "symbol": "../assets/logos/typography-studio.svg" },
+    { "id": "presentation-studio", "name": "Presentation Studio", "role": "studio", "accent": "amber", "symbol": "../assets/logos/presentation-studio.svg" },
+    { "id": "motion-studio", "name": "Motion Studio", "role": "studio", "accent": "cyan", "symbol": "../assets/logos/motion-studio.svg" },
+    { "id": "video-studio", "name": "Video Studio", "role": "studio", "accent": "magenta", "symbol": "../assets/logos/video-studio.svg" },
+    { "id": "whiteboard-studio", "name": "Whiteboard Studio", "role": "studio", "accent": "emerald", "symbol": "../assets/logos/whiteboard-studio.svg" }
+  ]
+}

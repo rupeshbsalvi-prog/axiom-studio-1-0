@@ -20,6 +20,7 @@
     "notes": "Static brand configuration and documentation only."
   },
   "assets": {
+    "logos": "./logo.manifest.json",
     "tokens": "./brand.tokens.json",
     "messaging": "./brand.messaging.json",
     "audiences": "./brand.audiences.json",

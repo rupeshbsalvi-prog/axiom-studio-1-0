@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Asset Hub</title><metadata>AX-L1-104 candidate</metadata>
+  <circle cx="32" cy="32" r="27" fill="#090B12" stroke="#2E8BFF" stroke-width="2"/><path d="m32 11 18 10v22L32 53 14 43V21Z" fill="none" stroke="#2E8BFF" stroke-opacity=".4" stroke-width="1.5"/>
+  <rect x="20" y="22" width="10" height="10" rx="2" fill="none" stroke="#F7F6F2" stroke-width="2"/><rect x="34" y="22" width="10" height="10" rx="2" fill="none" stroke="#F7F6F2" stroke-width="2"/><rect x="27" y="36" width="10" height="10" rx="2" fill="#2E8BFF"/><path d="M30 27h4m-2 5v4" stroke="#2E8BFF" stroke-width="2"/>
+</svg>
