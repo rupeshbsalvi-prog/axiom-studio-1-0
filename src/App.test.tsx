@@ -33,8 +33,8 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.getByLabelText(/Cinematic engine readiness/i)).toBeInTheDocument();
     expect(screen.getByText(/WEOS initializing|WEOS accessible scene/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Arrival/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Studio Universe/i)).toBeInTheDocument();
-    expect(screen.getByText(/Workspace Portal/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Studio Universe/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Workspace Portal/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
   });
 
@@ -96,6 +96,27 @@ describe("Axiom Studio 1.0 shell", () => {
     await user.keyboard("{End}");
     expect(scrollTo).toHaveBeenLastCalledWith(expect.objectContaining({ top: expect.any(Number) }));
     expect(workspacePortal).toBeInTheDocument();
+  });
+
+  it("offers a scroll-world route through the persistent Axiom scene", async () => {
+    const user = userEvent.setup();
+    const scrollTo = vi.fn();
+    Object.defineProperty(window, "scrollTo", {
+      configurable: true,
+      value: scrollTo,
+    });
+
+    render(<App />);
+
+    const route = screen.getByRole("navigation", { name: /Axiom scroll world route/i });
+    expect(within(route).getAllByRole("button")).toHaveLength(12);
+    expect(within(route).getByRole("button", { name: /Fly to Arrival/i })).toHaveAttribute(
+      "aria-current",
+      "step",
+    );
+
+    await user.click(within(route).getByRole("button", { name: /Fly to Studio Universe/i }));
+    expect(scrollTo).toHaveBeenCalledWith(expect.objectContaining({ top: expect.any(Number) }));
   });
 
   it("enters the Workspace Hub and can switch to UI/UX Studio", async () => {
