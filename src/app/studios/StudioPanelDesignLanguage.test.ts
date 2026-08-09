@@ -9,4 +9,8 @@ describe("professional Studio panel design language", () => {
     expect(styles).toMatch(/@media \(max-width: 1400px\)[\s\S]*?\.studio-production-panel[\s\S]*?min-width:\s*740px/);
     expect(styles).toMatch(/@media \(max-width: 960px\)[\s\S]*?\.studio-production-panel[\s\S]*?grid-template-columns:\s*1fr\s*!important[\s\S]*?min-width:\s*0/);
   });
+
+  it("keeps long specimen words inside the Typography canvas", () => {
+    expect(styles).toMatch(/\.typography-specimen h2\s*\{[^}]*overflow-wrap:\s*anywhere/);
+  });
 });
