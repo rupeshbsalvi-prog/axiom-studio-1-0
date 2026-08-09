@@ -8,7 +8,7 @@
 
 import React from "react";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 
 import { PhotoPanel } from "../PhotoPanel";
 import { createProjectDraft, type AxiomProjectDraft } from "../../../projects/projectDraft";
@@ -421,6 +421,16 @@ describe("PhotoPanel — Phase 20 Runtime-Backed Transition", () => {
     generatePhotoCompositionSpy.mockClear();
     await handler!({});
     expect(generatePhotoCompositionSpy).not.toHaveBeenCalled();
+  });
+
+  it("26. defines the approved three-zone professional Studio design language", () => {
+    render(<PhotoPanel />);
+
+    const workspace = screen.getByRole("region", { name: "Photo production workspace" });
+    expect(workspace).toHaveAttribute("data-design-language", "axiom-pro-panel-v1");
+    expect(within(workspace).getByRole("complementary", { name: "Photo planner and layers" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("region", { name: "Photo canvas" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("complementary", { name: "Photo adjustments and audit" })).toBeInTheDocument();
   });
 
   it("26. Phase 21 passes a provider request manifest without approving provider execution", async () => {
