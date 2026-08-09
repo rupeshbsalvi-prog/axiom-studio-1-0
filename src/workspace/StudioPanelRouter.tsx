@@ -8,6 +8,7 @@ import { TypographyPanel } from "../app/studios/typography/TypographyPanel";
 import { PresentationPanel } from "../app/studios/presentation/PresentationPanel";
 import { BrandPanel } from "../app/studios/brand/BrandPanel";
 import { UiUxPanel } from "../app/studios/ui-ux/UiUxPanel";
+import { AssetHubPanel } from "../app/studios/asset-hub/AssetHubPanel";
 
 export const studioHighlights: Record<StudioId, string[]> = {
   "mission-control": [
@@ -54,6 +55,10 @@ export function StudioPanelRouter({
 
   if (activeStudio.id === "ui-ux") {
     return <UiUxPanel />;
+  }
+
+  if (activeStudio.id === "asset-hub") {
+    return <AssetHubPanel />;
   }
 
   const runtimeEntry = getStudioRuntimeEntry(activeStudio.id);

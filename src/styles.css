@@ -3222,6 +3222,59 @@ body {
 .uiux-handoff p { margin: 0; color: #8f99ad; font-size: 11px; }
 .uiux-handoff p strong { color: #79dfc2; }
 
+.asset-hub-heading,
+.asset-hub-collections,
+.asset-hub-canvas,
+.asset-hub-properties,
+.asset-hub-provenance { display: grid; gap: 8px; }
+.asset-hub-heading span,
+.asset-hub-toolbar span,
+.asset-hub-filter-summary span,
+.asset-hub-provenance > span {
+  color: #8f99ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.asset-hub-collections button { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 10px; color: #aeb5c5; text-align: left; background: rgba(247, 246, 242, 0.025); border: 1px solid rgba(247, 246, 242, 0.07); }
+.asset-hub-collections button[aria-pressed="true"] { color: #f7f6f2; background: linear-gradient(120deg, rgba(115, 87, 255, 0.18), rgba(54, 214, 231, 0.06)); border-color: rgba(54, 214, 231, 0.4); }
+.asset-hub-collections button > span { color: #7357ff; font-size: 10px; }
+.asset-hub-collections small { color: #7f899d; white-space: nowrap; }
+.asset-hub-filter-summary,
+.asset-hub-status,
+.asset-hub-provenance { padding: 12px; background: rgba(247, 246, 242, 0.035); border: 1px solid rgba(247, 246, 242, 0.08); border-radius: 9px; }
+.asset-hub-filter-summary { display: grid; gap: 5px; }
+.asset-hub-filter-summary small { color: #7f899d; }
+.asset-hub-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 12px; }
+.asset-hub-toolbar div { display: grid; gap: 3px; }
+.asset-hub-toolbar > span { color: #79dfc2; }
+.asset-hub-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.asset-hub-grid button { min-width: 0; padding: 0; overflow: hidden; color: #eef2f8; text-align: left; background: rgba(247, 246, 242, 0.025); border: 1px solid rgba(247, 246, 242, 0.07); }
+.asset-hub-grid button[aria-pressed="true"] { border-color: rgba(54, 214, 231, 0.58); box-shadow: 0 0 0 1px rgba(54, 214, 231, 0.14); }
+.asset-hub-grid button > span { display: grid; gap: 4px; padding: 10px; }
+.asset-hub-grid small { overflow: hidden; color: #7f899d; text-overflow: ellipsis; white-space: nowrap; }
+.asset-hub-preview,
+.asset-hub-inspector-preview { position: relative; display: block; overflow: hidden; background: radial-gradient(circle at 30% 30%, var(--asset-glow), transparent 48%), linear-gradient(145deg, #171c2c, #090c14); }
+.asset-hub-preview { aspect-ratio: 16 / 10; border-bottom: 1px solid rgba(247, 246, 242, 0.07); }
+.asset-hub-inspector-preview { aspect-ratio: 16 / 10; border: 1px solid rgba(247, 246, 242, 0.09); border-radius: 10px; }
+.asset-hub-preview b,
+.asset-hub-inspector-preview b { position: absolute; inset: 20% 24%; border: 1px solid color-mix(in srgb, var(--asset-glow) 70%, white); border-radius: 44% 22% 48% 28%; box-shadow: 0 0 36px var(--asset-glow); transform: rotate(-12deg); }
+.asset-hub-preview--cyan { --asset-glow: #00d9ff; }
+.asset-hub-preview--violet { --asset-glow: #6a00ff; }
+.asset-hub-preview--orange { --asset-glow: #ff7a00; }
+.asset-hub-preview--magenta { --asset-glow: #ff007a; }
+.asset-hub-preview--blue { --asset-glow: #0066ff; }
+.asset-hub-preview--amber { --asset-glow: #ffc300; }
+.asset-hub-status { display: flex; justify-content: space-between; gap: 12px; color: #8f99ad; font-size: 10px; }
+.asset-hub-status strong { color: #79dfc2; }
+.asset-hub-properties { margin: 0; }
+.asset-hub-properties > div { display: grid; gap: 4px; padding: 9px 0; border-bottom: 1px solid rgba(247, 246, 242, 0.07); }
+.asset-hub-properties dt { color: #8f99ad; }
+.asset-hub-properties dd { margin: 0; overflow-wrap: anywhere; color: #eef2f8; font-weight: 700; }
+.asset-hub-provenance p { margin: 0; color: #8f99ad; font-size: 11px; }
+.asset-hub-provenance p strong { color: #79dfc2; }
+
 @media (max-width: 1400px) {
   .studio-production-panel {
     grid-template-columns: minmax(200px, 220px) minmax(300px, 1fr) minmax(200px, 220px) !important;
@@ -3256,6 +3309,8 @@ body {
   .uiux-device,
   .uiux-device--tablet,
   .uiux-device--mobile { width: 100%; }
+  .asset-hub-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .asset-hub-status { flex-direction: column; }
 }
 
 .app-shell * { scrollbar-width: thin; scrollbar-color: rgba(115, 87, 255, 0.55) rgba(247, 246, 242, 0.035); }
