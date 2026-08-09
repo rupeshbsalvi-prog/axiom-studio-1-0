@@ -12,9 +12,10 @@ describe("Axiom Studio 1.0 shell", () => {
   it("opens first-time public visitors into the Axiom Landing Experience", () => {
     render(<App />);
 
-    expect(screen.getByRole("img", { name: "Axiom Core" })).toHaveAttribute(
+    const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
+    expect(within(header).getByRole("img", { name: /Axiom Studio brand logo/i })).toHaveAttribute(
       "src",
-      "/assets/branding/ax-logo-core-symbol.svg",
+      expect.stringMatching(/axiom-logo-ui-512\.webp$/),
     );
     expect(screen.getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
     expect(screen.getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
@@ -43,7 +44,11 @@ describe("Axiom Studio 1.0 shell", () => {
 
     const signature = screen.getByRole("region", { name: /Axiom signature hero/i });
     expect(within(signature).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
-    expect(within(signature).getByRole("img", { name: /Animated Axiom mind/i })).toBeInTheDocument();
+    const heroArt = within(signature).getByRole("img", { name: /Animated Axiom mind/i });
+    expect(heroArt.querySelector("img")).toHaveAttribute(
+      "srcset",
+      expect.stringMatching(/axiom-logo-ui-512\.webp 512w.*axiom-logo-display-1024\.webp 1024w.*axiom-logo-hero-2048\.webp 2048w/),
+    );
     expect(within(signature).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
 
     const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
