@@ -630,10 +630,15 @@ export function PhotoPanel({ project, onUpdateProject }: PhotoPanelProps = {}) {
   }));
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "300px 1fr 320px", gap: "16px", height: "100%", overflow: "hidden", background: "#090d16", color: "#e2e8f0", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <section
+      className="studio-production-panel studio-production-panel--photo"
+      aria-label="Photo production workspace"
+      data-design-language="axiom-pro-panel-v1"
+      style={{ display: "grid", gridTemplateColumns: "300px 1fr 320px", gap: "16px", height: "100%", overflow: "hidden", background: "#090d16", color: "#e2e8f0", fontFamily: "system-ui, -apple-system, sans-serif" }}
+    >
       
       {/* ── LEFT PANEL: INTAKE & LAYERS ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
+      <aside className="studio-panel-rail studio-panel-rail--planner" aria-label="Photo planner and layers" style={{ display: "flex", flexDirection: "column", gap: "16px", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
         
         {/* Phase 20 Liveness Banner: shown when no promoted Photo runtime is active */}
         {!isPhotoRuntimeActive && (
@@ -902,10 +907,10 @@ export function PhotoPanel({ project, onUpdateProject }: PhotoPanelProps = {}) {
             })}
           </div>
         </div>
-      </div>
+      </aside>
 
       {/* ── CENTER WORKSPACE: CANVAS WORKSPACE ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px", overflow: "hidden" }}>
+      <section className="studio-panel-canvas" aria-label="Photo canvas" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px", overflow: "hidden" }}>
         
         {/* Canvas Toolbar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "10px" }}>
@@ -1007,10 +1012,10 @@ export function PhotoPanel({ project, onUpdateProject }: PhotoPanelProps = {}) {
             </div>
           )}
         </div>
-      </div>
+      </section>
 
       {/* ── RIGHT PANEL: ADJUSTMENT PANEL & AUDIT TRAIL ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", borderLeft: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
+      <aside className="studio-panel-rail studio-panel-rail--inspector" aria-label="Photo adjustments and audit" style={{ display: "flex", flexDirection: "column", gap: "16px", borderLeft: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
         
         {/* Layer Adjustment Controls */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "14px", background: "rgba(255,255,255,0.01)", border: "1px solid rgba(255,255,255,0.05)", borderRadius: "10px" }}>
@@ -1131,7 +1136,7 @@ export function PhotoPanel({ project, onUpdateProject }: PhotoPanelProps = {}) {
         <div style={{ flex: 1 }}>
           <ReplayAuditPanel events={convertedAuditEvents} />
         </div>
-      </div>
-    </div>
+      </aside>
+    </section>
   );
 }

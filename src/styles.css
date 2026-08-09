@@ -2980,6 +2980,46 @@ body {
 .creative-dock { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .metric { min-width: 0; border: 1px solid rgba(247, 246, 242, 0.06); border-radius: 12px; }
 
+/* Shared professional panel language: Photo is the reference implementation. */
+.studio-production-panel {
+  display: grid !important;
+  grid-template-columns: minmax(240px, 280px) minmax(420px, 1fr) minmax(220px, 280px) !important;
+  gap: 1px !important;
+  min-width: 940px;
+  min-height: 480px;
+  overflow: hidden !important;
+  background: #080b12 !important;
+  border: 1px solid rgba(247, 246, 242, 0.07);
+  border-radius: 14px;
+}
+
+.studio-panel-rail {
+  min-width: 0;
+  padding: 14px !important;
+  overflow: auto !important;
+  background: rgba(11, 15, 24, 0.94) !important;
+  scrollbar-gutter: stable;
+}
+
+.studio-panel-rail--planner { border-right: 1px solid rgba(247, 246, 242, 0.07) !important; }
+.studio-panel-rail--inspector { border-left: 1px solid rgba(247, 246, 242, 0.07) !important; }
+
+.studio-panel-canvas {
+  min-width: 0;
+  padding: 14px !important;
+  overflow: hidden !important;
+  background: radial-gradient(circle at 50% 46%, rgba(54, 214, 231, 0.06), transparent 25rem), #090d16 !important;
+}
+
+.studio-production-panel button { border-radius: 8px !important; }
+
+.studio-production-panel input:not([type="range"]),
+.studio-production-panel select,
+.studio-production-panel textarea {
+  background: rgba(5, 8, 14, 0.84) !important;
+  border-color: rgba(247, 246, 242, 0.12) !important;
+}
+
 .app-shell * { scrollbar-width: thin; scrollbar-color: rgba(115, 87, 255, 0.55) rgba(247, 246, 242, 0.035); }
 .app-shell *::-webkit-scrollbar { width: 7px; height: 7px; }
 .app-shell *::-webkit-scrollbar-track { background: rgba(247, 246, 242, 0.035); }
