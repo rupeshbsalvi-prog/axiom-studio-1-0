@@ -141,7 +141,7 @@ describe("Axiom Studio 1.0 shell", () => {
     await user.click(screen.getByRole("button", { name: /UI\/UX Studio/i }));
 
     expect(screen.getByRole("heading", { name: /UI\/UX Studio/i })).toBeInTheDocument();
-    expect(screen.getByText(/editable frames, components, tokens/i)).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: /UI\/UX product canvas/i })).toBeInTheDocument();
     expect(within(screen.getByLabelText(/Inspector/i)).getByText(/foundation fallback/i)).toBeInTheDocument();
     expect(within(screen.getByLabelText(/Inspector/i)).getByText(/fallback canvas/i)).toBeInTheDocument();
     expect(within(screen.getByLabelText(/Inspector/i)).getByText(/no runtime authority/i)).toBeInTheDocument();
