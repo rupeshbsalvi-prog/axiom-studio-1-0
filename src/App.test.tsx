@@ -33,8 +33,8 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.getByLabelText(/Cinematic engine readiness/i)).toBeInTheDocument();
     expect(screen.getByText(/WEOS initializing|WEOS accessible scene/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Arrival/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Studio Universe/i)).toBeInTheDocument();
-    expect(screen.getByText(/Workspace Portal/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Studio Universe/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Workspace Portal/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
   });
 
