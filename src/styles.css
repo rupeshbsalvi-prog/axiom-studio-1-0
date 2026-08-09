@@ -3592,6 +3592,7 @@ body {
   width: min(46vw, 650px);
   min-height: min(66vh, 690px);
   transform: translate(-50%, -50%);
+  animation-name: mind-field-centered-enter;
 }
 
 .mind-aura { width: min(44vw, 580px); }
@@ -3629,6 +3630,11 @@ body {
 @keyframes mind-scroll-turn {
   from { transform: rotateY(-12deg) rotateX(4deg) scale(1); }
   to { transform: rotateY(34deg) rotateX(-6deg) scale(0.9); }
+}
+
+@keyframes mind-field-centered-enter {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.86) rotateY(12deg); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotateY(0); }
 }
 
 @media (max-width: 980px) {
@@ -3746,4 +3752,30 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .world-route button span,
   .world-route button i { transition: none; }
+}
+
+/* Approved R1 raster integration: preserve its square composition at every breakpoint. */
+.landing-header .brand-icon {
+  border: 1px solid rgba(247, 246, 242, 0.12);
+  border-radius: 10px;
+}
+
+.mind-profile {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #121212;
+  border-radius: 28px;
+}
+
+.mind-profile::before { display: none; }
+
+.mind-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+}
+
+@media (max-width: 640px) {
+  .landing-header .brand-icon { width: 38px; height: 38px; }
 }

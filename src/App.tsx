@@ -11,6 +11,9 @@ import {
 } from "./experience/director/ExperienceDirector";
 import { CinematicExperienceEngine } from "./experience/cinematic/CinematicExperienceEngine";
 import { AuthWorkspaceGate } from "./auth/AuthWorkspaceGate";
+import brandLogoUi from "../creative/brand-system/assets/logos/r1/axiom-logo-ui-512.webp";
+import brandLogoDisplay from "../creative/brand-system/assets/logos/r1/axiom-logo-display-1024.webp";
+import brandLogoHero from "../creative/brand-system/assets/logos/r1/axiom-logo-hero-2048.webp";
 
 
 const philosophyCards = [
@@ -201,8 +204,8 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           <div className="brand-mark">
             <img
               className="brand-icon"
-              src="/assets/branding/ax-logo-core-symbol.svg"
-              alt="Axiom Core"
+              src={brandLogoUi}
+              alt="Axiom Studio brand logo"
               width="42"
               height="42"
             />
@@ -264,7 +267,12 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           <div className="mind-field" role="img" aria-label="Animated Axiom mind">
             <div className="mind-aura" aria-hidden="true" />
             <div className="mind-profile" aria-hidden="true">
-              <img src="/assets/branding/ax-logo-core-symbol.svg" alt="" />
+              <img
+                src={brandLogoDisplay}
+                srcSet={`${brandLogoUi} 512w, ${brandLogoDisplay} 1024w, ${brandLogoHero} 2048w`}
+                sizes="(max-width: 640px) 70vw, (max-width: 980px) 52vw, 27vw"
+                alt=""
+              />
               <span className="neural-node node-one" />
               <span className="neural-node node-two" />
               <span className="neural-node node-three" />
