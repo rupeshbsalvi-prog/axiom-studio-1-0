@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, act, waitFor, within } from "@testing-library/react";
 import { VectorPanel } from "../VectorPanel";
 import { createProjectDraft, type AxiomProjectDraft } from "../../../projects/projectDraft";
 import * as runtimeActivationService from "../../../../runtime/activation/RuntimeActivationService";
@@ -339,5 +339,15 @@ describe("VectorPanel Component & Authority MVP", () => {
   it("15. no LOCAL_RUNTIME_EXECUTORS path is introduced for Vector dry-run dispatch", async () => {
     const mockExecutorModule = await import("../../../../runtime/activation/MockRuntimeExecutor");
     expect(mockExecutorModule.LOCAL_RUNTIME_EXECUTORS["mock-vector-studio"]).toBeUndefined();
+  });
+
+  it("16. applies the approved professional Studio design language", () => {
+    render(<VectorPanel project={mockProject} onUpdateProject={onUpdateProject} />);
+
+    const workspace = screen.getByRole("region", { name: "Vector production workspace" });
+    expect(workspace).toHaveAttribute("data-design-language", "axiom-pro-panel-v1");
+    expect(within(workspace).getByRole("complementary", { name: "Vector planner and layers" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("region", { name: "Vector canvas" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("complementary", { name: "Vector properties and audit" })).toBeInTheDocument();
   });
 });

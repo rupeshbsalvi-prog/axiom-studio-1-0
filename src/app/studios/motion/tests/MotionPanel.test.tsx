@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent, act, within } from "@testing-library/react";
 import { MotionPanel } from "../MotionPanel";
 import { createProjectDraft, type AxiomProjectDraft } from "../../../projects/projectDraft";
 import * as runtimeActivationService from "../../../../runtime/activation/RuntimeActivationService";
@@ -290,5 +290,15 @@ describe("MotionPanel Component", () => {
     // Renders should not trigger auto-activation or auto-promotion
     expect(activateSpy).not.toHaveBeenCalled();
     activateSpy.mockRestore();
+  });
+
+  it("24. applies the approved professional Studio design language", () => {
+    render(<MotionPanel project={mockProject} onUpdateProject={onUpdateProject} />);
+
+    const workspace = screen.getByRole("region", { name: "Motion production workspace" });
+    expect(workspace).toHaveAttribute("data-design-language", "axiom-pro-panel-v1");
+    expect(within(workspace).getByRole("complementary", { name: "Motion layers" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("region", { name: "Motion canvas" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("contentinfo", { name: "Motion timeline" })).toBeInTheDocument();
   });
 });
