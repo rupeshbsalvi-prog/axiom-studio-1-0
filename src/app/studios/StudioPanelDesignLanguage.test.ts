@@ -19,4 +19,9 @@ describe("professional Studio panel design language", () => {
   it("scales Presentation titles for the compact desktop canvas", () => {
     expect(styles).toMatch(/@media \(max-width: 1400px\)[\s\S]*?\.presentation-slide-copy h2\s*\{[^}]*font-size:\s*clamp\(26px,\s*3vw,\s*40px\)/);
   });
+
+  it("stacks the Brand identity inside the compact desktop canvas", () => {
+    expect(styles).toMatch(/@media \(max-width: 1400px\)[\s\S]*?\.brand-identity-stage\s*\{[^}]*grid-template-columns:\s*1fr/);
+    expect(styles).toMatch(/@media \(max-width: 1400px\)[\s\S]*?\.brand-wordmark h2\s*\{[^}]*font-size:\s*clamp\(28px,\s*3vw,\s*40px\)/);
+  });
 });

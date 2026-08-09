@@ -6,6 +6,7 @@ import { type AxiomProjectDraft } from "../app/projects/projectDraft";
 import type { ImagineXWorkspaceLearningPolicyState } from "../app/services/ImagineXLearningAuthority";
 import { TypographyPanel } from "../app/studios/typography/TypographyPanel";
 import { PresentationPanel } from "../app/studios/presentation/PresentationPanel";
+import { BrandPanel } from "../app/studios/brand/BrandPanel";
 
 export const studioHighlights: Record<StudioId, string[]> = {
   "mission-control": [
@@ -44,6 +45,10 @@ export function StudioPanelRouter({
 
   if (activeStudio.id === "presentation") {
     return <PresentationPanel />;
+  }
+
+  if (activeStudio.id === "brand") {
+    return <BrandPanel />;
   }
 
   const runtimeEntry = getStudioRuntimeEntry(activeStudio.id);
