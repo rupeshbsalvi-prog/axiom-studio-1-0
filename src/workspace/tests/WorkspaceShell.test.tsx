@@ -57,6 +57,17 @@ describe("WorkspaceShell Component", () => {
     expect(screen.getByLabelText("Studio utility dock")).toBeInTheDocument();
   });
 
+  it("routes Presentation Studio through its professional production panel", async () => {
+    render(<WorkspaceShell />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Presentation Studio" }));
+
+    expect(await screen.findByRole("region", { name: "Presentation production workspace" })).toHaveAttribute(
+      "data-design-language",
+      "axiom-pro-panel-v1",
+    );
+  });
+
   it("starts each selected Studio at the top of its canvas and inspector", () => {
     render(<WorkspaceShell />);
 
