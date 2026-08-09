@@ -3074,11 +3074,54 @@ body {
 .typography-readability p { margin: 0; color: #8f99ad; font-size: 11px; line-height: 1.5; }
 .typography-token-preview code { overflow-wrap: anywhere; color: #c5b8ff; font-size: 10px; }
 
+.presentation-panel-heading,
+.presentation-field,
+.presentation-slide-list,
+.presentation-canvas,
+.presentation-safe-area { display: grid; gap: 8px; }
+.presentation-panel-heading span,
+.presentation-canvas-bar span,
+.presentation-safe-area span {
+  color: #8f99ad;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.presentation-add-slide { padding: 9px 11px; color: #d9d4ff; background: rgba(115, 87, 255, 0.12); border: 1px solid rgba(115, 87, 255, 0.28); }
+.presentation-slide-list > button { display: grid; grid-template-columns: 28px 1fr; gap: 9px; align-items: start; padding: 10px; color: #aeb5c5; text-align: left; background: rgba(247, 246, 242, 0.025); border: 1px solid rgba(247, 246, 242, 0.07); }
+.presentation-slide-list > button[aria-pressed="true"] { color: #f7f6f2; background: linear-gradient(120deg, rgba(115, 87, 255, 0.18), rgba(54, 214, 231, 0.06)); border-color: rgba(115, 87, 255, 0.46); }
+.presentation-slide-list > button div { display: grid; gap: 4px; min-width: 0; }
+.presentation-slide-list small { overflow: hidden; color: #7f899d; text-overflow: ellipsis; white-space: nowrap; }
+.presentation-canvas-bar { display: flex; justify-content: space-between; }
+.presentation-canvas-bar strong { color: #79dfc2; font-size: 10px; }
+.presentation-slide { position: relative; display: grid; align-content: space-between; aspect-ratio: 16 / 9; min-height: 300px; padding: clamp(22px, 4vw, 52px); overflow: hidden; background: radial-gradient(circle at 82% 18%, rgba(54, 214, 231, 0.14), transparent 14rem), linear-gradient(145deg, #121629, #090c14 64%); border: 1px solid rgba(247, 246, 242, 0.1); border-radius: 12px; box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28); }
+.presentation-slide::after { position: absolute; right: -12%; bottom: -42%; width: 55%; aspect-ratio: 1; content: ""; border: 1px solid rgba(115, 87, 255, 0.32); border-radius: 50%; box-shadow: 0 0 80px rgba(115, 87, 255, 0.14); }
+.presentation-slide-brand { color: #c5b8ff; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.presentation-slide-copy { position: relative; z-index: 1; max-width: 80%; }
+.presentation-slide-copy p { margin: 0; color: #9ba5b8; font-size: clamp(10px, 1.2vw, 14px); line-height: 1.5; }
+.presentation-slide-copy h2 { margin: 8px 0 14px; overflow-wrap: anywhere; color: #f7f6f2; font-size: clamp(28px, 4vw, 54px); letter-spacing: -0.05em; line-height: 0.98; }
+.presentation-slide-copy > div { width: 48px; height: 2px; margin-bottom: 14px; background: linear-gradient(90deg, #7357ff, #36d6e7); }
+.presentation-slide-number { position: absolute; right: 7%; bottom: 7%; z-index: 1; color: rgba(247, 246, 242, 0.24); font-size: clamp(24px, 4vw, 54px); }
+.presentation-filmstrip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.presentation-filmstrip button { display: grid; gap: 4px; padding: 9px; color: #aeb5c5; text-align: left; background: rgba(247, 246, 242, 0.03); border: 1px solid rgba(247, 246, 242, 0.07); }
+.presentation-filmstrip span { color: #7357ff; font-size: 10px; }
+.presentation-field { color: #aeb5c5; font-size: 11px; }
+.presentation-field select,
+.presentation-field textarea { width: 100%; padding: 9px 10px; color: #eef2f8; border: 1px solid rgba(247, 246, 242, 0.12); border-radius: 8px; }
+.presentation-safe-area { padding: 12px; background: rgba(247, 246, 242, 0.035); border: 1px solid rgba(247, 246, 242, 0.08); border-radius: 9px; }
+.presentation-safe-area strong { color: #79dfc2; }
+.presentation-safe-area p { margin: 0; color: #8f99ad; font-size: 11px; line-height: 1.5; }
+.presentation-notes { align-content: start; }
+
 @media (max-width: 1400px) {
   .studio-production-panel {
     grid-template-columns: minmax(200px, 220px) minmax(300px, 1fr) minmax(200px, 220px) !important;
     min-width: 740px;
   }
+
+  .presentation-slide-copy { max-width: 100%; }
+  .presentation-slide-copy h2 { font-size: clamp(26px, 3vw, 40px); }
 }
 
 @media (max-width: 960px) {
@@ -3095,6 +3138,7 @@ body {
   .studio-motion-body { flex-direction: column; overflow: visible !important; }
   .studio-production-panel--motion .studio-panel-rail { flex: 0 0 auto; }
   .typography-ramp { grid-template-columns: 1fr; }
+  .presentation-filmstrip { grid-template-columns: 1fr; }
 }
 
 .app-shell * { scrollbar-width: thin; scrollbar-color: rgba(115, 87, 255, 0.55) rgba(247, 246, 242, 0.035); }

@@ -15,4 +15,8 @@ describe("professional Studio panel design language", () => {
   it("keeps long specimen words inside the Typography canvas", () => {
     expect(styles).toMatch(/\.typography-specimen h2\s*\{[^}]*overflow-wrap:\s*anywhere/);
   });
+
+  it("scales Presentation titles for the compact desktop canvas", () => {
+    expect(styles).toMatch(/@media \(max-width: 1400px\)[\s\S]*?\.presentation-slide-copy h2\s*\{[^}]*font-size:\s*clamp\(26px,\s*3vw,\s*40px\)/);
+  });
 });
