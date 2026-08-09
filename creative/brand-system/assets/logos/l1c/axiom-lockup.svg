@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-label="Axiom Studio" data-family="axiom-ribbon" data-tier="lockup" data-wordmark="outlined">
+  <title>Axiom Studio outlined wordmark lockup</title><metadata>AX-L1C-002 candidate; portable outlined vector lettering</metadata>
+  <defs>
+    <linearGradient id="ll-left" x1="49" y1="294" x2="196" y2="55" gradientUnits="userSpaceOnUse"><stop stop-color="#0066FF"/><stop offset=".42" stop-color="#00D9FF"/><stop offset=".72" stop-color="#6A00FF"/><stop offset="1" stop-color="#FF007A"/></linearGradient>
+    <linearGradient id="ll-right" x1="179" y1="62" x2="292" y2="294" gradientUnits="userSpaceOnUse"><stop stop-color="#FF007A"/><stop offset=".48" stop-color="#6A00FF"/><stop offset="1" stop-color="#00D9FF"/></linearGradient>
+    <linearGradient id="ll-bridge" x1="85" y1="231" x2="303" y2="214" gradientUnits="userSpaceOnUse"><stop stop-color="#00D9FF"/><stop offset=".35" stop-color="#6A00FF"/><stop offset=".68" stop-color="#FF007A"/><stop offset="1" stop-color="#FFC300"/></linearGradient>
+    <radialGradient id="ll-core"><stop stop-color="#FFFFFF"/><stop offset=".24" stop-color="#00D9FF"/><stop offset=".58" stop-color="#6A00FF"/><stop offset="1" stop-color="#FF007A"/></radialGradient>
+    <filter id="ll-shadow" x="-25%" y="-25%" width="150%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity=".45"/></filter>
+  </defs>
+  <g transform="translate(18 16) scale(.66)" filter="url(#ll-shadow)">
+    <path d="M81 430C128 317 190 179 253 66c14-26 48-30 69-8l34 36c-29-10-52 0-68 29L173 430Z" fill="url(#ll-left)" stroke="#0A0A12" stroke-width="5"/>
+    <path d="M273 102c25 37 49 77 72 119l91 166c16 30-5 66-39 66h-64L222 252Z" fill="url(#ll-right)" stroke="#0A0A12" stroke-width="5"/>
+    <path d="M166 326c51-54 114-76 181-55 43 13 77 44 103 91l-42-18c-31-28-64-39-102-33-42 7-75 30-109 66Z" fill="url(#ll-bridge)" stroke="#0A0A12" stroke-width="5"/>
+    <circle cx="298" cy="238" r="46" fill="#090A12" stroke="#E5E5E5" stroke-width="7"/><circle cx="298" cy="238" r="31" fill="url(#ll-core)"/><circle cx="288" cy="228" r="8" fill="#FFFFFF" opacity=".72"/>
+  </g>
+  <g fill="#F4F4F6" fill-rule="evenodd">
+    <path d="M382 208 425 86h37l43 122h-31l-8-25h-47l-8 25Zm45-50h31l-16-49Z"/>
+    <path d="m505 86 34 58-38 64h35l22-39 22 39h35l-38-64 34-58h-34l-19 34-19-34Z"/>
+    <path d="M632 86h31v122h-31Z"/>
+    <path d="M684 147c0-40 25-64 65-64s65 24 65 64-25 64-65 64-65-24-65-64Zm31 0c0 25 12 38 34 38s34-13 34-38-12-38-34-38-34 13-34 38Z"/>
+    <path d="M835 208V86h37l35 72 35-72h37v122h-29v-76l-30 62h-26l-30-62v76Z"/>
+  </g>
+  <g fill="#AEB4C2">
+    <path d="M383 263c0-15 11-23 30-23 12 0 22 3 30 8l-8 14c-7-4-14-6-21-6-7 0-11 2-11 6 0 3 3 5 9 6l12 3c15 4 22 11 22 23 0 16-12 25-33 25-14 0-26-4-35-11l9-14c8 6 17 9 26 9 8 0 12-2 12-7 0-3-3-5-10-7l-12-3c-13-3-20-11-20-23Z"/>
+    <path d="M456 242h67v17h-23v58h-21v-58h-23Z"/>
+    <path d="M536 242h21v45c0 11 5 16 15 16s15-5 15-16v-45h21v46c0 21-13 32-36 32s-36-11-36-32Z"/>
+    <path d="M626 317v-75h30c27 0 42 13 42 37s-15 38-42 38Zm21-17h9c14 0 21-7 21-21 0-13-7-20-21-20h-9Z"/>
+    <path d="M715 242h21v75h-21Z"/>
+    <path d="M753 279c0-25 15-40 40-40s40 15 40 40-15 41-40 41-40-16-40-41Zm21 0c0 15 6 23 19 23s19-8 19-23-6-22-19-22-19 7-19 22Z"/>
+  </g>
+</svg>

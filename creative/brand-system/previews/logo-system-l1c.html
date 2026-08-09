@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Axiom Studio — Logo System L1C</title>
+  <style>
+    :root { color-scheme: dark; font-family: Arial, sans-serif; background: #07080c; color: #f7f6f2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #07080c; }
+    main { width: min(1440px, 100%); margin: auto; }
+    .hero { min-height: 820px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 40px; padding: 72px clamp(28px, 6vw, 96px); overflow: hidden; position: relative; background: radial-gradient(circle at 75% 42%, #6a00ff29, transparent 29%), radial-gradient(circle at 65% 55%, #00d9ff17, transparent 36%), linear-gradient(145deg, #111522, #07080c 58%); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(#ffffff08 1px, transparent 1px), linear-gradient(90deg, #ffffff08 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, transparent, #000 30%, transparent); }
+    .copy, .mark { position: relative; z-index: 1; }
+    .eyebrow { color: #aeb4c2; text-transform: uppercase; letter-spacing: .16em; font-size: 12px; }
+    h1 { margin: 18px 0 24px; max-width: 780px; font-size: clamp(58px, 8vw, 118px); line-height: .86; letter-spacing: -.065em; }
+    .copy p { max-width: 600px; color: #aeb4c2; font-size: 18px; line-height: 1.6; }
+    .mark { display: grid; place-items: center; min-height: 630px; }
+    .mark::before { content: ""; position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; background: #6a00ff2c; filter: blur(70px); }
+    .mark img { position: relative; width: min(100%, 620px); filter: drop-shadow(0 34px 45px #000a); }
+    .lockup { padding: 58px clamp(28px, 6vw, 96px); background: #0a0c12; border-top: 1px solid #ffffff12; border-bottom: 1px solid #ffffff12; }
+    .lockup img { display: block; width: min(100%, 980px); margin: auto; }
+    .responsive { display: grid; grid-template-columns: 1fr 1fr; }
+    .field { min-height: 600px; padding: 56px; display: grid; align-content: space-between; }
+    .field.dark { background: #121212; }
+    .field.light { color: #121212; background: #f3f2ee; }
+    h2 { margin: 0; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; }
+    .samples { display: flex; align-items: end; justify-content: center; gap: 40px; }
+    figure { margin: 0; display: grid; justify-items: center; gap: 12px; }
+    figure img { display: block; }
+    .app { width: 240px; height: 240px; }
+    .micro64 { width: 64px; height: 64px; }
+    .micro32 { width: 32px; height: 32px; }
+    figcaption { font-size: 11px; color: #8d94a4; }
+    .motion { padding: 68px clamp(28px, 6vw, 96px) 88px; background: linear-gradient(180deg, #0c0f18, #07080c); }
+    .motion h2 { margin-bottom: 28px; }
+    .groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .group { padding: 24px; min-height: 130px; border: 1px solid #ffffff15; border-radius: 18px; background: #ffffff07; }
+    .group strong { display: block; margin-bottom: 10px; }
+    .group span { color: #9299aa; font-size: 13px; line-height: 1.5; }
+    @media (max-width: 850px) { .hero { grid-template-columns: 1fr; } .mark { min-height: auto; } .responsive { grid-template-columns: 1fr; } .groups { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .groups { grid-template-columns: 1fr; } .field { padding: 32px 20px; } .app { width: 170px; height: 170px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero"><div class="copy"><span class="eyebrow">Logo System L1C · Candidate</span><h1>Precision in motion.</h1><p>A responsive ribbon identity for an AI-native creative operating system—constructed as genuine vector geometry, not a raster effect trapped inside SVG.</p></div><div class="mark"><img src="../assets/logos/l1c/axiom-signature.svg" alt="Axiom precision ribbon signature"></div></section>
+    <section class="lockup"><img src="../assets/logos/l1c/axiom-lockup.svg" alt="Axiom Studio wordmark lockup"></section>
+    <section class="responsive"><article class="field dark"><h2>Graphite field</h2><div class="samples"><figure><img class="app" src="../assets/logos/l1c/axiom-app-icon.svg" alt="Axiom app icon"><figcaption>App icon</figcaption></figure><figure><img class="micro64" src="../assets/logos/l1c/axiom-micro.svg" alt="Axiom 64 pixel mark"><figcaption>64 px</figcaption></figure><figure><img class="micro32" src="../assets/logos/l1c/axiom-micro.svg" alt="Axiom 32 pixel mark"><figcaption>32 px</figcaption></figure></div></article><article class="field light"><h2>Paper field</h2><div class="samples"><figure><img class="app" src="../assets/logos/l1c/axiom-app-icon.svg" alt="Axiom app icon on light background"><figcaption>App icon</figcaption></figure><figure><img class="micro64" src="../assets/logos/l1c/axiom-micro.svg" alt="Axiom 64 pixel mark on light background"><figcaption>64 px</figcaption></figure><figure><img class="micro32" src="../assets/logos/l1c/axiom-micro.svg" alt="Axiom 32 pixel mark on light background"><figcaption>32 px</figcaption></figure></div></article></section>
+    <section class="motion"><h2>Motion-ready anatomy</h2><div class="groups"><div class="group"><strong>Ribbon left</strong><span>Structural rise</span></div><div class="group"><strong>Ribbon crown</strong><span>Apex fold</span></div><div class="group"><strong>Ribbon right</strong><span>Completion sweep</span></div><div class="group"><strong>Prism core</strong><span>Intelligence pulse</span></div><div class="group"><strong>Energy orbits</strong><span>Signal routing</span></div><div class="group"><strong>Surface highlights</strong><span>Final restrained shimmer</span></div></div></section>
+  </main>
+</body>
+</html>

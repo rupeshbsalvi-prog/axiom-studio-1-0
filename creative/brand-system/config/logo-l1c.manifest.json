@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0-candidate.1",
+  "direction": "precision-ribbon-a",
+  "status": "candidate",
+  "supersedesCandidate": "logo-l1b",
+  "variants": {
+    "signature": "../assets/logos/l1c/axiom-signature.svg",
+    "lockup": "../assets/logos/l1c/axiom-lockup.svg",
+    "appIcon": "../assets/logos/l1c/axiom-app-icon.svg",
+    "micro": "../assets/logos/l1c/axiom-micro.svg"
+  },
+  "motionGroups": [
+    "ribbon-left",
+    "ribbon-crown",
+    "ribbon-right",
+    "prism-core",
+    "energy-orbits",
+    "surface-highlights"
+  ]
+}
