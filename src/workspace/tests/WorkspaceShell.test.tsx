@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import { WorkspaceShell } from "../WorkspaceShell";
 import { createProjectDraft } from "../../app/projects/projectDraft";
 import { loadLocalManifests } from "../../runtime/manifest/LocalRuntimeManifestLoader";
@@ -24,6 +24,27 @@ describe("WorkspaceShell Component", () => {
   it("renders correctly with default props", () => {
     render(<WorkspaceShell />);
     expect(screen.getByText("Mission Control Draft")).toBeInTheDocument();
+  });
+
+  it("keeps every Studio inside the shared aligned workspace frame", () => {
+    render(<WorkspaceShell />);
+
+    const shell = screen.getByTestId("studio-shell");
+    expect(shell).toHaveAttribute("data-layout", "studio-shell-v2");
+
+    const navigation = screen.getByRole("complementary", { name: "Studio navigation" });
+    expect(within(navigation).getByRole("img", { name: "Axiom Studio brand logo" })).toHaveAttribute(
+      "src",
+      expect.stringMatching(/axiom-logo-ui-512\.webp$/),
+    );
+
+    const commandBar = screen.getByRole("banner", { name: "Studio command bar" });
+    expect(within(commandBar).getByRole("toolbar", { name: "Workspace commands" })).toBeInTheDocument();
+
+    const productionSurface = screen.getByRole("region", { name: "Studio production surface" });
+    expect(productionSurface).toHaveAttribute("data-layout", "canvas-inspector");
+    expect(within(productionSurface).getByRole("article", { name: "Mission Control workspace" })).toBeInTheDocument();
+    expect(within(productionSurface).getByRole("complementary", { name: "Inspector" })).toBeInTheDocument();
   });
 
   it("passes trusted workspace learning policy to the Brain X runtime", async () => {
