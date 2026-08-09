@@ -675,10 +675,15 @@ export function VectorPanel({ project, onUpdateProject }: VectorPanelProps = {})
   }));
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "300px 1fr 320px", gap: "16px", height: "100%", overflow: "hidden", background: "#090d16", color: "#e2e8f0", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <section
+      className="studio-production-panel studio-production-panel--vector"
+      aria-label="Vector production workspace"
+      data-design-language="axiom-pro-panel-v1"
+      style={{ display: "grid", gridTemplateColumns: "300px 1fr 320px", gap: "16px", height: "100%", overflow: "hidden", background: "#090d16", color: "#e2e8f0", fontFamily: "system-ui, -apple-system, sans-serif" }}
+    >
       
       {/* ── LEFT PANEL: INTAKE & LAYERS ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
+      <aside className="studio-panel-rail studio-panel-rail--planner" aria-label="Vector planner and layers" style={{ display: "flex", flexDirection: "column", gap: "16px", borderRight: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
         
         {/* Vector Planner Intake */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "14px", background: "rgba(99, 102, 241, 0.05)", borderRadius: "10px", border: "1px solid rgba(99, 102, 241, 0.15)" }}>
@@ -913,10 +918,10 @@ export function VectorPanel({ project, onUpdateProject }: VectorPanelProps = {})
             })}
           </div>
         </div>
-      </div>
+      </aside>
 
       {/* ── CENTER WORKSPACE: CANVAS ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px", overflow: "hidden" }}>
+      <section className="studio-panel-canvas" aria-label="Vector canvas" style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "16px", overflow: "hidden" }}>
         
         {/* Canvas Toolbar */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "10px" }}>
@@ -1066,10 +1071,10 @@ export function VectorPanel({ project, onUpdateProject }: VectorPanelProps = {})
             )}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ── RIGHT PANEL: PROPERTIES INSPECTOR ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", borderLeft: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
+      <aside className="studio-panel-rail studio-panel-rail--inspector" aria-label="Vector properties and audit" style={{ display: "flex", flexDirection: "column", gap: "16px", borderLeft: "1px solid rgba(255,255,255,0.05)", padding: "16px", overflowY: "auto" }}>
         
         {/* Properties Inspector Panel */}
         <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "14px", background: "rgba(255,255,255,0.01)", border: "1px solid rgba(255,255,255,0.05)", borderRadius: "10px" }}>
@@ -1295,7 +1300,7 @@ export function VectorPanel({ project, onUpdateProject }: VectorPanelProps = {})
         <div style={{ flex: 1 }}>
           <ReplayAuditPanel events={convertedAuditEvents} />
         </div>
-      </div>
-    </div>
+      </aside>
+    </section>
   );
 }

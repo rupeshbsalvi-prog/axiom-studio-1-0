@@ -3020,6 +3020,17 @@ body {
   border-color: rgba(247, 246, 242, 0.12) !important;
 }
 
+.studio-production-panel--motion {
+  display: flex !important;
+  flex-direction: column;
+  min-width: 720px;
+}
+
+.studio-motion-body { min-height: 0; }
+.studio-production-panel--motion .studio-panel-rail { flex: 0 0 260px; width: auto !important; padding: 0 !important; }
+.studio-panel-canvas--motion { display: flex !important; }
+.studio-motion-timeline { background: rgba(11, 15, 24, 0.94) !important; }
+
 .app-shell * { scrollbar-width: thin; scrollbar-color: rgba(115, 87, 255, 0.55) rgba(247, 246, 242, 0.035); }
 .app-shell *::-webkit-scrollbar { width: 7px; height: 7px; }
 .app-shell *::-webkit-scrollbar-track { background: rgba(247, 246, 242, 0.035); }

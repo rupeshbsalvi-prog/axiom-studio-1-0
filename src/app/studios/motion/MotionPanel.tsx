@@ -225,7 +225,10 @@ export function MotionPanel({ project, onUpdateProject }: MotionPanelProps) {
   };
 
   return (
-    <div
+    <section
+      className="studio-production-panel studio-production-panel--motion"
+      aria-label="Motion production workspace"
+      data-design-language="axiom-pro-panel-v1"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -268,9 +271,11 @@ export function MotionPanel({ project, onUpdateProject }: MotionPanelProps) {
       </header>
 
       {/* Main Workspace split */}
-      <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
+      <div className="studio-motion-body" style={{ display: "flex", flex: 1, overflow: "hidden" }}>
         {/* Left Side: Layer Manager */}
         <aside
+          className="studio-panel-rail studio-panel-rail--planner"
+          aria-label="Motion layers"
           style={{
             width: "280px",
             borderRight: "1px solid rgba(255, 255, 255, 0.05)",
@@ -355,7 +360,9 @@ export function MotionPanel({ project, onUpdateProject }: MotionPanelProps) {
         </aside>
 
         {/* Center: Canvas View & Warnings */}
-        <main
+        <section
+          className="studio-panel-canvas studio-panel-canvas--motion"
+          aria-label="Motion canvas"
           style={{
             flex: 1,
             display: "flex",
@@ -442,11 +449,13 @@ export function MotionPanel({ project, onUpdateProject }: MotionPanelProps) {
               Active Playhead Frame: {playhead}
             </div>
           </div>
-        </main>
+        </section>
       </div>
 
       {/* Bottom Area: Playback Timeline & Scrubbing */}
       <footer
+        className="studio-motion-timeline"
+        aria-label="Motion timeline"
         style={{
           borderTop: "1px solid rgba(255, 255, 255, 0.05)",
           background: "rgba(15, 23, 42, 0.4)",
@@ -522,6 +531,6 @@ export function MotionPanel({ project, onUpdateProject }: MotionPanelProps) {
           </div>
         </div>
       </footer>
-    </div>
+    </section>
   );
 }
