@@ -25,6 +25,14 @@ describe("BrandPanel", () => {
     );
   });
 
+  it("keeps the approved promise visible when the local field is empty", () => {
+    render(<BrandPanel />);
+
+    fireEvent.change(screen.getByRole("textbox", { name: "Brand promise" }), { target: { value: "" } });
+
+    expect(screen.getByRole("region", { name: "Brand identity canvas" })).toHaveTextContent("Create without limits");
+  });
+
   it("switches between identity application previews", () => {
     render(<BrandPanel />);
 
