@@ -47,6 +47,16 @@ describe("WorkspaceShell Component", () => {
     expect(within(productionSurface).getByRole("complementary", { name: "Inspector" })).toBeInTheDocument();
   });
 
+  it("reserves the Mission Control draft form for Mission Control", () => {
+    render(<WorkspaceShell />);
+
+    expect(screen.getByText("Mission Control Draft")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Photo Studio" }));
+
+    expect(screen.queryByText("Mission Control Draft")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Studio utility dock")).toBeInTheDocument();
+  });
+
   it("passes trusted workspace learning policy to the Brain X runtime", async () => {
     const project = createProjectDraft({
       name: "Workspace policy",
