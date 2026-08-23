@@ -59,12 +59,20 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(hero).queryByText(/Graphic designer.?quality finish|No Neon/i)).not.toBeInTheDocument();
 
     const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
-    expect(within(creativeAct).getByText(/AI-native creative operating system/i)).toBeInTheDocument();
+    expect(creativeAct).toHaveAttribute("data-chapter", "two-centers");
+    expect(creativeAct).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(creativeAct).getByText(/Chapter II — The Two Centers/i)).toBeInTheDocument();
+    expect(within(creativeAct).getByRole("heading", { name: /One intention\. Two intelligence layers\./i })).toBeInTheDocument();
+    const brainRole = within(creativeAct).getByRole("article", { name: /Brain X intelligence role/i });
+    expect(within(brainRole).getByText(/Context · policy · continuity/i)).toBeInTheDocument();
+    const imagineRole = within(creativeAct).getByRole("article", { name: /Imagine X intelligence role/i });
+    expect(within(imagineRole).getByText(/Direction · routing · critique/i)).toBeInTheDocument();
     expect(within(creativeAct).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
     expect(within(creativeAct).getByRole("button", { name: /Start Crafting/i })).toBeInTheDocument();
     expect(within(creativeAct).getByRole("link", { name: /Explore Axiom/i })).toBeInTheDocument();
     const orchestration = within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i });
-    expect(orchestration).toHaveAttribute("data-ui-language", "axiom-prism-v2");
+    expect(orchestration).toHaveAttribute("data-ui-language", "atelier-editorial-v3");
+    expect(within(orchestration).getByText(/From intent to editable output/i)).toBeInTheDocument();
     const route = within(orchestration).getByLabelText(/Axiom orchestration route/i);
     expect(within(route).getByText(/Creative intent/i)).toBeInTheDocument();
     expect(within(route).getByText(/Imagine X direction/i)).toBeInTheDocument();
