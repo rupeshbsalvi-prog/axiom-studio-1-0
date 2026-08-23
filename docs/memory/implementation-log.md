@@ -2322,7 +2322,7 @@ GitHub Actions now builds the production site and runs three mobile Lighthouse a
 
 Verification:
 - TDD RED failed against the absent workflow and Lighthouse contract; focused GREEN passed.
-- Full Vitest suite: 111 suites / 896 tests passed.
+- Full Vitest suite: 114 suites / 899 tests passed.
 - Production build and existing package bundle budgets passed.
 - npm audit: zero vulnerabilities.
-- The local Windows Lighthouse process reached the page but could not clean its temporary Chrome profile; the authoritative Linux CI run remains the next checkpoint.
+- PR #13 Linux run `32659826055` passed every enforced budget across the three-run median after mobile cinematic fallback, LCP image preloading, and deferred Three.js/Workspace loading reduced the initial app bundle from 124.8 KB to 77.5 KB gzip.

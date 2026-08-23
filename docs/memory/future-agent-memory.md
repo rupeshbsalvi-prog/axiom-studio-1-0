@@ -24,7 +24,7 @@ ADR-0008 adopts the approved V3 Luxury prototype as a visual reference, not runt
 
 The existing Experience Director, WEOS chapter route, AuthWorkspaceGate, optimized AVIF/WebP sequence, reduced-motion fallback, and Workspace/Studio shell remain intact. Axiom Sans source masters are not a public webfont binary; continue using native fallbacks until the font approval gate completes.
 
-The approved visual migration slices are complete. Pull requests and `main` pushes now run three mobile Lighthouse audits and fail when median LCP exceeds 2.5s, CLS exceeds 0.1, TBT exceeds 300ms, or total transfer exceeds 2MB. Reports remain private CI artifacts on failure. Next: run the first GitHub Actions audit and optimize any failing metric without relaxing the approved budgets. Axiom Sans webfont integration remains separately gated on binary approval.
+The approved visual migration slices are complete. Pull requests and `main` pushes now run three mobile Lighthouse audits and fail when median LCP exceeds 2.5s, CLS exceeds 0.1, TBT exceeds 300ms, or total transfer exceeds 2MB. Reports remain private CI artifacts on failure. PR #13's first Linux audit passed after mobile cinematic fallback and deferred Three.js/Workspace loading reduced the initial app bundle to 77.5 KB gzip. Next: review and merge PR #13, then run the deployed production performance smoke. Axiom Sans webfont integration remains separately gated on binary approval.
 
 ### Latest Quality Checkpoint — 2026-08-01
 
