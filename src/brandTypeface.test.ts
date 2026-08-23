@@ -14,4 +14,18 @@ describe("Axiom public typeface program", () => {
     expect(brief).toMatch(/accessibility/i);
     expect(brief).toMatch(/no font binary is approved/i);
   });
+
+  it("publishes an accessible vector-only AXMR glyph-DNA specimen before any font binary", () => {
+    const specimen = readFileSync("creative/brand-system/assets/type/axiom-sans-glyph-dna-r1.svg", "utf8");
+    const brief = readFileSync("creative/brand-system/docs/axiom-typeface-brief.md", "utf8");
+
+    expect(specimen).toMatch(/<title>Axiom Sans AXMR glyph-DNA specimen<\/title>/i);
+    expect(specimen).toMatch(/role="img"/i);
+    for (const glyph of ["A", "X", "M", "R"]) {
+      expect(specimen).toMatch(new RegExp(`data-glyph="${glyph}"`));
+    }
+    expect(specimen).not.toMatch(/<font|woff|truetype/i);
+    expect(brief).toMatch(/Gate 2.*approved/i);
+    expect(brief).toMatch(/axiom-sans-glyph-dna-r1\.svg/i);
+  });
 });
