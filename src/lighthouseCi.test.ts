@@ -6,6 +6,7 @@ describe("Lighthouse CI", () => {
     const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
     const config = JSON.parse(readFileSync("lighthouserc.json", "utf8"));
     const workflow = readFileSync(".github/workflows/lighthouse.yml", "utf8");
+    const indexHtml = readFileSync("index.html", "utf8");
     const assertions = config.ci.assert.assertions;
 
     expect(packageJson.scripts["lighthouse:ci"]).toBe("npx --yes @lhci/cli@0.15.1 autorun");
@@ -19,5 +20,6 @@ describe("Lighthouse CI", () => {
     expect(workflow).toContain("pull_request:");
     expect(workflow).toContain("npm run lighthouse:ci");
     expect(workflow).toContain("include-hidden-files: true");
+    expect(indexHtml).toMatch(/rel="preload"[^>]+axiom-portal-resolved-960\.avif[^>]+fetchpriority="high"/);
   });
 });

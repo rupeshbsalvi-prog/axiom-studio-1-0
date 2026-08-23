@@ -139,6 +139,9 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-portal-dormant-1672\.webp$/));
     expect(awakening).toHaveAttribute("src", expect.stringMatching(/axiom-portal-awakening-1672\.webp$/));
     expect(resolved).toHaveAttribute("src", expect.stringMatching(/axiom-portal-resolved-1672\.webp$/));
+    expect(resolved).toHaveAttribute("fetchpriority", "high");
+    expect(awakening).toHaveAttribute("fetchpriority", "low");
+    expect(front).toHaveAttribute("fetchpriority", "low");
     const sources = within(reveal).getAllByTestId("cinematic-responsive-source");
     expect(sources).toHaveLength(6);
     expect(sources.map((source) => source.getAttribute("type"))).toEqual([
