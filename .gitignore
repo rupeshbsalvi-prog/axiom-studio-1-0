@@ -10,6 +10,7 @@ apps/api/tests/.runtime-test/
 .venv/
 **/__pycache__/
 coverage/
+.lighthouseci/
 dist/
 apps/playground/dist/
 node_modules/
