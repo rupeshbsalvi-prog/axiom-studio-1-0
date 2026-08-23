@@ -28,4 +28,20 @@ describe("Axiom public typeface program", () => {
     expect(brief).toMatch(/Gate 2.*approved/i);
     expect(brief).toMatch(/axiom-sans-glyph-dna-r1\.svg/i);
   });
+
+  it("publishes lowercase, numeral, and monochrome small-size candidates for Gate 3 review", () => {
+    const specimen = readFileSync("creative/brand-system/assets/type/axiom-sans-gate3-specimen-r1.svg", "utf8");
+    const brief = readFileSync("creative/brand-system/docs/axiom-typeface-brief.md", "utf8");
+
+    expect(specimen).toMatch(/<title>Axiom Sans Gate 3 specimen<\/title>/i);
+    expect(specimen).toMatch(/role="img"/i);
+    for (const glyph of ["a", "e", "g", "n", "0", "1", "2", "8"]) {
+      expect(specimen).toMatch(new RegExp(`data-glyph="${glyph}"`));
+    }
+    expect(specimen).toMatch(/data-mode="small-monochrome"/i);
+    expect(specimen).toMatch(/16 px/i);
+    expect(specimen).not.toMatch(/<font|woff|truetype/i);
+    expect(brief).toMatch(/Gate 3.*in progress/i);
+    expect(brief).toMatch(/axiom-sans-gate3-specimen-r1\.svg/i);
+  });
 });
