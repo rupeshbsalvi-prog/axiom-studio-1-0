@@ -4080,6 +4080,31 @@ body {
   overflow: visible;
 }
 
+.cinematic-prologue {
+  --hero-pointer-x: 50%;
+  --hero-pointer-y: 50%;
+  --hero-shift-x: 0px;
+  --hero-shift-y: 0px;
+  isolation: isolate;
+}
+
+.cinematic-lens {
+  position: absolute;
+  z-index: 1;
+  inset: -8%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--hero-pointer-x) var(--hero-pointer-y), rgba(54, 214, 231, 0.2), transparent 19%),
+    radial-gradient(circle at calc(100% - var(--hero-pointer-x)) calc(100% - var(--hero-pointer-y)), rgba(115, 87, 255, 0.16), transparent 24%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 74px, rgba(247, 246, 242, 0.035) 75px 76px);
+  filter: saturate(125%);
+  mask-image: radial-gradient(ellipse at center, black 22%, transparent 74%);
+  opacity: 0.82;
+  transform: translate3d(var(--hero-shift-x), var(--hero-shift-y), 0) scale(1.04);
+  transition: opacity 220ms ease;
+  will-change: transform;
+}
+
 .signature-name,
 .signature-promise {
   position: absolute;
@@ -4181,6 +4206,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .mind-profile { animation: none; }
+  .cinematic-lens { transform: none; transition: none; }
 }
 
 /* Scroll-world route: the existing WEOS camera remains the single animation engine. */

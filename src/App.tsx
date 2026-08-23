@@ -1,4 +1,4 @@
-import { type KeyboardEvent, useEffect, useMemo, useState } from "react";
+import { type KeyboardEvent, type PointerEvent, useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, ChevronRight, Cpu, FileArchive, Sparkles } from "lucide-react";
 import { STUDIO_REGISTRY } from "./app/studios/registry";
 import {
@@ -164,6 +164,39 @@ function useExperienceDirectorState(): ExperienceDirectorState {
 function LandingExperience({ onStartCreating }: { onStartCreating: () => void }) {
   const directorState = useExperienceDirectorState();
   const directorCue = directorState.cue;
+  const prologueRef = useRef<HTMLDivElement>(null);
+  const prologueFrame = useRef(0);
+  const prologuePointer = useRef({ x: 0, y: 0 });
+
+  useEffect(() => () => window.cancelAnimationFrame(prologueFrame.current), []);
+
+  const resetProloguePointer = () => {
+    window.cancelAnimationFrame(prologueFrame.current);
+    prologueFrame.current = 0;
+    prologueRef.current?.style.setProperty("--hero-pointer-x", "50%");
+    prologueRef.current?.style.setProperty("--hero-pointer-y", "50%");
+    prologueRef.current?.style.setProperty("--hero-shift-x", "0px");
+    prologueRef.current?.style.setProperty("--hero-shift-y", "0px");
+  };
+
+  const directPrologue = (event: PointerEvent<HTMLDivElement>) => {
+    if (directorState.reducedMotion) return;
+    prologuePointer.current = { x: event.clientX, y: event.clientY };
+    if (prologueFrame.current) return;
+
+    prologueFrame.current = window.requestAnimationFrame(() => {
+      prologueFrame.current = 0;
+      const prologue = prologueRef.current;
+      if (!prologue) return;
+      const bounds = prologue.getBoundingClientRect();
+      const x = Math.min(Math.max((prologuePointer.current.x - bounds.left) / Math.max(bounds.width, 1), 0), 1);
+      const y = Math.min(Math.max((prologuePointer.current.y - bounds.top) / Math.max(bounds.height, 1), 0), 1);
+      prologue.style.setProperty("--hero-pointer-x", `${Math.round(x * 100)}%`);
+      prologue.style.setProperty("--hero-pointer-y", `${Math.round(y * 100)}%`);
+      prologue.style.setProperty("--hero-shift-x", `${Math.round((x - 0.5) * 20)}px`);
+      prologue.style.setProperty("--hero-shift-y", `${Math.round((y - 0.5) * 14)}px`);
+    });
+  };
   const scrollToChapter = (chapterIndex: number) => {
     if (typeof window === "undefined" || typeof document === "undefined") {
       return;
@@ -257,7 +290,16 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
       </nav>
 
       <section className="landing-hero" aria-label="Axiom Studio landing hero">
-        <div className="signature-hero" role="region" aria-label="Axiom signature hero">
+        <div
+          className="signature-hero cinematic-prologue"
+          data-motion-system="cinematic-pointer-field-v1"
+          ref={prologueRef}
+          role="region"
+          aria-label="Axiom signature hero"
+          onPointerLeave={resetProloguePointer}
+          onPointerMove={directPrologue}
+        >
+          <div className="cinematic-lens" aria-hidden="true" />
           <div className="signature-name">
             <p>Creative intelligence platform</p>
             <h1>Axiom Studio</h1>
