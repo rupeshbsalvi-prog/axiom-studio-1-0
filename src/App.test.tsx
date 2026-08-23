@@ -113,7 +113,7 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(proof).getByText(/^Craft$/i)).toBeInTheDocument();
     expect(within(proof).getByText(/^Deliver$/i)).toBeInTheDocument();
 
-    expect(within(conversion).getByText(/30-day full-platform trial/i)).toBeInTheDocument();
+    expect(within(conversion).getByText(/30-Day Free Trial/i)).toBeInTheDocument();
     expect(within(conversion).getByText(/^Creator$/i)).toBeInTheDocument();
     expect(within(conversion).getByText(/^Enterprise$/i)).toBeInTheDocument();
     expect(within(conversion).getByRole("button", { name: /Start Creating/i })).toBeInTheDocument();

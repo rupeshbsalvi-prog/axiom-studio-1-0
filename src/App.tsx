@@ -511,8 +511,8 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
 
           <aside className="access-ledger" aria-label="Axiom access paths">
             <span>Start here</span>
-            <strong>30-day full-platform trial</strong>
-            <p>Explore the Studios and Imagine X planning before choosing the path that fits your work.</p>
+            <strong>30-Day Free Trial</strong>
+            <p>Explore full-platform Studio and Imagine X access before choosing the path that fits your work.</p>
             <div className="access-paths">
               {accessPaths.map((plan) => <span key={plan}>{plan}</span>)}
             </div>
