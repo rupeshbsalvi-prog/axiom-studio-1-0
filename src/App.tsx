@@ -14,6 +14,8 @@ import { AuthWorkspaceGate } from "./auth/AuthWorkspaceGate";
 import brandLogoUi from "../creative/brand-system/assets/logos/r1/axiom-logo-ui-512.webp";
 import brandLogoDisplay from "../creative/brand-system/assets/logos/r1/axiom-logo-display-1024.webp";
 import brandLogoHero from "../creative/brand-system/assets/logos/r1/axiom-logo-hero-2048.webp";
+import awakeningFront from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front.png";
+import awakeningReveal from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal.png";
 
 
 const philosophyCards = [
@@ -167,8 +169,38 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   const prologueRef = useRef<HTMLDivElement>(null);
   const prologueFrame = useRef(0);
   const prologuePointer = useRef({ x: 0, y: 0 });
+  const awakeningRef = useRef<HTMLElement>(null);
+  const awakeningFrame = useRef(0);
 
   useEffect(() => () => window.cancelAnimationFrame(prologueFrame.current), []);
+
+  useEffect(() => {
+    const updateReveal = () => {
+      awakeningFrame.current = 0;
+      const reveal = awakeningRef.current;
+      if (!reveal) return;
+      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+        reveal.style.setProperty("--reveal-clip", "0%");
+        return;
+      }
+      const bounds = reveal.getBoundingClientRect();
+      const travel = Math.max(bounds.height - window.innerHeight, 1);
+      const progress = Math.min(Math.max(-bounds.top / travel, 0), 1);
+      reveal.style.setProperty("--reveal-clip", `${Math.round(progress * 100)}%`);
+    };
+    const requestReveal = () => {
+      if (!awakeningFrame.current) awakeningFrame.current = window.requestAnimationFrame(updateReveal);
+    };
+
+    updateReveal();
+    window.addEventListener("scroll", requestReveal, { passive: true });
+    window.addEventListener("resize", requestReveal);
+    return () => {
+      window.cancelAnimationFrame(awakeningFrame.current);
+      window.removeEventListener("scroll", requestReveal);
+      window.removeEventListener("resize", requestReveal);
+    };
+  }, []);
 
   const resetProloguePointer = () => {
     window.cancelAnimationFrame(prologueFrame.current);
@@ -338,6 +370,24 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </div>
 
         <div className="hero-scroll-cue" aria-hidden="true"><span />Scroll to awaken Imagine X</div>
+      </section>
+
+      <section
+        ref={awakeningRef}
+        className="cinematic-image-reveal"
+        data-motion-system="scroll-image-reveal-v1"
+        role="region"
+        aria-label="Axiom awakening reveal"
+      >
+        <div className="cinematic-reveal-stage">
+          <img src={awakeningReveal} alt="Awakened Axiom creative core" loading="lazy" decoding="async" />
+          <img className="cinematic-reveal-front" src={awakeningFront} alt="Dormant Axiom creative core" loading="lazy" decoding="async" />
+          <div className="cinematic-reveal-seam" aria-hidden="true" />
+          <div className="cinematic-reveal-copy">
+            <p>From intent to intelligence</p>
+            <h2>Scroll to awaken the creative core.</h2>
+          </div>
+        </div>
       </section>
 
       <section className="creative-operating-act" role="region" aria-label="Imagine X creative operating system">
