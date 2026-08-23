@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Eth.ss04" format="2">
+  <advance width="690"/>
+  <anchor x="353" y="0" name="bottom"/>
+  <anchor x="118" y="496" name="stroke"/>
+  <anchor x="353" y="700" name="top"/>
+  <outline>
+    <component base="D.ss04" xOffset="52"/>
+    <component base="strokemidcomb" xOffset="-34"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.ComponentInfo</key>
+      <array>
+        <dict>
+          <key>alignment</key>
+          <integer>-1</integer>
+          <key>index</key>
+          <integer>0</integer>
+          <key>name</key>
+          <string>D.ss04</string>
+        </dict>
+        <dict>
+          <key>alignment</key>
+          <integer>1</integer>
+          <key>index</key>
+          <integer>1</integer>
+          <key>name</key>
+          <string>strokemidcomb</string>
+        </dict>
+      </array>
+    </dict>
+  </lib>
+</glyph>

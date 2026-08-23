@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="tlinebelow" format="2">
+  <advance width="456"/>
+  <unicode hex="1E6F"/>
+  <anchor x="232" y="0" name="bottom"/>
+  <anchor x="280" y="757" name="sidecaron"/>
+  <anchor x="213" y="644" name="top"/>
+  <outline>
+    <contour>
+      <point x="136" y="-170" type="line"/>
+      <point x="400" y="-170" type="line"/>
+      <point x="400" y="-70" type="line"/>
+      <point x="136" y="-70" type="line"/>
+    </contour>
+    <component base="t"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.shapeOrder</key>
+      <string>CP</string>
+    </dict>
+  </lib>
+</glyph>

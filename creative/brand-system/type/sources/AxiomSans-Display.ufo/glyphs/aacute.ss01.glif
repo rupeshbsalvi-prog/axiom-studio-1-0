@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="aacute.ss01" format="2">
+  <advance width="660"/>
+  <anchor x="311" y="0" name="bottom"/>
+  <anchor x="546" y="0" name="ogonek"/>
+  <anchor x="320" y="496" name="top"/>
+  <outline>
+    <component base="a.ss01"/>
+    <component base="acutecomb" xOffset="204"/>
+  </outline>
+</glyph>

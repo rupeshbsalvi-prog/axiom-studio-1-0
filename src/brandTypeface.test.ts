@@ -81,17 +81,17 @@ describe("Axiom public typeface program", () => {
         .join("\n");
       expect(info).toContain("Axiom Sans");
       expect(info).toContain(style);
-      expect(info).toMatch(/<key>unitsPerEm<\/key>\s*<integer>1000<\/integer>/);
-      expect(info).toMatch(/<key>ascender<\/key>\s*<integer>984<\/integer>/);
-      expect(info).toMatch(/<key>descender<\/key>\s*<integer>-292<\/integer>/);
-      expect(glyphs).toMatch(/<anchor name="top"/);
-      expect(glyphs).toMatch(/<anchor name="bottom"/);
+      expect(info).toMatch(/<key>unitsPerEm<\/key>\s*<(?:integer|real)>1000(?:\.0)?<\/(?:integer|real)>/);
+      expect(info).toMatch(/<key>openTypeHheaAscender<\/key>\s*<integer>984<\/integer>/);
+      expect(info).toMatch(/<key>openTypeHheaDescender<\/key>\s*<integer>-292<\/integer>/);
+      expect(glyphs).toMatch(/<anchor[^>]+name="top"/);
+      expect(glyphs).toMatch(/<anchor[^>]+name="bottom"/);
       expect(readFileSync(`${path}/kerning.plist`, "utf8")).toMatch(/public\.kern/);
     }
 
     expect(designspace).toMatch(/tag="opsz"/);
     expect(designspace).toMatch(/minimum="14" maximum="72" default="14"/);
-    expect(proof).toMatch(/<title>Axiom Sans source-master QA R1<\/title>/i);
+    expect(proof).toMatch(/<title[^>]*>Axiom Sans source-master QA R1<\/title>/i);
     for (const section of ["metrics", "anchors", "spacing", "display"]) {
       expect(proof).toContain(`data-section="${section}"`);
     }

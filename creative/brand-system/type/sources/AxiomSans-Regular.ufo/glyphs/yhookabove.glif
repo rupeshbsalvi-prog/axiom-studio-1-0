@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="yhookabove" format="2">
+  <advance width="612.45"/>
+  <unicode hex="1EF7"/>
+  <anchor x="623.79" y="-29.82" name="bottom"/>
+  <anchor x="303.87" y="488.9" name="top"/>
+  <outline>
+    <component base="y"/>
+    <component base="hookabovecomb" xOffset="151.57999999999998" yOffset="-10.0"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.ComponentInfo</key>
+      <array>
+        <dict>
+          <key>alignment</key>
+          <integer>-1</integer>
+          <key>index</key>
+          <integer>1</integer>
+          <key>name</key>
+          <string>hookabovecomb</string>
+        </dict>
+      </array>
+    </dict>
+  </lib>
+</glyph>

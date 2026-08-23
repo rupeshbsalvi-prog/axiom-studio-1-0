@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="J.ss04" format="2">
+  <advance width="548.5799999999999"/>
+  <anchor x="431.94" y="700.0" name="top"/>
+  <outline>
+    <contour>
+      <point x="262.74" y="-14.0" type="curve" smooth="yes"/>
+      <point x="400.44999999999993" y="-14.0"/>
+      <point x="473.79999999999995" y="64.28999999999999"/>
+      <point x="473.79999999999995" y="210.0" type="curve" smooth="yes"/>
+      <point x="473.79999999999995" y="700.0" type="line"/>
+      <point x="390.08" y="700.0" type="line"/>
+      <point x="390.08" y="210.0" type="line" smooth="yes"/>
+      <point x="390.08" y="121.28"/>
+      <point x="354.65999999999997" y="61.98"/>
+      <point x="262.28999999999996" y="61.98" type="curve" smooth="yes"/>
+      <point x="170.17999999999998" y="61.98"/>
+      <point x="124.23999999999998" y="121.57"/>
+      <point x="124.23999999999998" y="210.0" type="curve" smooth="yes"/>
+      <point x="124.23999999999998" y="263.92999999999995" type="line"/>
+      <point x="40.519999999999996" y="263.92999999999995" type="line"/>
+      <point x="40.519999999999996" y="210.0" type="line" smooth="yes"/>
+      <point x="40.519999999999996" y="65.44999999999999"/>
+      <point x="125.84" y="-14.0"/>
+    </contour>
+  </outline>
+</glyph>

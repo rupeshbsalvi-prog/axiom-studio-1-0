@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="IJ.ss04" format="2">
+  <advance width="582.8399999999999"/>
+  <outline>
+    <contour>
+      <point x="297.0" y="-14.0" type="curve" smooth="yes"/>
+      <point x="434.7099999999999" y="-14.0"/>
+      <point x="508.05999999999995" y="64.28999999999999"/>
+      <point x="508.05999999999995" y="210.0" type="curve" smooth="yes"/>
+      <point x="508.05999999999995" y="700.0" type="line"/>
+      <point x="424.34" y="700.0" type="line"/>
+      <point x="424.34" y="210.0" type="line" smooth="yes"/>
+      <point x="424.34" y="121.28"/>
+      <point x="388.91999999999996" y="61.98"/>
+      <point x="296.54999999999995" y="61.98" type="curve" smooth="yes"/>
+      <point x="204.43999999999997" y="61.98"/>
+      <point x="158.5" y="121.57"/>
+      <point x="158.5" y="210.0" type="curve" smooth="yes"/>
+      <point x="158.5" y="250.58999999999997" type="line"/>
+      <point x="74.78" y="250.58999999999997" type="line"/>
+      <point x="74.78" y="210.0" type="line" smooth="yes"/>
+      <point x="74.78" y="65.44999999999999"/>
+      <point x="160.1" y="-14.0"/>
+    </contour>
+    <contour>
+      <point x="74.78" y="368.99" type="line"/>
+      <point x="158.5" y="368.99" type="line"/>
+      <point x="158.5" y="700.0" type="line"/>
+      <point x="74.78" y="700.0" type="line"/>
+    </contour>
+  </outline>
+</glyph>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="dblgravecomb" format="2">
+  <unicode hex="030F"/>
+  <anchor x="232.38" y="488.9" name="_top"/>
+  <outline>
+    <contour>
+      <point x="139.94" y="554.8399999999999" type="line"/>
+      <point x="210.82999999999998" y="554.8399999999999" type="line"/>
+      <point x="142.31" y="691.48" type="line"/>
+      <point x="54.199999999999996" y="691.48" type="line"/>
+    </contour>
+    <contour>
+      <point x="287.32" y="554.8399999999999" type="line"/>
+      <point x="356.91999999999996" y="554.8399999999999" type="line"/>
+      <point x="298.98" y="691.48" type="line"/>
+      <point x="215.76999999999998" y="691.48" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.originalWidth</key>
+      <integer>403</integer>
+    </dict>
+  </lib>
+</glyph>

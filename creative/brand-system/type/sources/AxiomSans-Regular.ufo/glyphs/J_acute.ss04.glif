@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Jacute.ss04" format="2">
+  <advance width="548.5799999999999"/>
+  <anchor x="431.94" y="700.0" name="top"/>
+  <outline>
+    <component base="J.ss04"/>
+    <component base="acutecomb.case" xOffset="321.75"/>
+  </outline>
+</glyph>

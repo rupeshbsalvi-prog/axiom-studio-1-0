@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Bstroke.ss04" format="2">
+  <advance width="633.74"/>
+  <anchor x="80.19999999999999" y="335.79999999999995" name="strokeB"/>
+  <outline>
+    <component base="B.ss04"/>
+    <component base="strokemidcomb" xOffset="-59.92999999999999" yOffset="-153.1"/>
+  </outline>
+</glyph>

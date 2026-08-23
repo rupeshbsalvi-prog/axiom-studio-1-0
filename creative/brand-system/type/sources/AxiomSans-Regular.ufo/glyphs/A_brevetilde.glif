@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Abrevetilde" format="2">
+  <advance width="629.74"/>
+  <unicode hex="1EB4"/>
+  <anchor x="314.87" y="0.0" name="bottom"/>
+  <anchor x="562.36" y="0.0" name="ogonek"/>
+  <anchor x="314.87" y="1019.15" name="top"/>
+  <outline>
+    <component base="A"/>
+    <component base="brevecomb.case" xOffset="111.58"/>
+    <component base="tildecomb.case" xOffset="94.57999999999998" yOffset="160.82999999999998"/>
+  </outline>
+</glyph>

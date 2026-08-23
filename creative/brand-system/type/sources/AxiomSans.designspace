@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<designspace format="5.0">
+  <axes>
+    <axis tag="opsz" name="Optical size" minimum="14" maximum="72" default="14"/>
+  </axes>
+  <sources>
+    <source filename="AxiomSans-Regular.ufo" name="Axiom Sans Regular" familyname="Axiom Sans" stylename="Regular">
+      <lib copy="1"/>
+      <groups copy="1"/>
+      <features copy="1"/>
+      <info copy="1"/>
+      <location><dimension name="Optical size" xvalue="14"/></location>
+    </source>
+    <source filename="AxiomSans-Display.ufo" name="Axiom Sans Display" familyname="Axiom Sans" stylename="Display">
+      <location><dimension name="Optical size" xvalue="72"/></location>
+    </source>
+  </sources>
+</designspace>

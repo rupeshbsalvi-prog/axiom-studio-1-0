@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Ibreve.ss05" format="2">
+  <advance width="409.21"/>
+  <anchor x="204.25" y="0.0" name="bottom"/>
+  <anchor x="204.25" y="0.0" name="ogonek"/>
+  <anchor x="204.25" y="860.8299999999999" name="top"/>
+  <outline>
+    <component base="I.ss05"/>
+    <component base="brevecomb.case" xOffset="0.96"/>
+  </outline>
+</glyph>

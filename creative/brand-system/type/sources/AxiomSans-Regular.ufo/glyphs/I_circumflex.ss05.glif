@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Icircumflex.ss05" format="2">
+  <advance width="409.21"/>
+  <anchor x="204.25" y="0.0" name="bottom"/>
+  <anchor x="204.25" y="0.0" name="ogonek"/>
+  <anchor x="204.25" y="865.22" name="top"/>
+  <anchor x="380.10999999999996" y="777.94" name="side"/>
+  <outline>
+    <component base="I.ss05"/>
+    <component base="circumflexcomb.case" xOffset="-24.199999999999996"/>
+  </outline>
+</glyph>

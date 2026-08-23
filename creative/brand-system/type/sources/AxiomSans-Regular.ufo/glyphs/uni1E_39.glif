@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni1E39" format="2">
+  <advance width="244.7"/>
+  <unicode hex="1E39"/>
+  <anchor x="122.35" y="0.0" name="bottom"/>
+  <anchor x="161.92" y="700.0" name="sidecaron"/>
+  <anchor x="122.35" y="839.8" name="top"/>
+  <outline>
+    <component base="l"/>
+    <component base="dotbelowcomb" xOffset="7.739999999999999"/>
+    <component base="macroncomb.case" xOffset="-85.91"/>
+  </outline>
+</glyph>

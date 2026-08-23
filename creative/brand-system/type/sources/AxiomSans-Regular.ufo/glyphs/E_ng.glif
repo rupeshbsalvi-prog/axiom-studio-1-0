@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Eng" format="2">
+  <advance width="663.61"/>
+  <unicode hex="014A"/>
+  <outline>
+    <contour>
+      <point x="80.19999999999999" y="0.0" type="line"/>
+      <point x="163.92" y="0.0" type="line"/>
+      <point x="163.92" y="647.6299999999999" type="line"/>
+      <point x="177.66" y="647.6299999999999" type="line"/>
+      <point x="420.45" y="0.0" type="line"/>
+      <point x="583.41" y="0.0" type="line"/>
+      <point x="583.41" y="700.0" type="line"/>
+      <point x="499.69" y="700.0" type="line"/>
+      <point x="499.69" y="53.08" type="line"/>
+      <point x="485.94999999999993" y="53.08" type="line"/>
+      <point x="243.15999999999997" y="700.0" type="line"/>
+      <point x="80.19999999999999" y="700.0" type="line"/>
+    </contour>
+    <contour>
+      <point x="369.62" y="-200.0" type="line"/>
+      <point x="497.54999999999995" y="-200.0" type="line" smooth="yes"/>
+      <point x="550.06" y="-200.0"/>
+      <point x="583.41" y="-171.2"/>
+      <point x="583.41" y="-114.97999999999999" type="curve" smooth="yes"/>
+      <point x="583.41" y="0.0" type="line"/>
+      <point x="502.27" y="0.0" type="line"/>
+      <point x="502.27" y="-101.5" type="line" smooth="yes"/>
+      <point x="502.27" y="-121.5"/>
+      <point x="493.68999999999994" y="-131.5"/>
+      <point x="473.55999999999995" y="-131.5" type="curve" smooth="yes"/>
+      <point x="369.62" y="-131.5" type="line"/>
+    </contour>
+  </outline>
+</glyph>

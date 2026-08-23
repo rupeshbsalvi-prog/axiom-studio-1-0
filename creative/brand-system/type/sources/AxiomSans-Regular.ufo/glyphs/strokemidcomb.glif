@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="strokemidcomb" format="2">
+  <advance width="447.92999999999995"/>
+  <anchor x="169.75" y="488.9" name="_stroke"/>
+  <anchor x="140.13" y="488.9" name="_strokeB"/>
+  <anchor x="223.60999999999999" y="488.9" name="_strokeC"/>
+  <outline>
+    <contour>
+      <point x="72.07" y="315.94" type="line"/>
+      <point x="375.15" y="315.94" type="line"/>
+      <point x="375.15" y="377.53999999999996" type="line"/>
+      <point x="72.07" y="377.53999999999996" type="line"/>
+    </contour>
+  </outline>
+</glyph>

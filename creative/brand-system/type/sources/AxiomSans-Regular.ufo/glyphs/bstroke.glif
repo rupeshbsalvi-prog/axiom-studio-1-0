@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="bstroke" format="2">
+  <advance width="643.68"/>
+  <unicode hex="0180"/>
+  <anchor x="82.78" y="488.9" name="strokeA"/>
+  <outline>
+    <component base="b"/>
+    <component base="strokeshortcomb" xOffset="-48.52"/>
+  </outline>
+</glyph>

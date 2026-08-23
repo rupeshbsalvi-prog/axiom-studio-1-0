@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Jcircumflex.ss04" format="2">
+  <advance width="548.5799999999999"/>
+  <anchor x="431.94" y="865.22" name="top"/>
+  <anchor x="607.8" y="777.94" name="side"/>
+  <outline>
+    <component base="J.ss04"/>
+    <component base="circumflexcomb.case" xOffset="203.48999999999998"/>
+  </outline>
+</glyph>

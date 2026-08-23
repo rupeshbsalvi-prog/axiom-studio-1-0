@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="acutecomb_side" format="2">
+  <anchor x="108.91" y="488.9" name="_side"/>
+  <outline>
+    <contour>
+      <point x="54.199999999999996" y="555.6800000000001" type="line"/>
+      <point x="123.66999999999999" y="555.6800000000001" type="line"/>
+      <point x="196.96" y="700.0" type="line"/>
+      <point x="111.88" y="700.0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.originalWidth</key>
+      <integer>250</integer>
+    </dict>
+  </lib>
+</glyph>

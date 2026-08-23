@@ -37,6 +37,12 @@ This checkpoint does not complete Gate 3. Latin Extended coverage, `I/l/1` and `
 
 The displayed repertoire rows are construction scaffolding based on the selected Space Grotesk foundation; they are not finished Axiom Sans outlines. The approved Axiom glyph DNA remains defined by the earlier vector studies. Gate 3 is still in progress until source masters implement this repertoire and pass rendered proofing.
 
+### Source masters R1
+
+**Source masters R1 are implemented** as private UFO sources for Regular and Display, connected by an optical-size designspace and reviewed in the rendered [`source-master QA proof`](../type/proofs/axiom-sans-source-qa-r1.svg). Both retain the approved Space Grotesk foundation's Latin coverage, anchors, kerning groups, and vertical metrics. Display currently uses the inherited bold geometry as its evaluation endpoint; Axiom-specific outline refinement and interpolation QA remain open.
+
+This checkpoint approves editable sources and the QA proof only. No font binary is approved, published, or connected to the product runtime.
+
 ## Accessibility and production checks
 
 - Body text must preserve legibility at 12–16 px and meet WCAG-oriented readability checks in light and dark UI.

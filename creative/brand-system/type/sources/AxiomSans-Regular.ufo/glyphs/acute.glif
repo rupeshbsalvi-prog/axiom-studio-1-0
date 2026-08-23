@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="acute" format="2">
+  <advance width="280.38"/>
+  <unicode hex="00B4"/>
+  <anchor x="54.199999999999996" y="554.8399999999999" name="_ringacute"/>
+  <outline>
+    <component base="acutecomb"/>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.ComponentInfo</key>
+      <array>
+        <dict>
+          <key>alignment</key>
+          <integer>-1</integer>
+          <key>index</key>
+          <integer>0</integer>
+          <key>name</key>
+          <string>acutecomb</string>
+        </dict>
+      </array>
+    </dict>
+  </lib>
+</glyph>

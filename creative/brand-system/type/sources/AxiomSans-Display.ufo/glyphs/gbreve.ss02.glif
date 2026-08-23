@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="gbreve.ss02" format="2">
+  <advance width="528"/>
+  <anchor x="257" y="688" name="top"/>
+  <outline>
+    <component base="g.ss02"/>
+    <component base="brevecomb" xOffset="51"/>
+  </outline>
+</glyph>

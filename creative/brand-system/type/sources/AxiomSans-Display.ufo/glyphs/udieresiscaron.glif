@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="udieresiscaron" format="2">
+  <advance width="616"/>
+  <unicode hex="01DA"/>
+  <anchor x="304" y="0" name="bottom"/>
+  <anchor x="546" y="496" name="horn"/>
+  <anchor x="484" y="0" name="ogonek"/>
+  <anchor x="306" y="854" name="top"/>
+  <outline>
+    <component base="u"/>
+    <component base="dieresiscomb" xOffset="82"/>
+    <component base="caroncomb" xOffset="74" yOffset="188"/>
+  </outline>
+</glyph>

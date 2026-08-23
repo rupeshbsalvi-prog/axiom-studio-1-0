@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="tildecomb" format="2">
+  <unicode hex="0303"/>
+  <anchor x="214.60999999999996" y="488.9" name="_top"/>
+  <anchor x="214.60999999999996" y="632.76" name="top"/>
+  <outline>
+    <contour>
+      <point x="104.03" y="545.55" type="line"/>
+      <point x="128.55" y="588.72" type="line" smooth="yes"/>
+      <point x="136.42" y="601.5899999999999"/>
+      <point x="144.57999999999998" y="611.2"/>
+      <point x="159.60999999999999" y="611.2" type="curve" smooth="yes"/>
+      <point x="174.76999999999998" y="611.2"/>
+      <point x="186.35" y="596.78"/>
+      <point x="202.60999999999999" y="578.68" type="curve" smooth="yes"/>
+      <point x="225.73999999999998" y="552.5799999999999"/>
+      <point x="244.60999999999999" y="542.0"/>
+      <point x="272.9" y="542.0" type="curve" smooth="yes"/>
+      <point x="304.06" y="542.0"/>
+      <point x="327.38" y="558.42"/>
+      <point x="342.40999999999997" y="585.3199999999999" type="curve" smooth="yes"/>
+      <point x="373.28" y="641.61" type="line"/>
+      <point x="323.45" y="670.6999999999999" type="line"/>
+      <point x="298.92999999999995" y="627.53" type="line" smooth="yes"/>
+      <point x="291.05999999999995" y="614.66"/>
+      <point x="282.9" y="605.05"/>
+      <point x="267.87" y="605.05" type="curve" smooth="yes"/>
+      <point x="252.70999999999998" y="605.05"/>
+      <point x="241.13" y="619.47"/>
+      <point x="224.87" y="637.5699999999999" type="curve" smooth="yes"/>
+      <point x="201.74" y="663.67"/>
+      <point x="182.87" y="674.25"/>
+      <point x="154.57999999999998" y="674.25" type="curve" smooth="yes"/>
+      <point x="123.41999999999999" y="674.25"/>
+      <point x="100.1" y="657.8299999999999"/>
+      <point x="85.07" y="630.93" type="curve" smooth="yes"/>
+      <point x="54.199999999999996" y="574.64" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>com.schriftgestaltung.Glyphs.originalWidth</key>
+      <integer>424</integer>
+    </dict>
+  </lib>
+</glyph>

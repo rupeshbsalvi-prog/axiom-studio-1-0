@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="guillemetleft.case" format="2">
+  <advance width="683.0799999999999"/>
+  <outline>
+    <contour>
+      <point x="607.66" y="111.62" type="line"/>
+      <point x="613.66" y="111.62" type="line"/>
+      <point x="613.66" y="197.21" type="line"/>
+      <point x="392.19" y="332.54999999999995" type="line"/>
+      <point x="392.19" y="344.87" type="line"/>
+      <point x="613.66" y="480.21" type="line"/>
+      <point x="613.66" y="565.8" type="line"/>
+      <point x="607.66" y="565.8" type="line"/>
+      <point x="319.34" y="384.7" type="line"/>
+      <point x="319.34" y="292.71999999999997" type="line"/>
+    </contour>
+    <contour>
+      <point x="340.32" y="111.62" type="line"/>
+      <point x="346.32" y="111.62" type="line"/>
+      <point x="346.32" y="197.21" type="line"/>
+      <point x="124.85" y="332.54999999999995" type="line"/>
+      <point x="124.85" y="344.87" type="line"/>
+      <point x="346.32" y="480.21" type="line"/>
+      <point x="346.32" y="565.8" type="line"/>
+      <point x="340.32" y="565.8" type="line"/>
+      <point x="52.0" y="384.7" type="line"/>
+      <point x="52.0" y="292.71999999999997" type="line"/>
+    </contour>
+  </outline>
+</glyph>
