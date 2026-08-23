@@ -92,8 +92,9 @@ describe("AuthWorkspaceGate", () => {
     );
     await user.click(screen.getByRole("button", { name: "Continue locally" }));
 
-    expect(screen.getByRole("region", { name: "Workspace shell" })).toHaveTextContent("Local workspace");
-    expect(screen.getByRole("region", { name: "Workspace shell" })).toHaveTextContent("required_unavailable");
+    const workspace = await screen.findByRole("region", { name: "Workspace shell" });
+    expect(workspace).toHaveTextContent("Local workspace");
+    expect(workspace).toHaveTextContent("required_unavailable");
   });
 
   it("never selects even the only membership without explicit confirmation", async () => {

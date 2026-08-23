@@ -6,6 +6,7 @@ import App from "./App";
 async function enterLocalWorkspace(user: ReturnType<typeof userEvent.setup>) {
   await user.click(screen.getByRole("button", { name: /Start Crafting/i }));
   await user.click(await screen.findByRole("button", { name: /Continue locally/i }));
+  await screen.findByTestId("studio-shell");
 }
 
 describe("Axiom Studio 1.0 shell", () => {
