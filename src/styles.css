@@ -4496,7 +4496,7 @@ body {
 .landing-nav-links a:hover::after,
 .landing-nav-links a:focus-visible::after { right: 0; left: 0; }
 
-.landing-header .ghost-button {
+.landing-experience .landing-header .ghost-button {
   min-height: auto;
   padding: 9px 0;
   color: var(--axiom-warm-ink);

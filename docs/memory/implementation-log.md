@@ -2,6 +2,12 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Luxury Editorial Hero and Navigation
+
+Accepted ADR-0008 and extracted the approved V3 Luxury prototype into a runtime-safe migration specification. TDD added the public editorial contract first, then migrated the existing persistent navigation and three-state cinematic hero to warm-paper, charcoal, brass, and editorial typography without copying the prototype runtime or embedded media. The first viewport now contains explicit Start Creating and Explore Axiom actions, truthful public copy, keyboard focus, responsive layout, and the existing reduced-motion fallback.
+
+Verification: RED failed on the missing editorial contract; GREEN passed all 9 App tests. `src/App.tsx` coverage is 88.34% statements, 93.54% functions, and 89% lines. Production TypeScript/Vite build and manifest generation pass. Desktop visual acceptance passes at 1280×720; mobile geometry passes at 390×844 with zero horizontal overflow and both hero actions inside the first viewport.
+
 ## 2026-08-01 - Render Deployment Preparation
 
 Selected Render through ADR-0007 and added a multi-stage production Dockerfile, a one-service Blueprint with a persistent runtime disk, strict secret exclusions, and conditional FastAPI delivery of the built React application. TDD confirmed the previously missing root application route, then 22 focused auth/API tests and all 114 API tests passed. The production frontend build and Blueprint YAML parse pass. Live HTTPS verification remains gated on Render sign-in, a controlled Git repository, and paid service/disk approval.

@@ -18,6 +18,14 @@ The project now has both the locked documentation foundation and an initial Phas
 
 The public product direction changed after Phase 01 through [ADR-0002](../adr/ADR-0002-experience-first-platform-entry.md). Do not treat the current shell as the final public first screen.
 
+### Latest Landing Handoff — 2026-08-23
+
+ADR-0008 adopts the approved V3 Luxury prototype as a visual reference, not runtime source. The first migration slice is implemented: persistent navigation and the existing three-state responsive hero now use the atelier-editorial direction with explicit Start Creating and Explore Axiom actions. Do not copy the prototype's bundled runtime, embedded media, internal prompt language, long essays, or unsupported capability claims.
+
+The existing Experience Director, WEOS chapter route, AuthWorkspaceGate, optimized AVIF/WebP sequence, reduced-motion fallback, and Workspace/Studio shell remain intact. Axiom Sans source masters are not a public webfont binary; continue using native fallbacks until the font approval gate completes.
+
+Next landing slice: migrate Brain X and Imagine X into one concise editorial chapter, then create the condensed Studio Atlas. Automated Lighthouse budgets remain after visual migration closure.
+
 ### Latest Quality Checkpoint — 2026-08-01
 
 The high-severity PostCSS advisory was cleared by updating the existing Vite dependency graph to PostCSS 8.5.25. The production audit reports zero vulnerabilities, the last complete Vitest baseline remains 91 suites / 813 tests, all 114 API tests pass, and the production build passes.
