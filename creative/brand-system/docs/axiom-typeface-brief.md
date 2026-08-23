@@ -31,6 +31,12 @@ The specimen passed visual review at 1600 × 1000 and remains recognizable witho
 
 This checkpoint does not complete Gate 3. Latin Extended coverage, `I/l/1` and `O/0` testing across the full family, interpolation, hinting, vertical metrics, and cross-platform accessibility checks require an actual source build and remain pending.
 
+### Latin core proof R1
+
+**Latin core proof R1 is approved** as the pre-master repertoire and metrics plan in [`axiom-sans-latin-core-proof-r1.svg`](../assets/type/axiom-sans-latin-core-proof-r1.svg). It records Basic Latin uppercase/lowercase/numerals, a Latin Extended-A diacritic target, punctuation, symbols, currencies, anchor-zone intent, control strings, priority kerning pairs, and word/sentence proofs.
+
+The displayed repertoire rows are construction scaffolding based on the selected Space Grotesk foundation; they are not finished Axiom Sans outlines. The approved Axiom glyph DNA remains defined by the earlier vector studies. Gate 3 is still in progress until source masters implement this repertoire and pass rendered proofing.
+
 ## Accessibility and production checks
 
 - Body text must preserve legibility at 12–16 px and meet WCAG-oriented readability checks in light and dark UI.

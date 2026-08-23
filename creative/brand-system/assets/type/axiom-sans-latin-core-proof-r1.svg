@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1400" role="img" aria-labelledby="title description">
+  <title>Axiom Sans Latin core proof R1</title>
+  <desc>Pre-master repertoire, diacritic, punctuation, spacing, and kerning proof for Axiom Sans. Text rows are construction scaffolding, not finished font outlines or a font binary.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#05070B"/><stop offset="0.58" stop-color="#0A0D14"/><stop offset="1" stop-color="#10091A"/>
+    </linearGradient>
+    <linearGradient id="axiom" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00D9FF"/><stop offset="0.36" stop-color="#6A00FF"/><stop offset="0.68" stop-color="#FF007A"/><stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#94A0B8" stroke-opacity="0.07"/>
+    </pattern>
+    <style>
+      .label{font:700 12px 'Space Grotesk',Inter,sans-serif;letter-spacing:2.6px;fill:#00D9FF}
+      .note{font:400 11px 'Space Grotesk',Inter,sans-serif;letter-spacing:1.5px;fill:#6E7688}
+      .glyph{font-family:'Space Grotesk',Inter,sans-serif;fill:#E8E9EC}
+      .rule{stroke:#FFFFFF;stroke-opacity:.12}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1400" fill="url(#surface)"/>
+  <rect x="40" y="40" width="1520" height="1320" fill="url(#grid)" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path class="rule" d="M40 150H1560M40 425H1560M40 795H1560M40 1010H1560"/>
+
+  <g font-family="Space Grotesk, Inter, sans-serif">
+    <text x="76" y="92" fill="#E8E9EC" font-size="18" font-weight="700" letter-spacing="5">AXIOM SANS</text>
+    <text x="76" y="123" class="note">LATIN CORE / PRE-MASTER PROOF R1</text>
+    <text x="1524" y="94" text-anchor="end" class="label">REPERTOIRE + METRICS · NO SOURCE MASTER</text>
+    <text x="1524" y="124" text-anchor="end" class="note">SPACE GROTESK BASIS / AXIOM DNA APPLIED IN APPROVED VECTOR STUDIES</text>
+  </g>
+
+  <g data-section="latin-core">
+    <text x="76" y="194" class="label">01 / LATIN CORE</text>
+    <text x="76" y="254" class="glyph" font-size="48" font-weight="650" letter-spacing="8">ABCDEFGHIJKLMNOPQRSTUVWXYZ</text>
+    <text x="76" y="326" class="glyph" font-size="48" font-weight="500" letter-spacing="8">abcdefghijklmnopqrstuvwxyz</text>
+    <text x="76" y="382" class="glyph" font-size="30" font-weight="500" letter-spacing="7">0123456789  Aa Ee Gg Nn  AXMR  aegn</text>
+    <path d="M74 400H1526" stroke="url(#axiom)" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <g data-section="diacritics">
+    <text x="76" y="470" class="label">02 / DIACRITICS + LATIN EXTENDED-A TARGET</text>
+    <text x="76" y="520" class="glyph" font-size="26" letter-spacing="3">ÀÁÂÃÄÅĀĂĄÆÇĆĈĊČÐĎĐ ÈÉÊËĒĔĖĘĚ ĜĞĠĢ ĤĦ</text>
+    <text x="76" y="564" class="glyph" font-size="26" letter-spacing="3">ÌÍÎÏĨĪĬĮİ Ĵ Ķ ĹĻĽĿŁ ÑŃŅŇŊ ÒÓÔÕÖØŌŎŐŒ</text>
+    <text x="76" y="608" class="glyph" font-size="26" letter-spacing="3">ŔŖŘ ŚŜŞŠȘ ŦŤȚ ÙÚÛÜŨŪŬŮŰŲ Ŵ ÝŶŸ ŹŻŽ Þ ẞ</text>
+    <text x="76" y="668" class="glyph" font-size="26" letter-spacing="3">àáâãäåāăąæçćĉċčðďđ èéêëēĕėęě ĝğġģ ĥħ</text>
+    <text x="76" y="712" class="glyph" font-size="26" letter-spacing="3">ìíîïĩīĭįı ĵ ķ ĺļľŀł ñńņňŋ òóôõöøōŏőœ</text>
+    <text x="76" y="756" class="glyph" font-size="26" letter-spacing="3">ŕŗř śŝşšș ŧťț ùúûüũūŭůűų ŵ ýŷÿ źżž þ ß</text>
+    <g transform="translate(1215 482)" fill="none" stroke-width="3">
+      <path d="M8 118H280M144 22V142" stroke="#FFFFFF" stroke-opacity="0.18"/>
+      <path d="M68 84L94 52M126 52H160M198 52L224 84M248 54Q270 32 288 54" stroke="url(#axiom)"/>
+      <circle cx="144" cy="86" r="6" fill="#00D9FF" stroke="none"/>
+      <text x="144" y="174" text-anchor="middle" class="note">TOP ANCHOR / SHARED ACCENT ZONE</text>
+    </g>
+  </g>
+
+  <g data-section="punctuation">
+    <text x="76" y="840" class="label">03 / PUNCTUATION · SYMBOLS · CURRENCY</text>
+    <text x="76" y="898" class="glyph" font-size="32" letter-spacing="8">.,:;!?¿¡… ' " ‘ ’ “ ” ‹ › « » - – — _ / \ |</text>
+    <text x="76" y="954" class="glyph" font-size="32" letter-spacing="8">()[]{} @ # % &amp; * + = &lt; &gt; ~ ^ ` § ¶ © ® ™ ° • ·</text>
+    <text x="1110" y="898" class="glyph" font-size="34" letter-spacing="8">$ ¢ £ ¥ € ₹ ₩ ₽</text>
+    <text x="1110" y="950" class="note">CURRENCY WIDTH CLASS / TABULAR OPTION</text>
+  </g>
+
+  <g data-section="spacing">
+    <text x="76" y="1056" class="label">04 / SPACING CONTROLS</text>
+    <g class="glyph" font-size="34" letter-spacing="2">
+      <text x="76" y="1112">HOH OHO non ono</text>
+      <text x="76" y="1162">HHOOHOHOO · nnnonnonoo · 00OO0O00</text>
+    </g>
+    <path d="M72 1078V1180M166 1078V1180M260 1078V1180M354 1078V1180" stroke="#00D9FF" stroke-opacity="0.22"/>
+    <text x="1030" y="1108" class="note">CONTROL SIDEBEARINGS FIRST</text>
+    <text x="1030" y="1140" class="note">H/O FOR CAPS · n/o FOR LOWERCASE · 0/O FOR FIGURES</text>
+    <text x="1030" y="1172" class="note">OPTICAL, NOT MATHEMATICAL, COMPENSATION</text>
+  </g>
+
+  <g data-section="kerning">
+    <text x="76" y="1234" class="label">05 / KERNING + WORD PROOF</text>
+    <text x="76" y="1292" class="glyph" font-size="34" font-weight="650" letter-spacing="1">AVATAR WAVY TYPE AXIOM VECTOR MOTION</text>
+    <text x="76" y="1332" class="glyph" font-size="19" letter-spacing="0.4">Creative intelligence awakens when human direction meets precise, editable craft.</text>
+    <text x="1524" y="1260" text-anchor="end" class="note">PRIORITY PAIRS: AV AW VA WA TA To Ty Te Ye Yo LT LY RT RX</text>
+    <text x="1524" y="1292" text-anchor="end" class="note">WORDS: Axiom · Vector · Motion · Creative · Awakening · Replayable</text>
+    <text x="1524" y="1332" text-anchor="end" fill="#FFC300" font-size="11" font-family="Space Grotesk, Inter, sans-serif" letter-spacing="2">GATE 3 IN PROGRESS / SOURCE MASTERS NEXT</text>
+  </g>
+</svg>
