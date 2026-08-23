@@ -68,6 +68,7 @@ function readBrowserHardwareTier(): HardwareTier {
     deviceMemoryGB: navigatorWithMemory.deviceMemory,
     hardwareConcurrency: navigatorWithMemory.hardwareConcurrency,
     devicePixelRatio: window.devicePixelRatio,
+    viewportWidth: window.innerWidth,
   });
 }
 
@@ -82,7 +83,7 @@ function readScrollProgress(): number {
 
 function useExperienceDirectorState(): ExperienceDirectorState {
   const [progress, setProgress] = useState(0);
-  const [hardwareTier, setHardwareTier] = useState<HardwareTier>("high");
+  const [hardwareTier, setHardwareTier] = useState<HardwareTier>(readBrowserHardwareTier);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -259,17 +260,17 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${resolved960Avif} 960w, ${resolved1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${resolved960Webp} 960w, ${resolved1672Webp} 1672w`} sizes="100vw" />
-            <img src={resolved1672Webp} alt="Resolved Axiom creative core" loading="eager" decoding="async" />
+            <img src={resolved1672Webp} alt="Resolved Axiom creative core" loading="eager" decoding="async" fetchPriority="high" />
           </picture>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakening960Avif} 960w, ${awakening1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakening960Webp} 960w, ${awakening1672Webp} 1672w`} sizes="100vw" />
-            <img className="cinematic-reveal-middle" src={awakening1672Webp} alt="Awakening Axiom creative core" loading="eager" decoding="async" />
+            <img className="cinematic-reveal-middle" src={awakening1672Webp} alt="Awakening Axiom creative core" loading="eager" decoding="async" fetchPriority="low" />
           </picture>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${dormant960Avif} 960w, ${dormant1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${dormant960Webp} 960w, ${dormant1672Webp} 1672w`} sizes="100vw" />
-            <img className="cinematic-reveal-front" src={dormant1672Webp} alt="Dormant Axiom creative core" loading="eager" decoding="async" />
+            <img className="cinematic-reveal-front" src={dormant1672Webp} alt="Dormant Axiom creative core" loading="eager" decoding="async" fetchPriority="high" />
           </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
           <div className="cinematic-hero-name">

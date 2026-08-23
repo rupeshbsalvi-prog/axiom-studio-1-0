@@ -52,6 +52,7 @@ export type HardwareSignals = {
   deviceMemoryGB?: number;
   hardwareConcurrency?: number;
   devicePixelRatio?: number;
+  viewportWidth?: number;
 };
 
 export type ChapterRange = {
@@ -364,7 +365,7 @@ export function detectHardwareTierFromSignals(signals: HardwareSignals): Hardwar
   const cores = signals.hardwareConcurrency ?? 8;
   const dpr = signals.devicePixelRatio ?? 1;
 
-  if (memory <= 4 || cores <= 4 || dpr > 2.5) {
+  if ((signals.viewportWidth ?? Number.POSITIVE_INFINITY) <= 768 || memory <= 4 || cores <= 4 || dpr > 2.5) {
     return "low";
   }
 

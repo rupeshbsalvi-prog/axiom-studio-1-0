@@ -103,7 +103,7 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || typeof window === "undefined" || !window.WebGLRenderingContext) {
+    if (!canvas || typeof window === "undefined" || !window.WebGLRenderingContext || quality === "low") {
       setEngineStatus("fallback");
       return;
     }
