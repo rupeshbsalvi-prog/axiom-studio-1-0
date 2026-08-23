@@ -3426,6 +3426,7 @@ body {
     grid-template-columns: minmax(200px, 220px) minmax(300px, 1fr) minmax(200px, 220px) !important;
     min-width: 740px;
   }
+  .studio-production-panel--brain-x { grid-template-columns: minmax(160px, 180px) minmax(360px, 1fr) minmax(160px, 180px) !important; min-width: 720px; }
 
   .presentation-slide-copy { max-width: 100%; }
   .presentation-slide-copy h2 { font-size: clamp(26px, 3vw, 40px); }
@@ -3442,6 +3443,7 @@ body {
     min-height: 0;
     overflow: visible !important;
   }
+  .studio-production-panel--brain-x { grid-template-columns: 1fr !important; min-width: 0; }
 
   .studio-panel-rail--planner { border-right: 0 !important; border-bottom: 1px solid rgba(247, 246, 242, 0.07) !important; }
   .studio-panel-rail--inspector { border-top: 1px solid rgba(247, 246, 242, 0.07) !important; border-left: 0 !important; }
