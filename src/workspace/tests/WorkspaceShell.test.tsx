@@ -123,6 +123,17 @@ describe("WorkspaceShell Component", () => {
     );
   });
 
+  it("routes Axiom AI Studio through its professional production panel", async () => {
+    render(<WorkspaceShell />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Axiom AI Studio" }));
+
+    expect(await screen.findByRole("region", { name: "Axiom AI production workspace" })).toHaveAttribute(
+      "data-design-language",
+      "axiom-pro-panel-v1",
+    );
+  });
+
   it("starts each selected Studio at the top of its canvas and inspector", () => {
     render(<WorkspaceShell />);
 
