@@ -3362,7 +3362,7 @@ body {
 .whiteboard-node { position: relative; display: grid; gap: 5px; min-width: 0; padding: 14px; background: linear-gradient(145deg, rgba(115, 87, 255, 0.16), rgba(247, 246, 242, 0.035)); border: 1px solid rgba(197, 184, 255, 0.22); border-radius: 10px; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18); }
 .whiteboard-node::after { position: absolute; top: 50%; left: 100%; width: 25px; height: 1px; content: ""; background: linear-gradient(90deg, #7357ff, #36d6e7); }
 .whiteboard-node:nth-child(even)::after,.whiteboard-node:last-child::after { display: none; }
-.whiteboard-node span { color: #36d6e7; font-size: 9px; }.whiteboard-node strong { overflow-wrap: anywhere; color: #eef2f8; }.whiteboard-node small { color: #7f899d; }
+.whiteboard-node span { color: #36d6e7; font-size: 9px; }.whiteboard-node strong { overflow-wrap: anywhere; color: #eef2f8; font-size: 12px; }.whiteboard-node small { color: #7f899d; }
 .whiteboard-stage--flow .whiteboard-node-map { grid-template-columns: 1fr; gap: 8px; }.whiteboard-stage--flow .whiteboard-node::after { top: 100%; left: 50%; width: 1px; height: 9px; }.whiteboard-stage--flow .whiteboard-node:last-child::after { display: none; }
 .whiteboard-stage footer { display: flex; justify-content: space-between; gap: 10px; }.whiteboard-stage footer strong { color: #79dfc2; font-size: 9px; }
 .whiteboard-properties { margin: 0; }.whiteboard-properties > div { display: grid; gap: 4px; padding: 9px 0; border-bottom: 1px solid rgba(247, 246, 242, 0.07); }
