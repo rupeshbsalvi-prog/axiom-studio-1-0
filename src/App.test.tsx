@@ -17,7 +17,7 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(header).getByText(/^Axiom Studio$/i)).toBeInTheDocument();
     expect(screen.queryByLabelText(/Cinematic chapter timeline/i)).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
-    expect(screen.getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Powered by Axiom Imagine X/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/User Intent First/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/30-Day Free Trial/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Axiom Brain X/i).length).toBeGreaterThan(0);

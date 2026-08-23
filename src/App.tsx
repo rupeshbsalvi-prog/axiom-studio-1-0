@@ -225,12 +225,19 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   return (
     <main className="landing-experience">
       <CinematicExperienceEngine directorState={directorState} />
-      <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true" role="banner">
+      <header
+        className="landing-header"
+        aria-label="Persistent landing navigation"
+        data-design-language="atelier-editorial-v3"
+        data-persistent="true"
+        role="banner"
+      >
         <nav className="landing-nav" aria-label="Public navigation">
           <div className="brand-mark">
             <div>
               <strong>Axiom Studio</strong>
               <span>Creative Intelligence OS</span>
+              <small>Edition 03 / 2026</small>
             </div>
           </div>
           <div className="landing-nav-links">
@@ -264,11 +271,16 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
       <section
         ref={awakeningRef}
         className="cinematic-image-reveal"
+        data-art-direction="heirloom-editorial"
         data-motion-system="scroll-image-sequence-v2"
         role="region"
         aria-label="Axiom awakening reveal"
       >
         <div className="cinematic-reveal-stage">
+          <div className="cinematic-hero-folio" aria-label="Axiom editorial edition">
+            <span>Volume I — Creative Intelligence</span>
+            <span>Intent · Intelligence · Creation</span>
+          </div>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${resolved960Avif} 960w, ${resolved1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${resolved960Webp} 960w, ${resolved1672Webp} 1672w`} sizes="100vw" />
@@ -286,14 +298,21 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
           <div className="cinematic-hero-name">
-            <p>Creative intelligence, directed by you</p>
+            <p>A living creative operating system</p>
             <h1>Axiom Studio</h1>
-            <span>One living system for every creative discipline.</span>
+            <span>Human intention enters once. Every studio remembers why.</span>
           </div>
           <div className="cinematic-hero-promise">
-            <p>Human direction. Machine precision.</p>
+            <p>Powered by Axiom Imagine X</p>
             <h2>Create Without Limits</h2>
-            <span>From first intent to production-ready craft.</span>
+            <span>From first intent to editable, production-ready craft.</span>
+            <div className="cinematic-hero-actions">
+              <button type="button" className="primary-button" onClick={onStartCreating}>
+                Start Creating
+                <ChevronRight aria-hidden="true" size={15} />
+              </button>
+              <a className="ghost-link" href="#intelligence">Explore Axiom</a>
+            </div>
           </div>
           <div className="cinematic-hero-scroll" aria-hidden="true"><span />Scroll to awaken</div>
         </div>
