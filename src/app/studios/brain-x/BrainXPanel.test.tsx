@@ -19,6 +19,9 @@ import {
   createWorkspaceRecommendationInfluenceRolledBackEvent,
 } from "../../../workspace/WorkspaceAuditService";
 import { BrainXPanel } from "./BrainXPanel";
+import { MISSION_STATE_KEYS } from "./BrainXState";
+import type { BrainXMissionStateData } from "./mission/MissionTypes";
+import { stateService } from "../../../platform/services/StateService";
 
 vi.mock("../../services/brainApi", () => ({
   generateBrainPlan: vi.fn(),
@@ -109,6 +112,115 @@ describe("BrainXPanel local plan visibility", () => {
     expect(within(workspace).getByRole("complementary", { name: "Brain X authority inspector" })).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Enter creative intent/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Generate Plan" })).toBeDisabled();
+  });
+
+  it("keeps mission reasoning, delegation, cognition, and human decisions available", async () => {
+    const now = Date.now();
+    const missionState: BrainXMissionStateData = {
+      programs: [],
+      focusMissionId: "mission-ui",
+      globalMemory: [],
+      missions: [{
+        id: "mission-ui",
+        title: "Governed campaign",
+        intent: "Create a governed campaign",
+        outcome: { successCriteria: ["approved"], acceptanceCriteria: ["human approval"], completionCondition: "approved" },
+        status: "active",
+        objectives: [{ id: "objective-ui", description: "Compose the campaign", deliverables: ["campaign"], status: "active" }],
+        reasoningGraph: {
+          nodes: [
+            { id: "node-complete", objectiveId: "objective-ui", type: "task", status: "completed", rationale: "Brief confirmed" },
+            { id: "node-active", objectiveId: "objective-ui", type: "decision", status: "active", rationale: "Human choice required" },
+            { id: "node-pending", objectiveId: "objective-ui", type: "reflection", status: "pending", rationale: "Await approved direction" },
+          ],
+          edges: [{ from: "node-complete", to: "node-active", relationship: "enables", rationale: "Brief enables judgment" }],
+        },
+        delegations: [
+          {
+            id: "delegation-ui",
+            missionId: "mission-ui",
+            objectiveId: "objective-ui",
+            targetStudio: "Photo Studio",
+            payload: { intent: "Campaign hero" },
+            expectedOutput: { schema: "image/png", validationRules: ["review required"] },
+            status: "acknowledged",
+            sentAt: now - 1000,
+          },
+          {
+            id: "delegation-complete",
+            missionId: "mission-ui",
+            objectiveId: "objective-ui",
+            targetStudio: "Typography Studio",
+            payload: "Approved copy",
+            expectedOutput: { schema: "text/plain", validationRules: [] },
+            status: "completed",
+            sentAt: now - 2000,
+            completedAt: now,
+            validationPassed: true,
+          },
+          {
+            id: "delegation-failed",
+            missionId: "mission-ui",
+            objectiveId: "objective-ui",
+            targetStudio: "Motion Studio",
+            payload: null,
+            expectedOutput: { schema: "video/mp4", validationRules: ["safe"] },
+            status: "failed",
+            sentAt: now - 3000,
+            completedAt: now,
+            validationPassed: false,
+          },
+        ],
+        decisions: [{
+          id: "decision-ui",
+          missionId: "mission-ui",
+          objectiveId: "objective-ui",
+          question: "Which governed direction should continue?",
+          options: ["Direction A", "Direction B"],
+          recommendation: "Direction A",
+          confidence: 0.82,
+          rationale: "It best matches the approved brief.",
+        }],
+        observations: [],
+        judgments: [],
+        reflections: [
+          { id: "reflection-ui", missionId: "mission-ui", timestamp: now, type: "success", content: "Approval gates preserved.", scope: ["campaign"] },
+          { id: "reflection-learning", missionId: "mission-ui", timestamp: now - 1, type: "learning", content: "Keep review explicit.", scope: ["campaign"] },
+        ],
+        cognitiveRecord: [
+          { id: "learning-ui", stage: "learning", content: "Prefer explicit review gates.", confidence: 0.8, evidenceIds: ["e1", "e2"], promotionThreshold: 2, derivedFrom: "mission-ui", timestamp: now },
+          { id: "knowledge-ui", stage: "knowledge", content: "Never infer creative approval.", confidence: 0.92, evidenceIds: ["e3", "e4"], promotionThreshold: 2, derivedFrom: "mission-ui", timestamp: now },
+        ],
+        createdAt: now - 5000,
+        updatedAt: now,
+      }],
+    };
+    stateService.setState({
+      [MISSION_STATE_KEYS.programs]: missionState.programs,
+      [MISSION_STATE_KEYS.missions]: missionState.missions,
+      [MISSION_STATE_KEYS.focusMissionId]: missionState.focusMissionId,
+      [MISSION_STATE_KEYS.globalMemory]: missionState.globalMemory,
+    });
+    const user = userEvent.setup();
+    render(<BrainXPanel />);
+
+    expect(await screen.findByText("Brain X Control Panel")).toBeInTheDocument();
+    expect(screen.getByText("Execution Path Progress")).toBeInTheDocument();
+    expect(screen.getByText("Which governed direction should continue?")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: /Governed c/i }));
+
+    await user.click(screen.getByRole("button", { name: "Reasoning Graph" }));
+    expect(screen.getByText("Reasoning Graph Elements")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Delegations" }));
+    expect(screen.getByText("Active Studio Delegations")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Cognitive Evolution" }));
+    expect(screen.getByText("PROMOTIONS IN THIS SESSION")).toBeInTheDocument();
+    await user.hover(screen.getByRole("button", { name: "Direction A" }));
+    await user.unhover(screen.getByRole("button", { name: "Direction A" }));
+    await user.click(screen.getByRole("button", { name: "Direction A" }));
+    expect(screen.queryByText("Which governed direction should continue?")).not.toBeInTheDocument();
+
+    stateService.clear();
   });
 
   it("shows routes, Guardian critique, and the approval boundary", async () => {
