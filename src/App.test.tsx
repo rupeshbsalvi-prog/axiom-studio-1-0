@@ -107,6 +107,18 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(reveal).toHaveAttribute("data-motion-system", "scroll-image-reveal-v1");
     expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-front\.png$/));
     expect(awakened).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-reveal\.png$/));
+    const sources = within(reveal).getAllByTestId("cinematic-responsive-source");
+    expect(sources).toHaveLength(4);
+    expect(sources.map((source) => source.getAttribute("type"))).toEqual([
+      "image/avif",
+      "image/webp",
+      "image/avif",
+      "image/webp",
+    ]);
+    for (const source of sources) {
+      expect(source).toHaveAttribute("sizes", "100vw");
+      expect(source.getAttribute("srcset")).toMatch(/-960\.(avif|webp) 960w, .*-(1672)\.(avif|webp) 1672w$/);
+    }
 
     const frameCallbacks: FrameRequestCallback[] = [];
     vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
