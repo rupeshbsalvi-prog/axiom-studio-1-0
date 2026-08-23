@@ -11,16 +11,18 @@ import {
 } from "./experience/director/ExperienceDirector";
 import { CinematicExperienceEngine } from "./experience/cinematic/CinematicExperienceEngine";
 import { AuthWorkspaceGate } from "./auth/AuthWorkspaceGate";
-import awakeningFront from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front.png";
-import awakeningFront960Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-960.avif";
-import awakeningFront1672Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-1672.avif";
-import awakeningFront960Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-960.webp";
-import awakeningFront1672Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-1672.webp";
-import awakeningReveal from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal.png";
-import awakeningReveal960Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-960.avif";
-import awakeningReveal1672Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-1672.avif";
-import awakeningReveal960Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-960.webp";
-import awakeningReveal1672Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-1672.webp";
+import dormant960Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-dormant-960.avif";
+import dormant1672Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-dormant-1672.avif";
+import dormant960Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-dormant-960.webp";
+import dormant1672Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-dormant-1672.webp";
+import awakening960Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-awakening-960.avif";
+import awakening1672Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-awakening-1672.avif";
+import awakening960Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-awakening-960.webp";
+import awakening1672Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-awakening-1672.webp";
+import resolved960Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-resolved-960.avif";
+import resolved1672Avif from "../creative/brand-system/assets/cinematic/r2/axiom-portal-resolved-1672.avif";
+import resolved960Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-resolved-960.webp";
+import resolved1672Webp from "../creative/brand-system/assets/cinematic/r2/axiom-portal-resolved-1672.webp";
 
 
 const philosophyCards = [
@@ -180,13 +182,15 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
       const reveal = awakeningRef.current;
       if (!reveal) return;
       if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-        reveal.style.setProperty("--reveal-clip", "0%");
+        reveal.style.setProperty("--reveal-clip", "100%");
+        reveal.style.setProperty("--resolve-opacity", "100%");
         return;
       }
       const bounds = reveal.getBoundingClientRect();
       const travel = Math.max(bounds.height - window.innerHeight, 1);
       const progress = Math.min(Math.max(-bounds.top / travel, 0), 1);
       reveal.style.setProperty("--reveal-clip", `${Math.round(progress * 100)}%`);
+      reveal.style.setProperty("--resolve-opacity", `${Math.round(Math.max((progress - 0.5) * 2, 0) * 100)}%`);
     };
     const requestReveal = () => {
       if (!awakeningFrame.current) awakeningFrame.current = window.requestAnimationFrame(updateReveal);
@@ -260,20 +264,25 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
       <section
         ref={awakeningRef}
         className="cinematic-image-reveal"
-        data-motion-system="scroll-image-reveal-v1"
+        data-motion-system="scroll-image-sequence-v2"
         role="region"
         aria-label="Axiom awakening reveal"
       >
         <div className="cinematic-reveal-stage">
           <picture>
-            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakeningReveal960Avif} 960w, ${awakeningReveal1672Avif} 1672w`} sizes="100vw" />
-            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakeningReveal960Webp} 960w, ${awakeningReveal1672Webp} 1672w`} sizes="100vw" />
-            <img src={awakeningReveal} alt="Awakened Axiom creative core" loading="lazy" decoding="async" />
+            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${resolved960Avif} 960w, ${resolved1672Avif} 1672w`} sizes="100vw" />
+            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${resolved960Webp} 960w, ${resolved1672Webp} 1672w`} sizes="100vw" />
+            <img src={resolved1672Webp} alt="Resolved Axiom creative core" loading="eager" decoding="async" />
           </picture>
           <picture>
-            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakeningFront960Avif} 960w, ${awakeningFront1672Avif} 1672w`} sizes="100vw" />
-            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakeningFront960Webp} 960w, ${awakeningFront1672Webp} 1672w`} sizes="100vw" />
-            <img className="cinematic-reveal-front" src={awakeningFront} alt="Dormant Axiom creative core" loading="lazy" decoding="async" />
+            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakening960Avif} 960w, ${awakening1672Avif} 1672w`} sizes="100vw" />
+            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakening960Webp} 960w, ${awakening1672Webp} 1672w`} sizes="100vw" />
+            <img className="cinematic-reveal-middle" src={awakening1672Webp} alt="Awakening Axiom creative core" loading="eager" decoding="async" />
+          </picture>
+          <picture>
+            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${dormant960Avif} 960w, ${dormant1672Avif} 1672w`} sizes="100vw" />
+            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${dormant960Webp} 960w, ${dormant1672Webp} 1672w`} sizes="100vw" />
+            <img className="cinematic-reveal-front" src={dormant1672Webp} alt="Dormant Axiom creative core" loading="eager" decoding="async" />
           </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
           <div className="cinematic-hero-name">

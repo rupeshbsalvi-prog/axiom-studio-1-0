@@ -77,9 +77,9 @@ describe("Axiom Studio 1.0 shell", () => {
     const awakening = within(reveal).getByRole("img", { name: /Awakening Axiom creative core/i });
     const resolved = within(reveal).getByRole("img", { name: /Resolved Axiom creative core/i });
     expect(reveal).toHaveAttribute("data-motion-system", "scroll-image-sequence-v2");
-    expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-portal-dormant\.webp$/));
-    expect(awakening).toHaveAttribute("src", expect.stringMatching(/axiom-portal-awakening\.webp$/));
-    expect(resolved).toHaveAttribute("src", expect.stringMatching(/axiom-portal-resolved\.webp$/));
+    expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-portal-dormant-1672\.webp$/));
+    expect(awakening).toHaveAttribute("src", expect.stringMatching(/axiom-portal-awakening-1672\.webp$/));
+    expect(resolved).toHaveAttribute("src", expect.stringMatching(/axiom-portal-resolved-1672\.webp$/));
     const sources = within(reveal).getAllByTestId("cinematic-responsive-source");
     expect(sources).toHaveLength(6);
     expect(sources.map((source) => source.getAttribute("type"))).toEqual([
