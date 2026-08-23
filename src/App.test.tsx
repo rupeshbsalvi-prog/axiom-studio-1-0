@@ -59,6 +59,13 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i })).toBeInTheDocument();
   });
 
+  it("keeps cinematic developer diagnostics opt-in on the public landing page", () => {
+    render(<App />);
+
+    expect(screen.queryByText(/Quality preset & LOD/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Stress & diagnostics tools/i)).not.toBeInTheDocument();
+  });
+
   it("directs the cinematic prologue toward the pointer without rerendering the page", () => {
     render(<App />);
 
