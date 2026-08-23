@@ -8,8 +8,7 @@ describe("Lighthouse CI", () => {
     const workflow = readFileSync(".github/workflows/lighthouse.yml", "utf8");
     const assertions = config.ci.assert.assertions;
 
-    expect(packageJson.scripts["lighthouse:ci"]).toBe("lhci autorun");
-    expect(packageJson.devDependencies["@lhci/cli"]).toBeDefined();
+    expect(packageJson.scripts["lighthouse:ci"]).toBe("npx --yes @lhci/cli@0.15.1 autorun");
     expect(config.ci.collect.staticDistDir).toBe("./dist");
     expect(config.ci.collect.numberOfRuns).toBeGreaterThanOrEqual(3);
     expect(assertions["largest-contentful-paint"][1].maxNumericValue).toBeLessThanOrEqual(2500);
