@@ -10,6 +10,7 @@ import { BrandPanel } from "../app/studios/brand/BrandPanel";
 import { UiUxPanel } from "../app/studios/ui-ux/UiUxPanel";
 import { AssetHubPanel } from "../app/studios/asset-hub/AssetHubPanel";
 import { VideoPanel } from "../app/studios/video/VideoPanel";
+import { WhiteboardPanel } from "../app/studios/whiteboard/WhiteboardPanel";
 
 export const studioHighlights: Record<StudioId, string[]> = {
   "mission-control": [
@@ -64,6 +65,10 @@ export function StudioPanelRouter({
 
   if (activeStudio.id === "video") {
     return <VideoPanel />;
+  }
+
+  if (activeStudio.id === "whiteboard") {
+    return <WhiteboardPanel />;
   }
 
   const runtimeEntry = getStudioRuntimeEntry(activeStudio.id);
