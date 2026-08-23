@@ -2,6 +2,30 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Consolidated Workflow and Conversion Chapter
+
+TDD replaced the separate pricing cards and generic marketplace/community banner with one editorial conversion chapter. It now presents Direct → Approve → Craft → Deliver, the established 30-Day Free Trial, five post-trial access paths, platform compatibility, and one paired Start Creating / Review Studios close.
+
+Verification: the RED contract failed before implementation; all 895 tests pass, focused `App.tsx` coverage is 87.87% statements and 88.54% lines, the production build passes, and desktop/mobile visual acceptance confirms no overflow or persistent-rail obstruction.
+
+## 2026-08-23 - Condensed Studio Atlas
+
+TDD replaced the duplicated showcase, inactive category filters, and twelve oversized cards with one registry-backed editorial Atlas. All twelve specialist Studios retain their real summaries and export formats in a two-column desktop ledger and single-column mobile index.
+
+Verification: the RED contract failed before implementation; all 894 tests pass, focused `App.tsx` coverage is 87.62% statements and 88.29% lines, the production build passes, and desktop/mobile visual acceptance confirms no horizontal overflow.
+
+## 2026-08-23 - Brain X + Imagine X Editorial Chapter
+
+TDD replaced the generic intelligence section with a concise two-center editorial chapter. Brain X now owns context, policy, and continuity; Imagine X owns direction, routing, and critique; the execution ledger keeps human approval explicit before specialist craft and editable output.
+
+Verification: the RED contract failed before implementation; all 893 tests pass with the bounded timeout, the production build passes, and desktop/mobile visual acceptance confirms readable alignment with no horizontal overflow.
+
+## 2026-08-23 - Luxury Editorial Hero and Navigation
+
+Accepted ADR-0008 and extracted the approved V3 Luxury prototype into a runtime-safe migration specification. TDD added the public editorial contract first, then migrated the existing persistent navigation and three-state cinematic hero to warm-paper, charcoal, brass, and editorial typography without copying the prototype runtime or embedded media. The first viewport now contains explicit Start Creating and Explore Axiom actions, truthful public copy, keyboard focus, responsive layout, and the existing reduced-motion fallback.
+
+Verification: RED failed on the missing editorial contract; GREEN passed all 9 App tests. `src/App.tsx` coverage is 88.34% statements, 93.54% functions, and 89% lines. Production TypeScript/Vite build and manifest generation pass. Desktop visual acceptance passes at 1280×720; mobile geometry passes at 390×844 with zero horizontal overflow and both hero actions inside the first viewport.
+
 ## 2026-08-01 - Render Deployment Preparation
 
 Selected Render through ADR-0007 and added a multi-stage production Dockerfile, a one-service Blueprint with a persistent runtime disk, strict secret exclusions, and conditional FastAPI delivery of the built React application. TDD confirmed the previously missing root application route, then 22 focused auth/API tests and all 114 API tests passed. The production frontend build and Blueprint YAML parse pass. Live HTTPS verification remains gated on Render sign-in, a controlled Git repository, and paid service/disk approval.
@@ -2291,3 +2315,14 @@ Next: apply the migration and server settings to a controlled Supabase project, 
 Implemented the six approved launch-audit remediations with RED/GREEN checkpoints and no paid monitoring dependency. Planner APIs now require an opaque application session with active membership in the configured workspace; browser planner calls are same-origin and credentialed. Login starts use a bounded, per-client, single-instance limiter. Planner inputs and collections are bounded, unexpected client errors are generic and correlated, production API docs are disabled, security headers and structured request logs are native, and `/api/ready` verifies Supabase before Render accepts traffic.
 
 Generated Photo assets now receive durable service-only Supabase owner and expiry metadata, seven-day default retention, startup/creation cleanup, and owner-session deletion. The controlled `0003_asset_retention` Supabase migration, Render Free deployment, and live security/readiness/auth/asset-deletion smoke passed. The mock provider now bypasses the external-provider credential gate while the real provider remains fail-closed. Verification: 132 API tests at 91.17% coverage, 825 frontend tests, production build, npm audit, and pip-audit pass.
+
+## 2026-08-24 - Lighthouse CI Performance Budgets
+
+GitHub Actions now builds the production site and runs three mobile Lighthouse audits for pull requests and `main` pushes. Median LCP is capped at 2.5s, CLS at 0.1, TBT at 300ms, and total transfer at 2MB. Failed reports are retained privately for seven days; no public Lighthouse upload or permanent application dependency was added.
+
+Verification:
+- TDD RED failed against the absent workflow and Lighthouse contract; focused GREEN passed.
+- Full Vitest suite: 114 suites / 899 tests passed.
+- Production build and existing package bundle budgets passed.
+- npm audit: zero vulnerabilities.
+- PR #13 Linux run `32659826055` passed every enforced budget across the three-run median after mobile cinematic fallback, LCP image preloading, and deferred Three.js/Workspace loading reduced the initial app bundle from 124.8 KB to 77.5 KB gzip.

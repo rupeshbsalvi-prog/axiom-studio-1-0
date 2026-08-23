@@ -85,6 +85,12 @@ describe("ExperienceDirector", () => {
     expect(detectHardwareTierFromSignals({ deviceMemoryGB: 4, hardwareConcurrency: 4, devicePixelRatio: 3 })).toBe(
       "low",
     );
+    expect(detectHardwareTierFromSignals({
+      deviceMemoryGB: 16,
+      hardwareConcurrency: 12,
+      devicePixelRatio: 1,
+      viewportWidth: 412,
+    })).toBe("low");
   });
 
   it("builds a complete director state for UI and render wiring", () => {

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CheckCircle2, ChevronRight, Cpu, FileArchive, Sparkles } from "lucide-react";
+import { CheckCircle2, ChevronRight, Cpu, Sparkles } from "lucide-react";
 import { STUDIO_REGISTRY } from "./app/studios/registry";
 import {
   buildExperienceDirectorState,
@@ -41,38 +41,13 @@ const platformLayers = [
   { label: "Universal Canvas", value: "Layers, frames, timelines, semantic editing" },
 ];
 
-const pricingPlans = ["30-Day Free Trial", "Creator", "Professional", "Business", "Enterprise", "Education"];
+const accessPaths = ["Creator", "Professional", "Business", "Enterprise", "Education"];
 
-const landingFilters = ["All", "Image", "Video", "Motion", "Brand", "UI", "Presentation", "Marketplace"];
-
-const showcaseProjects = [
-  {
-    title: "Launch Campaign OS",
-    studio: "Brand + Motion",
-    detail: "Director plan, identity kit, motion frames, and export-ready assets.",
-  },
-  {
-    title: "Product Experience Map",
-    studio: "UI/UX Studio",
-    detail: "Responsive frames, component tokens, user flow, and developer handoff.",
-  },
-  {
-    title: "Investor Story Deck",
-    studio: "Presentation",
-    detail: "Narrative structure, slide system, speaker notes, and brand-safe visuals.",
-  },
-  {
-    title: "Cinematic Social Cut",
-    studio: "Video + Audio",
-    detail: "Scene plan, transparent elements, continuity notes, and render queue.",
-  },
-];
-
-const landingStats = [
-  { value: "12", label: "studio modes" },
-  { value: "3", label: "entry layers" },
-  { value: "30", label: "trial days" },
-  { value: "7", label: "platform targets" },
+const workflowProof = [
+  { label: "Direct", detail: "Imagine X translates the brief into a visible creative route." },
+  { label: "Approve", detail: "You accept, revise, or redirect before any governed execution." },
+  { label: "Craft", detail: "Specialist Studios build the work with shared context intact." },
+  { label: "Deliver", detail: "Outputs remain layered, editable, and ready for refinement." },
 ];
 
 const cinematicChapters = getWEOSJourney();
@@ -93,6 +68,7 @@ function readBrowserHardwareTier(): HardwareTier {
     deviceMemoryGB: navigatorWithMemory.deviceMemory,
     hardwareConcurrency: navigatorWithMemory.hardwareConcurrency,
     devicePixelRatio: window.devicePixelRatio,
+    viewportWidth: window.innerWidth,
   });
 }
 
@@ -107,7 +83,7 @@ function readScrollProgress(): number {
 
 function useExperienceDirectorState(): ExperienceDirectorState {
   const [progress, setProgress] = useState(0);
-  const [hardwareTier, setHardwareTier] = useState<HardwareTier>("high");
+  const [hardwareTier, setHardwareTier] = useState<HardwareTier>(readBrowserHardwareTier);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -225,12 +201,19 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   return (
     <main className="landing-experience">
       <CinematicExperienceEngine directorState={directorState} />
-      <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true" role="banner">
+      <header
+        className="landing-header"
+        aria-label="Persistent landing navigation"
+        data-design-language="atelier-editorial-v3"
+        data-persistent="true"
+        role="banner"
+      >
         <nav className="landing-nav" aria-label="Public navigation">
           <div className="brand-mark">
             <div>
               <strong>Axiom Studio</strong>
               <span>Creative Intelligence OS</span>
+              <small>Edition 03 / 2026</small>
             </div>
           </div>
           <div className="landing-nav-links">
@@ -264,50 +247,86 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
       <section
         ref={awakeningRef}
         className="cinematic-image-reveal"
+        data-art-direction="heirloom-editorial"
         data-motion-system="scroll-image-sequence-v2"
         role="region"
         aria-label="Axiom awakening reveal"
       >
         <div className="cinematic-reveal-stage">
+          <div className="cinematic-hero-folio" aria-label="Axiom editorial edition">
+            <span>Volume I — Creative Intelligence</span>
+            <span>Intent · Intelligence · Creation</span>
+          </div>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${resolved960Avif} 960w, ${resolved1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${resolved960Webp} 960w, ${resolved1672Webp} 1672w`} sizes="100vw" />
-            <img src={resolved1672Webp} alt="Resolved Axiom creative core" loading="eager" decoding="async" />
+            <img src={resolved1672Webp} alt="Resolved Axiom creative core" loading="eager" decoding="async" fetchPriority="high" />
           </picture>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakening960Avif} 960w, ${awakening1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakening960Webp} 960w, ${awakening1672Webp} 1672w`} sizes="100vw" />
-            <img className="cinematic-reveal-middle" src={awakening1672Webp} alt="Awakening Axiom creative core" loading="eager" decoding="async" />
+            <img className="cinematic-reveal-middle" src={awakening1672Webp} alt="Awakening Axiom creative core" loading="eager" decoding="async" fetchPriority="low" />
           </picture>
           <picture>
             <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${dormant960Avif} 960w, ${dormant1672Avif} 1672w`} sizes="100vw" />
             <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${dormant960Webp} 960w, ${dormant1672Webp} 1672w`} sizes="100vw" />
-            <img className="cinematic-reveal-front" src={dormant1672Webp} alt="Dormant Axiom creative core" loading="eager" decoding="async" />
+            <img className="cinematic-reveal-front" src={dormant1672Webp} alt="Dormant Axiom creative core" loading="eager" decoding="async" fetchPriority="high" />
           </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
           <div className="cinematic-hero-name">
-            <p>Creative intelligence, directed by you</p>
+            <p>A living creative operating system</p>
             <h1>Axiom Studio</h1>
-            <span>One living system for every creative discipline.</span>
+            <span>Human intention enters once. Every studio remembers why.</span>
           </div>
           <div className="cinematic-hero-promise">
-            <p>Human direction. Machine precision.</p>
+            <p>Powered by Axiom Imagine X</p>
             <h2>Create Without Limits</h2>
-            <span>From first intent to production-ready craft.</span>
+            <span>From first intent to editable, production-ready craft.</span>
+            <div className="cinematic-hero-actions">
+              <button type="button" className="primary-button" onClick={onStartCreating}>
+                Start Creating
+                <ChevronRight aria-hidden="true" size={15} />
+              </button>
+              <a className="ghost-link" href="#intelligence">Explore Axiom</a>
+            </div>
           </div>
           <div className="cinematic-hero-scroll" aria-hidden="true"><span />Scroll to awaken</div>
         </div>
       </section>
 
-      <section className="creative-operating-act" role="region" aria-label="Imagine X creative operating system">
+      <section
+        className="creative-operating-act intelligence-editorial-chapter"
+        data-chapter="two-centers"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Imagine X creative operating system"
+      >
         <div className="creative-act-copy">
-          <p className="eyebrow">AI-native creative operating system</p>
-          <h2>One direction. Every studio. A system that remembers why.</h2>
+          <p className="eyebrow">Chapter II — The Two Centers</p>
+          <h2>One intention. Two intelligence layers.</h2>
           <strong>Powered by Axiom Imagine X</strong>
           <p>
-            Imagine X turns your intent into creative direction. Brain X preserves context. Specialist
-            studios execute the craft—and nothing important moves forward without your approval.
+            Imagine X directs the work. Brain X preserves the context that makes it coherent. You remain
+            the authority between direction and execution.
           </p>
+          <div className="intelligence-center-pair">
+            <article aria-label="Brain X intelligence role">
+              <span aria-hidden="true">B</span>
+              <div>
+                <h3>Brain X</h3>
+                <p>Holds project context, workspace policy, and continuity across the work.</p>
+                <small>Context · policy · continuity</small>
+              </div>
+            </article>
+            <article aria-label="Imagine X intelligence role">
+              <span aria-hidden="true">I</span>
+              <div>
+                <h3>Imagine X</h3>
+                <p>Turns your brief into visible direction and routes approved work to specialist studios.</p>
+                <small>Direction · routing · critique</small>
+              </div>
+            </article>
+          </div>
           <div className="hero-actions">
             <button type="button" className="primary-button" onClick={onStartCreating}>
               Start Crafting
@@ -315,17 +334,12 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             </button>
             <a className="ghost-link" href="#intelligence">Explore Axiom</a>
           </div>
-          <div className="hero-proof-list" aria-label="Axiom operating principles">
-            <span>Intent becomes direction</span>
-            <span>Human approval remains visible</span>
-            <span>Every output stays editable</span>
-          </div>
         </div>
 
-        <aside className="orchestration-field" aria-label="Studio intelligence in motion" data-ui-language="axiom-prism-v2">
+        <aside className="orchestration-field intelligence-ledger" aria-label="Studio intelligence in motion" data-ui-language="atelier-editorial-v3">
           <header>
-            <div><span className="live-indicator" /><strong>Studio intelligence in motion</strong></div>
-            <span>LIVE / {directorState.chapter.title}</span>
+            <div><span className="live-indicator" /><strong>From intent to editable output</strong></div>
+            <span>{directorState.chapter.title} / ACTIVE</span>
           </header>
           <ol className="orchestration-route" aria-label="Axiom orchestration route">
             <li className="route-step route-intent">
@@ -353,13 +367,10 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           </footer>
         </aside>
 
-        <div className="hero-stat-strip" aria-label="Platform summary">
-          {landingStats.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
+        <div className="intelligence-principles" aria-label="Axiom operating principles">
+          <span>Intent stays visible</span>
+          <span>Authority stays human</span>
+          <span>Outputs stay editable</span>
         </div>
       </section>
 
@@ -426,95 +437,107 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </div>
       </section>
 
-      <section id="studios" className="landing-section">
-        <div className="section-heading-row">
+      <section
+        id="studios"
+        className="landing-section studio-atlas"
+        data-chapter="studio-atlas"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Axiom Studio Atlas"
+      >
+        <header className="studio-atlas-intro">
           <div>
-            <p className="eyebrow">Studio explorer</p>
-            <h2>Explore Axiom like a professional creative showcase.</h2>
+            <p className="eyebrow">Chapter III — The Studio Atlas</p>
+            <h2>Twelve specialist studios. One continuous creative system.</h2>
+            <p className="studio-atlas-lede">
+              Move from image to identity, interface to motion, and direction to delivery without losing
+              the intent that began the work.
+            </p>
           </div>
           <button type="button" className="ghost-button" onClick={onStartCreating}>
             Open Workspace
           </button>
+        </header>
+        <div className="studio-atlas-guide" aria-hidden="true">
+          <span>Index / Studio</span><span>Role</span><span>Export</span>
         </div>
-        <div className="filter-chip-row" aria-label="Showcase categories">
-          {landingFilters.map((filter) => (
-            <button type="button" key={filter}>
-              {filter}
-            </button>
-          ))}
-        </div>
-        <div className="showcase-gallery" aria-label="Featured Axiom outputs">
-          {showcaseProjects.map((project, index) => (
-            <article className="showcase-card" key={project.title}>
-              <div className={`showcase-preview preview-${index + 1}`}>
-                <div className="preview-topbar" />
-                <div className="preview-art" />
-              </div>
-              <div>
-                <span>{project.studio}</span>
-                <h3>{project.title}</h3>
-                <p>{project.detail}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="studio-explorer-grid">
+        <div className="studio-atlas-directory">
           {STUDIO_REGISTRY.filter((studio) => studio.id !== "mission-control").map((studio, index) => {
             const Icon = studio.icon;
             return (
-              <article className="studio-explorer-card" key={studio.id}>
-                <div className="studio-card-topline">
-                  <Icon size={22} />
+              <article className="studio-atlas-entry" data-studio-id={studio.id} key={studio.id}>
+                <div className="studio-atlas-identity">
                   <span>{String(index + 1).padStart(2, "0")}</span>
+                  <Icon aria-hidden="true" size={20} />
+                  <h3>{studio.displayName}</h3>
                 </div>
-                <h3>{studio.displayName}</h3>
                 <p>{studio.summary}</p>
-                <div className="studio-card-footer">
+                <div className="studio-atlas-formats">
                   <span>{studio.exportFormats.join(" / ")}</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight aria-hidden="true" size={15} />
                 </div>
               </article>
             );
           })}
         </div>
+        <footer className="studio-atlas-footer">
+          <span>12 disciplines</span><span>One governed workspace</span><span>Editable by design</span>
+        </footer>
       </section>
 
-      <section id="pricing" className="landing-section">
-        <div className="section-heading-row">
-          <div>
-            <p className="eyebrow">Subscription and licensing</p>
-            <h2>Start with a full platform trial, then scale by creator, team, or enterprise.</h2>
+      <section
+        id="pricing"
+        className="landing-section conversion-chapter"
+        data-chapter="create-with-axiom"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Axiom workflow and access"
+      >
+        <header className="conversion-intro">
+          <p className="eyebrow">Chapter IV — Begin with intent</p>
+          <h2>From first brief to governed, editable work.</h2>
+          <p>A clear creative route, an explicit approval point, and professional outputs that remain yours to shape.</p>
+        </header>
+
+        <div className="conversion-layout">
+          <div className="workflow-proof" aria-label="Axiom workflow proof">
+            {workflowProof.map((step, index) => (
+              <article key={step.label}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.label}</h3>
+                <p>{step.detail}</p>
+              </article>
+            ))}
           </div>
-        </div>
-        <div className="pricing-grid">
-          {pricingPlans.map((plan) => (
-            <div className="pricing-card" key={plan}>
-              <FileArchive size={18} />
-              <strong>{plan}</strong>
-              <span>Studios, Imagine X planning, templates, version history, and transparent usage.</span>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      <section id="community" className="landing-section community-band">
-        <div>
-          <p className="eyebrow">Marketplace and community</p>
-          <h2>Templates, plugins, MCP connectors, agents, assets, and studio packs for one creative platform.</h2>
-          <p>
-            Build from Axiom packs, publish reusable systems, connect enterprise tools, and carry
-            projects across web, desktop, mobile, and tablet.
-          </p>
-          <button type="button" className="primary-button" onClick={onStartCreating}>
-            Enter Workspace
-            <ChevronRight size={16} />
-          </button>
+          <aside className="access-ledger" aria-label="Axiom access paths">
+            <span>Start here</span>
+            <strong>30-Day Free Trial</strong>
+            <p>Explore full-platform Studio and Imagine X access before choosing the path that fits your work.</p>
+            <div className="access-paths">
+              {accessPaths.map((plan) => <span key={plan}>{plan}</span>)}
+            </div>
+          </aside>
         </div>
-        <div className="compatibility-strip">
-          {["Web", "Windows", "macOS", "Linux", "Android", "iOS", "iPadOS"].map((platform) => (
-            <span key={platform}>{platform}</span>
-          ))}
-        </div>
+
+        <footer id="community" className="conversion-close">
+          <div>
+            <span>Creative intelligence, under your authority</span>
+            <h3>Enter with an idea. Leave with work you can keep shaping.</h3>
+          </div>
+          <div className="conversion-actions">
+            <button type="button" className="primary-button" onClick={onStartCreating}>
+              Start Creating
+              <ChevronRight aria-hidden="true" size={16} />
+            </button>
+            <a className="ghost-link" href="#studios">Review Studios</a>
+          </div>
+          <div className="compatibility-strip">
+            {["Web", "Windows", "macOS", "Linux", "Android", "iOS", "iPadOS"].map((platform) => (
+              <span key={platform}>{platform}</span>
+            ))}
+          </div>
+        </footer>
       </section>
     </main>
   );

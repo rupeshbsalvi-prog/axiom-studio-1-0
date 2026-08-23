@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generatedAt": "2026-08-02T18:03:49.381Z",
-  "gitCommit": "e1e61d3b420f0345f78452459cc0b4f277fe7bb3",
+  "generatedAt": "2026-08-23T17:49:32.604Z",
+  "gitCommit": "ee89413c7f6a17525f340f1f3679f00b0c093498",
   "release": "EB-1.0",
   "components": {
     "Badge": {

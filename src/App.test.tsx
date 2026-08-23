@@ -6,6 +6,7 @@ import App from "./App";
 async function enterLocalWorkspace(user: ReturnType<typeof userEvent.setup>) {
   await user.click(screen.getByRole("button", { name: /Start Crafting/i }));
   await user.click(await screen.findByRole("button", { name: /Continue locally/i }));
+  await screen.findByTestId("studio-shell");
 }
 
 describe("Axiom Studio 1.0 shell", () => {
@@ -17,7 +18,7 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(header).getByText(/^Axiom Studio$/i)).toBeInTheDocument();
     expect(screen.queryByLabelText(/Cinematic chapter timeline/i)).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
-    expect(screen.getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Powered by Axiom Imagine X/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/User Intent First/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/30-Day Free Trial/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Axiom Brain X/i).length).toBeGreaterThan(0);
@@ -41,25 +42,84 @@ describe("Axiom Studio 1.0 shell", () => {
   it("merges the Axiom identity into the cinematic awakening hero", () => {
     render(<App />);
 
+    const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
+    expect(header).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(header).getByText(/Edition 03 \/ 2026/i)).toBeInTheDocument();
+
     expect(screen.queryByRole("region", { name: /Axiom signature hero/i })).not.toBeInTheDocument();
     const hero = screen.getByRole("region", { name: /Axiom awakening reveal/i });
+    expect(hero).toHaveAttribute("data-art-direction", "heirloom-editorial");
     expect(within(hero).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
     expect(within(hero).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+    expect(within(hero).getByText(/Volume I — Creative Intelligence/i)).toBeInTheDocument();
+    expect(within(hero).getByText(/Human intention enters once\. Every studio remembers why\./i)).toBeInTheDocument();
+    expect(within(hero).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(within(hero).getByRole("button", { name: /^Start Creating$/i })).toBeInTheDocument();
+    expect(within(hero).getByRole("link", { name: /^Explore Axiom$/i })).toHaveAttribute("href", "#intelligence");
     expect(within(hero).getByText(/Scroll to awaken/i)).toBeInTheDocument();
+    expect(within(hero).queryByText(/Graphic designer.?quality finish|No Neon/i)).not.toBeInTheDocument();
 
     const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
-    expect(within(creativeAct).getByText(/AI-native creative operating system/i)).toBeInTheDocument();
+    expect(creativeAct).toHaveAttribute("data-chapter", "two-centers");
+    expect(creativeAct).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(creativeAct).getByText(/Chapter II — The Two Centers/i)).toBeInTheDocument();
+    expect(within(creativeAct).getByRole("heading", { name: /One intention\. Two intelligence layers\./i })).toBeInTheDocument();
+    const brainRole = within(creativeAct).getByRole("article", { name: /Brain X intelligence role/i });
+    expect(within(brainRole).getByText(/Context · policy · continuity/i)).toBeInTheDocument();
+    const imagineRole = within(creativeAct).getByRole("article", { name: /Imagine X intelligence role/i });
+    expect(within(imagineRole).getByText(/Direction · routing · critique/i)).toBeInTheDocument();
     expect(within(creativeAct).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
     expect(within(creativeAct).getByRole("button", { name: /Start Crafting/i })).toBeInTheDocument();
     expect(within(creativeAct).getByRole("link", { name: /Explore Axiom/i })).toBeInTheDocument();
     const orchestration = within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i });
-    expect(orchestration).toHaveAttribute("data-ui-language", "axiom-prism-v2");
+    expect(orchestration).toHaveAttribute("data-ui-language", "atelier-editorial-v3");
+    expect(within(orchestration).getByText(/From intent to editable output/i)).toBeInTheDocument();
     const route = within(orchestration).getByLabelText(/Axiom orchestration route/i);
     expect(within(route).getByText(/Creative intent/i)).toBeInTheDocument();
     expect(within(route).getByText(/Imagine X direction/i)).toBeInTheDocument();
     expect(within(route).getByText(/Brain X context/i)).toBeInTheDocument();
     expect(within(route).getByText(/Human approval/i)).toBeInTheDocument();
     expect(within(route).getByText(/Editable studio output/i)).toBeInTheDocument();
+  });
+
+  it("presents every specialist Studio in one condensed editorial atlas", () => {
+    render(<App />);
+
+    const atlas = screen.getByRole("region", { name: /Axiom Studio Atlas/i });
+    expect(atlas).toHaveAttribute("data-chapter", "studio-atlas");
+    expect(atlas).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(atlas).getByText(/Chapter III — The Studio Atlas/i)).toBeInTheDocument();
+    expect(within(atlas).getByRole("heading", { name: /Twelve specialist studios\. One continuous creative system\./i })).toBeInTheDocument();
+    expect(within(atlas).getAllByRole("article")).toHaveLength(12);
+    expect(within(atlas).getByRole("heading", { name: /^Photo Studio$/i })).toBeInTheDocument();
+    expect(within(atlas).getByRole("heading", { name: /^Brain X$/i })).toBeInTheDocument();
+    expect(within(atlas).getByRole("button", { name: /Open Workspace/i })).toBeInTheDocument();
+    expect(within(atlas).queryByLabelText(/Showcase categories/i)).not.toBeInTheDocument();
+    expect(within(atlas).queryByLabelText(/Featured Axiom outputs/i)).not.toBeInTheDocument();
+  });
+
+  it("consolidates workflow proof, access paths, and the closing conversion", () => {
+    render(<App />);
+
+    const conversion = screen.getByRole("region", { name: /Axiom workflow and access/i });
+    expect(conversion).toHaveAttribute("data-chapter", "create-with-axiom");
+    expect(conversion).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(conversion).getByText(/Chapter IV — Begin with intent/i)).toBeInTheDocument();
+    expect(within(conversion).getByRole("heading", { name: /From first brief to governed, editable work\./i })).toBeInTheDocument();
+
+    const proof = within(conversion).getByLabelText(/Axiom workflow proof/i);
+    expect(within(proof).getAllByRole("article")).toHaveLength(4);
+    expect(within(proof).getByText(/^Direct$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Approve$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Craft$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Deliver$/i)).toBeInTheDocument();
+
+    expect(within(conversion).getByText(/30-Day Free Trial/i)).toBeInTheDocument();
+    expect(within(conversion).getByText(/^Creator$/i)).toBeInTheDocument();
+    expect(within(conversion).getByText(/^Enterprise$/i)).toBeInTheDocument();
+    expect(within(conversion).getByRole("button", { name: /Start Creating/i })).toBeInTheDocument();
+    expect(within(conversion).getByRole("link", { name: /Review Studios/i })).toHaveAttribute("href", "#studios");
+    expect(within(conversion).queryByText(/Marketplace and community/i)).not.toBeInTheDocument();
   });
 
   it("keeps cinematic developer diagnostics opt-in on the public landing page", () => {
@@ -80,6 +140,9 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-portal-dormant-1672\.webp$/));
     expect(awakening).toHaveAttribute("src", expect.stringMatching(/axiom-portal-awakening-1672\.webp$/));
     expect(resolved).toHaveAttribute("src", expect.stringMatching(/axiom-portal-resolved-1672\.webp$/));
+    expect(resolved).toHaveAttribute("fetchpriority", "high");
+    expect(awakening).toHaveAttribute("fetchpriority", "low");
+    expect(front).toHaveAttribute("fetchpriority", "high");
     const sources = within(reveal).getAllByTestId("cinematic-responsive-source");
     expect(sources).toHaveLength(6);
     expect(sources.map((source) => source.getAttribute("type"))).toEqual([

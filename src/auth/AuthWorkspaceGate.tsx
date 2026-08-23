@@ -1,9 +1,13 @@
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { lazy, Suspense, useCallback, useEffect, useState, type ReactNode } from "react";
 import type {
   ImagineXWorkspaceLearningPolicyState,
   WorkspaceLearningAuthorityV1,
 } from "../app/services/ImagineXLearningAuthority";
-import { WorkspaceShell, type WorkspaceEntryContext } from "../workspace/WorkspaceShell";
+import type { WorkspaceEntryContext } from "../workspace/WorkspaceShell";
+
+const WorkspaceShell = lazy(() => import("../workspace/WorkspaceShell").then((module) => ({
+  default: module.WorkspaceShell,
+})));
 
 type WorkspaceRole = "owner" | "admin" | "member" | "viewer";
 
@@ -203,13 +207,15 @@ export function AuthWorkspaceGate({
 
   if (workspaceEntry) {
     return (
-      <WorkspaceShell
-        workspaceEntry={workspaceEntry}
-        workspaceLearningPolicy={workspacePolicy}
-        onChangeWorkspace={changeWorkspace}
-        onLogout={workspaceEntry.mode === "authenticated" ? logout : undefined}
-        logoutError={logoutError || undefined}
-      />
+      <Suspense fallback={<main className="auth-entry-page"><p role="status">Opening workspace…</p></main>}>
+        <WorkspaceShell
+          workspaceEntry={workspaceEntry}
+          workspaceLearningPolicy={workspacePolicy}
+          onChangeWorkspace={changeWorkspace}
+          onLogout={workspaceEntry.mode === "authenticated" ? logout : undefined}
+          logoutError={logoutError || undefined}
+        />
+      </Suspense>
     );
   }
 

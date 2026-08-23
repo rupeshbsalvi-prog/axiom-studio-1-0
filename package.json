@@ -14,6 +14,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "lighthouse:ci": "npx --yes @lhci/cli@0.15.1 autorun",
     "api": "npm run api --workspace=packages/tokens && npm run api --workspace=packages/ui-foundation && npm run api --workspace=packages/ui-core",
     "budget": "node --experimental-strip-types scripts/bundle-budget.ts",
     "asset:axiom-core": "node --experimental-strip-types scripts/axiom-core-export.ts",

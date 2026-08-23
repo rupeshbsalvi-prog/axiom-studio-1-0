@@ -18,6 +18,14 @@ The project now has both the locked documentation foundation and an initial Phas
 
 The public product direction changed after Phase 01 through [ADR-0002](../adr/ADR-0002-experience-first-platform-entry.md). Do not treat the current shell as the final public first screen.
 
+### Latest Landing Handoff — 2026-08-23
+
+ADR-0008 adopts the approved V3 Luxury prototype as a visual reference, not runtime source. The persistent navigation, three-state responsive hero, Brain X + Imagine X chapter, condensed Studio Atlas, and workflow/access conversion now use the atelier-editorial direction. The Atlas is sourced directly from `STUDIO_REGISTRY`; do not restore decorative filters, repeated pricing cards, generic marketplace copy, or duplicate hard-coded Studio data. Do not copy the prototype's bundled runtime, embedded media, internal prompt language, long essays, or unsupported capability claims.
+
+The existing Experience Director, WEOS chapter route, AuthWorkspaceGate, optimized AVIF/WebP sequence, reduced-motion fallback, and Workspace/Studio shell remain intact. Axiom Sans source masters are not a public webfont binary; continue using native fallbacks until the font approval gate completes.
+
+The approved visual migration slices are complete. Pull requests and `main` pushes now run three mobile Lighthouse audits and fail when median LCP exceeds 2.5s, CLS exceeds 0.1, TBT exceeds 300ms, or total transfer exceeds 2MB. Reports remain private CI artifacts on failure. PR #13's first Linux audit passed after mobile cinematic fallback and deferred Three.js/Workspace loading reduced the initial app bundle to 77.5 KB gzip. Next: review and merge PR #13, then run the deployed production performance smoke. Axiom Sans webfont integration remains separately gated on binary approval.
+
 ### Latest Quality Checkpoint — 2026-08-01
 
 The high-severity PostCSS advisory was cleared by updating the existing Vite dependency graph to PostCSS 8.5.25. The production audit reports zero vulnerabilities, the last complete Vitest baseline remains 91 suites / 813 tests, all 114 API tests pass, and the production build passes.

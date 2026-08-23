@@ -1,12 +1,6 @@
 import { type CSSProperties, useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { AXCoreConfig, AXCoreRoot } from "../../app/studios/axCore";
-import { STUDIO_REGISTRY } from "../../app/studios/registry";
-import { platformRuntime } from "../../platform/runtime/PlatformRuntime";
-import {
-  AXIOM_CORE_INACTIVE_INTERACTION,
-  createAxiomCoreInteraction,
-  type AXRuntimeStateData,
-} from "../../platform/runtime/FrameState";
+import type { AXRuntimeStateData } from "../../platform/runtime/FrameState";
+import type { PlatformRuntime as PlatformRuntimeType } from "../../platform/runtime/PlatformRuntime";
 import {
   buildExperienceRenderDirective,
   type ExperienceDirectorState,
@@ -20,6 +14,7 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const directorStateRef = useRef(directorState);
   const rendererRef = useRef<any>(null);
+  const platformRuntimeRef = useRef<PlatformRuntimeType | null>(null);
 
   const [engineStatus, setEngineStatus] = useState<"loading" | "ready" | "fallback">("loading");
   const [variant, setVariant] = useState<"A" | "B" | "C">("B");
@@ -103,7 +98,7 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || typeof window === "undefined" || !window.WebGLRenderingContext) {
+    if (!canvas || typeof window === "undefined" || !window.WebGLRenderingContext || quality === "low") {
       setEngineStatus("fallback");
       return;
     }
@@ -113,8 +108,14 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
 
     void (async () => {
       setEngineStatus("loading");
-      const THREE = await import("./threeRuntime").catch(() => null);
-      if (!THREE) {
+      const runtimeModules = await Promise.all([
+        import("./threeRuntime"),
+        import("../../app/studios/axCore"),
+        import("../../app/studios/registry"),
+        import("../../platform/runtime/PlatformRuntime"),
+        import("../../platform/runtime/FrameState"),
+      ]).catch(() => null);
+      if (!runtimeModules) {
         if (!disposed) {
           setEngineStatus("fallback");
         }
@@ -123,6 +124,14 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
       if (disposed) {
         return;
       }
+      const [
+        THREE,
+        { AXCoreConfig, AXCoreRoot },
+        { STUDIO_REGISTRY },
+        { platformRuntime },
+        { AXIOM_CORE_INACTIVE_INTERACTION, createAxiomCoreInteraction },
+      ] = runtimeModules;
+      platformRuntimeRef.current = platformRuntime;
 
       const prevVariant = AXCoreConfig.geometry.activeVariant;
       AXCoreConfig.geometry.activeVariant = variant;
@@ -451,14 +460,17 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
     return () => {
       disposed = true;
       rendererRef.current = null;
+      platformRuntimeRef.current = null;
       disposeScene();
     };
   }, [variant, quality, signature, continuousResize, performanceStress]);
 
   // Platform Compliance Engine Threshold Status Evaluator
   const getComplianceStatus = useCallback(() => {
-    const results = platformRuntime.services.compliance.evaluate(stats);
-    const overall = platformRuntime.services.compliance.getOverallStatus(results);
+    const runtime = platformRuntimeRef.current;
+    if (!runtime) return { label: "PENDING", className: "warn" };
+    const results = runtime.services.compliance.evaluate(stats);
+    const overall = runtime.services.compliance.getOverallStatus(results);
     return {
       label: overall.status,
       className: overall.status === "CRITICAL" ? "fail" : overall.status === "WARNING" ? "warn" : "pass",
@@ -495,6 +507,10 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
     setLifecycleTestMetrics({ startedAt: Date.now() });
 
     try {
+      const [{ platformRuntime }, { AXCoreRoot }] = await Promise.all([
+        import("../../platform/runtime/PlatformRuntime"),
+        import("../../app/studios/axCore"),
+      ]);
       const result = await platformRuntime.runLifecycleValidationStressTest(
         (ctx) => new AXCoreRoot(ctx),
         100
