@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title description">
+  <title>Axiom Sans AXMR glyph-DNA specimen</title>
+  <desc>Vector-only design specimen showing the proposed A, X, M, and R display glyph construction for Axiom Sans. This is not a font binary.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#05070B"/>
+      <stop offset="0.55" stop-color="#0A0D14"/>
+      <stop offset="1" stop-color="#10091A"/>
+    </linearGradient>
+    <linearGradient id="axiom" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00D9FF"/>
+      <stop offset="0.36" stop-color="#6A00FF"/>
+      <stop offset="0.68" stop-color="#FF007A"/>
+      <stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.45" stop-color="#E5E5E5"/>
+      <stop offset="1" stop-color="#868B98"/>
+    </linearGradient>
+    <radialGradient id="core">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.24" stop-color="#00D9FF"/>
+      <stop offset="0.55" stop-color="#6A00FF"/>
+      <stop offset="1" stop-color="#FF007A"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#94A0B8" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#surface)"/>
+  <rect x="42" y="42" width="1516" height="916" fill="url(#grid)" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path d="M42 170H1558M42 780H1558" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <path d="M420 170V780M800 170V780M1180 170V780" stroke="#FFFFFF" stroke-opacity="0.09"/>
+
+  <g font-family="Space Grotesk, Inter, sans-serif" fill="#E5E5E5">
+    <text x="78" y="102" font-size="18" font-weight="700" letter-spacing="5">AXIOM SANS</text>
+    <text x="78" y="132" font-size="12" fill="#7D8494" letter-spacing="3">GLYPH DNA / DISPLAY SPECIMEN 01</text>
+    <text x="1522" y="104" text-anchor="end" font-size="12" fill="#00D9FF" letter-spacing="2">VECTOR STUDY · NO FONT BINARY</text>
+  </g>
+
+  <g data-glyph="A" aria-label="A glyph proposal">
+    <path d="M112 692L222 244H292L404 692H323L298 581H212L188 692ZM230 502H280L256 360Z" fill="url(#silver)" fill-rule="evenodd"/>
+    <path d="M203 548L306 548L295 595L213 595Z" fill="url(#axiom)" filter="url(#glow)"/>
+    <path d="M222 244H292L278 292H210Z" fill="#00D9FF" opacity="0.8"/>
+    <circle cx="256" cy="548" r="8" fill="url(#core)"/>
+  </g>
+
+  <g data-glyph="X" aria-label="X glyph proposal">
+    <path d="M486 244H576L642 387L708 244H798L691 465L802 692H710L642 542L572 692H480L593 465Z" fill="url(#silver)"/>
+    <path d="M593 465L642 387L691 465L642 542Z" fill="url(#axiom)" filter="url(#glow)"/>
+    <path d="M500 671L593 487L618 538L572 692H480Z" fill="#00D9FF" opacity="0.34"/>
+  </g>
+
+  <g data-glyph="M" aria-label="M glyph proposal">
+    <path d="M850 692V244H927L1010 433L1092 244H1170V692H1090V393L1040 514H979L930 394V692Z" fill="url(#silver)"/>
+    <path d="M927 244L1010 433L1092 244H1029L1010 302L990 244Z" fill="url(#axiom)" filter="url(#glow)"/>
+    <path d="M979 514H1040L1026 548H993Z" fill="#FF007A" opacity="0.72"/>
+  </g>
+
+  <g data-glyph="R" aria-label="R glyph proposal">
+    <path d="M1232 692V244H1393C1492 244 1530 300 1530 382C1530 448 1503 488 1447 509L1550 692H1457L1366 526H1312V692ZM1312 449H1382C1430 449 1450 430 1450 385C1450 342 1430 324 1382 324H1312Z" fill="url(#silver)" fill-rule="evenodd"/>
+    <path d="M1312 449H1382C1418 449 1438 438 1446 413L1469 467C1456 488 1438 502 1412 511H1312Z" fill="url(#axiom)" filter="url(#glow)"/>
+    <path d="M1366 526H1426L1550 692H1457Z" fill="#FF7A00" opacity="0.38"/>
+    <circle cx="1421" cy="385" r="9" fill="url(#core)"/>
+  </g>
+
+  <g font-family="Space Grotesk, Inter, sans-serif">
+    <g fill="#E5E5E5" font-size="16" font-weight="700" letter-spacing="3">
+      <text x="78" y="830">A / ASCENT</text><text x="458" y="830">X / INTERSECTION</text>
+      <text x="838" y="830">M / MEMORY</text><text x="1218" y="830">R / DIRECTION</text>
+    </g>
+    <g fill="#858C9D" font-size="12">
+      <text x="78" y="862">Cropped apex · optical bridge · stable counter</text>
+      <text x="458" y="862">Controlled crossing · luminous core</text>
+      <text x="838" y="862">Deep vertex · engineered rhythm</text>
+      <text x="1218" y="862">Open bowl · decisive motion leg</text>
+    </g>
+    <text x="78" y="922" fill="#5F6675" font-size="11" letter-spacing="2">DNA: ANGULAR + FLUID / OPEN COUNTERS / DIAGONAL ENERGY / HUMAN-READABLE</text>
+    <text x="1522" y="922" text-anchor="end" fill="#FFC300" font-size="11" letter-spacing="2">R1 · DISPLAY FORMS · REVIEWED AT 1600 × 1000</text>
+  </g>
+</svg>

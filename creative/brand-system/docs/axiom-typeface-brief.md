@@ -1,6 +1,6 @@
 # Axiom Sans — Public Typeface Program
 
-Status: Gate 1 approved. No font binary is approved, published, or connected to the product runtime.
+Status: Gate 1 approved; Gate 2 approved. No font binary is approved, published, or connected to the product runtime.
 
 ## Purpose
 
@@ -19,6 +19,12 @@ The derivative will be renamed **Axiom Sans** to avoid source-family confusion. 
 - Brand alternates for A, X, M, R, and selected numerals; ordinary text defaults remain conservative.
 - Tabular and proportional numerals, case-sensitive punctuation, and accessible distinction between I/l/1 and O/0.
 
+## Glyph DNA R1
+
+**Gate 2 is approved** for the vector-only [`A/X/M/R` display specimen](../assets/type/axiom-sans-glyph-dna-r1.svg). The shared DNA is a cropped or deep vertex, stable open counters, controlled diagonal motion, consistent display stroke mass, and a luminous decision point used as a secondary—not essential—identity layer.
+
+The specimen passed visual review at 1600 × 1000 and remains recognizable without its color accents. Approval covers display-form direction only; spacing, lowercase, text masters, interpolation, hinting, language coverage, and font binaries remain gated.
+
 ## Accessibility and production checks
 
 - Body text must preserve legibility at 12–16 px and meet WCAG-oriented readability checks in light and dark UI.
@@ -29,7 +35,7 @@ The derivative will be renamed **Axiom Sans** to avoid source-family confusion. 
 ## Approval gates
 
 1. **Approved — Space Grotesk 2.0 selected and recorded as the OFL source family.**
-2. Approve the Axiom glyph DNA and first display alphabet specimen.
+2. **Approved — A/X/M/R Glyph DNA R1 accepted as the first display specimen.**
 3. Complete Latin Extended and accessibility testing.
 4. Approve trademark/name review and release metadata.
 5. Build signed release files and a public specimen page.
