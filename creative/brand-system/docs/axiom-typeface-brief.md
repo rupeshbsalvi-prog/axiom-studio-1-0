@@ -25,6 +25,12 @@ The derivative will be renamed **Axiom Sans** to avoid source-family confusion. 
 
 The specimen passed visual review at 1600 × 1000 and remains recognizable without its color accents. Approval covers display-form direction only; spacing, lowercase, text masters, interpolation, hinting, language coverage, and font binaries remain gated.
 
+## Gate 3 candidate R1
+
+**Gate 3 is in progress.** The vector-only [lowercase, numeral, and monochrome small-size specimen](../assets/type/axiom-sans-gate3-specimen-r1.svg) approves `a/e/g/n` and `0/1/2/8` as candidate geometry. The same outlines remain distinct in monochrome at 64, 32, and 16 px: apertures stay open, the `g` descender and `n` shoulder remain legible, and the selected numerals preserve recognizable structures.
+
+This checkpoint does not complete Gate 3. Latin Extended coverage, `I/l/1` and `O/0` testing across the full family, interpolation, hinting, vertical metrics, and cross-platform accessibility checks require an actual source build and remain pending.
+
 ## Accessibility and production checks
 
 - Body text must preserve legibility at 12–16 px and meet WCAG-oriented readability checks in light and dark UI.
@@ -36,7 +42,7 @@ The specimen passed visual review at 1600 × 1000 and remains recognizable witho
 
 1. **Approved — Space Grotesk 2.0 selected and recorded as the OFL source family.**
 2. **Approved — A/X/M/R Glyph DNA R1 accepted as the first display specimen.**
-3. Complete Latin Extended and accessibility testing.
+3. **In progress — lowercase/numeral candidate geometry and 64/32/16 px monochrome trials approved; full Latin Extended and accessibility testing pending.**
 4. Approve trademark/name review and release metadata.
 5. Build signed release files and a public specimen page.
 

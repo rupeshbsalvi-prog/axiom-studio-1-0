@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title description">
+  <title>Axiom Sans Gate 3 specimen</title>
+  <desc>Vector-only lowercase a e g n, numerals zero one two eight, and monochrome 64, 32, and 16 pixel size trials. This is not a font binary.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#05070B"/><stop offset="0.58" stop-color="#0A0D14"/><stop offset="1" stop-color="#10091A"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/><stop offset="0.52" stop-color="#E5E5E5"/><stop offset="1" stop-color="#858B98"/>
+    </linearGradient>
+    <linearGradient id="axiom" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#00D9FF"/><stop offset="0.36" stop-color="#6A00FF"/><stop offset="0.68" stop-color="#FF007A"/><stop offset="1" stop-color="#FF7A00"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#94A0B8" stroke-opacity="0.075"/>
+    </pattern>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <symbol id="shape-a" viewBox="0 0 320 360">
+      <path d="M30 210C30 122 86 76 166 76C206 76 237 88 260 112V82H300V310H242V280C219 304 187 318 146 318C78 318 30 278 30 210ZM94 202C94 245 120 266 160 266C208 266 240 239 240 196C240 154 211 130 168 130C122 130 94 156 94 202Z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="shape-e" viewBox="0 0 320 360">
+      <path d="M24 200C24 121 80 74 164 74C252 74 300 128 300 218H91C99 250 125 269 168 269C205 269 230 259 257 235L290 276C257 307 219 320 164 320C78 320 24 274 24 200ZM93 174H233C225 139 202 122 165 122C127 122 102 139 93 174Z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="shape-g" viewBox="0 0 320 360">
+      <path d="M28 184C28 112 80 72 152 72C192 72 224 85 247 110V78H302V276C302 337 257 360 180 360C124 360 82 347 48 321L78 278C106 299 136 309 174 309C218 309 243 296 243 268V249C220 273 190 286 151 286C80 286 28 247 28 184ZM92 180C92 215 119 237 161 237C207 237 243 214 243 178C243 144 211 122 165 122C119 122 92 143 92 180Z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="shape-n" viewBox="0 0 320 360">
+      <path d="M28 310V82H88V116C112 86 145 72 188 72C253 72 292 113 292 181V310H230V195C230 150 211 129 175 129C126 129 90 161 90 219V310Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="shape-0" viewBox="0 0 320 360">
+      <path d="M20 180C20 72 67 20 160 20C253 20 300 72 300 180C300 288 253 340 160 340C67 340 20 288 20 180ZM88 180C88 252 108 282 160 282C212 282 232 252 232 180C232 108 212 78 160 78C108 78 88 108 88 180Z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="shape-1" viewBox="0 0 320 360">
+      <path d="M52 112L154 26H224V282H292V340H70V282H157V101L91 157Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="shape-2" viewBox="0 0 320 360">
+      <path d="M30 340V289L178 169C214 140 229 123 229 98C229 70 207 55 170 55C126 55 99 76 80 118L24 91C49 29 100 12 174 12C253 12 299 44 299 97C299 140 275 169 224 209L132 282H306V340Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="shape-8" viewBox="0 0 320 360">
+      <path d="M22 253C22 210 45 181 86 164C54 148 36 124 36 88C36 37 80 10 160 10C240 10 284 37 284 88C284 124 266 148 234 164C275 181 298 210 298 253C298 317 248 348 160 348C72 348 22 317 22 253ZM92 244C92 278 113 294 160 294C207 294 228 278 228 244C228 211 207 195 160 195C113 195 92 211 92 244ZM103 96C103 124 122 139 160 139C198 139 217 124 217 96C217 69 198 55 160 55C122 55 103 69 103 96Z" fill="currentColor" fill-rule="evenodd"/>
+    </symbol>
+  </defs>
+
+  <rect width="1600" height="1100" fill="url(#surface)"/>
+  <rect x="40" y="40" width="1520" height="1020" fill="url(#grid)" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path d="M40 150H1560M40 500H1560M40 850H1560" stroke="#FFFFFF" stroke-opacity="0.13"/>
+
+  <g font-family="Space Grotesk, Inter, sans-serif">
+    <text x="76" y="92" fill="#E5E5E5" font-size="18" font-weight="700" letter-spacing="5">AXIOM SANS</text>
+    <text x="76" y="123" fill="#747C8D" font-size="12" letter-spacing="3">GATE 3 / LOWERCASE · NUMERALS · OPTICAL SIZE</text>
+    <text x="1524" y="94" text-anchor="end" fill="#00D9FF" font-size="12" letter-spacing="2">R1 VECTOR CANDIDATE · NO FONT BINARY</text>
+  </g>
+
+  <g color="#E5E5E5">
+    <g data-glyph="a" aria-label="lowercase a proposal"><use href="#shape-a" x="55" y="158" width="330" height="330"/><path d="M278 258H348V278H278Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="e" aria-label="lowercase e proposal"><use href="#shape-e" x="435" y="158" width="330" height="330"/><path d="M523 327H670V346H523Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="g" aria-label="lowercase g proposal"><use href="#shape-g" x="815" y="150" width="330" height="338"/><path d="M1059 373H1124V394H1059Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="n" aria-label="lowercase n proposal"><use href="#shape-n" x="1195" y="158" width="330" height="330"/><path d="M1283 256H1303V338H1283Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+  </g>
+
+  <g color="#E5E5E5">
+    <g data-glyph="0" aria-label="zero proposal"><use href="#shape-0" x="55" y="505" width="330" height="330"/><path d="M198 673L255 611L272 628L215 690Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="1" aria-label="one proposal"><use href="#shape-1" x="435" y="505" width="330" height="330"/><path d="M590 534L654 534L614 568Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="2" aria-label="two proposal"><use href="#shape-2" x="815" y="505" width="330" height="330"/><path d="M937 763H1102V783H937Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+    <g data-glyph="8" aria-label="eight proposal"><use href="#shape-8" x="1195" y="505" width="330" height="330"/><path d="M1327 666H1393V684H1327Z" fill="url(#axiom)" filter="url(#glow)"/></g>
+  </g>
+
+  <g data-mode="small-monochrome" color="#F3F4F6" font-family="Space Grotesk, Inter, sans-serif">
+    <text x="76" y="900" fill="#FFC300" font-size="11" font-weight="700" letter-spacing="2">MONOCHROME / SAME OUTLINES / NO OPTICAL CORRECTION</text>
+    <text x="76" y="957" fill="#7D8494" font-size="12" letter-spacing="2">64 PX</text>
+    <g transform="translate(170 902)">
+      <use href="#shape-a" width="64" height="64"/><use href="#shape-e" x="72" width="64" height="64"/><use href="#shape-g" x="144" width="64" height="64"/><use href="#shape-n" x="216" width="64" height="64"/>
+      <use href="#shape-0" x="304" width="64" height="64"/><use href="#shape-1" x="376" width="64" height="64"/><use href="#shape-2" x="448" width="64" height="64"/><use href="#shape-8" x="520" width="64" height="64"/>
+    </g>
+    <text x="826" y="949" fill="#7D8494" font-size="12" letter-spacing="2">32 PX</text>
+    <g transform="translate(918 919)">
+      <use href="#shape-a" width="32" height="32"/><use href="#shape-e" x="38" width="32" height="32"/><use href="#shape-g" x="76" width="32" height="32"/><use href="#shape-n" x="114" width="32" height="32"/>
+      <use href="#shape-0" x="160" width="32" height="32"/><use href="#shape-1" x="198" width="32" height="32"/><use href="#shape-2" x="236" width="32" height="32"/><use href="#shape-8" x="274" width="32" height="32"/>
+    </g>
+    <text x="1266" y="946" fill="#7D8494" font-size="12" letter-spacing="2">16 PX</text>
+    <g transform="translate(1353 928)">
+      <use href="#shape-a" width="16" height="16"/><use href="#shape-e" x="20" width="16" height="16"/><use href="#shape-g" x="40" width="16" height="16"/><use href="#shape-n" x="60" width="16" height="16"/>
+      <use href="#shape-0" x="84" width="16" height="16"/><use href="#shape-1" x="104" width="16" height="16"/><use href="#shape-2" x="124" width="16" height="16"/><use href="#shape-8" x="144" width="16" height="16"/>
+    </g>
+    <text x="76" y="1024" fill="#5F6675" font-size="11" letter-spacing="2">CHECK: a/e APERTURE · g DESCENDER · n SHOULDER · 0/O + 1/I/l DISTINCTION · 2/8 COUNTERS</text>
+    <text x="1524" y="1024" text-anchor="end" fill="#5F6675" font-size="11" letter-spacing="2">GATE 3 REMAINS IN PROGRESS</text>
+  </g>
+</svg>
