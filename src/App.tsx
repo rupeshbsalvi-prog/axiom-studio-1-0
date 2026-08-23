@@ -43,31 +43,6 @@ const platformLayers = [
 
 const pricingPlans = ["30-Day Free Trial", "Creator", "Professional", "Business", "Enterprise", "Education"];
 
-const landingFilters = ["All", "Image", "Video", "Motion", "Brand", "UI", "Presentation", "Marketplace"];
-
-const showcaseProjects = [
-  {
-    title: "Launch Campaign OS",
-    studio: "Brand + Motion",
-    detail: "Director plan, identity kit, motion frames, and export-ready assets.",
-  },
-  {
-    title: "Product Experience Map",
-    studio: "UI/UX Studio",
-    detail: "Responsive frames, component tokens, user flow, and developer handoff.",
-  },
-  {
-    title: "Investor Story Deck",
-    studio: "Presentation",
-    detail: "Narrative structure, slide system, speaker notes, and brand-safe visuals.",
-  },
-  {
-    title: "Cinematic Social Cut",
-    studio: "Video + Audio",
-    detail: "Scene plan, transparent elements, continuity notes, and render queue.",
-  },
-];
-
 const cinematicChapters = getWEOSJourney();
 const engineModules = getDirectorModules();
 
@@ -454,57 +429,52 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </div>
       </section>
 
-      <section id="studios" className="landing-section">
-        <div className="section-heading-row">
+      <section
+        id="studios"
+        className="landing-section studio-atlas"
+        data-chapter="studio-atlas"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Axiom Studio Atlas"
+      >
+        <header className="studio-atlas-intro">
           <div>
-            <p className="eyebrow">Studio explorer</p>
-            <h2>Explore Axiom like a professional creative showcase.</h2>
+            <p className="eyebrow">Chapter III — The Studio Atlas</p>
+            <h2>Twelve specialist studios. One continuous creative system.</h2>
+            <p className="studio-atlas-lede">
+              Move from image to identity, interface to motion, and direction to delivery without losing
+              the intent that began the work.
+            </p>
           </div>
           <button type="button" className="ghost-button" onClick={onStartCreating}>
             Open Workspace
           </button>
+        </header>
+        <div className="studio-atlas-guide" aria-hidden="true">
+          <span>Index / Studio</span><span>Role</span><span>Export</span>
         </div>
-        <div className="filter-chip-row" aria-label="Showcase categories">
-          {landingFilters.map((filter) => (
-            <button type="button" key={filter}>
-              {filter}
-            </button>
-          ))}
-        </div>
-        <div className="showcase-gallery" aria-label="Featured Axiom outputs">
-          {showcaseProjects.map((project, index) => (
-            <article className="showcase-card" key={project.title}>
-              <div className={`showcase-preview preview-${index + 1}`}>
-                <div className="preview-topbar" />
-                <div className="preview-art" />
-              </div>
-              <div>
-                <span>{project.studio}</span>
-                <h3>{project.title}</h3>
-                <p>{project.detail}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="studio-explorer-grid">
+        <div className="studio-atlas-directory">
           {STUDIO_REGISTRY.filter((studio) => studio.id !== "mission-control").map((studio, index) => {
             const Icon = studio.icon;
             return (
-              <article className="studio-explorer-card" key={studio.id}>
-                <div className="studio-card-topline">
-                  <Icon size={22} />
+              <article className="studio-atlas-entry" data-studio-id={studio.id} key={studio.id}>
+                <div className="studio-atlas-identity">
                   <span>{String(index + 1).padStart(2, "0")}</span>
+                  <Icon aria-hidden="true" size={20} />
+                  <h3>{studio.displayName}</h3>
                 </div>
-                <h3>{studio.displayName}</h3>
                 <p>{studio.summary}</p>
-                <div className="studio-card-footer">
+                <div className="studio-atlas-formats">
                   <span>{studio.exportFormats.join(" / ")}</span>
-                  <ChevronRight size={16} />
+                  <ChevronRight aria-hidden="true" size={15} />
                 </div>
               </article>
             );
           })}
         </div>
+        <footer className="studio-atlas-footer">
+          <span>12 disciplines</span><span>One governed workspace</span><span>Editable by design</span>
+        </footer>
       </section>
 
       <section id="pricing" className="landing-section">
