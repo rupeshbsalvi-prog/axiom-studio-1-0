@@ -13,10 +13,9 @@ describe("Axiom Studio 1.0 shell", () => {
     render(<App />);
 
     const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
-    expect(within(header).getByRole("img", { name: /Axiom Studio brand logo/i })).toHaveAttribute(
-      "src",
-      expect.stringMatching(/axiom-logo-ui-512\.webp$/),
-    );
+    expect(within(header).queryByRole("img", { name: /Axiom Studio brand logo/i })).not.toBeInTheDocument();
+    expect(within(header).getByText(/^Axiom Studio$/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/Cinematic chapter timeline/i)).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
     expect(screen.getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
     expect(screen.getAllByText(/User Intent First/i).length).toBeGreaterThan(0);
@@ -39,24 +38,28 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.getByText(/Scene Manager/i)).toBeInTheDocument();
   });
 
-  it("presents a cinematic signature hero and a separate Imagine X creative act", () => {
+  it("merges the Axiom identity into the cinematic awakening hero", () => {
     render(<App />);
 
-    const signature = screen.getByRole("region", { name: /Axiom signature hero/i });
-    expect(within(signature).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
-    const heroArt = within(signature).getByRole("img", { name: /Animated Axiom mind/i });
-    expect(heroArt.querySelector("img")).toHaveAttribute(
-      "srcset",
-      expect.stringMatching(/axiom-logo-ui-512\.webp 512w.*axiom-logo-display-1024\.webp 1024w.*axiom-logo-hero-2048\.webp 2048w/),
-    );
-    expect(within(signature).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: /Axiom signature hero/i })).not.toBeInTheDocument();
+    const hero = screen.getByRole("region", { name: /Axiom awakening reveal/i });
+    expect(within(hero).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
+    expect(within(hero).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+    expect(within(hero).getByText(/Scroll to awaken/i)).toBeInTheDocument();
 
     const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
     expect(within(creativeAct).getByText(/AI-native creative operating system/i)).toBeInTheDocument();
     expect(within(creativeAct).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
     expect(within(creativeAct).getByRole("button", { name: /Start Crafting/i })).toBeInTheDocument();
     expect(within(creativeAct).getByRole("link", { name: /Explore Axiom/i })).toBeInTheDocument();
-    expect(within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i })).toBeInTheDocument();
+    const orchestration = within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i });
+    expect(orchestration).toHaveAttribute("data-ui-language", "axiom-prism-v2");
+    const route = within(orchestration).getByLabelText(/Axiom orchestration route/i);
+    expect(within(route).getByText(/Creative intent/i)).toBeInTheDocument();
+    expect(within(route).getByText(/Imagine X direction/i)).toBeInTheDocument();
+    expect(within(route).getByText(/Brain X context/i)).toBeInTheDocument();
+    expect(within(route).getByText(/Human approval/i)).toBeInTheDocument();
+    expect(within(route).getByText(/Editable studio output/i)).toBeInTheDocument();
   });
 
   it("keeps cinematic developer diagnostics opt-in on the public landing page", () => {
@@ -64,38 +67,6 @@ describe("Axiom Studio 1.0 shell", () => {
 
     expect(screen.queryByText(/Quality preset & LOD/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Stress & diagnostics tools/i)).not.toBeInTheDocument();
-  });
-
-  it("directs the cinematic prologue toward the pointer without rerendering the page", () => {
-    render(<App />);
-
-    const prologue = screen.getByRole("region", { name: /Axiom signature hero/i });
-    const frameCallbacks: FrameRequestCallback[] = [];
-    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
-      frameCallbacks.push(callback);
-      return frameCallbacks.length;
-    });
-    vi.spyOn(prologue, "getBoundingClientRect").mockReturnValue({
-      bottom: 500,
-      height: 400,
-      left: 100,
-      right: 900,
-      top: 100,
-      width: 800,
-      x: 100,
-      y: 100,
-      toJSON: () => ({}),
-    });
-
-    expect(prologue).toHaveAttribute("data-motion-system", "cinematic-pointer-field-v1");
-    fireEvent.pointerMove(prologue, { clientX: 700, clientY: 200 });
-    frameCallbacks.at(-1)?.(0);
-    expect(prologue.style.getPropertyValue("--hero-pointer-x")).toBe("75%");
-    expect(prologue.style.getPropertyValue("--hero-pointer-y")).toBe("25%");
-
-    fireEvent.pointerLeave(prologue);
-    expect(prologue.style.getPropertyValue("--hero-pointer-x")).toBe("50%");
-    expect(prologue.style.getPropertyValue("--hero-pointer-y")).toBe("50%");
   });
 
   it("reveals the awakened Axiom scene continuously in both scroll directions", () => {
@@ -141,50 +112,6 @@ describe("Axiom Studio 1.0 shell", () => {
     fireEvent.scroll(window);
     frameCallbacks.at(-1)?.(0);
     expect(reveal.style.getPropertyValue("--reveal-clip")).toBe("50%");
-  });
-
-  it("keeps complete chapter names inside a persistent numberless landing header", () => {
-    render(<App />);
-
-    const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
-    expect(header).toHaveAttribute("data-persistent", "true");
-    const timeline = within(header).getByLabelText(/Cinematic chapter timeline/i);
-    expect(within(timeline).getByRole("button", { name: /Go to Arrival chapter/i })).toHaveAttribute(
-      "aria-current",
-      "step",
-    );
-    expect(within(timeline).getByRole("button", { name: /Go to Living Observatory chapter/i })).toHaveTextContent(
-      "Living Observatory",
-    );
-    expect(within(timeline).getByRole("button", { name: /Go to Workspace Portal chapter/i })).toHaveTextContent(
-      "Workspace Portal",
-    );
-    expect(within(timeline).queryByText("01")).not.toBeInTheDocument();
-  });
-
-  it("lets keyboard and button users request WEOS chapter navigation", async () => {
-    const user = userEvent.setup();
-    const scrollTo = vi.fn();
-    Object.defineProperty(window, "scrollTo", {
-      configurable: true,
-      value: scrollTo,
-    });
-
-    render(<App />);
-
-    const arrival = screen.getByRole("button", { name: /Go to Arrival chapter/i });
-    const awakening = screen.getByRole("button", { name: /Go to Awakening chapter/i });
-    const workspacePortal = screen.getByRole("button", { name: /Go to Workspace Portal chapter/i });
-
-    expect(arrival).toHaveAttribute("aria-current", "step");
-
-    await user.click(awakening);
-    expect(scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: expect.any(String) }));
-
-    arrival.focus();
-    await user.keyboard("{End}");
-    expect(scrollTo).toHaveBeenLastCalledWith(expect.objectContaining({ top: expect.any(Number) }));
-    expect(workspacePortal).toBeInTheDocument();
   });
 
   it("offers a scroll-world route through the persistent Axiom scene", async () => {
