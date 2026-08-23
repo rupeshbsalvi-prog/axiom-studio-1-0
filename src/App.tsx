@@ -68,13 +68,6 @@ const showcaseProjects = [
   },
 ];
 
-const landingStats = [
-  { value: "12", label: "studio modes" },
-  { value: "3", label: "entry layers" },
-  { value: "30", label: "trial days" },
-  { value: "7", label: "platform targets" },
-];
-
 const cinematicChapters = getWEOSJourney();
 const engineModules = getDirectorModules();
 
@@ -318,15 +311,39 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </div>
       </section>
 
-      <section className="creative-operating-act" role="region" aria-label="Imagine X creative operating system">
+      <section
+        className="creative-operating-act intelligence-editorial-chapter"
+        data-chapter="two-centers"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Imagine X creative operating system"
+      >
         <div className="creative-act-copy">
-          <p className="eyebrow">AI-native creative operating system</p>
-          <h2>One direction. Every studio. A system that remembers why.</h2>
+          <p className="eyebrow">Chapter II — The Two Centers</p>
+          <h2>One intention. Two intelligence layers.</h2>
           <strong>Powered by Axiom Imagine X</strong>
           <p>
-            Imagine X turns your intent into creative direction. Brain X preserves context. Specialist
-            studios execute the craft—and nothing important moves forward without your approval.
+            Imagine X directs the work. Brain X preserves the context that makes it coherent. You remain
+            the authority between direction and execution.
           </p>
+          <div className="intelligence-center-pair">
+            <article aria-label="Brain X intelligence role">
+              <span aria-hidden="true">B</span>
+              <div>
+                <h3>Brain X</h3>
+                <p>Holds project context, workspace policy, and continuity across the work.</p>
+                <small>Context · policy · continuity</small>
+              </div>
+            </article>
+            <article aria-label="Imagine X intelligence role">
+              <span aria-hidden="true">I</span>
+              <div>
+                <h3>Imagine X</h3>
+                <p>Turns your brief into visible direction and routes approved work to specialist studios.</p>
+                <small>Direction · routing · critique</small>
+              </div>
+            </article>
+          </div>
           <div className="hero-actions">
             <button type="button" className="primary-button" onClick={onStartCreating}>
               Start Crafting
@@ -334,17 +351,12 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             </button>
             <a className="ghost-link" href="#intelligence">Explore Axiom</a>
           </div>
-          <div className="hero-proof-list" aria-label="Axiom operating principles">
-            <span>Intent becomes direction</span>
-            <span>Human approval remains visible</span>
-            <span>Every output stays editable</span>
-          </div>
         </div>
 
-        <aside className="orchestration-field" aria-label="Studio intelligence in motion" data-ui-language="axiom-prism-v2">
+        <aside className="orchestration-field intelligence-ledger" aria-label="Studio intelligence in motion" data-ui-language="atelier-editorial-v3">
           <header>
-            <div><span className="live-indicator" /><strong>Studio intelligence in motion</strong></div>
-            <span>LIVE / {directorState.chapter.title}</span>
+            <div><span className="live-indicator" /><strong>From intent to editable output</strong></div>
+            <span>{directorState.chapter.title} / ACTIVE</span>
           </header>
           <ol className="orchestration-route" aria-label="Axiom orchestration route">
             <li className="route-step route-intent">
@@ -372,13 +384,10 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           </footer>
         </aside>
 
-        <div className="hero-stat-strip" aria-label="Platform summary">
-          {landingStats.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
+        <div className="intelligence-principles" aria-label="Axiom operating principles">
+          <span>Intent stays visible</span>
+          <span>Authority stays human</span>
+          <span>Outputs stay editable</span>
         </div>
       </section>
 
