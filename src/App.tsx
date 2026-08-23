@@ -15,7 +15,15 @@ import brandLogoUi from "../creative/brand-system/assets/logos/r1/axiom-logo-ui-
 import brandLogoDisplay from "../creative/brand-system/assets/logos/r1/axiom-logo-display-1024.webp";
 import brandLogoHero from "../creative/brand-system/assets/logos/r1/axiom-logo-hero-2048.webp";
 import awakeningFront from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front.png";
+import awakeningFront960Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-960.avif";
+import awakeningFront1672Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-1672.avif";
+import awakeningFront960Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-960.webp";
+import awakeningFront1672Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-1672.webp";
 import awakeningReveal from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal.png";
+import awakeningReveal960Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-960.avif";
+import awakeningReveal1672Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-1672.avif";
+import awakeningReveal960Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-960.webp";
+import awakeningReveal1672Webp from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-reveal-1672.webp";
 
 
 const philosophyCards = [
@@ -380,8 +388,16 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         aria-label="Axiom awakening reveal"
       >
         <div className="cinematic-reveal-stage">
-          <img src={awakeningReveal} alt="Awakened Axiom creative core" loading="lazy" decoding="async" />
-          <img className="cinematic-reveal-front" src={awakeningFront} alt="Dormant Axiom creative core" loading="lazy" decoding="async" />
+          <picture>
+            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakeningReveal960Avif} 960w, ${awakeningReveal1672Avif} 1672w`} sizes="100vw" />
+            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakeningReveal960Webp} 960w, ${awakeningReveal1672Webp} 1672w`} sizes="100vw" />
+            <img src={awakeningReveal} alt="Awakened Axiom creative core" loading="lazy" decoding="async" />
+          </picture>
+          <picture>
+            <source data-testid="cinematic-responsive-source" type="image/avif" srcSet={`${awakeningFront960Avif} 960w, ${awakeningFront1672Avif} 1672w`} sizes="100vw" />
+            <source data-testid="cinematic-responsive-source" type="image/webp" srcSet={`${awakeningFront960Webp} 960w, ${awakeningFront1672Webp} 1672w`} sizes="100vw" />
+            <img className="cinematic-reveal-front" src={awakeningFront} alt="Dormant Axiom creative core" loading="lazy" decoding="async" />
+          </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
           <div className="cinematic-reveal-copy">
             <p>From intent to intelligence</p>
