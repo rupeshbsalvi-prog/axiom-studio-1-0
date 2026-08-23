@@ -1,6 +1,6 @@
 # Axiom Sans — Public Typeface Program
 
-Status: design and licensing checkpoint. No font binary is approved, published, or connected to the product runtime.
+Status: Gate 1 approved. No font binary is approved, published, or connected to the product runtime.
 
 ## Purpose
 
@@ -8,7 +8,9 @@ Axiom Sans will be a public-facing variable typeface for Axiom Studio identity, 
 
 ## License foundation
 
-Development must begin from a verified SIL Open Font License 1.1 source family whose reserved-font-name terms permit modification and renaming. The selected source, original copyright notice, OFL text, modification record, and new family name must ship together. “Axiom Sans” cannot be exported until name collision and license checks pass.
+**Approved base: Space Grotesk 2.0.** The authoritative project distributes its sources under the SIL Open Font License 1.1 and declares no Reserved Font Name in its [OFL file](https://github.com/floriankarsten/space-grotesk/blob/master/OFL.txt). Its [source repository](https://github.com/floriankarsten/space-grotesk) provides broad Latin language coverage, tabular figures, and buildable sources.
+
+The derivative will be renamed **Axiom Sans** to avoid source-family confusion. The original copyright notice, OFL text, source reference, modification record, and new family metadata must ship together. Gate 1 approves Space Grotesk only as the design and engineering foundation; it does not approve an Axiom Sans font binary.
 
 ## Character and language scope
 
@@ -26,7 +28,7 @@ Development must begin from a verified SIL Open Font License 1.1 source family w
 
 ## Approval gates
 
-1. Select and record the OFL source family.
+1. **Approved — Space Grotesk 2.0 selected and recorded as the OFL source family.**
 2. Approve the Axiom glyph DNA and first display alphabet specimen.
 3. Complete Latin Extended and accessibility testing.
 4. Approve trademark/name review and release metadata.
