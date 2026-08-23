@@ -67,25 +67,9 @@ export function CinematicExperienceEngine({ directorState }: { directorState: Ex
   const [lifecycleTestStatus, setLifecycleTestStatus] = useState<LifecycleTestStatus>("idle");
   const [lifecycleTestMetrics, setLifecycleTestMetrics] = useState<LifecycleTestMetrics | null>(null);
 
-  const [showDiagnostics, setShowDiagnostics] = useState(false);
-
-  // SSR-safe dev-gating check
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const isLocalhost =
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1";
-    const isDevMode = 
-      (typeof globalThis !== "undefined" && (globalThis as any).process?.env?.NODE_ENV === "development") ||
-      (typeof import.meta !== "undefined" && (import.meta as any).env?.DEV);
-
-    setShowDiagnostics(
-      !!isDevMode ||
-      isLocalhost ||
-      params.has("diagnostics")
-    );
-  }, []);
+  const [showDiagnostics] = useState(
+    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).has("diagnostics"),
+  );
 
   // Safety cleanup: turn off all stress modes when diagnostics is closed
   useEffect(() => {
