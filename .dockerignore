@@ -6,6 +6,12 @@
 .axiom-runtime
 apps/api/tests/.runtime-test
 creative
+!creative/
+creative/*
+!creative/brand-system/
+creative/brand-system/*
+!creative/brand-system/assets/
+!creative/brand-system/assets/**
 docs
 dist
 node_modules
