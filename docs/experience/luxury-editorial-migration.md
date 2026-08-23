@@ -34,10 +34,16 @@
 - Preserve semantic headings, buttons, links, focus states, and reduced-motion behavior.
 - Maintain LCP ≤ 2.5s and CLS ≤ 0.1 at the live acceptance checkpoint.
 
+## Brain X + Imagine X Chapter
+
+- Presents Brain X and Imagine X as two distinct intelligence roles under one human-controlled workflow.
+- Replaces generic neon cards with a warm editorial spread and a restrained charcoal execution ledger.
+- Keeps intent, direction, context, approval, specialist craft, and editable output visible in sequence.
+- Passes desktop and 390px mobile visual acceptance without horizontal overflow.
+
 ## Later Slices
 
-1. Brain X and Imagine X editorial chapter.
-2. Condensed Studio Atlas with dedicated Studio routes.
-3. Workflow proof, pricing, and closing conversion.
-4. Axiom Sans webfont integration after binary approval.
-5. Lighthouse regression budgets after visual migration closure.
+1. Condensed Studio Atlas with dedicated Studio routes.
+2. Workflow proof, pricing, and closing conversion.
+3. Axiom Sans webfont integration after binary approval.
+4. Lighthouse regression budgets after visual migration closure.

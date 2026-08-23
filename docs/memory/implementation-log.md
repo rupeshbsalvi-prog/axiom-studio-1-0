@@ -2,6 +2,12 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Brain X + Imagine X Editorial Chapter
+
+TDD replaced the generic intelligence section with a concise two-center editorial chapter. Brain X now owns context, policy, and continuity; Imagine X owns direction, routing, and critique; the execution ledger keeps human approval explicit before specialist craft and editable output.
+
+Verification: the RED contract failed before implementation; all 893 tests pass with the bounded timeout, the production build passes, and desktop/mobile visual acceptance confirms readable alignment with no horizontal overflow.
+
 ## 2026-08-23 - Luxury Editorial Hero and Navigation
 
 Accepted ADR-0008 and extracted the approved V3 Luxury prototype into a runtime-safe migration specification. TDD added the public editorial contract first, then migrated the existing persistent navigation and three-state cinematic hero to warm-paper, charcoal, brass, and editorial typography without copying the prototype runtime or embedded media. The first viewport now contains explicit Start Creating and Explore Axiom actions, truthful public copy, keyboard focus, responsive layout, and the existing reduced-motion fallback.

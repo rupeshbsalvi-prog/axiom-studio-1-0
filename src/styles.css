@@ -4769,9 +4769,10 @@ body {
 .intelligence-center-pair h3 {
   margin: 0;
   font-family: var(--axiom-editorial);
-  font-size: 30px;
+  font-size: clamp(24px, 2vw, 30px);
   font-weight: 400;
   letter-spacing: -0.035em;
+  white-space: nowrap;
 }
 
 .intelligence-center-pair p {
