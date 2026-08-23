@@ -1,4 +1,4 @@
-import { type KeyboardEvent, type PointerEvent, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, ChevronRight, Cpu, FileArchive, Sparkles } from "lucide-react";
 import { STUDIO_REGISTRY } from "./app/studios/registry";
 import {
@@ -11,9 +11,6 @@ import {
 } from "./experience/director/ExperienceDirector";
 import { CinematicExperienceEngine } from "./experience/cinematic/CinematicExperienceEngine";
 import { AuthWorkspaceGate } from "./auth/AuthWorkspaceGate";
-import brandLogoUi from "../creative/brand-system/assets/logos/r1/axiom-logo-ui-512.webp";
-import brandLogoDisplay from "../creative/brand-system/assets/logos/r1/axiom-logo-display-1024.webp";
-import brandLogoHero from "../creative/brand-system/assets/logos/r1/axiom-logo-hero-2048.webp";
 import awakeningFront from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front.png";
 import awakeningFront960Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-960.avif";
 import awakeningFront1672Avif from "../creative/brand-system/assets/cinematic/r1/axiom-awakening-front-1672.avif";
@@ -174,13 +171,8 @@ function useExperienceDirectorState(): ExperienceDirectorState {
 function LandingExperience({ onStartCreating }: { onStartCreating: () => void }) {
   const directorState = useExperienceDirectorState();
   const directorCue = directorState.cue;
-  const prologueRef = useRef<HTMLDivElement>(null);
-  const prologueFrame = useRef(0);
-  const prologuePointer = useRef({ x: 0, y: 0 });
   const awakeningRef = useRef<HTMLElement>(null);
   const awakeningFrame = useRef(0);
-
-  useEffect(() => () => window.cancelAnimationFrame(prologueFrame.current), []);
 
   useEffect(() => {
     const updateReveal = () => {
@@ -210,33 +202,6 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
     };
   }, []);
 
-  const resetProloguePointer = () => {
-    window.cancelAnimationFrame(prologueFrame.current);
-    prologueFrame.current = 0;
-    prologueRef.current?.style.setProperty("--hero-pointer-x", "50%");
-    prologueRef.current?.style.setProperty("--hero-pointer-y", "50%");
-    prologueRef.current?.style.setProperty("--hero-shift-x", "0px");
-    prologueRef.current?.style.setProperty("--hero-shift-y", "0px");
-  };
-
-  const directPrologue = (event: PointerEvent<HTMLDivElement>) => {
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
-    prologuePointer.current = { x: event.clientX, y: event.clientY };
-    if (prologueFrame.current) return;
-
-    prologueFrame.current = window.requestAnimationFrame(() => {
-      prologueFrame.current = 0;
-      const prologue = prologueRef.current;
-      if (!prologue) return;
-      const bounds = prologue.getBoundingClientRect();
-      const x = Math.min(Math.max((prologuePointer.current.x - bounds.left) / Math.max(bounds.width, 1), 0), 1);
-      const y = Math.min(Math.max((prologuePointer.current.y - bounds.top) / Math.max(bounds.height, 1), 0), 1);
-      prologue.style.setProperty("--hero-pointer-x", `${Math.round(x * 100)}%`);
-      prologue.style.setProperty("--hero-pointer-y", `${Math.round(y * 100)}%`);
-      prologue.style.setProperty("--hero-shift-x", `${Math.round((x - 0.5) * 20)}px`);
-      prologue.style.setProperty("--hero-shift-y", `${Math.round((y - 0.5) * 14)}px`);
-    });
-  };
   const scrollToChapter = (chapterIndex: number) => {
     if (typeof window === "undefined" || typeof document === "undefined") {
       return;
@@ -253,38 +218,15 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
     });
   };
 
-  const handleChapterRailKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const keyTargets: Record<string, number> = {
-      ArrowRight: directorState.chapterIndex + 1,
-      ArrowDown: directorState.chapterIndex + 1,
-      ArrowLeft: directorState.chapterIndex - 1,
-      ArrowUp: directorState.chapterIndex - 1,
-      Home: 0,
-      End: cinematicChapters.length - 1,
-    };
-
-    if (event.key in keyTargets) {
-      event.preventDefault();
-      scrollToChapter(keyTargets[event.key]);
-    }
-  };
-
   return (
     <main className="landing-experience">
       <CinematicExperienceEngine directorState={directorState} />
       <header className="landing-header" aria-label="Persistent landing navigation" data-persistent="true" role="banner">
         <nav className="landing-nav" aria-label="Public navigation">
           <div className="brand-mark">
-            <img
-              className="brand-icon"
-              src={brandLogoUi}
-              alt="Axiom Studio brand logo"
-              width="42"
-              height="42"
-            />
             <div>
-              <strong>Axiom</strong>
-              <span>Studio 1.0</span>
+              <strong>Axiom Studio</strong>
+              <span>Creative Intelligence OS</span>
             </div>
           </div>
           <div className="landing-nav-links">
@@ -297,20 +239,6 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             Sign In
           </button>
         </nav>
-        <div className="chapter-rail" aria-label="Cinematic chapter timeline" onKeyDown={handleChapterRailKeyDown}>
-          {cinematicChapters.map((chapter, index) => (
-            <button
-              aria-current={index === directorState.chapterIndex ? "step" : undefined}
-              aria-label={`Go to ${chapter.title} chapter`}
-              className={index === directorState.chapterIndex ? "chapter-chip active" : "chapter-chip"}
-              key={chapter.id}
-              onClick={() => scrollToChapter(index)}
-              type="button"
-            >
-              <strong>{chapter.title}</strong>
-            </button>
-          ))}
-        </div>
       </header>
 
       <nav className="world-route" aria-label="Axiom scroll world route">
@@ -328,57 +256,6 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           </button>
         ))}
       </nav>
-
-      <section className="landing-hero" aria-label="Axiom Studio landing hero">
-        <div
-          className="signature-hero cinematic-prologue"
-          data-motion-system="cinematic-pointer-field-v1"
-          ref={prologueRef}
-          role="region"
-          aria-label="Axiom signature hero"
-          onPointerLeave={resetProloguePointer}
-          onPointerMove={directPrologue}
-        >
-          <div className="cinematic-lens" aria-hidden="true" />
-          <div className="signature-name">
-            <p>Creative intelligence platform</p>
-            <h1>Axiom Studio</h1>
-            <span>One operating system for every creative discipline.</span>
-          </div>
-
-          <div className="mind-field" role="img" aria-label="Animated Axiom mind">
-            <div className="mind-aura" aria-hidden="true" />
-            <div className="mind-profile" aria-hidden="true">
-              <img
-                src={brandLogoDisplay}
-                srcSet={`${brandLogoUi} 512w, ${brandLogoDisplay} 1024w, ${brandLogoHero} 2048w`}
-                sizes="(max-width: 640px) 70vw, (max-width: 980px) 52vw, 27vw"
-                alt=""
-              />
-              <span className="neural-node node-one" />
-              <span className="neural-node node-two" />
-              <span className="neural-node node-three" />
-              <span className="neural-node node-four" />
-              <span className="neural-path path-one" />
-              <span className="neural-path path-two" />
-              <span className="neural-path path-three" />
-            </div>
-            <div className="mind-orbit orbit-one" aria-hidden="true" />
-            <div className="mind-orbit orbit-two" aria-hidden="true" />
-            <span className="mind-signal signal-one" aria-hidden="true">Intent</span>
-            <span className="mind-signal signal-two" aria-hidden="true">Reason</span>
-            <span className="mind-signal signal-three" aria-hidden="true">Create</span>
-          </div>
-
-          <div className="signature-promise">
-            <p>Human-directed intelligence</p>
-            <h2>Create Without Limits</h2>
-            <span>From first thought to editable, professional output.</span>
-          </div>
-        </div>
-
-        <div className="hero-scroll-cue" aria-hidden="true"><span />Scroll to awaken Imagine X</div>
-      </section>
 
       <section
         ref={awakeningRef}
@@ -399,21 +276,28 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
             <img className="cinematic-reveal-front" src={awakeningFront} alt="Dormant Axiom creative core" loading="lazy" decoding="async" />
           </picture>
           <div className="cinematic-reveal-seam" aria-hidden="true" />
-          <div className="cinematic-reveal-copy">
-            <p>From intent to intelligence</p>
-            <h2>Scroll to awaken the creative core.</h2>
+          <div className="cinematic-hero-name">
+            <p>Creative intelligence, directed by you</p>
+            <h1>Axiom Studio</h1>
+            <span>One living system for every creative discipline.</span>
           </div>
+          <div className="cinematic-hero-promise">
+            <p>Human direction. Machine precision.</p>
+            <h2>Create Without Limits</h2>
+            <span>From first intent to production-ready craft.</span>
+          </div>
+          <div className="cinematic-hero-scroll" aria-hidden="true"><span />Scroll to awaken</div>
         </div>
       </section>
 
       <section className="creative-operating-act" role="region" aria-label="Imagine X creative operating system">
         <div className="creative-act-copy">
           <p className="eyebrow">AI-native creative operating system</p>
-          <h2>Direction, intelligence, and craft—inside one living system.</h2>
+          <h2>One direction. Every studio. A system that remembers why.</h2>
           <strong>Powered by Axiom Imagine X</strong>
           <p>
-            Turn intent, sketches, and future voice input into director-level plans, editable assets,
-            and professional multi-studio output with human approval at every important step.
+            Imagine X turns your intent into creative direction. Brain X preserves context. Specialist
+            studios execute the craft—and nothing important moves forward without your approval.
           </p>
           <div className="hero-actions">
             <button type="button" className="primary-button" onClick={onStartCreating}>
@@ -429,25 +313,31 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
           </div>
         </div>
 
-        <aside className="orchestration-field" aria-label="Studio intelligence in motion">
+        <aside className="orchestration-field" aria-label="Studio intelligence in motion" data-ui-language="axiom-prism-v2">
           <header>
             <div><span className="live-indicator" /><strong>Studio intelligence in motion</strong></div>
             <span>LIVE / {directorState.chapter.title}</span>
           </header>
-          <div className="signal-stage" aria-hidden="true">
-            <div className="signal-ring ring-intent" />
-            <div className="signal-ring ring-imagine" />
-            <div className="signal-core"><img src="/assets/branding/ax-logo-core-symbol.svg" alt="" /></div>
-            <span className="signal-label label-intent">Intent</span>
-            <span className="signal-label label-plan">Imagine X</span>
-            <span className="signal-label label-output">Editable Studios</span>
-            <i className="signal-pulse pulse-one" />
-            <i className="signal-pulse pulse-two" />
-            <i className="signal-pulse pulse-three" />
-          </div>
-          <div className="studio-signal-list">
-            <span>Photo</span><span>Motion</span><span>Brand</span><span>Vector</span>
-          </div>
+          <ol className="orchestration-route" aria-label="Axiom orchestration route">
+            <li className="route-step route-intent">
+              <span>01 / INPUT</span><strong>Creative intent</strong><p>Your brief, references, constraints, and desired outcome.</p>
+            </li>
+            <li className="route-step route-intelligence">
+              <span>02 / DIRECT</span>
+              <div><strong>Imagine X direction</strong><p>Concept, sequence, craft plan, and studio routing.</p></div>
+              <div><strong>Brain X context</strong><p>Brand memory, workspace policy, and project continuity.</p></div>
+            </li>
+            <li className="route-step route-approval">
+              <span>03 / DECIDE</span><strong>Human approval</strong><p>You accept, revise, or redirect before execution.</p>
+            </li>
+            <li className="route-step route-studios">
+              <span>04 / CRAFT</span><strong>Specialist studios</strong>
+              <div className="route-studio-list"><em>Photo</em><em>Motion</em><em>Brand</em><em>Vector</em></div>
+            </li>
+            <li className="route-step route-output">
+              <span>05 / DELIVER</span><strong>Editable studio output</strong><p>Layered, governed, and ready for professional refinement.</p>
+            </li>
+          </ol>
           <footer>
             <span>Director cue</span><strong>{directorCue.camera.mode}</strong>
             <span>Next</span><strong>{directorState.completionLabel}</strong>
