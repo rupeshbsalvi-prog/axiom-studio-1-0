@@ -20,6 +20,9 @@ describe("VideoPanel", () => {
 
     expect(screen.getByRole("button", { name: "Scene 2: Product reveal" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("region", { name: "Video editorial canvas" })).toHaveTextContent("Product reveal");
+
+    fireEvent.click(screen.getByRole("button", { name: "Scene 3: Human direction" }));
+    expect(screen.getByRole("region", { name: "Video editorial canvas" })).toHaveTextContent("00:18:12");
   });
 
   it("keeps media upload gated pending persistence authority", () => {
