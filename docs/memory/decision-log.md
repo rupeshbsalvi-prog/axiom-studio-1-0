@@ -2,6 +2,10 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Luxury Editorial Public Entry
+
+Accepted [ADR-0008](../adr/ADR-0008-luxury-editorial-public-entry.md). The approved V3 Luxury prototype is the public visual reference, not runtime source. Its material/editorial language will migrate incrementally into the existing WEOS, beginning with persistent navigation and the cinematic hero while preserving explicit entry, responsive assets, reduced motion, and the Workspace/Studio shell.
+
 ## 2026-08-01 - Render Production Target
 
 Accepted [ADR-0007](../adr/ADR-0007-render-production-deployment.md). Render is the smallest target compatible with the current same-origin React/FastAPI application and persistent SQLite/file runtime. Use one paid Starter web service in Singapore with a 1 GB disk, managed TLS, `Secure` cookies, manual deploys, and provider execution disabled. Live creation remains gated on account, repository, and billing approval.

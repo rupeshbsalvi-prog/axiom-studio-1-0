@@ -41,11 +41,22 @@ describe("Axiom Studio 1.0 shell", () => {
   it("merges the Axiom identity into the cinematic awakening hero", () => {
     render(<App />);
 
+    const header = screen.getByRole("banner", { name: /Persistent landing navigation/i });
+    expect(header).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(header).getByText(/Edition 03 \/ 2026/i)).toBeInTheDocument();
+
     expect(screen.queryByRole("region", { name: /Axiom signature hero/i })).not.toBeInTheDocument();
     const hero = screen.getByRole("region", { name: /Axiom awakening reveal/i });
+    expect(hero).toHaveAttribute("data-art-direction", "heirloom-editorial");
     expect(within(hero).getByRole("heading", { name: /^Axiom Studio$/i })).toBeInTheDocument();
     expect(within(hero).getByRole("heading", { name: /Create Without Limits/i })).toBeInTheDocument();
+    expect(within(hero).getByText(/Volume I — Creative Intelligence/i)).toBeInTheDocument();
+    expect(within(hero).getByText(/Human intention enters once\. Every studio remembers why\./i)).toBeInTheDocument();
+    expect(within(hero).getByText(/Powered by Axiom Imagine X/i)).toBeInTheDocument();
+    expect(within(hero).getByRole("button", { name: /^Start Creating$/i })).toBeInTheDocument();
+    expect(within(hero).getByRole("link", { name: /^Explore Axiom$/i })).toHaveAttribute("href", "#intelligence");
     expect(within(hero).getByText(/Scroll to awaken/i)).toBeInTheDocument();
+    expect(within(hero).queryByText(/Graphic designer.?quality finish|No Neon/i)).not.toBeInTheDocument();
 
     const creativeAct = screen.getByRole("region", { name: /Imagine X creative operating system/i });
     expect(within(creativeAct).getByText(/AI-native creative operating system/i)).toBeInTheDocument();
