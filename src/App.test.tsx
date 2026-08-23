@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import App from "./App";
@@ -57,6 +57,38 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(creativeAct).getByRole("button", { name: /Start Crafting/i })).toBeInTheDocument();
     expect(within(creativeAct).getByRole("link", { name: /Explore Axiom/i })).toBeInTheDocument();
     expect(within(creativeAct).getByRole("complementary", { name: /Studio intelligence in motion/i })).toBeInTheDocument();
+  });
+
+  it("directs the cinematic prologue toward the pointer without rerendering the page", () => {
+    render(<App />);
+
+    const prologue = screen.getByRole("region", { name: /Axiom signature hero/i });
+    const frameCallbacks: FrameRequestCallback[] = [];
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      frameCallbacks.push(callback);
+      return frameCallbacks.length;
+    });
+    vi.spyOn(prologue, "getBoundingClientRect").mockReturnValue({
+      bottom: 500,
+      height: 400,
+      left: 100,
+      right: 900,
+      top: 100,
+      width: 800,
+      x: 100,
+      y: 100,
+      toJSON: () => ({}),
+    });
+
+    expect(prologue).toHaveAttribute("data-motion-system", "cinematic-pointer-field-v1");
+    fireEvent.pointerMove(prologue, { clientX: 700, clientY: 200 });
+    frameCallbacks.at(-1)?.(0);
+    expect(prologue.style.getPropertyValue("--hero-pointer-x")).toBe("75%");
+    expect(prologue.style.getPropertyValue("--hero-pointer-y")).toBe("25%");
+
+    fireEvent.pointerLeave(prologue);
+    expect(prologue.style.getPropertyValue("--hero-pointer-x")).toBe("50%");
+    expect(prologue.style.getPropertyValue("--hero-pointer-y")).toBe("50%");
   });
 
   it("keeps complete chapter names inside a persistent numberless landing header", () => {
