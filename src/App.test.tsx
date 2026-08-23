@@ -69,18 +69,22 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(screen.queryByText(/Stress & diagnostics tools/i)).not.toBeInTheDocument();
   });
 
-  it("reveals the awakened Axiom scene continuously in both scroll directions", () => {
+  it("reveals the three-state Axiom scene continuously in both scroll directions", () => {
     render(<App />);
 
     const reveal = screen.getByRole("region", { name: /Axiom awakening reveal/i });
     const front = within(reveal).getByRole("img", { name: /Dormant Axiom creative core/i });
-    const awakened = within(reveal).getByRole("img", { name: /Awakened Axiom creative core/i });
-    expect(reveal).toHaveAttribute("data-motion-system", "scroll-image-reveal-v1");
-    expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-front\.png$/));
-    expect(awakened).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-reveal\.png$/));
+    const awakening = within(reveal).getByRole("img", { name: /Awakening Axiom creative core/i });
+    const resolved = within(reveal).getByRole("img", { name: /Resolved Axiom creative core/i });
+    expect(reveal).toHaveAttribute("data-motion-system", "scroll-image-sequence-v2");
+    expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-portal-dormant\.webp$/));
+    expect(awakening).toHaveAttribute("src", expect.stringMatching(/axiom-portal-awakening\.webp$/));
+    expect(resolved).toHaveAttribute("src", expect.stringMatching(/axiom-portal-resolved\.webp$/));
     const sources = within(reveal).getAllByTestId("cinematic-responsive-source");
-    expect(sources).toHaveLength(4);
+    expect(sources).toHaveLength(6);
     expect(sources.map((source) => source.getAttribute("type"))).toEqual([
+      "image/avif",
+      "image/webp",
       "image/avif",
       "image/webp",
       "image/avif",
@@ -102,16 +106,17 @@ describe("Axiom Studio 1.0 shell", () => {
       height: 1200,
       left: 0,
       right: 1000,
-      top: -travel / 2,
+      top: -(travel * 0.75),
       width: 1000,
       x: 0,
-      y: -travel / 2,
+      y: -(travel * 0.75),
       toJSON: () => ({}),
     });
 
     fireEvent.scroll(window);
     frameCallbacks.at(-1)?.(0);
-    expect(reveal.style.getPropertyValue("--reveal-clip")).toBe("50%");
+    expect(reveal.style.getPropertyValue("--reveal-clip")).toBe("75%");
+    expect(reveal.style.getPropertyValue("--resolve-opacity")).toBe("50%");
   });
 
   it("offers a scroll-world route through the persistent Axiom scene", async () => {
