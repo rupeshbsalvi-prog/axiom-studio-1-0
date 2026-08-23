@@ -180,7 +180,7 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
   };
 
   const directPrologue = (event: PointerEvent<HTMLDivElement>) => {
-    if (directorState.reducedMotion) return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
     prologuePointer.current = { x: event.clientX, y: event.clientY };
     if (prologueFrame.current) return;
 
