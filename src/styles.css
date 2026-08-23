@@ -5313,6 +5313,7 @@ body {
   display: grid;
   gap: 10px;
   min-width: 210px;
+  margin-right: 56px;
 }
 
 .landing-experience .conversion-close .primary-button {
@@ -5423,7 +5424,7 @@ body {
   .workflow-proof h3 { font-size: 36px; }
   .access-ledger { padding: 30px 24px; }
   .conversion-close { margin: 72px -20px 0; padding: 68px 20px 28px; }
-  .conversion-actions { width: 100%; }
+  .conversion-actions { width: 100%; margin-right: 0; }
   .conversion-close .compatibility-strip { justify-content: flex-start; }
   .hero-proof-list { display: grid; }
   .hero-proof-list span { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }

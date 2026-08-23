@@ -47,8 +47,14 @@
 - Keeps all twelve specialist Studios, their real roles, and export formats visible in a condensed editorial system.
 - Uses a two-column ledger on desktop and a single-column index on mobile without horizontal overflow.
 
+## Workflow and Conversion
+
+- Consolidates workflow proof, the 30-Day Free Trial, five post-trial access paths, compatibility, and the closing action into one chapter.
+- Keeps Direct → Approve → Craft → Deliver visible without claiming automated authority.
+- Preserves the established Free Trial product term and removes repeated pricing cards plus the generic marketplace banner.
+- Passes desktop and 390px mobile visual acceptance without horizontal overflow or chapter-rail obstruction.
+
 ## Later Slices
 
-1. Workflow proof, pricing, and closing conversion.
-2. Axiom Sans webfont integration after binary approval.
-3. Lighthouse regression budgets after visual migration closure.
+1. Axiom Sans webfont integration after binary approval.
+2. Lighthouse regression budgets after visual migration closure.

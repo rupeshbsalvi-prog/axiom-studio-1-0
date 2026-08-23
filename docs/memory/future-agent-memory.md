@@ -20,11 +20,11 @@ The public product direction changed after Phase 01 through [ADR-0002](../adr/AD
 
 ### Latest Landing Handoff — 2026-08-23
 
-ADR-0008 adopts the approved V3 Luxury prototype as a visual reference, not runtime source. The persistent navigation, three-state responsive hero, Brain X + Imagine X chapter, and condensed Studio Atlas now use the atelier-editorial direction. The Atlas is sourced directly from `STUDIO_REGISTRY`; do not restore decorative filters or duplicate hard-coded Studio data. Do not copy the prototype's bundled runtime, embedded media, internal prompt language, long essays, or unsupported capability claims.
+ADR-0008 adopts the approved V3 Luxury prototype as a visual reference, not runtime source. The persistent navigation, three-state responsive hero, Brain X + Imagine X chapter, condensed Studio Atlas, and workflow/access conversion now use the atelier-editorial direction. The Atlas is sourced directly from `STUDIO_REGISTRY`; do not restore decorative filters, repeated pricing cards, generic marketplace copy, or duplicate hard-coded Studio data. Do not copy the prototype's bundled runtime, embedded media, internal prompt language, long essays, or unsupported capability claims.
 
 The existing Experience Director, WEOS chapter route, AuthWorkspaceGate, optimized AVIF/WebP sequence, reduced-motion fallback, and Workspace/Studio shell remain intact. Axiom Sans source masters are not a public webfont binary; continue using native fallbacks until the font approval gate completes.
 
-Next landing slice: consolidate workflow proof, pricing, and the closing conversion. Automated Lighthouse budgets remain after visual migration closure.
+The approved visual migration slices are complete. Next: add automated Lighthouse performance budgets to CI. Axiom Sans webfont integration remains separately gated on binary approval.
 
 ### Latest Quality Checkpoint — 2026-08-01
 

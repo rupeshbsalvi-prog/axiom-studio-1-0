@@ -2,6 +2,12 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Consolidated Workflow and Conversion Chapter
+
+TDD replaced the separate pricing cards and generic marketplace/community banner with one editorial conversion chapter. It now presents Direct → Approve → Craft → Deliver, the established 30-Day Free Trial, five post-trial access paths, platform compatibility, and one paired Start Creating / Review Studios close.
+
+Verification: the RED contract failed before implementation; all 895 tests pass, focused `App.tsx` coverage is 87.87% statements and 88.54% lines, the production build passes, and desktop/mobile visual acceptance confirms no overflow or persistent-rail obstruction.
+
 ## 2026-08-23 - Condensed Studio Atlas
 
 TDD replaced the duplicated showcase, inactive category filters, and twelve oversized cards with one registry-backed editorial Atlas. All twelve specialist Studios retain their real summaries and export formats in a two-column desktop ledger and single-column mobile index.
