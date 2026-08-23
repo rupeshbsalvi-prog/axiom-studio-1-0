@@ -57,4 +57,4 @@
 ## Later Slices
 
 1. Axiom Sans webfont integration after binary approval.
-2. Lighthouse regression budgets after visual migration closure.
+2. Lighthouse regression budgets completed after visual migration closure.

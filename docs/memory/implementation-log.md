@@ -2315,3 +2315,14 @@ Next: apply the migration and server settings to a controlled Supabase project, 
 Implemented the six approved launch-audit remediations with RED/GREEN checkpoints and no paid monitoring dependency. Planner APIs now require an opaque application session with active membership in the configured workspace; browser planner calls are same-origin and credentialed. Login starts use a bounded, per-client, single-instance limiter. Planner inputs and collections are bounded, unexpected client errors are generic and correlated, production API docs are disabled, security headers and structured request logs are native, and `/api/ready` verifies Supabase before Render accepts traffic.
 
 Generated Photo assets now receive durable service-only Supabase owner and expiry metadata, seven-day default retention, startup/creation cleanup, and owner-session deletion. The controlled `0003_asset_retention` Supabase migration, Render Free deployment, and live security/readiness/auth/asset-deletion smoke passed. The mock provider now bypasses the external-provider credential gate while the real provider remains fail-closed. Verification: 132 API tests at 91.17% coverage, 825 frontend tests, production build, npm audit, and pip-audit pass.
+
+## 2026-08-24 - Lighthouse CI Performance Budgets
+
+GitHub Actions now builds the production site and runs three mobile Lighthouse audits for pull requests and `main` pushes. Median LCP is capped at 2.5s, CLS at 0.1, TBT at 300ms, and total transfer at 2MB. Failed reports are retained privately for seven days; no public Lighthouse upload or permanent application dependency was added.
+
+Verification:
+- TDD RED failed against the absent workflow and Lighthouse contract; focused GREEN passed.
+- Full Vitest suite: 111 suites / 896 tests passed.
+- Production build and existing package bundle budgets passed.
+- npm audit: zero vulnerabilities.
+- The local Windows Lighthouse process reached the page but could not clean its temporary Chrome profile; the authoritative Linux CI run remains the next checkpoint.
