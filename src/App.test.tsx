@@ -81,6 +81,22 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(route).getByText(/Editable studio output/i)).toBeInTheDocument();
   });
 
+  it("presents every specialist Studio in one condensed editorial atlas", () => {
+    render(<App />);
+
+    const atlas = screen.getByRole("region", { name: /Axiom Studio Atlas/i });
+    expect(atlas).toHaveAttribute("data-chapter", "studio-atlas");
+    expect(atlas).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(atlas).getByText(/Chapter III — The Studio Atlas/i)).toBeInTheDocument();
+    expect(within(atlas).getByRole("heading", { name: /Twelve specialist studios\. One continuous creative system\./i })).toBeInTheDocument();
+    expect(within(atlas).getAllByRole("article")).toHaveLength(12);
+    expect(within(atlas).getByRole("heading", { name: /^Photo Studio$/i })).toBeInTheDocument();
+    expect(within(atlas).getByRole("heading", { name: /^Brain X$/i })).toBeInTheDocument();
+    expect(within(atlas).getByRole("button", { name: /Open Workspace/i })).toBeInTheDocument();
+    expect(within(atlas).queryByLabelText(/Showcase categories/i)).not.toBeInTheDocument();
+    expect(within(atlas).queryByLabelText(/Featured Axiom outputs/i)).not.toBeInTheDocument();
+  });
+
   it("keeps cinematic developer diagnostics opt-in on the public landing page", () => {
     render(<App />);
 
