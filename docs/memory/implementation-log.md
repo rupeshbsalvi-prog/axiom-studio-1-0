@@ -2,6 +2,12 @@
 
 [Back to docs index](../README.md)
 
+## 2026-08-23 - Condensed Studio Atlas
+
+TDD replaced the duplicated showcase, inactive category filters, and twelve oversized cards with one registry-backed editorial Atlas. All twelve specialist Studios retain their real summaries and export formats in a two-column desktop ledger and single-column mobile index.
+
+Verification: the RED contract failed before implementation; all 894 tests pass, focused `App.tsx` coverage is 87.62% statements and 88.29% lines, the production build passes, and desktop/mobile visual acceptance confirms no horizontal overflow.
+
 ## 2026-08-23 - Brain X + Imagine X Editorial Chapter
 
 TDD replaced the generic intelligence section with a concise two-center editorial chapter. Brain X now owns context, policy, and continuity; Imagine X owns direction, routing, and critique; the execution ledger keeps human approval explicit before specialist craft and editable output.

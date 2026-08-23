@@ -41,9 +41,14 @@
 - Keeps intent, direction, context, approval, specialist craft, and editable output visible in sequence.
 - Passes desktop and 390px mobile visual acceptance without horizontal overflow.
 
+## Studio Atlas
+
+- Replaces the decorative showcase, inactive filters, and oversized card grid with one registry-backed directory.
+- Keeps all twelve specialist Studios, their real roles, and export formats visible in a condensed editorial system.
+- Uses a two-column ledger on desktop and a single-column index on mobile without horizontal overflow.
+
 ## Later Slices
 
-1. Condensed Studio Atlas with dedicated Studio routes.
-2. Workflow proof, pricing, and closing conversion.
-3. Axiom Sans webfont integration after binary approval.
-4. Lighthouse regression budgets after visual migration closure.
+1. Workflow proof, pricing, and closing conversion.
+2. Axiom Sans webfont integration after binary approval.
+3. Lighthouse regression budgets after visual migration closure.
