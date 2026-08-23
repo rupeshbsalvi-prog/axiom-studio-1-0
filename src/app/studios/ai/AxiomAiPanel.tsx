@@ -129,275 +129,94 @@ export function AxiomAiPanel() {
   const totalEvals = data.evalResults.length;
 
   return (
-    <div
-      className="axiom-ai-panel"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        height: "100%",
-        overflow: "auto",
-        padding: "2px",
-      }}
+    <section
+      className="studio-production-panel studio-production-panel--axiom-ai"
+      aria-label="Axiom AI production workspace"
+      data-design-language="axiom-pro-panel-v1"
     >
-      {/* ─── Header: Status Bar ─── */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "10px 14px",
-          background: "rgba(105, 212, 232, 0.07)",
-          borderRadius: "8px",
-          border: "1px solid rgba(105, 212, 232, 0.18)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div
-            style={{
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              background: stats.activeAgents > 0 ? "#4ade80" : "#6b7280",
-              boxShadow: stats.activeAgents > 0 ? "0 0 6px #4ade80" : "none",
-            }}
-          />
-          <span style={{ fontSize: "11px", color: "#a1a8b8", fontFamily: "monospace" }}>
-            {stats.activeAgents > 0 ? `${stats.activeAgents} agent${stats.activeAgents !== 1 ? "s" : ""} active` : "No agents running"}
-          </span>
+      <aside className="studio-panel-rail studio-panel-rail--planner axiom-ai-director" aria-label="Axiom AI director and budget">
+        <header className="axiom-ai-heading">
+          <span>Director console</span>
+          <h2>Axiom Imagine X</h2>
+          <p>Observable orchestration for human-directed creative work.</p>
+        </header>
+        <div className="axiom-ai-status">
+          <i className={stats.activeAgents > 0 ? "is-active" : ""} aria-hidden="true" />
+          <span>{stats.activeAgents > 0 ? `${stats.activeAgents} agent${stats.activeAgents !== 1 ? "s" : ""} active` : "No agents running"}</span>
+          <strong>{stats.modelProvider.toUpperCase()}</strong>
         </div>
-        <span
-          style={{
-            fontSize: "10px",
-            color: "#69d4e8",
-            fontFamily: "monospace",
-            background: "rgba(105,212,232,0.1)",
-            padding: "2px 8px",
-            borderRadius: "3px",
-          }}
-        >
-          {stats.modelProvider.toUpperCase()}
-        </span>
-      </div>
-
-      {/* ─── Director Plan ─── */}
-      <div
-        style={{
-          padding: "12px 14px",
-          background: "rgba(255,255,255,0.03)",
-          borderRadius: "8px",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-      >
-        <p style={{ fontSize: "10px", color: "#69d4e8", fontFamily: "monospace", margin: "0 0 8px", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-          Director Plan
-        </p>
-        <p style={{ fontSize: "12px", color: "#d0d6e8", margin: 0, lineHeight: 1.5 }}>
-          {stats.currentDirectorPlan ?? "No active plan"}
-        </p>
-
-        {/* Token Budget Bar */}
-        <div style={{ marginTop: "12px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-            <span style={{ fontSize: "10px", color: "#6b7280", fontFamily: "monospace" }}>Token budget</span>
-            <span style={{ fontSize: "10px", color: "#a1a8b8", fontFamily: "monospace" }}>
-              {stats.tokenUsed.toLocaleString()} / {stats.tokenBudget.toLocaleString()}
-            </span>
+        <section className="axiom-ai-card">
+          <span>Director Plan</span>
+          <p>{stats.currentDirectorPlan ?? "No active plan"}</p>
+          <div className="axiom-ai-budget">
+            <div><small>Token budget</small><small>{stats.tokenUsed.toLocaleString()} / {stats.tokenBudget.toLocaleString()}</small></div>
+            <progress value={Math.min(tokenPct, 100)} max="100" aria-label="Token budget used" />
           </div>
-          <div style={{ height: "3px", background: "rgba(255,255,255,0.08)", borderRadius: "2px", overflow: "hidden" }}>
-            <div
-              style={{
-                height: "100%",
-                width: `${Math.min(tokenPct, 100)}%`,
-                background: tokenPct > 85 ? "#f87171" : tokenPct > 60 ? "#facc15" : "#69d4e8",
-                borderRadius: "2px",
-                transition: "width 0.3s ease",
-              }}
-            />
-          </div>
-        </div>
-      </div>
+        </section>
+        <section className="axiom-ai-card axiom-ai-authority">
+          <span>Operating boundary</span>
+          <p><strong>Advisory by default.</strong> Execution remains subject to workspace authority and explicit user direction.</p>
+        </section>
+      </aside>
 
-      {/* ─── Trace Timeline ─── */}
-      <div
-        style={{
-          padding: "12px 14px",
-          background: "rgba(255,255,255,0.03)",
-          borderRadius: "8px",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-          <p style={{ fontSize: "10px", color: "#69d4e8", fontFamily: "monospace", margin: 0, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            Trace Timeline
-          </p>
-          <span style={{ fontSize: "10px", color: "#6b7280", fontFamily: "monospace" }}>
-            avg {stats.avgLatencyMs}ms
-          </span>
+      <section className="studio-panel-canvas axiom-ai-canvas" aria-label="Axiom AI intelligence canvas">
+        <header className="axiom-ai-canvas-bar">
+          <div><span>Live intelligence map</span><strong>Runtime mediated</strong></div>
+          <small>{stats.traceCount} traces · {stats.avgLatencyMs}ms avg</small>
+        </header>
+        <div className="axiom-ai-orchestration" aria-label="Imagine X orchestration map">
+          <div className="axiom-ai-orbit" aria-hidden="true"><i /><i /><i /></div>
+          <div className="axiom-ai-core"><small>Axiom</small><strong>Imagine X</strong><span>{stats.activeAgents > 0 ? "Orchestrating" : "Ready"}</span></div>
+          <div className="axiom-ai-node axiom-ai-node--intent"><span>01</span><strong>Intent</strong></div>
+          <div className="axiom-ai-node axiom-ai-node--plan"><span>02</span><strong>Plan</strong></div>
+          <div className="axiom-ai-node axiom-ai-node--route"><span>03</span><strong>Route</strong></div>
+          <div className="axiom-ai-node axiom-ai-node--eval"><span>04</span><strong>Evaluate</strong></div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+        <div className="axiom-ai-metrics">
+          <div><span>Agents</span><strong>{stats.activeAgents}</strong></div>
+          <div><span>Traces</span><strong>{stats.traceCount}</strong></div>
+          <div><span>Eval pass</span><strong>{Math.round(stats.evalPassRate * 100)}%</strong></div>
+          <div><span>Routes</span><strong>{stats.routingDecisions}</strong></div>
+        </div>
+        <section className="axiom-ai-card axiom-ai-traces">
+          <header><span>Trace Timeline</span><small>avg {stats.avgLatencyMs}ms</small></header>
+          {data.traceEntries.length === 0 && <p className="axiom-ai-empty">Awaiting runtime trace.</p>}
           {data.traceEntries.slice(-5).map((entry) => (
-            <div
-              key={entry.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "5px 8px",
-                background: "rgba(255,255,255,0.025)",
-                borderRadius: "4px",
-                borderLeft: `2px solid ${getStatusColor(entry.status)}`,
-              }}
-            >
-              <span style={{ fontSize: "10px", color: "#a1a8b8", fontFamily: "monospace", flex: 1 }}>
-                {entry.tool}
-              </span>
-              <span style={{ fontSize: "10px", color: "#6b7280", fontFamily: "monospace" }}>
-                {entry.latencyMs}ms
-              </span>
-              <span
-                style={{
-                  fontSize: "9px",
-                  color: getStatusColor(entry.status),
-                  fontFamily: "monospace",
-                  textTransform: "uppercase",
-                }}
-              >
-                {entry.status}
-              </span>
+            <div key={entry.id} style={{ borderLeftColor: getStatusColor(entry.status) }}>
+              <span>{entry.tool}</span><small>{entry.latencyMs}ms</small><b style={{ color: getStatusColor(entry.status) }}>{entry.status}</b>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* ─── Eval Scorecard ─── */}
-      <div
-        style={{
-          padding: "12px 14px",
-          background: "rgba(255,255,255,0.03)",
-          borderRadius: "8px",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-          <p style={{ fontSize: "10px", color: "#69d4e8", fontFamily: "monospace", margin: 0, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            Eval Scorecard
-          </p>
-          <span style={{ fontSize: "10px", color: "#a1a8b8", fontFamily: "monospace" }}>
-            {passedCount}/{totalEvals} passed
-          </span>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        </section>
+        <section className="axiom-ai-card axiom-ai-evals">
+          <header><span>Eval Scorecard</span><small>{passedCount}/{totalEvals} passed</small></header>
+          {data.evalResults.length === 0 && <p className="axiom-ai-empty">No evaluations recorded.</p>}
           {data.evalResults.map((result) => (
-            <div key={result.checkId} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span
-                style={{
-                  fontSize: "10px",
-                  color: result.passed ? "#4ade80" : "#f87171",
-                  fontFamily: "monospace",
-                  width: "10px",
-                }}
-              >
-                {result.passed ? "✓" : "✗"}
-              </span>
-              <span style={{ fontSize: "10px", color: "#a1a8b8", fontFamily: "monospace", flex: 1 }}>
-                {result.label}
-              </span>
-              <span
-                style={{
-                  fontSize: "9px",
-                  color: "#4a5568",
-                  fontFamily: "monospace",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {getConfidenceBar(result.confidence)}
-              </span>
+            <div key={result.checkId}>
+              <b className={result.passed ? "is-passed" : "is-failed"}>{result.passed ? "✓" : "✗"}</b>
+              <span>{result.label}</span><small>{getConfidenceBar(result.confidence)}</small>
             </div>
           ))}
-        </div>
-      </div>
+        </section>
+      </section>
 
-      {/* ─── Routing Inspector ─── */}
-      <div
-        style={{
-          padding: "12px 14px",
-          background: "rgba(255,255,255,0.03)",
-          borderRadius: "8px",
-          border: "1px solid rgba(255,255,255,0.07)",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-          <p style={{ fontSize: "10px", color: "#69d4e8", fontFamily: "monospace", margin: 0, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            Routing Inspector
-          </p>
-          <span style={{ fontSize: "10px", color: "#6b7280", fontFamily: "monospace" }}>
-            {stats.routingDecisions} decision{stats.routingDecisions !== 1 ? "s" : ""}
-          </span>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+      <aside className="studio-panel-rail studio-panel-rail--inspector axiom-ai-routing" aria-label="Axiom AI routing and platform audit">
+        <header className="axiom-ai-heading"><span>Model authority</span><h2>Routing Inspector</h2><p>{stats.routingDecisions} decision{stats.routingDecisions !== 1 ? "s" : ""} observed.</p></header>
+        <div className="axiom-ai-route-list">
+          {data.routingLog.length === 0 && <p className="axiom-ai-empty">No routing decisions recorded.</p>}
           {data.routingLog.map((decision) => (
-            <div
-              key={decision.requestId}
-              style={{
-                padding: "6px 8px",
-                background: "rgba(255,255,255,0.025)",
-                borderRadius: "4px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "2px",
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ fontSize: "10px", color: "#d0d6e8", fontFamily: "monospace" }}>
-                  {decision.modelId}
-                </span>
-                <span style={{ fontSize: "9px", color: "#69d4e8", fontFamily: "monospace" }}>
-                  {decision.provider}
-                </span>
-              </div>
-              <span style={{ fontSize: "9px", color: "#4a5568", fontFamily: "monospace" }}>
-                {decision.reason}
-              </span>
-            </div>
+            <article key={decision.requestId}><div><strong>{decision.modelId}</strong><span>{decision.provider}</span></div><p>{decision.reason}</p></article>
           ))}
         </div>
-      </div>
-
-      {/* ─── Platform Validation Footer ─── */}
-      <div
-        style={{
-          padding: "8px 12px",
-          background: "rgba(105, 212, 232, 0.04)",
-          borderRadius: "6px",
-          border: "1px solid rgba(105, 212, 232, 0.08)",
-          display: "flex",
-          gap: "12px",
-        }}
-      >
-        {[
-          { label: "EventBus", status: "active" },
-          { label: "StateService", status: "active" },
-          { label: "DiagnosticsService", status: "active" },
-          { label: "Three.js", status: "absent" },
-        ].map((item) => (
-          <div key={item.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
-            <span
-              style={{
-                fontSize: "8px",
-                color: item.status === "absent" ? "#4ade80" : "#6b7280",
-                fontFamily: "monospace",
-                textTransform: "uppercase",
-              }}
-            >
-              {item.status === "absent" ? "✓ zero" : "✓ wired"}
-            </span>
-            <span style={{ fontSize: "8px", color: "#374151", fontFamily: "monospace" }}>
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
+        <section className="axiom-ai-card axiom-ai-platform">
+          <span>Platform audit</span>
+          {[
+            { label: "EventBus", status: "wired" },
+            { label: "StateService", status: "wired" },
+            { label: "DiagnosticsService", status: "wired" },
+            { label: "Three.js", status: "zero" },
+          ].map((item) => <div key={item.label}><span>{item.label}</span><strong>✓ {item.status}</strong></div>)}
+        </section>
+      </aside>
+    </section>
   );
 }
