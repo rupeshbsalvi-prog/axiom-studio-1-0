@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CheckCircle2, ChevronRight, Cpu, FileArchive, Sparkles } from "lucide-react";
+import { CheckCircle2, ChevronRight, Cpu, Sparkles } from "lucide-react";
 import { STUDIO_REGISTRY } from "./app/studios/registry";
 import {
   buildExperienceDirectorState,
@@ -41,7 +41,14 @@ const platformLayers = [
   { label: "Universal Canvas", value: "Layers, frames, timelines, semantic editing" },
 ];
 
-const pricingPlans = ["30-Day Free Trial", "Creator", "Professional", "Business", "Enterprise", "Education"];
+const accessPaths = ["Creator", "Professional", "Business", "Enterprise", "Education"];
+
+const workflowProof = [
+  { label: "Direct", detail: "Imagine X translates the brief into a visible creative route." },
+  { label: "Approve", detail: "You accept, revise, or redirect before any governed execution." },
+  { label: "Craft", detail: "Specialist Studios build the work with shared context intact." },
+  { label: "Deliver", detail: "Outputs remain layered, editable, and ready for refinement." },
+];
 
 const cinematicChapters = getWEOSJourney();
 const engineModules = getDirectorModules();
@@ -477,42 +484,59 @@ function LandingExperience({ onStartCreating }: { onStartCreating: () => void })
         </footer>
       </section>
 
-      <section id="pricing" className="landing-section">
-        <div className="section-heading-row">
-          <div>
-            <p className="eyebrow">Subscription and licensing</p>
-            <h2>Start with a full platform trial, then scale by creator, team, or enterprise.</h2>
-          </div>
-        </div>
-        <div className="pricing-grid">
-          {pricingPlans.map((plan) => (
-            <div className="pricing-card" key={plan}>
-              <FileArchive size={18} />
-              <strong>{plan}</strong>
-              <span>Studios, Imagine X planning, templates, version history, and transparent usage.</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section
+        id="pricing"
+        className="landing-section conversion-chapter"
+        data-chapter="create-with-axiom"
+        data-design-language="atelier-editorial-v3"
+        role="region"
+        aria-label="Axiom workflow and access"
+      >
+        <header className="conversion-intro">
+          <p className="eyebrow">Chapter IV — Begin with intent</p>
+          <h2>From first brief to governed, editable work.</h2>
+          <p>A clear creative route, an explicit approval point, and professional outputs that remain yours to shape.</p>
+        </header>
 
-      <section id="community" className="landing-section community-band">
-        <div>
-          <p className="eyebrow">Marketplace and community</p>
-          <h2>Templates, plugins, MCP connectors, agents, assets, and studio packs for one creative platform.</h2>
-          <p>
-            Build from Axiom packs, publish reusable systems, connect enterprise tools, and carry
-            projects across web, desktop, mobile, and tablet.
-          </p>
-          <button type="button" className="primary-button" onClick={onStartCreating}>
-            Enter Workspace
-            <ChevronRight size={16} />
-          </button>
+        <div className="conversion-layout">
+          <div className="workflow-proof" aria-label="Axiom workflow proof">
+            {workflowProof.map((step, index) => (
+              <article key={step.label}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.label}</h3>
+                <p>{step.detail}</p>
+              </article>
+            ))}
+          </div>
+
+          <aside className="access-ledger" aria-label="Axiom access paths">
+            <span>Start here</span>
+            <strong>30-day full-platform trial</strong>
+            <p>Explore the Studios and Imagine X planning before choosing the path that fits your work.</p>
+            <div className="access-paths">
+              {accessPaths.map((plan) => <span key={plan}>{plan}</span>)}
+            </div>
+          </aside>
         </div>
-        <div className="compatibility-strip">
-          {["Web", "Windows", "macOS", "Linux", "Android", "iOS", "iPadOS"].map((platform) => (
-            <span key={platform}>{platform}</span>
-          ))}
-        </div>
+
+        <footer id="community" className="conversion-close">
+          <div>
+            <span>Creative intelligence, under your authority</span>
+            <h3>Enter with an idea. Leave with work you can keep shaping.</h3>
+          </div>
+          <div className="conversion-actions">
+            <button type="button" className="primary-button" onClick={onStartCreating}>
+              Start Creating
+              <ChevronRight aria-hidden="true" size={16} />
+            </button>
+            <a className="ghost-link" href="#studios">Review Studios</a>
+          </div>
+          <div className="compatibility-strip">
+            {["Web", "Windows", "macOS", "Linux", "Android", "iOS", "iPadOS"].map((platform) => (
+              <span key={platform}>{platform}</span>
+            ))}
+          </div>
+        </footer>
       </section>
     </main>
   );
