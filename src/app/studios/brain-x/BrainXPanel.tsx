@@ -716,7 +716,33 @@ export function BrainXPanel({
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", height: "100%", overflowY: "auto", padding: "16px", background: "#090d16", color: "#e2e8f0", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+    <section
+      className="studio-production-panel studio-production-panel--brain-x"
+      aria-label="Brain X production workspace"
+      data-design-language="axiom-pro-panel-v1"
+    >
+      <aside className="studio-panel-rail studio-panel-rail--planner brain-x-navigator" aria-label="Brain X mission navigator">
+        <header className="brain-x-shell-heading">
+          <span>Reasoning director</span>
+          <h2><Brain size={18} aria-hidden="true" /> Brain X</h2>
+          <p>Governed planning, delegation, evaluation, and explainable mission control.</p>
+        </header>
+        <section className="brain-x-shell-card">
+          <span>Mission context</span>
+          <dl>
+            <div><dt>Programs</dt><dd>{missionsState.programs.length}</dd></div>
+            <div><dt>Missions</dt><dd>{missionsState.missions.length}</dd></div>
+            <div><dt>Focus</dt><dd>{contract?.title ?? "Intent intake"}</dd></div>
+            <div><dt>Status</dt><dd>{contract?.status ?? "Ready"}</dd></div>
+          </dl>
+        </section>
+        <section className="brain-x-shell-card brain-x-boundary">
+          <span>Execution boundary</span>
+          <p><strong>Human approval required.</strong> Brain X proposes and routes work; provider execution remains blocked until explicitly authorized.</p>
+        </section>
+      </aside>
+
+      <section className="studio-panel-canvas brain-x-canvas" aria-label="Brain X reasoning canvas">
       
       {/* ── AXIOM BRAIN INTENT PLANNER INTAKE ── */}
       <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "16px", background: "rgba(99, 102, 241, 0.05)", borderRadius: "12px", border: "1px solid rgba(99, 102, 241, 0.15)" }}>
@@ -1753,6 +1779,37 @@ export function BrainXPanel({
           <span>✓ Explainable</span>
         </div>
       </div>
-    </div>
+      </section>
+
+      <aside className="studio-panel-rail studio-panel-rail--inspector brain-x-inspector" aria-label="Brain X authority inspector">
+        <header className="brain-x-shell-heading">
+          <span>Effective authority</span>
+          <h2>Policy Inspector</h2>
+          <p>Read-only disclosure of the authority currently governing this workspace.</p>
+        </header>
+        <section className="brain-x-shell-card">
+          <span>Learning policy</span>
+          <dl>
+            <div><dt>Requested</dt><dd>{learningAuthority.requestedEnabled ? "Enabled" : "Disabled"}</dd></div>
+            <div><dt>Effective</dt><dd className={learningAuthority.effectiveEnabled ? "is-allowed" : "is-blocked"}>{learningAuthority.effectiveEnabled ? "Enabled" : "Blocked"}</dd></div>
+            <div><dt>Scope</dt><dd>{learningAuthority.scope}</dd></div>
+            <div><dt>Source</dt><dd>{learningAuthority.source}</dd></div>
+          </dl>
+          <p>{learningAuthority.reason}</p>
+        </section>
+        <section className="brain-x-shell-card">
+          <span>Planner state</span>
+          <dl>
+            <div><dt>Plan</dt><dd>{brainPlan ? "Generated" : "Awaiting intent"}</dd></div>
+            <div><dt>Provider</dt><dd>{brainPlan?.provider.name ?? "Not routed"}</dd></div>
+            <div><dt>Approval</dt><dd>{proposalAccepted === true ? "Accepted" : proposalAccepted === false ? "Rejected" : "Pending"}</dd></div>
+          </dl>
+        </section>
+        <section className="brain-x-shell-card brain-x-principles">
+          <span>Constitution</span>
+          <p>Intent first · Human override · Explainable · No inferred learning automation.</p>
+        </section>
+      </aside>
+    </section>
   );
 }
