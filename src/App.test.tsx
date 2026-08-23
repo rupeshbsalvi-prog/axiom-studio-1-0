@@ -98,6 +98,39 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(prologue.style.getPropertyValue("--hero-pointer-y")).toBe("50%");
   });
 
+  it("reveals the awakened Axiom scene continuously in both scroll directions", () => {
+    render(<App />);
+
+    const reveal = screen.getByRole("region", { name: /Axiom awakening reveal/i });
+    const front = within(reveal).getByRole("img", { name: /Dormant Axiom creative core/i });
+    const awakened = within(reveal).getByRole("img", { name: /Awakened Axiom creative core/i });
+    expect(reveal).toHaveAttribute("data-motion-system", "scroll-image-reveal-v1");
+    expect(front).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-front\.png$/));
+    expect(awakened).toHaveAttribute("src", expect.stringMatching(/axiom-awakening-reveal\.png$/));
+
+    const frameCallbacks: FrameRequestCallback[] = [];
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      frameCallbacks.push(callback);
+      return frameCallbacks.length;
+    });
+    const travel = Math.max(1200 - window.innerHeight, 1);
+    vi.spyOn(reveal, "getBoundingClientRect").mockReturnValue({
+      bottom: 1200 - travel / 2,
+      height: 1200,
+      left: 0,
+      right: 1000,
+      top: -travel / 2,
+      width: 1000,
+      x: 0,
+      y: -travel / 2,
+      toJSON: () => ({}),
+    });
+
+    fireEvent.scroll(window);
+    frameCallbacks.at(-1)?.(0);
+    expect(reveal.style.getPropertyValue("--reveal-clip")).toBe("50%");
+  });
+
   it("keeps complete chapter names inside a persistent numberless landing header", () => {
     render(<App />);
 
