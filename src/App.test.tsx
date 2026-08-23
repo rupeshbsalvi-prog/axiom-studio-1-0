@@ -97,6 +97,30 @@ describe("Axiom Studio 1.0 shell", () => {
     expect(within(atlas).queryByLabelText(/Featured Axiom outputs/i)).not.toBeInTheDocument();
   });
 
+  it("consolidates workflow proof, access paths, and the closing conversion", () => {
+    render(<App />);
+
+    const conversion = screen.getByRole("region", { name: /Axiom workflow and access/i });
+    expect(conversion).toHaveAttribute("data-chapter", "create-with-axiom");
+    expect(conversion).toHaveAttribute("data-design-language", "atelier-editorial-v3");
+    expect(within(conversion).getByText(/Chapter IV — Begin with intent/i)).toBeInTheDocument();
+    expect(within(conversion).getByRole("heading", { name: /From first brief to governed, editable work\./i })).toBeInTheDocument();
+
+    const proof = within(conversion).getByLabelText(/Axiom workflow proof/i);
+    expect(within(proof).getAllByRole("article")).toHaveLength(4);
+    expect(within(proof).getByText(/^Direct$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Approve$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Craft$/i)).toBeInTheDocument();
+    expect(within(proof).getByText(/^Deliver$/i)).toBeInTheDocument();
+
+    expect(within(conversion).getByText(/30-day full-platform trial/i)).toBeInTheDocument();
+    expect(within(conversion).getByText(/^Creator$/i)).toBeInTheDocument();
+    expect(within(conversion).getByText(/^Enterprise$/i)).toBeInTheDocument();
+    expect(within(conversion).getByRole("button", { name: /Start Creating/i })).toBeInTheDocument();
+    expect(within(conversion).getByRole("link", { name: /Review Studios/i })).toHaveAttribute("href", "#studios");
+    expect(within(conversion).queryByText(/Marketplace and community/i)).not.toBeInTheDocument();
+  });
+
   it("keeps cinematic developer diagnostics opt-in on the public landing page", () => {
     render(<App />);
 
