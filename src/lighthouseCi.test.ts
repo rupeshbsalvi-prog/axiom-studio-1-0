@@ -18,5 +18,6 @@ describe("Lighthouse CI", () => {
     expect(config.ci.upload.target).toBe("filesystem");
     expect(workflow).toContain("pull_request:");
     expect(workflow).toContain("npm run lighthouse:ci");
+    expect(workflow).toContain("include-hidden-files: true");
   });
 });
