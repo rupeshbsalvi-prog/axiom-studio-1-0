@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 describe("Axiom public typeface program", () => {
@@ -63,5 +63,40 @@ describe("Axiom public typeface program", () => {
     expect(brief).toMatch(/Latin core proof R1.*approved/i);
     expect(brief).toMatch(/axiom-sans-latin-core-proof-r1\.svg/i);
     expect(brief).toMatch(/Gate 3.*in progress/i);
+  });
+
+  it("keeps two private source masters with anchors, metrics, kerning, and rendered QA", () => {
+    const root = "creative/brand-system/type";
+    const regular = `${root}/sources/AxiomSans-Regular.ufo`;
+    const display = `${root}/sources/AxiomSans-Display.ufo`;
+    const designspace = readFileSync(`${root}/sources/AxiomSans.designspace`, "utf8");
+    const proof = readFileSync(`${root}/proofs/axiom-sans-source-qa-r1.svg`, "utf8");
+    const brief = readFileSync("creative/brand-system/docs/axiom-typeface-brief.md", "utf8");
+
+    for (const [path, style] of [[regular, "Regular"], [display, "Display"]]) {
+      const info = readFileSync(`${path}/fontinfo.plist`, "utf8");
+      const glyphs = readdirSync(`${path}/glyphs`)
+        .filter((name) => name.endsWith(".glif"))
+        .map((name) => readFileSync(`${path}/glyphs/${name}`, "utf8"))
+        .join("\n");
+      expect(info).toContain("Axiom Sans");
+      expect(info).toContain(style);
+      expect(info).toMatch(/<key>unitsPerEm<\/key>\s*<integer>1000<\/integer>/);
+      expect(info).toMatch(/<key>ascender<\/key>\s*<integer>984<\/integer>/);
+      expect(info).toMatch(/<key>descender<\/key>\s*<integer>-292<\/integer>/);
+      expect(glyphs).toMatch(/<anchor name="top"/);
+      expect(glyphs).toMatch(/<anchor name="bottom"/);
+      expect(readFileSync(`${path}/kerning.plist`, "utf8")).toMatch(/public\.kern/);
+    }
+
+    expect(designspace).toMatch(/tag="opsz"/);
+    expect(designspace).toMatch(/minimum="14" maximum="72" default="14"/);
+    expect(proof).toMatch(/<title>Axiom Sans source-master QA R1<\/title>/i);
+    for (const section of ["metrics", "anchors", "spacing", "display"]) {
+      expect(proof).toContain(`data-section="${section}"`);
+    }
+    expect(readFileSync(`${root}/OFL.txt`, "utf8")).toMatch(/SIL OPEN FONT LICENSE Version 1\.1/i);
+    expect(brief).toMatch(/source masters R1.*implemented/i);
+    expect(brief).toMatch(/no font binary is approved/i);
   });
 });
