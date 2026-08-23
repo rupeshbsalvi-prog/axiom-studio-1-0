@@ -99,6 +99,18 @@ describe("BrainXPanel local plan visibility", () => {
     clearCanvasPreviewIntakeState();
   });
 
+  it("uses the shared production panel without hiding governed planning", () => {
+    render(<BrainXPanel />);
+
+    const workspace = screen.getByRole("region", { name: "Brain X production workspace" });
+    expect(workspace).toHaveAttribute("data-design-language", "axiom-pro-panel-v1");
+    expect(within(workspace).getByRole("complementary", { name: "Brain X mission navigator" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("region", { name: "Brain X reasoning canvas" })).toBeInTheDocument();
+    expect(within(workspace).getByRole("complementary", { name: "Brain X authority inspector" })).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Enter creative intent/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Generate Plan" })).toBeDisabled();
+  });
+
   it("shows routes, Guardian critique, and the approval boundary", async () => {
     vi.mocked(generateBrainPlan).mockResolvedValueOnce(plan);
     const user = userEvent.setup();
